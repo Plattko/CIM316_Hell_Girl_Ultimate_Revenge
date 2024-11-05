@@ -68,9 +68,9 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 
-    // ---------------------------------
+    //-------------------------------------------------------------
     // SPRITE & ANIMATIONS
-    // ---------------------------------
+    //-------------------------------------------------------------
     private void Flip()
     {
         if (isFacingRight && moveInput.x < 0 || !isFacingRight && moveInput.x > 0)
@@ -94,6 +94,14 @@ public class PlayerController : MonoBehaviour
         if (context.performed && canDash)
         {
             StartCoroutine(Dash());
+        }
+    }
+
+    public void OnUseSpell(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+
         }
     }
 }

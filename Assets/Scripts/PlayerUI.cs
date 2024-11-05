@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class PlayerUI : MonoBehaviour
 {
     public PlayerCharacter playerCharacter;
+
+    [Header("Health")]
     public Image[] heartImages;  // Array of Image components to show hearts
 
     void Start()

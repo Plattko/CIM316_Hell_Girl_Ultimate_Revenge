@@ -7,12 +7,22 @@ public class PlayerCharacter : ScriptableObject
 {
     // Character attributes
     public string characterName;
+
+    [Header("Health")]
     public int maxHealth;
     public Sprite fullHeartSprite;  // Full heart sprite
     public Sprite emptyHeartSprite; // Empty heart sprite
     public Sprite[] hearts;         // Array to hold current heart states
 
     private int currentHealth;
+
+    [Header("Mana")]
+    [SerializeField] private int maxMana = 5;
+    [HideInInspector] public int curMana;
+
+    //-------------------------------------------------------------
+    // HEALTH
+    //-------------------------------------------------------------
 
     // Initialize the player character with full health
     public void InitializeHealth()
@@ -65,5 +75,18 @@ public class PlayerCharacter : ScriptableObject
     public Sprite[] GetHearts()
     {
         return hearts;
+    }
+
+    //-------------------------------------------------------------
+    // MANA
+    //-------------------------------------------------------------
+    public void UseMana(float amount)
+    {
+        curMana -= amount;
+    }
+
+    public void GainMana(float amount)
+    {
+        curMana += amount;
     }
 }
