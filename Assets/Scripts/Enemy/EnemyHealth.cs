@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float maxHealth = 50f;  // Maximum health of the enemy
+    [SerializeField]
     private float currentHealth;   // Current health of the enemy
 
     // Start is called before the first frame update
