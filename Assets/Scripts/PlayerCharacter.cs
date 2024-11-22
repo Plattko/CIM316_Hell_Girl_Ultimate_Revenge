@@ -80,12 +80,12 @@ public class PlayerCharacter : ScriptableObject
     //-------------------------------------------------------------
     // MANA
     //-------------------------------------------------------------
-    public void UseMana(float amount)
+    public void UseMana(int amount)
     {
         curMana -= amount;
     }
 
-    public void GainMana(float amount)
+    public void GainMana(int amount)
     {
         curMana += amount;
     }

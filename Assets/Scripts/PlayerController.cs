@@ -22,7 +22,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float dashCooldown = 1.0f;
 
     [Header("Sprite")]
-    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    [Header("Spellcasting")]
+    [SerializeField] private SpellManager spellManager;
 
     void Start()
     {
@@ -101,7 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-
+            spellManager.UseSpell();
         }
     }
 }
