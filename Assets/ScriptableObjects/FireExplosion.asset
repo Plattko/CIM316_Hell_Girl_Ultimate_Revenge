@@ -16,5 +16,7 @@ MonoBehaviour:
   manaCost: 3
   castCooldown: 1
   damage: 15
+  preventsMovement: 1
+  preventMovementDuration: 0.5
   fireExplosionPrefab: {fileID: 3275710079105325757, guid: 8b3a1f96f4db85949bcc724254b17f02, type: 3}
-  explosionDuration: 0.25
+  explosionDuration: 0.5

@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     private Vector3 moveInput;
+    private bool canMove = true;
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float idleSlow = 0.9f;
 
@@ -27,6 +28,16 @@ public class PlayerController : MonoBehaviour
     [Header("Spellcasting")]
     [SerializeField] private SpellManager spellManager;
 
+    private void OnEnable()
+    {
+        spellManager.onMovementPrevented += DisableMovement;
+    }
+
+    private void OnDisable()
+    {
+        spellManager.onMovementPrevented -= DisableMovement;
+    }
+
     void Start()
     {
         
@@ -40,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (isDashing) { return; }
+        if (!canMove || isDashing) { return; }
         Move();
         Flip();
     }
@@ -58,6 +69,19 @@ public class PlayerController : MonoBehaviour
         {
             rb.velocity = Vector3.Lerp(rb.velocity, Vector3.zero, idleSlow);
         }
+    }
+
+    private void DisableMovement(float duration)
+    {
+        StartCoroutine(TemporaryNoMove(duration));
+    }
+
+    private IEnumerator TemporaryNoMove(float duration)
+    {
+        canMove = false;
+        rb.velocity = Vector3.zero;
+        yield return new WaitForSeconds(duration);
+        canMove = true;
     }
 
     private IEnumerator Dash() // TODO: Make player unable to be damaged when dashing

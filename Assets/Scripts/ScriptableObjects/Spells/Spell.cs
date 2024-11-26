@@ -11,6 +11,9 @@ public class Spell : ScriptableObject
     public float castCooldown = 0.1f;
     public float damage = 1f;
 
+    public bool preventsMovement = false;
+    public float preventMovementDuration = 0.1f;
+
     public virtual void CastSpell()
     {
 
