@@ -1545,7 +1545,6 @@ GameObject:
   - component: {fileID: 1128723531}
   - component: {fileID: 1128723530}
   - component: {fileID: 1128723536}
-  - component: {fileID: 1128723535}
   m_Layer: 7
   m_Name: TestDummy
   m_TagString: Untagged
@@ -1666,18 +1665,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1128723535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1128723529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2930027820251849b872aaaed21b540, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1128723536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,7 +1677,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627a55514f1efbc46a05eafe222b6226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageable: {fileID: 1128723535}
   maxHealth: 20
 --- !u!1 &1299338271
 GameObject:

@@ -8,13 +8,14 @@ public class FireExplosion : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the enemy is damageable
-        Damageable damageable = other.GetComponent<Damageable>();
+        // Deal damage if it hit a damageable object
+        IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
-            // Damage the enemy
-            damageable.Damage(damage);
-            Debug.Log("Damaged enemy for " + damage + " damage.");
+            // Deal damage
+            damageable.TakeDamage(damage);
+            // Print the damage dealt
+            Debug.Log("Damaged " + other.name + " for " + damage + " damage.");
         }
     }
 }
