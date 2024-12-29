@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "NewFireExplosionSpell", menuName = "Spells/FireExplosion")]
+[CreateAssetMenu(fileName = "NewFireExplosionSpell", menuName = "Spells/Fire Explosion")]
 public class FireExplosionSpell : Spell
 {
     [Header("Explosion Variables")]

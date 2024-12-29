@@ -13,5 +13,8 @@ public class Spell : ScriptableObject
     public bool lockoutDuringCast = false;
     public float cooldownTime;
 
+    public bool hasDirection = false;
+
     public virtual void Cast(GameObject parent) { }
+    public virtual void CastWithDirection(GameObject parent, Vector3 dir) { }
 }

@@ -6,14 +6,15 @@ using UnityEngine;
 public class SpellManager : MonoBehaviour
 {
     // Player mana variables
-    public event Action<int> onManaUpdated;
     private int maxMana = 5;
     private int curMana;
+    public event Action<int> onManaUpdated;
 
     // Spell variables
+    public PlayerAim aimPivot;
     public Spell curSpell;
-    public event Action<float, bool> onSpellCast;
     private float cooldownTime;
+    public event Action<float, bool> onSpellCast;
 
     private void Start()
     {
@@ -43,7 +44,14 @@ public class SpellManager : MonoBehaviour
         // Reduce the player's mana count by the spell's mana cost
         UseMana(curSpell.manaCost);
         // Cast the spell
-        curSpell.Cast(gameObject);
+        if (curSpell.hasDirection)
+        {
+            curSpell.CastWithDirection(gameObject, aimPivot.transform.forward);
+        }
+        else
+        {
+            curSpell.Cast(gameObject);
+        }
         // Signal that a spell has been cast
         onSpellCast?.Invoke(curSpell.castTime, curSpell.lockoutDuringCast);
         // Set the spell cooldown time
