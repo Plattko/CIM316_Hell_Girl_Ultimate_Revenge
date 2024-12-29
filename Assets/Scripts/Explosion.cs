@@ -2,9 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireExplosion : MonoBehaviour
+public class Explosion : MonoBehaviour
 {
     [HideInInspector] public float damage;
+    [HideInInspector] public float duration;
+
+    public void Initialise(float _damage, float _duration)
+    {
+        damage = _damage;
+        duration = _duration;
+
+        // Destroy the explosion after the duration ends
+        Destroy(gameObject, duration);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

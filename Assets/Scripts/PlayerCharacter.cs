@@ -16,10 +16,6 @@ public class PlayerCharacter : ScriptableObject
 
     private int currentHealth;
 
-    [Header("Mana")]
-    [SerializeField] private int maxMana = 5;
-    [HideInInspector] public int curMana;
-
     //-------------------------------------------------------------
     // HEALTH
     //-------------------------------------------------------------
@@ -75,18 +71,5 @@ public class PlayerCharacter : ScriptableObject
     public Sprite[] GetHearts()
     {
         return hearts;
-    }
-
-    //-------------------------------------------------------------
-    // MANA
-    //-------------------------------------------------------------
-    public void UseMana(int amount)
-    {
-        curMana -= amount;
-    }
-
-    public void GainMana(int amount)
-    {
-        curMana += amount;
     }
 }

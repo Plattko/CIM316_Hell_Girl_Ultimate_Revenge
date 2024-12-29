@@ -5,23 +5,20 @@ using UnityEngine;
 
 public class SpellManager : MonoBehaviour
 {
-    private PlayerCharacter playerCharacter;
-    public Spell curSpell;
-
-    private float castCooldownEnd = 0f;
-
-    // Temporary variables for testing purposes
+    // Player mana variables
     public event Action<int> onManaUpdated;
     private int maxMana = 5;
     private int curMana;
 
-    // Spell effects
-    public event Action<float> onMovementPrevented;
+    // Spell variables
+    public Spell curSpell;
+    public event Action<float, bool> onSpellCast;
+    private float cooldownTime;
 
     private void Start()
     {
+        // Set the player's mana to their max mana
         curMana = maxMana;
-        InitialiseSpell();
     }
 
     private void Update()
@@ -38,40 +35,30 @@ public class SpellManager : MonoBehaviour
         }
     }
 
-    public void Initialise(PlayerCharacter _playerCharacter)
+    public void CastSpell()
     {
-        playerCharacter = _playerCharacter;
-    }
-
-    public void InitialiseSpell()
-    {
-        // Give the current spell a reference to the Spell Manager
-        curSpell.spellManager = this;
-    }
-
-    public void UseSpell()
-    {
-        // Do nothing if the player doesn't have a spell
-        if (curSpell == null) { return; }
-        // Do nothing if casting the spell is on cooldown
-        if (Time.time < castCooldownEnd) { return; }
-        // Do nothing if the player doesn't have enough mana to cast the spell
-        if (curMana < curSpell.manaCost) { return; }
+        // Do nothing if the player can't cast a spell
+        if (!CanCast()) { return; }
 
         // Reduce the player's mana count by the spell's mana cost
-        //playerCharacter.UseMana(curSpell.manaCost);
-        curMana -= curSpell.manaCost;
-        // Signal that the mana has been updated
-        onManaUpdated?.Invoke(curMana);
+        UseMana(curSpell.manaCost);
         // Cast the spell
-        curSpell.CastSpell();
-        // Set a new cast cooldown
-        castCooldownEnd = Time.time + curSpell.castCooldown;
+        curSpell.Cast(gameObject);
+        // Signal that a spell has been cast
+        onSpellCast?.Invoke(curSpell.castTime, curSpell.lockoutDuringCast);
+        // Set the spell cooldown time
+        cooldownTime = Time.time + curSpell.cooldownTime;
+    }
 
-        if (curSpell.preventsMovement)
-        {
-            onMovementPrevented?.Invoke(curSpell.preventMovementDuration);
-        }
+    private bool CanCast()
+    {
+        // Return false if the player doesn't have a spell
+        if (curSpell == null) { return false; }
+        // Return false if the spell is on cooldown
+        if (Time.time < cooldownTime) { return false; }
+        // Return false if the player doesn't have enough mana to cast the spell
+        if (curMana < curSpell.manaCost) { return false; }
+        return true;
     }
 
     private void UseMana(int amount)
