@@ -11,10 +11,13 @@ public class SpellManager : MonoBehaviour
     public event Action<int> onManaUpdated;
 
     // Spell variables
-    public PlayerAim aimPivot;
+    [SerializeField] private PlayerAim aimPivot;
     public Spell curSpell;
     private float cooldownTime;
     public event Action<float, bool> onSpellCast;
+
+    [SerializeField] private GameObject spellItemPrefab;
+    public event Action<Spell> onSpellUpdated;
 
     private void Start()
     {
@@ -36,6 +39,9 @@ public class SpellManager : MonoBehaviour
         }
     }
 
+    //-------------------------------------------------------------
+    // CASTING
+    //-------------------------------------------------------------
     public void CastSpell()
     {
         // Do nothing if the player can't cast a spell
@@ -69,6 +75,37 @@ public class SpellManager : MonoBehaviour
         return true;
     }
 
+    //-------------------------------------------------------------
+    // SPELL MANAGEMENT
+    //-------------------------------------------------------------
+    public void SwapSpell(Spell newSpell)
+    {
+        // If the player already has a spell, drop it
+        if (curSpell != null)
+        {
+            DropSpell();
+        }
+        // Set the player's current spell to the new spell
+        curSpell = newSpell;
+        // Signal that the spell has been updated
+        onSpellUpdated?.Invoke(newSpell);
+    }
+
+    private void DropSpell()
+    {
+        // Set the drop position to slightly in front of the spell manager
+        Vector3 dropPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - 0.5f);
+        // Instantiate the spell item prefab
+        SpellItem spellItem = Instantiate(spellItemPrefab, dropPos, Quaternion.identity).GetComponent<SpellItem>();
+        // Set the spell item's spell to the player's current spell
+        spellItem.Initialise(curSpell);
+        // Clear the player's current spell
+        curSpell = null;
+    }
+
+    //-------------------------------------------------------------
+    // MANA MANAGEMENT
+    //-------------------------------------------------------------
     private void UseMana(int amount)
     {
         // Check if the current mana is greater than 0

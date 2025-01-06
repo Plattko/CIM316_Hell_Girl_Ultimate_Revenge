@@ -10,7 +10,8 @@ public class PlayerUI : MonoBehaviour
     [Header("Health")]
     public Image[] heartImages;  // Array of Image components to show hearts
 
-    [Header("Mana")]
+    [Header("Spells")]
+    [SerializeField] private Image spellIcon;
     [SerializeField] private Transform manaIcons;
 
     private void Awake()
@@ -21,11 +22,13 @@ public class PlayerUI : MonoBehaviour
     private void OnEnable()
     {
         spellManager.onManaUpdated += UpdateManaUI;
+        spellManager.onSpellUpdated += UpdateSpellUI;
     }
 
     private void OnDisable()
     {
         spellManager.onManaUpdated -= UpdateManaUI;
+        spellManager.onSpellUpdated -= UpdateSpellUI;
     }
 
     private void Start()
@@ -74,5 +77,16 @@ public class PlayerUI : MonoBehaviour
                 manaIcons.GetChild(i).gameObject.SetActive(false);
             }
         }
+    }
+
+    private void UpdateSpellUI(Spell newSpell)
+    {
+        // Show the spell icon if it is hidden
+        if (!spellIcon.enabled)
+        {
+            spellIcon.enabled = true;
+        }
+        // Set the spell icon to the new spell's icon
+        spellIcon.sprite = newSpell.icon;
     }
 }

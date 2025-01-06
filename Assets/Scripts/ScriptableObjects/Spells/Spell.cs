@@ -6,6 +6,7 @@ public class Spell : ScriptableObject
 {
     [Header("Common Variables")]
     public new string name;
+    public Sprite icon;
     public int manaCost = 1;
     public float damage = 1f;
 

@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     [Header("Spellcasting")]
     [SerializeField] private SpellManager spellManager;
 
+    [Header("Interacting")]
+    [SerializeField] private Interactor interactor;
+
     private void OnEnable()
     {
         spellManager.onSpellCast += OnSpellCast;
@@ -140,6 +143,14 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             spellManager.CastSpell();
+        }
+    }
+
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            interactor.Interact();
         }
     }
 }
