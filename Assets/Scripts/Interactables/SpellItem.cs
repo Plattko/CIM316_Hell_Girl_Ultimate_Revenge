@@ -7,11 +7,6 @@ public class SpellItem : MonoBehaviour, IInteractable
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Spell spell;
 
-    private void Start()
-    {
-        Initialise(spell);
-    }
-
     public void Initialise(Spell _spell)
     {
         spell = _spell;
