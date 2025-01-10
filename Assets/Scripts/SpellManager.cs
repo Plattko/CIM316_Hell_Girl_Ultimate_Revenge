@@ -6,8 +6,8 @@ using UnityEngine;
 public class SpellManager : MonoBehaviour
 {
     // Player mana variables
-    private int maxMana = 5;
-    private int curMana;
+    public int maxMana { get; private set; } = 5;
+    public int curMana { get; private set; }
     public event Action<int> onManaUpdated;
 
     // Spell variables
@@ -120,7 +120,7 @@ public class SpellManager : MonoBehaviour
         }
     }
 
-    private void GainMana(int amount)
+    public void GainMana(int amount)
     {
         // Check if the current mana is less than the max mana
         if (curMana < maxMana)
