@@ -7,12 +7,18 @@ public class PlayerCharacter : ScriptableObject
 {
     // Character attributes
     public string characterName;
+
+    [Header("Health")]
     public int maxHealth;
     public Sprite fullHeartSprite;  // Full heart sprite
     public Sprite emptyHeartSprite; // Empty heart sprite
     public Sprite[] hearts;         // Array to hold current heart states
 
     private int currentHealth;
+
+    //-------------------------------------------------------------
+    // HEALTH
+    //-------------------------------------------------------------
 
     // Initialize the player character with full health
     public void InitializeHealth()
