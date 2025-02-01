@@ -33,12 +33,26 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        spellManager.onSpellCast += OnSpellCast;
+        if (spellManager != null)
+        {
+            spellManager.onSpellCast += OnSpellCast;
+        }
+        else
+        {
+            Debug.LogWarning("No Spell Manager detected.");
+        }
     }
 
     private void OnDisable()
     {
-        spellManager.onSpellCast -= OnSpellCast;
+        if (spellManager != null)
+        {
+            spellManager.onSpellCast -= OnSpellCast;
+        }
+        else
+        {
+            Debug.LogWarning("No Spell Manager detected.");
+        }
     }
 
     private void FixedUpdate()

@@ -21,19 +21,33 @@ public class PlayerUI : MonoBehaviour
 
     private void OnEnable()
     {
-        spellManager.onManaUpdated += UpdateManaUI;
-        spellManager.onSpellUpdated += UpdateSpellUI;
+        if (spellManager != null)
+        {
+            spellManager.onManaUpdated += UpdateManaUI;
+            spellManager.onSpellUpdated += UpdateSpellUI;
+        }
+        else
+        {
+            Debug.LogWarning("No Spell Manager detected.");
+        }
     }
 
     private void OnDisable()
     {
-        spellManager.onManaUpdated -= UpdateManaUI;
-        spellManager.onSpellUpdated -= UpdateSpellUI;
+        if (spellManager != null)
+        {
+            spellManager.onManaUpdated -= UpdateManaUI;
+            spellManager.onSpellUpdated -= UpdateSpellUI;
+        }
+        else
+        {
+            Debug.LogWarning("No Spell Manager detected.");
+        }
     }
 
     private void Start()
     {
-        Debug.Log("this script is working");
+        //Debug.Log("this script is working");
         playerCharacter.InitializeHealth();
         UpdateHeartUI();
     }
@@ -52,7 +66,7 @@ public class PlayerUI : MonoBehaviour
     // Call this whenever the player's health changes
     public void UpdateHeartUI()
     {
-        Debug.Log("hearts updating");
+        //Debug.Log("hearts updating");
         Sprite[] hearts = playerCharacter.GetHearts();
 
         for (int i = 0; i < heartImages.Length; i++)
