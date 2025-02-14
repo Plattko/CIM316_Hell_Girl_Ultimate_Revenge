@@ -243,6 +243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad11b3252af8be46865fe5724791f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapSize: {x: 9, y: 9}
+  roomCount: 15
+  branchChanceStart: 0.5
+  branchChanceEnd: 0.01
   mapSpritePrefab: {fileID: 3435912115568918435, guid: b8dcd60835d2dac4bb8d8e37a6726039, type: 3}
 --- !u!4 &727196271
 Transform:
