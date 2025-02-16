@@ -25,6 +25,9 @@ public class MapGenerator : MonoBehaviour
     
     [SerializeField] private GameObject mapSpritePrefab;
 
+    // TEMPORARY
+    [SerializeField] private RoomManager roomManager;
+
 
     private void Start()
     {
@@ -39,6 +42,8 @@ public class MapGenerator : MonoBehaviour
         PlaceRooms();
         PlaceRoomDoors();
         DrawMap();
+
+        roomManager.SpawnRooms(gridSizeX, gridSizeY, rooms);
     }
 
     private void PlaceRooms()
