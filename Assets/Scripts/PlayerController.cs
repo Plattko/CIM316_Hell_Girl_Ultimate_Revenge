@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public Vector2 lastMoveDir;
     private bool isFacingRight = true;
 
+    private Coroutine dashCoroutine;
     private bool canDash = true;
     private bool isDashing = false;
     [SerializeField] private float dashDistance = 10f;
@@ -70,7 +71,7 @@ public class PlayerController : MonoBehaviour
         // Disable movement for the duration of the cast if the spell has a lockout during its cast
         if (lockoutDuringCast)
         {
-            StartCoroutine(MovementLockout(castTime));
+            StartCoroutine(DisableMovementTemp(castTime));
         }
     }
 
@@ -91,18 +92,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator MovementLockout(float duration)
-    {
-        // Disable movement
-        canMove = false;
-        // Set the player's velocity to 0
-        rb.velocity = Vector3.zero;
-        // Wait for the lockout duration
-        yield return new WaitForSeconds(duration);
-        // Re-enable movement
-        canMove = true;
-    }
-
     private IEnumerator Dash() // TODO: Make player unable to be damaged when dashing
     {
         // Disable the ability to dash
@@ -117,6 +106,48 @@ public class PlayerController : MonoBehaviour
         // Wait for the dash cooldown duration and re-enable the ability to dash
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
+    }
+
+    private void InterruptDash()
+    {
+        if (dashCoroutine != null)
+        {
+            // Stop the dash coroutine
+            StopCoroutine(dashCoroutine);
+            // Reset dash variables
+            isDashing = false;
+            canDash = true;
+        }
+    }
+
+    public void DisableMovement()
+    {
+        // Disable movement
+        canMove = false;
+        // Interrupt the dash
+        InterruptDash();
+        // Set the player's velocity to 0
+        rb.velocity = Vector3.zero;
+    }
+
+    public void EnableMovement()
+    {
+        // Enable movement
+        canMove = true;
+    }
+
+    private IEnumerator DisableMovementTemp(float duration)
+    {
+        // Disable movement
+        canMove = false;
+        // Interrupt the dash
+        InterruptDash();
+        // Set the player's velocity to 0
+        rb.velocity = Vector3.zero;
+        // Wait for the lockout duration
+        yield return new WaitForSeconds(duration);
+        // Re-enable movement
+        canMove = true;
     }
 
     //-------------------------------------------------------------
@@ -145,9 +176,9 @@ public class PlayerController : MonoBehaviour
     public void OnDash(InputAction.CallbackContext context)
     {
         // If the input is pressed and the player can dash, dash
-        if (context.performed && canDash)
+        if (context.performed && canMove && canDash)
         {
-            StartCoroutine(Dash());
+            dashCoroutine = StartCoroutine(Dash());
         }
     }
 

@@ -16,7 +16,11 @@ public class PlayerUI : MonoBehaviour
 
     private void Awake()
     {
-        spellManager = player.GetComponentInChildren<SpellManager>();
+        if (player != null)
+        {
+            spellManager = player.GetComponentInChildren<SpellManager>();
+            Debug.Log("Spell Manager set in Awake.");
+        }
     }
 
     private void OnEnable()
@@ -25,10 +29,7 @@ public class PlayerUI : MonoBehaviour
         {
             spellManager.onManaUpdated += UpdateManaUI;
             spellManager.onSpellUpdated += UpdateSpellUI;
-        }
-        else
-        {
-            Debug.LogWarning("No Spell Manager detected.");
+            Debug.Log("Spell Manager events subscribed to in OnEnable.");
         }
     }
 
@@ -38,18 +39,37 @@ public class PlayerUI : MonoBehaviour
         {
             spellManager.onManaUpdated -= UpdateManaUI;
             spellManager.onSpellUpdated -= UpdateSpellUI;
-        }
-        else
-        {
-            Debug.LogWarning("No Spell Manager detected.");
+            Debug.Log("Spell Manager events unsubscribed from in OnDisable.");
         }
     }
 
     private void Start()
     {
-        //Debug.Log("this script is working");
+        if (player != null)
+        {
+            playerCharacter.InitializeHealth();
+            UpdateHeartUI();
+            Debug.Log("Player health initialised in Start.");
+        }
+    }
+
+    public void Initialise(GameObject player)
+    {
+        // Set the spell manager to the player's spell manager script
+        spellManager = player.GetComponentInChildren<SpellManager>();
+        // Subscribe to the spell manager's events
+        if (spellManager != null)
+        {
+            spellManager.onManaUpdated += UpdateManaUI;
+            spellManager.onSpellUpdated += UpdateSpellUI;
+            Debug.Log("Spell Manager events subscribed to in Initialise.");
+        }
+
+        // Initialise the player's health
         playerCharacter.InitializeHealth();
+        // Update the heart UI to correspond with the player's health
         UpdateHeartUI();
+        Debug.Log("Player health initialised in Initialise.");
     }
 
     void Update()
@@ -66,7 +86,6 @@ public class PlayerUI : MonoBehaviour
     // Call this whenever the player's health changes
     public void UpdateHeartUI()
     {
-        //Debug.Log("hearts updating");
         Sprite[] hearts = playerCharacter.GetHearts();
 
         for (int i = 0; i < heartImages.Length; i++)
