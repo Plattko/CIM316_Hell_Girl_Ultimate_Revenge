@@ -20,6 +20,7 @@ public class RoomPaths : MonoBehaviour
             pathTrigger.GetComponent<PathTrigger>().onPathTriggered += CallPathTriggered;
         }
     }
+
     private void OnDisable()
     {
         // Unsubscribe from each of the path trigger's path triggered event
@@ -76,15 +77,15 @@ public class RoomPaths : MonoBehaviour
         {
             onPathTriggered?.Invoke(0);
         }
-        if (col == pathTriggers[1]) // Player went DOWN
+        else if (col == pathTriggers[1]) // Player went DOWN
         {
             onPathTriggered?.Invoke(1);
         }
-        if (col == pathTriggers[2]) // Player went LEFT
+        else if (col == pathTriggers[2]) // Player went LEFT
         {
             onPathTriggered?.Invoke(2);
         }
-        if (col == pathTriggers[3]) // Player went RIGHT
+        else if (col == pathTriggers[3]) // Player went RIGHT
         {
             onPathTriggered?.Invoke(3);
         }

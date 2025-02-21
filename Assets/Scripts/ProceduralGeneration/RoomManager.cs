@@ -19,17 +19,18 @@ public class RoomManager : MonoBehaviour
     // Room transition variables
     [SerializeField] private FadeToBlack fadeToBlack;
     [SerializeField] private float roomTransitionDuration = 0.1f;
+    [SerializeField] private float playerMoveDelay = 0.33f;
 
-    public void SpawnRooms(int gridSizeX, int gridSizeY, Room[,] _rooms)
+    public void SpawnRooms(Room[,] _rooms)
     {
         rooms = _rooms;
         // Initialise the room paths array at the correct size
-        roomPaths = new RoomPaths[gridSizeX, gridSizeY];
+        roomPaths = new RoomPaths[_rooms.GetLength(0), _rooms.GetLength(1)];
 
         // A double for loop allows us to check every position in the rooms array
-        for (int x = 0; x < (gridSizeX); x++)
+        for (int x = 0; x < _rooms.GetLength(0); x++)
         {
-            for (int y = 0; y < (gridSizeY); y++)
+            for (int y = 0; y < _rooms.GetLength(1); y++)
             {
                 // Continue to the next position if there is no room at that position
                 if (rooms[x, y] == null)
@@ -100,39 +101,51 @@ public class RoomManager : MonoBehaviour
         yield return fadeToBlack.FadeOut();
 
         // Set the new room based on the path the player went through and teleport them to the correct entry point of the new room
-        if (dir == 0) // Player went UP
+        switch (dir)
         {
-            // Set the new room to the room up
-            newRoom = curRoom + Vector2.up;
-            // Teleport the player to the new room's bottom spawn point
-            player.transform.position = roomPaths[(int)newRoom.x, (int)newRoom.y].entryPoints[1].position;
-        }
-        else if (dir == 1) // Player went DOWN
-        {
-            // Set the new room to the room down
-            newRoom = curRoom + Vector2.down;
-            // Teleport the player to the new room's top spawn point
-            player.transform.position = roomPaths[(int)newRoom.x, (int)newRoom.y].entryPoints[0].position;
-        }
-        else if (dir == 2) // Player went LEFT
-        {
-            // Set the new room to the room left
-            newRoom = curRoom + Vector2.left;
-            // Teleport the player to the new room's right spawn point
-            player.transform.position = roomPaths[(int)newRoom.x, (int)newRoom.y].entryPoints[3].position;
-        }
-        else if (dir == 3) // Player went RIGHT
-        {
-            // Set the new room to the room right
-            newRoom = curRoom + Vector2.right;
-            // Teleport the player to the new room's left spawn point
-            player.transform.position = roomPaths[(int)newRoom.x, (int)newRoom.y].entryPoints[2].position;
+            // Player went UP
+            case 0:
+                // Set the new room to the room up
+                newRoom = curRoom + Vector2.up;
+                // Teleport the player to the new room's bottom spawn point
+                player.transform.position = roomPaths[(int)newRoom.x, (int)newRoom.y].entryPoints[1].position;
+                break;
+
+            // Player went DOWN
+            case 1:
+                // Set the new room to the room down
+                newRoom = curRoom + Vector2.down;
+                // Teleport the player to the new room's top spawn point
+                player.transform.position = roomPaths[(int)newRoom.x, (int)newRoom.y].entryPoints[0].position;
+                break;
+
+            // Player went LEFT
+            case 2:
+                // Set the new room to the room left
+                newRoom = curRoom + Vector2.left;
+                // Teleport the player to the new room's right spawn point
+                player.transform.position = roomPaths[(int)newRoom.x, (int)newRoom.y].entryPoints[3].position;
+                break;
+
+            // Player went RIGHT
+            case 3:
+                // Set the new room to the room right
+                newRoom = curRoom + Vector2.right;
+                // Teleport the player to the new room's left spawn point
+                player.transform.position = roomPaths[(int)newRoom.x, (int)newRoom.y].entryPoints[2].position;
+                break;
+
+            default:
+                Debug.LogError("Direction not found.");
+                break;
         }
 
         // Disable the previous room
         roomPaths[(int)curRoom.x, (int)curRoom.y].gameObject.SetActive(false);
+        Debug.Log("Is current room active: " + roomPaths[(int)curRoom.x, (int)curRoom.y].gameObject.activeInHierarchy);
         // Enable the new room
         roomPaths[(int)newRoom.x, (int)newRoom.y].gameObject.SetActive(true);
+        Debug.Log("Is new room active: " + roomPaths[(int)newRoom.x, (int)newRoom.y].gameObject.activeInHierarchy);
         // Make the new room the current room
         curRoom = newRoom;
 
@@ -141,8 +154,27 @@ public class RoomManager : MonoBehaviour
         // Fade back in
         yield return fadeToBlack.FadeIn();
 
-        // TODO: Initialise the current room
+        // Initialise the room the player entered
+        switch (rooms[(int)curRoom.x, (int)curRoom.y].roomType)
+        {
+            case Room.RoomType.Combat:
+                roomPaths[(int)curRoom.x, (int)curRoom.y].gameObject.GetComponent<CombatRoom>().InitialiseRoom();
+                break;
 
+            case Room.RoomType.Item:
+                break;
+
+            case Room.RoomType.Miniboss:
+                break;
+
+            case Room.RoomType.Boss:
+                break;
+
+            default:
+                break;
+        }
+
+        yield return new WaitForSeconds(playerMoveDelay);
         // Re-enable the player's movement
         player.GetComponent<PlayerController>().EnableMovement();
     }

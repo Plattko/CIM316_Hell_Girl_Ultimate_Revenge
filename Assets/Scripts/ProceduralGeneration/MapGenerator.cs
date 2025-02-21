@@ -43,7 +43,7 @@ public class MapGenerator : MonoBehaviour
         PlaceRoomDoors();
         DrawMap();
 
-        roomManager.SpawnRooms(gridSizeX, gridSizeY, rooms);
+        roomManager.SpawnRooms(rooms);
     }
 
     private void PlaceRooms()
