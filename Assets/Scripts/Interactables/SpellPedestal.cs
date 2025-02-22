@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpellPedestal : MonoBehaviour, IInteractable
 {
-    public GameObject spellItem;
+    public GameObject spellSprite;
     [SerializeField] private SpriteRenderer spriteRenderer;
     private Spell spell;
     public event Action onSpellChosen;

@@ -43,13 +43,13 @@ public class SpellRoomManager : MonoBehaviour
 
     public void SpellChosen()
     {
-        // Destroy each pedestal's spell item
+        // Destroy each pedestal's spell sprite
         foreach (SpellPedestal spellPedestal in spellPedestals)
         {
-            // If the pedestal's spell item exists, destroy it
-            if (spellPedestal.spellItem != null)
+            // If the pedestal's spell sprite exists, destroy it
+            if (spellPedestal.spellSprite != null)
             {
-                Destroy(spellPedestal.spellItem);
+                Destroy(spellPedestal.spellSprite);
             }
             // Destroy the pedestal's script so it can't be interacted with
             Destroy(spellPedestal);

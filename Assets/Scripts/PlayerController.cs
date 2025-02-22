@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [Header("Spellcasting")]
     [SerializeField] private SpellManager spellManager;
 
-    [Header("Interacting")]
+    [Header("Interaction")]
     [SerializeField] private Interactor interactor;
 
     private void OnEnable()

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8903152470686704329}
   - component: {fileID: 7693864053186898264}
   - component: {fileID: 1700462910115453730}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: FireExplosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -119,3 +119,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  duration: 0
