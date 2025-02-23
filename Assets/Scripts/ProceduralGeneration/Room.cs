@@ -6,7 +6,7 @@ using UnityEngine;
 public class Room
 {
     // The room's position in the map grid
-    public Vector2 worldPos;
+    public Vector2Int gridPos;
 
     // The type of room
     public enum RoomType
@@ -26,9 +26,9 @@ public class Room
     public GameObject roomObj;
 
     // A constructor to pass information into an instance once created
-    public Room(Vector2 _worldPos, RoomType _roomType)
+    public Room(Vector2Int _gridPos, RoomType _roomType)
     {
-        worldPos = _worldPos;
+        gridPos = _gridPos;
         roomType = _roomType;
     }
 }

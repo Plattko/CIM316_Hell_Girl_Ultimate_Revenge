@@ -7,6 +7,7 @@ public class RoomManager : MonoBehaviour
 {
     [SerializeField] private GameObject startingRoomPrefab;
     [SerializeField] private GameObject combatRoomPrefab;
+    [SerializeField] private int roomSpacing = 50;
 
     private Dictionary<Vector2Int, Room> roomsDict = new Dictionary<Vector2Int, Room>();
     private Vector2Int curRoom;
@@ -20,7 +21,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private float roomTransitionDuration = 0.1f;
     [SerializeField] private float playerMoveDelay = 0.33f;
 
-    public void SpawnRooms(Room[,] rooms)
+    public void SpawnRooms(Room[,] rooms, Vector2Int gridCentre)
     {
         // A double for loop allows us to check every position in the rooms array
         for (int x = 0; x < rooms.GetLength(0); x++)
@@ -39,7 +40,7 @@ public class RoomManager : MonoBehaviour
                 roomsDict[gridPos] = rooms[x, y];
 
                 // Spawn the room object
-                GameObject roomObj = SpawnRoom(roomsDict[gridPos]);
+                GameObject roomObj = SpawnRoom(roomsDict[gridPos], gridCentre);
                 // Give the room class a reference to the room object
                 roomsDict[gridPos].roomObj = roomObj;
                 // Subscribe to the room objects's onPathTriggered event
@@ -68,7 +69,7 @@ public class RoomManager : MonoBehaviour
         onPlayerSpawned?.Invoke(player);
     }
 
-    private GameObject SpawnRoom(Room roomData)
+    private GameObject SpawnRoom(Room roomData, Vector2Int gridCentre)
     {
         GameObject roomPrefab = null;
 
@@ -87,8 +88,10 @@ public class RoomManager : MonoBehaviour
                 break;
         }
 
-        // Instantiate the room prefab at the correct position in the grid, multiplied by 50 to space the rooms out
-        GameObject roomObj = Instantiate(roomPrefab, new Vector3(roomData.worldPos.x * 50f, 0f, roomData.worldPos.y * 50f), Quaternion.identity);
+        // Set the room position to the room's grid position minus the grid's centre offset so the room positions are centred on (0, 0)
+        Vector2Int roomPos = roomData.gridPos - gridCentre;
+        // Instantiate the room prefab at the correct position in the grid multiplied by the room spacing value to space the rooms out
+        GameObject roomObj = Instantiate(roomPrefab, new Vector3(roomPos.x * roomSpacing, 0f, roomPos.y * roomSpacing), Quaternion.identity);
         return roomObj;
     }
 

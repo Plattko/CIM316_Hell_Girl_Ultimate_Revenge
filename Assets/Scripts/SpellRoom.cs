@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellRoomManager : MonoBehaviour
+public class SpellRoom : MonoBehaviour
 {
     [SerializeField] private List<Spell> spells = new List<Spell>();
     [SerializeField] private SpellPedestal[] spellPedestals;
