@@ -18,6 +18,7 @@ public class SpellManager : MonoBehaviour
 
     [SerializeField] private GameObject spellItemPrefab;
     public event Action<Spell> onSpellUpdated;
+    public event Action<GameObject> onSpellDropped;
 
     private void Start()
     {
@@ -101,6 +102,8 @@ public class SpellManager : MonoBehaviour
         spellItem.Initialise(curSpell);
         // Clear the player's current spell
         curSpell = null;
+        // Signal that a spell has been dropped
+        onSpellDropped?.Invoke(spellItem.gameObject);
     }
 
     //-------------------------------------------------------------

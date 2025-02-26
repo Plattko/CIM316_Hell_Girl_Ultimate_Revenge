@@ -8,7 +8,7 @@ public class RoomPaths : MonoBehaviour
     [SerializeField] private GameObject[] paths = new GameObject[4];
     [SerializeField] private GameObject[] closedPaths = new GameObject[4];
     [SerializeField] private Collider[] pathTriggers = new Collider[4];
-    public Transform[] entryPoints = new Transform[4];
+    public GameObject[] entryPoints = new GameObject[4];
 
     public event Action<int> onPathTriggered;
 

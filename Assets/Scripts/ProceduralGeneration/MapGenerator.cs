@@ -13,7 +13,9 @@ public class MapGenerator : MonoBehaviour
     // The position at the centre of the grid/the offset of the centre of the grid from (0, 0)
     private Vector2Int gridCentre;
     // The number of rooms to generate
-    [SerializeField] private int roomCount = 20;
+    private int flatRoomCount = 12;
+    private int varRoomCount = 3;
+    private int roomCount;
 
     // The starting and ending percentage chance a room will be replaced with a branch room
     [SerializeField] private float branchChanceStart = 0.5f;
@@ -39,8 +41,11 @@ public class MapGenerator : MonoBehaviour
         gridCentre = new Vector2Int(Mathf.RoundToInt(gridSizeX / 2), Mathf.RoundToInt(gridSizeY / 2));
         // Create the 2D room array at the size of the grid
         rooms = new Room[gridSizeX, gridSizeY];
+        // Randomly set the number of rooms by combining the flat and variable room count
+        roomCount = flatRoomCount + Random.Range(0, varRoomCount + 1);
         // If the room count is greater than the number of spaces in the grid, reduce it to the number of spaces
         roomCount = Mathf.Clamp(roomCount, 0, rooms.Length);
+        Debug.Log("Room count: " + roomCount);
 
         PlaceRooms();
         PlaceRoomDoors();
@@ -51,10 +56,12 @@ public class MapGenerator : MonoBehaviour
 
     private void PlaceRooms()
     {
-        // Spawn the starting room at the centre of the grid
+        // Place the starting room at the centre of the grid
         rooms[gridCentre.x, gridCentre.y] = new Room(gridCentre, Room.RoomType.Start);
         // Add the starting room's grid position to the list of taken positions
         takenPositions.Add(gridCentre);
+
+        List<Vector2Int> emptyRoomPositions = new List<Vector2Int>();
 
         // Spawn the rest of the rooms using the room count minus 1 because the starting room has been placed
         for (int i = 0; i < roomCount - 1; i++)
@@ -69,11 +76,14 @@ public class MapGenerator : MonoBehaviour
                 // Get a new branch room position
                 roomPos = GetValidBranchRoomPos();
             }
-            // Add a combat room at that position to the array
-            rooms[roomPos.x, roomPos.y] = new Room(roomPos, Room.RoomType.Combat);
+            // Add the room's grid position to the empty room positions list
+            emptyRoomPositions.Add(roomPos);
             // Add the room's grid position to the taken positions list
             takenPositions.Add(roomPos);
         }
+
+        // Set the room types
+        SetRoomTypes(emptyRoomPositions);
     }
 
     private Vector2Int GetValidRoomPos()
@@ -91,7 +101,7 @@ public class MapGenerator : MonoBehaviour
             else if (randOffset == 3) { validPos = randTakenPos + Vector2Int.right; } // Offset right
         }
         // Repeat if the chosen position is already taken or is out of bounds of the grid
-        while (takenPositions.Contains(validPos) || validPos.x >= gridSizeX || validPos.x < 0 || validPos.y >= gridSizeY || validPos.y < -gridSizeY);
+        while (takenPositions.Contains(validPos) || validPos.x >= gridSizeX || validPos.x < 0 || validPos.y >= gridSizeY || validPos.y < 0);
         // Return the valid position
         return validPos;
     }
@@ -122,7 +132,7 @@ public class MapGenerator : MonoBehaviour
             else if (randOffset == 3) { validPos = randTakenPos + Vector2Int.right; } // Offset right
         }
         // Repeat if the chosen position is already taken or is out of bounds of the grid
-        while (takenPositions.Contains(validPos) || validPos.x >= gridSizeX || validPos.x < 0 || validPos.y >= gridSizeY || validPos.y < -gridSizeY);
+        while (takenPositions.Contains(validPos) || validPos.x >= gridSizeX || validPos.x < 0 || validPos.y >= gridSizeY || validPos.y < 0);
         // Return the valid position
         return validPos;
     }
@@ -135,6 +145,69 @@ public class MapGenerator : MonoBehaviour
         if (takenPositions.Contains(chosenPos + Vector2Int.right)) { neighbourCount++; }
         if (takenPositions.Contains(chosenPos + Vector2Int.left)) { neighbourCount++; }
         return neighbourCount;
+    }
+
+    private void SetRoomTypes(List<Vector2Int> emptyRoomPositions)
+    {
+        // Randomly select an empty room position to place the ascension room
+        Vector2Int ascensionRoomPos = Vector2Int.zero;
+        do
+        {
+            ascensionRoomPos = emptyRoomPositions[Random.Range(0, emptyRoomPositions.Count)];
+        }
+        // Repeat if the chosen position is adjacent to the starting room
+        while (IsAdjacentToRoomType(ascensionRoomPos, Room.RoomType.Start));
+        // Place the ascension room at the chosen position
+        rooms[ascensionRoomPos.x, ascensionRoomPos.y] = new Room(ascensionRoomPos, Room.RoomType.Ascension);
+        // Remove the chosen position from the list of empty room positions
+        emptyRoomPositions.Remove(ascensionRoomPos);
+
+        // Randomly select an empty room position to place the item room
+        Vector2Int itemRoomPos = Vector2Int.zero;
+        do
+        {
+            itemRoomPos = emptyRoomPositions[Random.Range(0, emptyRoomPositions.Count)];
+        }
+        // Repeat if the chosen position is adjacent to the starting or item room
+        while (IsAdjacentToRoomType(itemRoomPos, Room.RoomType.Start) || IsAdjacentToRoomType(itemRoomPos, Room.RoomType.Ascension));
+        // Place the item room at the chosen position
+        rooms[itemRoomPos.x, itemRoomPos.y] = new Room(itemRoomPos, Room.RoomType.Item);
+        // Remove the chosen position from the list of empty room positions
+        emptyRoomPositions.Remove(itemRoomPos);
+
+        // Set all of the remaining empty room positions to combat rooms
+        foreach (Vector2Int roomPos in emptyRoomPositions)
+        {
+            rooms[roomPos.x, roomPos.y] = new Room(roomPos, Room.RoomType.Combat);
+        }
+    }
+
+    private bool IsAdjacentToRoomType(Vector2Int chosenPos, Room.RoomType roomType)
+    {
+        if (chosenPos.y + 1 < gridSizeY) // Make sure the chosen position is in bounds of the map grid
+        {
+            // Get the room upwards from the current room
+            Room roomUp = rooms[chosenPos.x, chosenPos.y + 1];
+            // Return true if the room is the chosen room type
+            if (roomUp != null && roomUp.roomType == roomType) { return true; }
+        }
+        if (chosenPos.y >= 0)
+        {
+            Room roomDown = rooms[chosenPos.x, chosenPos.y - 1];
+            if (roomDown != null && roomDown.roomType == roomType) { return true; }
+        }
+        if (chosenPos.x >= 0)
+        {
+            Room roomLeft = rooms[chosenPos.x - 1, chosenPos.y];
+            if (roomLeft != null && roomLeft.roomType == roomType) { return true; }
+        }
+        if (chosenPos.x < gridSizeX)
+        {
+            Room roomRight = rooms[chosenPos.x + 1, chosenPos.y];
+            if (roomRight != null && roomRight.roomType == roomType) { return true; }
+        }
+        // Return false if none of the adjacent rooms are the chosen room type
+        return false;
     }
 
     private void PlaceRoomDoors()

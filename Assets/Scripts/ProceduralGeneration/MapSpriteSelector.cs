@@ -13,7 +13,7 @@ public class MapSpriteSelector : MonoBehaviour
     private int doorIndex = 0;
     private Room.RoomType roomType;
 
-    [SerializeField] private Color normalColour, startColour;
+    [SerializeField] private Color startColour, combatColour, itemColour, ascensionColour;
 
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -66,13 +66,26 @@ public class MapSpriteSelector : MonoBehaviour
 
     private void PickColour()
     {
-        if (roomType == Room.RoomType.Start)
+        switch (roomType)
         {
-            spriteRenderer.color = startColour;
-        }
-        else if (roomType == Room.RoomType.Combat)
-        {
-            spriteRenderer.color = normalColour;
+            case Room.RoomType.Start:
+                spriteRenderer.color = startColour;
+                break;
+
+            case Room.RoomType.Combat:
+                spriteRenderer.color = combatColour;
+                break;
+
+            case Room.RoomType.Item:
+                spriteRenderer.color = itemColour;
+                break;
+
+            case Room.RoomType.Ascension:
+                spriteRenderer.color = ascensionColour;
+                break;
+
+            default:
+                break;
         }
     }
 }

@@ -2,21 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class FadeToBlack : MonoBehaviour
 {
     [SerializeField] private Image fadeImage;
 
-    [SerializeField] private float fadeOutDuration = 0.25f;
-    [SerializeField] private float fadeInDuration = 0.1f;
+    public float fadeOutDuration = 0.25f;
+    public float fadeInDuration = 0.1f;
 
     private Color transparent = new Color(0, 0, 0, 0);
     private Color black = Color.black;
 
     public IEnumerator FadeOut()
     {
-        // Enable the game object
-        gameObject.SetActive(true);
         // Fade from transparent to black over the fade out duration
         yield return Fade(transparent, black, fadeOutDuration);
     }
@@ -25,8 +24,6 @@ public class FadeToBlack : MonoBehaviour
     {
         // Fade from black to transparent over the fade in duration
         yield return Fade(black, transparent, fadeInDuration);
-        // Disable the game object
-        gameObject.SetActive(false);
     }
 
     private IEnumerator Fade(Color startColour, Color endColour, float duration)

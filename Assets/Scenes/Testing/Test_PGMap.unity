@@ -269,7 +269,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCharacter: {fileID: 11400000, guid: af1a2b3fccc176941ad74fe457840300, type: 2}
   player: {fileID: 0}
-  doesPlayerExist: 0
   heartImages:
   - {fileID: 740282661}
   - {fileID: 662157994}
@@ -324,9 +323,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingRoomPrefab: {fileID: 4689660836299987125, guid: a5dd48b72bee4614f99fff48ae9b49c4, type: 3}
   combatRoomPrefab: {fileID: 3517050197319322069, guid: a8877e4076e1fa247b12bd66038258b9, type: 3}
+  itemRoomPrefab: {fileID: 4689660836299987125, guid: 2eddcf4a10742d64791418814693f68d, type: 3}
+  ascensionRoomPrefab: {fileID: 4689660836299987125, guid: 13b4d6579a7144b47a7f1ad1c506a1cb, type: 3}
+  roomSpacing: 50
   playerPrefab: {fileID: 5512676325496533754, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
   fadeToBlack: {fileID: 1411092996}
   roomTransitionDuration: 0.1
+  playerMoveDelay: 0.33
 --- !u!1 &221741180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1623,7 +1626,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1411092993
 RectTransform:
   m_ObjectHideFlags: 0

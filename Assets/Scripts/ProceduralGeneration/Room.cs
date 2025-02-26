@@ -16,6 +16,7 @@ public class Room
         Item,
         Miniboss,
         Boss,
+        Ascension,
     }
     public RoomType roomType;
 

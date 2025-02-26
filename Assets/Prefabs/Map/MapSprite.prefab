@@ -112,6 +112,8 @@ MonoBehaviour:
   roomULR: {fileID: -1865449897, guid: 3656a086c68159143a8611d1243ac71d, type: 3}
   roomDLR: {fileID: 720396672, guid: 3656a086c68159143a8611d1243ac71d, type: 3}
   roomUDLR: {fileID: 407179059, guid: 3656a086c68159143a8611d1243ac71d, type: 3}
-  normalColour: {r: 1, g: 1, b: 1, a: 1}
   startColour: {r: 0, g: 1, b: 0.9294118, a: 1}
+  combatColour: {r: 1, g: 1, b: 1, a: 1}
+  itemColour: {r: 1, g: 0.8064977, b: 0, a: 1}
+  ascensionColour: {r: 1, g: 0, b: 0, a: 1}
   spriteRenderer: {fileID: 5555397468027456951}
