@@ -191,17 +191,17 @@ public class MapGenerator : MonoBehaviour
             // Return true if the room is the chosen room type
             if (roomUp != null && roomUp.roomType == roomType) { return true; }
         }
-        if (chosenPos.y >= 0)
+        if (chosenPos.y - 1 >= 0)
         {
             Room roomDown = rooms[chosenPos.x, chosenPos.y - 1];
             if (roomDown != null && roomDown.roomType == roomType) { return true; }
         }
-        if (chosenPos.x >= 0)
+        if (chosenPos.x - 1 >= 0)
         {
             Room roomLeft = rooms[chosenPos.x - 1, chosenPos.y];
             if (roomLeft != null && roomLeft.roomType == roomType) { return true; }
         }
-        if (chosenPos.x < gridSizeX)
+        if (chosenPos.x + 1 < gridSizeX)
         {
             Room roomRight = rooms[chosenPos.x + 1, chosenPos.y];
             if (roomRight != null && roomRight.roomType == roomType) { return true; }

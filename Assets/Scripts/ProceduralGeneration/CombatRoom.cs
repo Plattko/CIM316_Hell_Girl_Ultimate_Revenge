@@ -14,9 +14,8 @@ public class CombatRoom : MonoBehaviour
 
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject enemySpawnIndicatorPrefab;
-    [SerializeField] private List<Transform> enemySpawnPoints = new List<Transform>();
-    private int minEnemyCount = 3;
-    private int maxEnemyCount = 5;
+    [SerializeField] private GameObject[] enemySpawnLayouts;
+    private List<GameObject> usedSpawnLayouts = new List<GameObject>();
     private int enemiesToKill;
     private int enemiesKilled = 0;
 
@@ -44,28 +43,22 @@ public class CombatRoom : MonoBehaviour
     {
         // Reset the enemies killed count
         enemiesKilled = 0;
-        // Randomly set the number of enemies to kill to a number between the min and max enemy count
-        enemiesToKill = Random.Range(minEnemyCount, maxEnemyCount + 1);
-        // List of the chosen spawn points
-        List<Transform> chosenSpawnPoints = new List<Transform>();
 
-        // Randomly choose a number of spawn points equal to the number of enemies to kill without repetition
-        for (int i = 0; i < enemiesToKill; i++)
+        // Pick a random enemy spawn layout
+        GameObject enemySpawnLayout = null;
+        do
         {
-            Transform spawnPoint = null;
-            // Randomly pick a spawn point from the list of enemy spawn points
-            do
-            {
-                spawnPoint = enemySpawnPoints[Random.Range(0, enemySpawnPoints.Count)];
-            }
-            // Repeat if the spawn point has already been chosen
-            while (chosenSpawnPoints.Contains(spawnPoint));
-            // Add the spawn point to the list of chosen spawn points
-            chosenSpawnPoints.Add(spawnPoint);
+            enemySpawnLayout = enemySpawnLayouts[Random.Range(0, enemySpawnLayouts.Length)];
         }
+        // Repeat if the spawn layout has already been used
+        while (usedSpawnLayouts.Contains(enemySpawnLayout));
+        // Add the enemy spawn layout to the list of used spawn layouts
+        usedSpawnLayouts.Add(enemySpawnLayout);
+        // Set the number of enemies to kill to the number of spawn points in the spawn layout
+        enemiesToKill = enemySpawnLayout.transform.childCount;
 
-        // Display an enemy spawn indicator and then spawn an enemy at each of the chosen spawn points
-        foreach (Transform spawnPoint in chosenSpawnPoints)
+        // Display an enemy spawn indicator and then spawn an enemy at each of the spawn layout's spawn points
+        foreach (Transform spawnPoint in enemySpawnLayout.transform)
         {
             // Instantiate an enemy spawn indicator at the position of the spawn point
             GameObject enemySpawnIndicator = Instantiate(enemySpawnIndicatorPrefab, spawnPoint.position, Quaternion.identity);
