@@ -322,7 +322,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingRoomPrefab: {fileID: 4689660836299987125, guid: a5dd48b72bee4614f99fff48ae9b49c4, type: 3}
-  combatRoomPrefab: {fileID: 3517050197319322069, guid: a8877e4076e1fa247b12bd66038258b9, type: 3}
+  combatRoomPrefabs:
+  - {fileID: 3517050197319322069, guid: a8877e4076e1fa247b12bd66038258b9, type: 3}
+  - {fileID: 3517050197319322069, guid: 8e2f6e5d068d74c4fa7d201576fce276, type: 3}
+  - {fileID: 3517050197319322069, guid: db552b46c621b7241945e693ea0f0c68, type: 3}
   itemRoomPrefab: {fileID: 4689660836299987125, guid: 2eddcf4a10742d64791418814693f68d, type: 3}
   ascensionRoomPrefab: {fileID: 4689660836299987125, guid: 13b4d6579a7144b47a7f1ad1c506a1cb, type: 3}
   roomSpacing: 50
@@ -1084,7 +1087,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapSize: {x: 9, y: 9}
-  roomCount: 15
   branchChanceStart: 0.5
   branchChanceEnd: 0.01
   mapSpritePrefab: {fileID: 3435912115568918435, guid: b8dcd60835d2dac4bb8d8e37a6726039, type: 3}

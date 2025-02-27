@@ -6,7 +6,7 @@ using System;
 public class RoomManager : MonoBehaviour
 {
     [SerializeField] private GameObject startingRoomPrefab;
-    [SerializeField] private GameObject combatRoomPrefab;
+    [SerializeField] private GameObject[] combatRoomPrefabs;
     [SerializeField] private GameObject itemRoomPrefab;
     [SerializeField] private GameObject ascensionRoomPrefab;
     [SerializeField] private int roomSpacing = 50;
@@ -106,7 +106,7 @@ public class RoomManager : MonoBehaviour
                 break;
 
             case Room.RoomType.Combat:
-                roomPrefab = combatRoomPrefab;
+                roomPrefab = combatRoomPrefabs[UnityEngine.Random.Range(0, combatRoomPrefabs.Length)];
                 break;
 
             case Room.RoomType.Item:
