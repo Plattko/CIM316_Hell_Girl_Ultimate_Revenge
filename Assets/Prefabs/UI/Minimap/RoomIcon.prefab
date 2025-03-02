@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &732289630644111741
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5277303742725352331}
+  - component: {fileID: 7672135211898044160}
+  - component: {fileID: 4115384690146855817}
+  - component: {fileID: 843503461536630650}
+  m_Layer: 5
+  m_Name: RoomIcon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5277303742725352331
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732289630644111741}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 75, y: 75}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7672135211898044160
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732289630644111741}
+  m_CullTransparentMesh: 1
+--- !u!114 &4115384690146855817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732289630644111741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &843503461536630650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 732289630644111741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bccc76506d652d41894ea7d64d752b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  image: {fileID: 4115384690146855817}
+  startUnvisited: {fileID: 1918291604, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  startVisited: {fileID: 1137733279, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  startCurrent: {fileID: -1292355495, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  combatUnvisited: {fileID: -450435575, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  combatVisited: {fileID: 107495839, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  combatCurrent: {fileID: -997307591, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  itemUnvisited: {fileID: -177257961, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  itemVisited: {fileID: 1084313885, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  itemCurrent: {fileID: -746607354, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  minibossUnvisited: {fileID: 882446937, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  minibossVisited: {fileID: -2003146844, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  minibossCurrent: {fileID: 371219397, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  bossUnvisited: {fileID: 1513754433, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  bossVisited: {fileID: 971313885, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  bossCurrent: {fileID: 1449890971, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  ascensionUnvisited: {fileID: -1487179275, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  ascensionVisited: {fileID: 1579257814, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  ascensionCurrent: {fileID: -1951023798, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}

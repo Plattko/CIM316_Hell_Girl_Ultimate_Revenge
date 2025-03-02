@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpellRoomManager : MonoBehaviour
+public class SpellRoom : MonoBehaviour
 {
-    [SerializeField] private List<Spell> spells = new List<Spell>();
+    [SerializeField] private List<Spell> availableSpells = new List<Spell>();
     [SerializeField] private SpellPedestal[] spellPedestals;
 
     private void OnEnable()
@@ -12,7 +12,7 @@ public class SpellRoomManager : MonoBehaviour
         // Connect every spell pedestals's onSpellChosen event to the SpellChosen function
         foreach (SpellPedestal spellPedestal in spellPedestals)
         {
-            spellPedestal.onSpellChosen += SpellChosen;
+            spellPedestal.onSpellChosen += OnSpellChosen;
         }
     }
 
@@ -21,35 +21,37 @@ public class SpellRoomManager : MonoBehaviour
         // Disconnect every spell pedestals's onSpellChosen event from the SpellChosen function
         foreach (SpellPedestal spellPedestal in spellPedestals)
         {
-            spellPedestal.onSpellChosen -= SpellChosen;
+            spellPedestal.onSpellChosen -= OnSpellChosen;
         }
     }
 
     private void Start()
     {
         // Create a list of the available spells
-        List<Spell> availableSpells = spells;
+        List<Spell> unselectedSpells = availableSpells;
         // Give each pedestal a spell from the list of available spells without repetition
         foreach (SpellPedestal spellPedestal in spellPedestals)
         {
             // Roll a random spell from the available spells list
-            int roll = Random.Range(0, availableSpells.Count);
+            int roll = Random.Range(0, unselectedSpells.Count);
             // Initialise the spell item with the rolled spell
-            spellPedestal.Initialise(availableSpells[roll]);
+            spellPedestal.Initialise(unselectedSpells[roll]);
             // Remove the spell from the available spells list
-            availableSpells.RemoveAt(roll);
+            unselectedSpells.RemoveAt(roll);
         }
     }
 
-    public void SpellChosen()
+    private void OnSpellChosen()
     {
-        // Destroy each pedestal's spell item
+        // Destroy each pedestal's spell sprite
         foreach (SpellPedestal spellPedestal in spellPedestals)
         {
-            // If the pedestal's spell item exists, destroy it
-            if (spellPedestal.spellItem != null)
+            // Unsubscribe from the pedestal's spell chosen event
+            spellPedestal.onSpellChosen -= OnSpellChosen;
+            // If the pedestal's spell sprite exists, destroy it
+            if (spellPedestal.spellSprite != null)
             {
-                Destroy(spellPedestal.spellItem);
+                Destroy(spellPedestal.spellSprite);
             }
             // Destroy the pedestal's script so it can't be interacted with
             Destroy(spellPedestal);

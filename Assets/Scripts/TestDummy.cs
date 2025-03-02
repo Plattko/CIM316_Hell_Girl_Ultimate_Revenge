@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TestDummy : MonoBehaviour, IDamageable
 {
@@ -12,7 +13,9 @@ public class TestDummy : MonoBehaviour, IDamageable
     [SerializeField] private BoxCollider col;
     private Vector3 startingPos;
 
+    public bool doesDummyRespawn = true;
     [SerializeField] private float respawnDelay = 5.0f;
+    public event Action onDied;
 
     [Header("Mana Drop Variables")]
     [SerializeField] private GameObject manaPickupPrefab;
@@ -24,7 +27,6 @@ public class TestDummy : MonoBehaviour, IDamageable
 
     private void Start()
     {
-        // Initialise the dummy
         Initialise();
     }
 
@@ -47,16 +49,21 @@ public class TestDummy : MonoBehaviour, IDamageable
         // Kill the dummy if it reaches 0 health
         if (curHealth <= 0)
         {
-            // Drop mana
-            DropMana();
             // Set the dummy to dead
             isDead = true;
+            // Signal that the dummy is dead
+            onDied?.Invoke();
             // Disable its collider
             col.enabled = false;
             // Hide it from view
             meshRenderer.enabled = false;
-            // Start the coroutine to respawn it after a delay
-            StartCoroutine(RespawnAfterDelay());
+            // Drop mana
+            DropMana();
+            // Start the coroutine to respawn it after a delay if the dummy respawns
+            if (doesDummyRespawn)
+            {
+                StartCoroutine(RespawnAfterDelay());
+            }
         }
     }
 
@@ -84,14 +91,16 @@ public class TestDummy : MonoBehaviour, IDamageable
     private void DropMana()
     {
         // Roll the amount of mana to drop
-        int manaDropAmount = Random.Range(minManaDrop, maxManaDrop);
+        int manaDropAmount = UnityEngine.Random.Range(minManaDrop, maxManaDrop);
         // Spawn a number of mana pickups equal to the mana drop amount and give each one a random drop force
         for (int i = 0; i < manaDropAmount; i++)
         {
             // Instantiate the mana pickup
             GameObject manaPickup = Instantiate(manaPickupPrefab, transform.position, Quaternion.identity);
+            // Set its parent to the parent of the dummy (e.g. the room the dummy is in)
+            manaPickup.transform.parent = transform.parent;
             // Calculate the horizontal drop force
-            Vector2 dropForceX = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized * Random.Range(minDropForceX, maxDropForceX);
+            Vector2 dropForceX = new Vector2(UnityEngine.Random.Range(-1f, 1f), UnityEngine.Random.Range(-1f, 1f)).normalized * UnityEngine.Random.Range(minDropForceX, maxDropForceX);
             // Calculate the total drop force
             Vector3 dropForce = new Vector3(dropForceX.x, dropForceY, dropForceX.y);
             Debug.Log("Drop force: " + dropForce);
