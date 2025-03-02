@@ -31,6 +31,7 @@ public class MapGenerator : MonoBehaviour
 
     // TEMPORARY
     [SerializeField] private RoomManager roomManager;
+    [SerializeField] private Minimap minimap;
 
     private void Start()
     {
@@ -49,9 +50,8 @@ public class MapGenerator : MonoBehaviour
 
         PlaceRooms();
         PlaceRoomDoors();
-        DrawMap();
-
         roomManager.SpawnRooms(rooms, gridCentre);
+        minimap.DrawMap(rooms, gridCentre);
     }
 
     private void PlaceRooms()
@@ -238,22 +238,6 @@ public class MapGenerator : MonoBehaviour
                     rooms[x, y].doorLeft = true;
                 }
             }
-        }
-    }
-
-    private void DrawMap()
-    {
-        foreach (Room room in rooms)
-        {
-            // Continue to the next grid position if there is no room at that position
-            if (room == null) { continue; }
-
-            // Set the draw position to the room's grid position minus the grid's centre offset so the map is centred on (0, 0)
-            Vector2 drawPos = room.gridPos - gridCentre;
-            // Instantiate the map sprite at the draw position and get a reference to its Map Sprite Selector script
-            MapSpriteSelector mapSpriteSelector = Instantiate(mapSpritePrefab, drawPos, Quaternion.identity).GetComponent<MapSpriteSelector>();
-            // Set it to the correct map sprite
-            mapSpriteSelector.SetSprite(room.doorUp, room.doorDown, room.doorLeft, room.doorRight, room.roomType);
         }
     }
 }

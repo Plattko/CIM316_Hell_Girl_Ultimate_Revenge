@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3656a086c68159143a8611d1243ac71d
+guid: 8a509b2719cfe5f4faaa7b13d7ead6ab
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,91 +97,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: P_MapRoomIcons_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 24
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0286ef8f9c8667b428be808980258c64
-      internalID: 1161484515
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons_1
-      rect:
-        serializedVersion: 2
-        x: 8
-        y: 24
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2a1b9522aa3536346acd7d3c1c33e2df
-      internalID: 1040159935
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons_2
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 24
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc170c4787a9a3e4fa77a17e4a95b1c9
-      internalID: 563257966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons_3
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 24
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0a5013d0bb85c7746a4b13cff8a7114e
-      internalID: -1431687766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons_4
+      name: P_MapRoomIcons_2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -195,14 +111,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: edbff31aca714674ebbf543ef03c5284
-      internalID: -1237440349
+      spriteID: fc00b7e6d7830e4479a8e2899212f76f
+      internalID: 1918291604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_5
+      name: P_MapRoomIcons_2_1
       rect:
         serializedVersion: 2
         x: 8
@@ -216,14 +132,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdc14f0248938c242a45db9f9d0b1416
-      internalID: 1676401147
+      spriteID: f864cc731f6d99748a86e85c3bc023f5
+      internalID: -450435575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_6
+      name: P_MapRoomIcons_2_2
       rect:
         serializedVersion: 2
         x: 16
@@ -237,14 +153,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d0f579514e3fcd3428377d0a7807c937
-      internalID: -1782325400
+      spriteID: c97683f3070310d4c921a3b97a2f5ec1
+      internalID: -177257961
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_7
+      name: P_MapRoomIcons_2_3
       rect:
         serializedVersion: 2
         x: 24
@@ -258,14 +174,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 900cd895195c6a042bbeda1473894438
-      internalID: 2035306841
+      spriteID: a05c7c07ae212564e85bcc3375b70dbd
+      internalID: 882446937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_8
+      name: P_MapRoomIcons_2_4
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68439ba4a1da5914aacd1d2b7dbd6086
+      internalID: 1513754433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P_MapRoomIcons_2_5
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 16
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b07990cb13ffe364b87cddb2cbd74574
+      internalID: -1487179275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P_MapRoomIcons_2_6
       rect:
         serializedVersion: 2
         x: 0
@@ -279,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e15cb81562bd898498a5289fb3330343
-      internalID: -1718163666
+      spriteID: 022270390afcbd7458634c26ed622c15
+      internalID: 1137733279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_9
+      name: P_MapRoomIcons_2_7
       rect:
         serializedVersion: 2
         x: 8
@@ -300,14 +258,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 521aa527bae71be498095b404fbacac4
-      internalID: 136973371
+      spriteID: 5a556411b73354140b3d31be564cbd25
+      internalID: 107495839
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_10
+      name: P_MapRoomIcons_2_8
       rect:
         serializedVersion: 2
         x: 16
@@ -321,14 +279,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 466c6fe9394f0704f8a2b2bbadf1e995
-      internalID: -1984039138
+      spriteID: 9b49af1f2d6fc7342ac695a284b01aa9
+      internalID: 1084313885
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_11
+      name: P_MapRoomIcons_2_9
       rect:
         serializedVersion: 2
         x: 24
@@ -342,14 +300,56 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb6e4d84721f4bd4f96531efffee1e57
-      internalID: -2063320171
+      spriteID: 3da12d07337d0914e82bfcd26d170540
+      internalID: -2003146844
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_12
+      name: P_MapRoomIcons_2_10
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8fb6f9ee6637b34e8037de1c455fe82
+      internalID: 971313885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P_MapRoomIcons_2_11
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 8
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd8a3ce7e5f0a174caa3bfa5716cc90e
+      internalID: 1579257814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P_MapRoomIcons_2_12
       rect:
         serializedVersion: 2
         x: 0
@@ -363,14 +363,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6dc15942e4b1c2f4db9d016eed7b0bf6
-      internalID: -1865449897
+      spriteID: 254d56f4229b84841be21274cd8943b2
+      internalID: -1292355495
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_13
+      name: P_MapRoomIcons_2_13
       rect:
         serializedVersion: 2
         x: 8
@@ -384,14 +384,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe3e9e968d966d44aa32f51a1180a866
-      internalID: 720396672
+      spriteID: dd219cb54cf1d344fb9733da71ce352f
+      internalID: -997307591
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_14
+      name: P_MapRoomIcons_2_14
       rect:
         serializedVersion: 2
         x: 16
@@ -405,14 +405,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cb797fecdabb6ad4a8ed01a28cbb53e7
-      internalID: 407179059
+      spriteID: 8ffa14a75530d2040b99c4b930319bb3
+      internalID: -746607354
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons_15
+      name: P_MapRoomIcons_2_15
       rect:
         serializedVersion: 2
         x: 24
@@ -426,8 +426,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 232476b5c9ed0cd4fa7bea3627bab5fa
-      internalID: 1386703119
+      spriteID: e6205166418596f46b47b4329facb042
+      internalID: 371219397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P_MapRoomIcons_2_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1ae021be0c8de942a66e0088a9d2d90
+      internalID: 1449890971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: P_MapRoomIcons_2_17
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 8
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ca9e729399e5e47bdc9215d8e80cf9
+      internalID: -1951023798
       vertices: []
       indices: 
       edges: []
@@ -443,22 +485,24 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      P_MapRoomIcons_0: 1161484515
-      P_MapRoomIcons_1: 1040159935
-      P_MapRoomIcons_10: -1984039138
-      P_MapRoomIcons_11: -2063320171
-      P_MapRoomIcons_12: -1865449897
-      P_MapRoomIcons_13: 720396672
-      P_MapRoomIcons_14: 407179059
-      P_MapRoomIcons_15: 1386703119
-      P_MapRoomIcons_2: 563257966
-      P_MapRoomIcons_3: -1431687766
-      P_MapRoomIcons_4: -1237440349
-      P_MapRoomIcons_5: 1676401147
-      P_MapRoomIcons_6: -1782325400
-      P_MapRoomIcons_7: 2035306841
-      P_MapRoomIcons_8: -1718163666
-      P_MapRoomIcons_9: 136973371
+      P_MapRoomIcons_2_0: 1918291604
+      P_MapRoomIcons_2_1: -450435575
+      P_MapRoomIcons_2_10: 971313885
+      P_MapRoomIcons_2_11: 1579257814
+      P_MapRoomIcons_2_12: -1292355495
+      P_MapRoomIcons_2_13: -997307591
+      P_MapRoomIcons_2_14: -746607354
+      P_MapRoomIcons_2_15: 371219397
+      P_MapRoomIcons_2_16: 1449890971
+      P_MapRoomIcons_2_17: -1951023798
+      P_MapRoomIcons_2_2: -177257961
+      P_MapRoomIcons_2_3: 882446937
+      P_MapRoomIcons_2_4: 1513754433
+      P_MapRoomIcons_2_5: -1487179275
+      P_MapRoomIcons_2_6: 1137733279
+      P_MapRoomIcons_2_7: 107495839
+      P_MapRoomIcons_2_8: 1084313885
+      P_MapRoomIcons_2_9: -2003146844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

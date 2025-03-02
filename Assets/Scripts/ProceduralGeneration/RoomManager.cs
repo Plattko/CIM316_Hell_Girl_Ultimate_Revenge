@@ -19,9 +19,12 @@ public class RoomManager : MonoBehaviour
     public event Action<GameObject> onPlayerSpawned;
 
     // Room transition variables
-    [SerializeField] private FadeToBlack fadeToBlack;
     [SerializeField] private float roomTransitionDuration = 0.1f;
     [SerializeField] private float playerMoveDelay = 0.33f;
+
+    // TEMPORARY
+    [SerializeField] private FadeToBlack fadeToBlack;
+    [SerializeField] private Minimap minimap;
 
     private void OnEnable()
     {
@@ -191,6 +194,8 @@ public class RoomManager : MonoBehaviour
         roomsDict[curRoom].roomObj.SetActive(false);
         // Enable the new room
         roomsDict[newRoom].roomObj.SetActive(true);
+        // Update the minimap
+        minimap.UpdateMap(newRoom, roomsDict[curRoom]);
         // Make the new room the current room
         curRoom = newRoom;
 
