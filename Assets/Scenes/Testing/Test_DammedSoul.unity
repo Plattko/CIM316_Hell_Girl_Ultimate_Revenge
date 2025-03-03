@@ -1155,6 +1155,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 784616535}
   m_CullTransparentMesh: 1
+--- !u!1001 &790496855
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5964796263086382468, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_Name
+      value: Ranged Imp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.625793
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 9.700275
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138750966128551324, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
 --- !u!1 &812075635
 GameObject:
   m_ObjectHideFlags: 0
@@ -1355,6 +1412,10 @@ PrefabInstance:
     - target: {fileID: 2293079063434440193, guid: 35b0f34b9bdcf194daa77f5ab86e3dc3, type: 3}
       propertyPath: m_Name
       value: Dammed Soul
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293079063434440193, guid: 35b0f34b9bdcf194daa77f5ab86e3dc3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6601342537002636511, guid: 35b0f34b9bdcf194daa77f5ab86e3dc3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2005,6 +2066,7 @@ MonoBehaviour:
   maxHealth: 20
   meshRenderer: {fileID: 1128723532}
   col: {fileID: 1128723531}
+  doesDummyRespawn: 1
   respawnDelay: 5
   manaPickupPrefab: {fileID: 650365402667616731, guid: 51bee7b305b40b243b9c7afd36fd4d79, type: 3}
   minManaDrop: 1
@@ -3225,3 +3287,4 @@ SceneRoots:
   - {fileID: 1701489331}
   - {fileID: 962679216}
   - {fileID: 967005644}
+  - {fileID: 790496855}
