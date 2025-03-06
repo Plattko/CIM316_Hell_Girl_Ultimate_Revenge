@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 4837532634463163624}
   - component: {fileID: 4365452561928967111}
   - component: {fileID: 295450895662419321}
+  - component: {fileID: 9184109745951044258}
   - component: {fileID: 2384791155482624868}
   m_Layer: 6
   m_Name: TestPlayer
@@ -433,6 +434,20 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1815527593154101904}
   spellManager: {fileID: 4227291240003483198}
   interactor: {fileID: 2384791155482624868}
+--- !u!114 &9184109745951044258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512676325496533754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d73d5b526c3f8a44a7db79556283784, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  playerUI: {fileID: 0}
 --- !u!114 &2384791155482624868
 MonoBehaviour:
   m_ObjectHideFlags: 0

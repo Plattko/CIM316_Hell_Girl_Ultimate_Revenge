@@ -5,9 +5,9 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
-    [HideInInspector] public float moveSpeed;
-    [HideInInspector] public float damage;
-    [HideInInspector] public float lifetime;
+    private float moveSpeed;
+    private float damage;
+    private float lifetime;
 
     public void Initialise(Vector3 moveDir, float _moveSpeed, float _damage, float _duration)
     {

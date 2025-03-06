@@ -16,15 +16,10 @@ public class RoomManager : MonoBehaviour
 
     [SerializeField] private GameObject playerPrefab;
     private GameObject player;
-    public event Action<GameObject> onPlayerSpawned;
 
     // Room transition variables
     [SerializeField] private float roomTransitionDuration = 0.1f;
     [SerializeField] private float playerMoveDelay = 0.33f;
-
-    // TEMPORARY
-    [SerializeField] private FadeToBlack fadeToBlack;
-    [SerializeField] private Minimap minimap;
 
     private void OnEnable()
     {
@@ -91,8 +86,6 @@ public class RoomManager : MonoBehaviour
         Vector3 startingPos = roomsDict[curRoom].roomObj.transform.position + Vector3.up;
         // Spawn the player in the starting room
         player = Instantiate(playerPrefab, startingPos, Quaternion.identity);
-        // Signal that the player has been spawned
-        onPlayerSpawned?.Invoke(player);
         // Subscribe to the player's spell manager's spell dropped event
         player.GetComponentInChildren<SpellManager>().onSpellDropped += ParentObjectToRoom;
     }
@@ -147,7 +140,7 @@ public class RoomManager : MonoBehaviour
         player.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.None;
 
         // Fade to black
-        yield return fadeToBlack.FadeOut();
+        yield return UIManager.Instance.FadeOut();
 
         // Set the new room based on the path the player went through and teleport them to the correct entry point of the new room
         Vector2Int newRoom = Vector2Int.zero;
@@ -195,14 +188,14 @@ public class RoomManager : MonoBehaviour
         // Enable the new room
         roomsDict[newRoom].roomObj.SetActive(true);
         // Update the minimap
-        minimap.UpdateMap(newRoom, roomsDict[curRoom]);
+        UIManager.Instance.UpdateMap(newRoom, roomsDict[curRoom]);
         // Make the new room the current room
         curRoom = newRoom;
 
         // Wait for the room transition duration
         yield return new WaitForSeconds(roomTransitionDuration);
         // Fade back in
-        yield return fadeToBlack.FadeIn();
+        yield return UIManager.Instance.FadeIn();
 
         // Initialise the room the player entered
         switch (roomsDict[curRoom].roomType)
