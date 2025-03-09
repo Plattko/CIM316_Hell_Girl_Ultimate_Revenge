@@ -58,7 +58,7 @@ public class SpellManager : MonoBehaviour
             curSpell.Cast(gameObject);
         }
         // Signal that a spell has been cast
-        onSpellCast?.Invoke(curSpell.castTime, curSpell.lockoutDuringCast);
+        onSpellCast?.Invoke(curSpell.castTime, curSpell.movementLockoutDuringCast);
         // Set the spell cooldown time
         cooldownTime = Time.time + curSpell.cooldownTime;
     }

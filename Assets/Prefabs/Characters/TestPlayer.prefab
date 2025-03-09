@@ -428,7 +428,7 @@ MonoBehaviour:
   moveSpeed: 8
   idleSlow: 0.9
   lastMoveDir: {x: 0, y: 0}
-  dashDistance: 10
+  dashDistance: 5
   dashDuration: 0.2
   dashCooldown: 0.5
   spriteRenderer: {fileID: 1815527593154101904}
@@ -447,7 +447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
-  playerUI: {fileID: 0}
 --- !u!114 &2384791155482624868
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Knife : MonoBehaviour
+public class KnifeProjectile : MonoBehaviour
 {
     private float damage = 10f;  // Damage dealt by the knife
 
