@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8191311462656128713}
   - component: {fileID: 6538114357055904397}
+  - component: {fileID: -2450421284021561413}
   m_Layer: 0
   m_Name: Rock
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3165828512085407971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.253}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -54,6 +55,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.7, y: 2, z: 0.75}
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!208 &-2450421284021561413
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165828512085407971}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3674635615051068323
 GameObject:
   m_ObjectHideFlags: 0
