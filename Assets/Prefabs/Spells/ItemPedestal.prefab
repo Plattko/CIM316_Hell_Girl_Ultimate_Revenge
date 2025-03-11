@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 3505532826896181804}
   - component: {fileID: 2183540803624067865}
   - component: {fileID: 4723861376724831155}
-  - component: {fileID: 3031351001232160348}
+  - component: {fileID: 1573282752860906506}
   m_Layer: 0
-  m_Name: SpellPedestal
+  m_Name: ItemPedestal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3031351001232160348
+--- !u!114 &1573282752860906506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,11 +116,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1826487614669429836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e747166e59bbfa9478c3c8055f5e9630, type: 3}
+  m_Script: {fileID: 11500000, guid: d38f17f085dd9634095ca39d081f12fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spellSprite: {fileID: 8393497085086711439}
-  spriteRenderer: {fileID: 2316577135464733420}
+  itemDisplay: {fileID: 8393497085086711439}
 --- !u!1 &8393497085086711439
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,7 +131,7 @@ GameObject:
   - component: {fileID: 8486045850890235919}
   - component: {fileID: 2316577135464733420}
   m_Layer: 0
-  m_Name: SpellSprite
+  m_Name: ItemDisplay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

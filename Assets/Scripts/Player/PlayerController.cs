@@ -13,7 +13,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float idleSlow = 0.9f;
 
-    [HideInInspector] public Vector2 lastMoveDir;
     private bool isFacingRight = true;
 
     private Coroutine dashCoroutine;
@@ -25,45 +24,58 @@ public class PlayerController : MonoBehaviour
 
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private PlayerAnimationController animationController;
 
-    [Header("Spellcasting")]
+    [Header("Combat")]
+    [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private SpellManager spellManager;
 
     [Header("Interaction")]
     [SerializeField] private Interactor interactor;
 
+    // TEMPORARY
+    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
+    [SerializeField] private GameObject tempHitbox;
+
     private void OnEnable()
     {
-        if (spellManager != null)
-        {
-            spellManager.onSpellCast += OnSpellCast;
-        }
-        else
-        {
-            Debug.LogWarning("No Spell Manager detected.");
-        }
+        if (spellManager != null) { spellManager.onSpellCast += OnSpellCast; }
+        else { Debug.LogWarning("No Spell Manager detected."); }
+        
+        if (weaponManager != null) { weaponManager.onAttackStateChanged += OnAttackStateChanged; }
+        else { Debug.LogWarning("No Weapon Manager detected."); }
     }
 
     private void OnDisable()
     {
-        if (spellManager != null)
-        {
-            spellManager.onSpellCast -= OnSpellCast;
-        }
-        else
-        {
-            Debug.LogWarning("No Spell Manager detected.");
-        }
+        if (spellManager != null) { spellManager.onSpellCast -= OnSpellCast; }
+        else { Debug.LogWarning("No Spell Manager detected."); }
+
+        if (weaponManager != null) { weaponManager.onAttackStateChanged -= OnAttackStateChanged; }
+        else { Debug.LogWarning("No Weapon Manager detected."); }
+    }
+
+    private void Update()
+    {
+        // Set the move speed in the animation controller
+        animationController.SetMoveSpeed(rb.velocity.magnitude);
     }
 
     private void FixedUpdate()
     {
         // Do nothing if the player can't move or is dashing
-        if (!canMove || isDashing) { return; }
-        // Update the player's movement
-        Move();
-        // Update the player's facing direction
-        Flip();
+        if (canMove && !isDashing)
+        {
+            // Update the player's movement
+            Move();
+            // Update the player's facing direction
+            Flip();
+        }
+    }
+
+    private void OnAttackStateChanged(bool isAttacking)
+    {
+        animationController.SetIsAttacking(isAttacking);
     }
 
     private void OnSpellCast(float castTime, bool lockoutDuringCast)
@@ -98,11 +110,15 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         // Set dashing to true
         isDashing = true;
+        // Tell the animation controller the player is dashing
+        animationController.SetIsDashing(true);
         // Set the player's velocity to speed required to travel the dash's distance over its duration in the direction of the move input
         rb.velocity = moveInput * (dashDistance / dashDuration);
         // Wait for the dash duration and set dashing to false
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
+        // Tell the animation controller the player is no longer dashing
+        animationController.SetIsDashing(false);
         // Wait for the dash cooldown duration and re-enable the ability to dash
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
@@ -117,6 +133,8 @@ public class PlayerController : MonoBehaviour
             // Reset dash variables
             isDashing = false;
             canDash = true;
+            // Tell the animation controller the player is no longer dashing
+            animationController.SetIsDashing(false);
         }
     }
 
@@ -161,7 +179,10 @@ public class PlayerController : MonoBehaviour
             isFacingRight = !isFacingRight;
         }
         // Flip the player's sprite in the direction they are facing
-        spriteRenderer.flipX = isFacingRight;
+        spriteRenderer.flipX = !isFacingRight;
+
+        weaponSpriteRenderer.flipX = !isFacingRight;
+        tempHitbox.transform.rotation = isFacingRight ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
     }
 
     //-------------------------------------------------------------
@@ -171,6 +192,9 @@ public class PlayerController : MonoBehaviour
     {
         // Set the move input on the x and z axis
         moveInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+        // Set the move pressed bool in the animation controller
+        bool isMovePressed = moveInput != Vector3.zero;
+        animationController.SetIsMovePressed(isMovePressed);
     }
 
     public void OnDash(InputAction.CallbackContext context)
@@ -179,6 +203,19 @@ public class PlayerController : MonoBehaviour
         if (context.performed && canMove && canDash)
         {
             dashCoroutine = StartCoroutine(Dash());
+        }
+    }
+
+    public void OnUseWeapon(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            weaponManager.StartAttacking();
+        }
+
+        if (context.canceled)
+        {
+            weaponManager.StopAttacking();
         }
     }
 

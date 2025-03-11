@@ -4,21 +4,46 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
+    public static UIManager Instance { get; private set; }
+    
     [SerializeField] private RoomManager roomManager;
-    [SerializeField] private PlayerUI playerUI;
+    [SerializeField] private HUD hud;
+    [SerializeField] private Minimap minimap;
+    [SerializeField] private FadeToBlack fadeToBlack;
 
-    private void OnEnable()
+    private void Awake()
     {
-        roomManager.onPlayerSpawned += InitialisePlayerUI;
+        if (Instance != null && Instance != this) { Destroy(this); }
+        else { Instance = this; }
     }
 
-    private void OnDisable()
+    public void UpdateHealth(int curHealth)
     {
-        roomManager.onPlayerSpawned -= InitialisePlayerUI;
+        hud.UpdateHealth(curHealth);
     }
 
-    private void InitialisePlayerUI(GameObject player)
+    public void UpdateSpell(Spell newSpell)
     {
-        playerUI.Initialise(player);
+        hud.UpdateSpell(newSpell);
+    }
+
+    public void UpdateMana(int curMana)
+    {
+        hud.UpdateMana(curMana);
+    }
+
+    public void UpdateMap(Vector2Int newRoomPos, Room prevRoom)
+    {
+        minimap.UpdateMap(newRoomPos, prevRoom);
+    }
+
+    public IEnumerator FadeOut()
+    {
+        yield return fadeToBlack.FadeOut();
+    }
+
+    public IEnumerator FadeIn()
+    {
+        yield return fadeToBlack.FadeIn();
     }
 }

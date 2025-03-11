@@ -19,6 +19,9 @@ public class CombatRoom : MonoBehaviour
     private int enemiesToKill;
     private int enemiesKilled = 0;
 
+    // TEMPORARY
+    //[SerializeField] private GameObject healthPickupPrefab;
+
     public void InitialiseRoom()
     {
         // If the room hasn't been cleared, close the gates and spawn a wave of enemies
@@ -33,7 +36,8 @@ public class CombatRoom : MonoBehaviour
                 }
             }
             // Randomly set the number to waves to clear between 1 and the max amount of waves to clear
-            wavesToClear = Random.Range(1, maxWavesToClear + 1);
+            //wavesToClear = Random.Range(1, maxWavesToClear + 1);
+            wavesToClear = Random.value < 0.25f ? maxWavesToClear : 1;
             // Spawn a wave
             SpawnWave();
         }
@@ -106,6 +110,13 @@ public class CombatRoom : MonoBehaviour
     {
         // Set the room to cleared
         isRoomCleared = true;
+
+        //if (Random.value < 0.33f)
+        //{
+        //    GameObject healthPickup = Instantiate(healthPickupPrefab, transform.position + Vector3.up, Quaternion.identity);
+        //    healthPickup.transform.parent = transform;
+        //}
+
         // Open the gates
         foreach (GameObject gate in gates)
         {

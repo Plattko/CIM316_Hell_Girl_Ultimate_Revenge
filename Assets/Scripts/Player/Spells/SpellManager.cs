@@ -8,7 +8,6 @@ public class SpellManager : MonoBehaviour
     // Player mana variables
     public int maxMana { get; private set; } = 5;
     public int curMana { get; private set; }
-    public event Action<int> onManaUpdated;
 
     // Spell variables
     [SerializeField] private PlayerAim aimPivot;
@@ -17,7 +16,6 @@ public class SpellManager : MonoBehaviour
     public event Action<float, bool> onSpellCast;
 
     [SerializeField] private GameObject spellItemPrefab;
-    public event Action<Spell> onSpellUpdated;
     public event Action<GameObject> onSpellDropped;
 
     private void Start()
@@ -60,7 +58,7 @@ public class SpellManager : MonoBehaviour
             curSpell.Cast(gameObject);
         }
         // Signal that a spell has been cast
-        onSpellCast?.Invoke(curSpell.castTime, curSpell.lockoutDuringCast);
+        onSpellCast?.Invoke(curSpell.castTime, curSpell.movementLockoutDuringCast);
         // Set the spell cooldown time
         cooldownTime = Time.time + curSpell.cooldownTime;
     }
@@ -88,8 +86,8 @@ public class SpellManager : MonoBehaviour
         }
         // Set the player's current spell to the new spell
         curSpell = newSpell;
-        // Signal that the spell has been updated
-        onSpellUpdated?.Invoke(newSpell);
+        // Update the spell UI
+        UIManager.Instance.UpdateSpell(newSpell);
     }
 
     private void DropSpell()
@@ -118,8 +116,8 @@ public class SpellManager : MonoBehaviour
             curMana -= amount;
             // Prevent the current mana from dropping below 0
             curMana = Mathf.Clamp(curMana, 0, maxMana);
-            // Signal that the mana has been updated
-            onManaUpdated?.Invoke(curMana);
+            // Update the mana UI
+            UIManager.Instance.UpdateMana(curMana);
         }
     }
 
@@ -132,8 +130,8 @@ public class SpellManager : MonoBehaviour
             curMana += amount;
             // Prevent the current mana from increasing above the player's max mana
             curMana = Mathf.Clamp(curMana, 0, maxMana);
-            // Signal that the mana has been updated
-            onManaUpdated?.Invoke(curMana);
+            // Update the mana UI
+            UIManager.Instance.UpdateMana(curMana);
         }
     }
 }

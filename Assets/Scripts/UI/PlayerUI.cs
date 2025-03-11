@@ -23,25 +23,25 @@ public class PlayerUI : MonoBehaviour
         }
     }
 
-    private void OnEnable()
-    {
-        if (spellManager != null)
-        {
-            spellManager.onManaUpdated += UpdateManaUI;
-            spellManager.onSpellUpdated += UpdateSpellUI;
-            Debug.Log("Spell Manager events subscribed to in OnEnable.");
-        }
-    }
+    //private void OnEnable()
+    //{
+    //    if (spellManager != null)
+    //    {
+    //        spellManager.onManaUpdated += UpdateManaUI;
+    //        spellManager.onSpellUpdated += UpdateSpellUI;
+    //        Debug.Log("Spell Manager events subscribed to in OnEnable.");
+    //    }
+    //}
 
-    private void OnDisable()
-    {
-        if (spellManager != null)
-        {
-            spellManager.onManaUpdated -= UpdateManaUI;
-            spellManager.onSpellUpdated -= UpdateSpellUI;
-            Debug.Log("Spell Manager events unsubscribed from in OnDisable.");
-        }
-    }
+    //private void OnDisable()
+    //{
+    //    if (spellManager != null)
+    //    {
+    //        spellManager.onManaUpdated -= UpdateManaUI;
+    //        spellManager.onSpellUpdated -= UpdateSpellUI;
+    //        Debug.Log("Spell Manager events unsubscribed from in OnDisable.");
+    //    }
+    //}
 
     private void Start()
     {
@@ -55,15 +55,15 @@ public class PlayerUI : MonoBehaviour
 
     public void Initialise(GameObject player)
     {
-        // Set the spell manager to the player's spell manager script
-        spellManager = player.GetComponentInChildren<SpellManager>();
-        // Subscribe to the spell manager's events
-        if (spellManager != null)
-        {
-            spellManager.onManaUpdated += UpdateManaUI;
-            spellManager.onSpellUpdated += UpdateSpellUI;
-            Debug.Log("Spell Manager events subscribed to in Initialise.");
-        }
+        //// Set the spell manager to the player's spell manager script
+        //spellManager = player.GetComponentInChildren<SpellManager>();
+        //// Subscribe to the spell manager's events
+        //if (spellManager != null)
+        //{
+        //    spellManager.onManaUpdated += UpdateManaUI;
+        //    spellManager.onSpellUpdated += UpdateSpellUI;
+        //    Debug.Log("Spell Manager events subscribed to in Initialise.");
+        //}
 
         // Initialise the player's health
         playerCharacter.InitializeHealth();

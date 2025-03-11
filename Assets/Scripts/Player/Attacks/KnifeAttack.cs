@@ -47,7 +47,7 @@ public class KnifeAttack : MonoBehaviour
         GameObject knife = Instantiate(knifePrefab, knifeSpawnPoint.position, knifeSpawnPoint.rotation);
 
         // Get the Knife script from the spawned knife and apply the correct damage
-        Knife knifeScript = knife.GetComponent<Knife>();
+        KnifeProjectile knifeScript = knife.GetComponent<KnifeProjectile>();
         if (knifeScript != null)
         {
             float appliedDamage = baseDamage;

@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spell : ScriptableObject
+public class Spell : Item
 {
-    [Header("Common Variables")]
-    public new string name;
-    public Sprite icon;
+    [Header("Spell Variables")]
     public int manaCost = 1;
     public float damage = 1f;
 
     public float castTime;
-    public bool lockoutDuringCast = false;
     public float cooldownTime;
+    public bool movementLockoutDuringCast = false;
 
     public bool hasDirection = false;
 
