@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] private Interactor interactor;
 
+    // TEMPORARY
+    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
+    [SerializeField] private GameObject tempHitbox;
+
     private void OnEnable()
     {
         if (spellManager != null) { spellManager.onSpellCast += OnSpellCast; }
@@ -176,6 +180,9 @@ public class PlayerController : MonoBehaviour
         }
         // Flip the player's sprite in the direction they are facing
         spriteRenderer.flipX = !isFacingRight;
+
+        weaponSpriteRenderer.flipX = !isFacingRight;
+        tempHitbox.transform.rotation = isFacingRight ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
     }
 
     //-------------------------------------------------------------

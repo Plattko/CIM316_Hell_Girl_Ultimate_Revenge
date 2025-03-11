@@ -28,6 +28,9 @@ public class Weapon : MonoBehaviour
 
     private Timer attackCounterResetTimer;
 
+    // TEMPORARY
+    private BoxCollider attackHitbox;
+
     private void Awake()
     {
         animGameObject = transform.Find("Animations").gameObject;
@@ -36,6 +39,7 @@ public class Weapon : MonoBehaviour
 
         attackCounterResetTimer = new Timer(attackCounterResetTime);
 
+        attackHitbox = transform.Find("TempHitbox").GetComponent<BoxCollider>();
     }
 
     private void Update()
@@ -46,12 +50,14 @@ public class Weapon : MonoBehaviour
     private void OnEnable()
     {
         animEventHandler.onFinished += Exit;
+        animEventHandler.onAttackHitboxUpdated += UpdateAttackHitbox;
         attackCounterResetTimer.onTimerDone += ResetAttackCounter;
     }
 
     private void OnDisable()
     {
         animEventHandler.onFinished -= Exit;
+        animEventHandler.onAttackHitboxUpdated += UpdateAttackHitbox;
         attackCounterResetTimer.onTimerDone -= ResetAttackCounter;
     }
 
@@ -74,4 +80,9 @@ public class Weapon : MonoBehaviour
     }
 
     private void ResetAttackCounter() => CurAttackCounter = 0;
+
+    private void UpdateAttackHitbox(bool isEnabled)
+    {
+        attackHitbox.enabled = isEnabled;
+    }
 }

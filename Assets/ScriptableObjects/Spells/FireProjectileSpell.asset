@@ -15,10 +15,10 @@ MonoBehaviour:
   name: Fire Projectile
   icon: {fileID: 21300000, guid: 6f54b2f4d3401594fba2c44962f8832c, type: 3}
   manaCost: 1
-  damage: 5
+  damage: 7
   castTime: 0
-  lockoutDuringCast: 0
-  cooldownTime: 0.5
+  cooldownTime: 0.33
+  movementLockoutDuringCast: 0
   hasDirection: 1
   projectilePrefab: {fileID: 3275710079105325757, guid: 588575496e5653c4fb05401744f07ac8, type: 3}
   moveSpeed: 20
