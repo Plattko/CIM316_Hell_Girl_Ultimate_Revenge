@@ -1,24 +1,36 @@
 using System.Collections;
 using UnityEngine;
+using System;
 
-public class DamnedSoul : MonoBehaviour
+public class DamnedSoul : MonoBehaviour, IDamageable
 {
-    public float speed = 3f;
-    public float bounceBackDistance = 2f;
-    public int damageAmount = 1;
-    public int health = 3;
+    // Events
+    public event Action onDied;
 
+    // Reference variables
     private Transform player;
     private Rigidbody rb;
+    private ManaDropper manaDropper;
+
+    // Movement/combat variables
+    public float speed = 3f;
+    public int damageAmount = 1;
+    public float bounceBackDistance = 2f;
     private Vector3 bounceDirection;
 
-    // Reference to the player's ScriptableObject
-    public PlayerCharacter playerCharacter;
+    // Health variables
+    [SerializeField] private int maxHealth = 20;
+    private float curHealth;
+    private bool isDead;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
+        // Get a reference to the mana dropper script
+        manaDropper = GetComponentInChildren<ManaDropper>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // Set the enemy's health to its max health
+        curHealth = maxHealth;
     }
 
     void Update()
@@ -36,9 +48,10 @@ public class DamnedSoul : MonoBehaviour
         {
             Debug.Log("Collsion Detected");
             // Damage the player via the ScriptableObject
-            if (playerCharacter != null)
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                playerCharacter.TakeDamage(damageAmount);
+                damageable.TakeDamage(damageAmount);
                 Debug.Log("Damage Delt");
             }
 
@@ -46,30 +59,34 @@ public class DamnedSoul : MonoBehaviour
             bounceDirection = -(player.position - transform.position).normalized;
             StartCoroutine(BounceBack());
         }
-        //else if (collision.CompareTag("Weapon") || collision.CompareTag("Spell"))
-        //{
-            //TakeDamage(1); // Take 1 damage when hit by weapon or spell
-        //}
     }
 
     IEnumerator BounceBack()
     {
         rb.velocity = bounceDirection * bounceBackDistance;
-        yield return new WaitForSeconds(0.2f); // Short delay
+        yield return new WaitForSeconds(2f); // Short delay
         rb.velocity = Vector3.zero; // Stop movement after bounce
     }
 
-    public void TakeDamage(int amount)
+    public void TakeDamage(float amount)
     {
-        health -= amount;
-        if (health <= 0)
-        {
-            Die();
-        }
-    }
+        // Do nothing if the enemy is dead
+        if (isDead) { return; }
 
-    private void Die()
-    {
-        Destroy(gameObject); // Destroy the enemy
+        // Reduce health by the damage amount
+        curHealth -= amount;
+
+        // Kill the enemy if it reaches 0 health
+        if (curHealth <= 0)
+        {
+            // Set the enemy to dead
+            isDead = true;
+            // Signal that the enemy is dead
+            onDied?.Invoke();
+            // Drop mana
+            manaDropper.DropMana(transform.parent);
+            // Destroy the enemy game object
+            Destroy(gameObject);
+        }
     }
 }

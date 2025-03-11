@@ -76,11 +76,11 @@ public class CombatRoom : MonoBehaviour
         // Wait for the spawn delay
         yield return new WaitForSeconds(delay);
         // Instantiate the enemy at the spawn point
-        TestDummy enemy = Instantiate(enemyPrefab, spawnPoint + Vector3.up, Quaternion.identity).GetComponent<TestDummy>();
+        DamnedSoul enemy = Instantiate(enemyPrefab, spawnPoint + Vector3.up, Quaternion.identity).GetComponent<DamnedSoul>();
         // Set the enemy's parent to the room it is in
         enemy.transform.parent = transform;
         // TEMP: Disable respawning on the test dummy
-        enemy.doesDummyRespawn = false;
+        //enemy.doesDummyRespawn = false;
         // Subscribe to the enemy's on died event so this script update the number of enemies killed
         enemy.onDied += OnEnemyDied;
     }
