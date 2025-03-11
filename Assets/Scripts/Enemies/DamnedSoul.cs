@@ -4,42 +4,33 @@ using System;
 
 public class DamnedSoul : MonoBehaviour, IDamageable
 {
-    public float speed = 3f;
-    public float bounceBackDistance = 2f;
-    public int damageAmount = 1;
-    public int health = 3;
-
-    private Transform player;
-    private Rigidbody rb;
-    private Vector3 bounceDirection;
-
-    [SerializeField] private int maxHealth = 20;
-    private float curHealth;
-    private bool isDead = false;
-
-    [SerializeField] private MeshRenderer meshRenderer;
-    [SerializeField] private BoxCollider col;
-    private Vector3 startingPos;
-
-    public bool doesDummyRespawn = true;
-    [SerializeField] private float respawnDelay = 5.0f;
+    // Events
     public event Action onDied;
 
-    [Header("Mana Drop Variables")]
-    [SerializeField] private GameObject manaPickupPrefab;
-    [SerializeField] private int minManaDrop = 1;
-    [SerializeField] private int maxManaDrop = 3;
-    [SerializeField] private float minDropForceX = 2;
-    [SerializeField] private float maxDropForceX = 3;
-    [SerializeField] private float dropForceY = 2;
+    // Reference variables
+    private Transform player;
+    private Rigidbody rb;
+    private ManaDropper manaDropper;
 
-    // Reference to the player's ScriptableObject
-    //public PlayerCharacter playerCharacter;
+    // Movement/combat variables
+    public float speed = 3f;
+    public int damageAmount = 1;
+    public float bounceBackDistance = 2f;
+    private Vector3 bounceDirection;
+
+    // Health variables
+    [SerializeField] private int maxHealth = 20;
+    private float curHealth;
+    private bool isDead;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
+        // Get a reference to the mana dropper script
+        manaDropper = GetComponentInChildren<ManaDropper>();
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // Set the enemy's health to its max health
+        curHealth = maxHealth;
     }
 
     void Update()
@@ -68,10 +59,6 @@ public class DamnedSoul : MonoBehaviour, IDamageable
             bounceDirection = -(player.position - transform.position).normalized;
             StartCoroutine(BounceBack());
         }
-        //else if (collision.CompareTag("Weapon") || collision.CompareTag("Spell"))
-        //{
-            //TakeDamage(1); // Take 1 damage when hit by weapon or spell
-        //}
     }
 
     IEnumerator BounceBack()
@@ -83,34 +70,23 @@ public class DamnedSoul : MonoBehaviour, IDamageable
 
     public void TakeDamage(float amount)
     {
-        // Do nothing if the dummy is dead
+        // Do nothing if the enemy is dead
         if (isDead) { return; }
-        Debug.Log("Testing");
 
         // Reduce health by the damage amount
         curHealth -= amount;
 
-        // Kill the dummy if it reaches 0 health
+        // Kill the enemy if it reaches 0 health
         if (curHealth <= 0)
         {
-            // Set the dummy to dead
+            // Set the enemy to dead
             isDead = true;
-            // Signal that the dummy is dead
-            
+            // Signal that the enemy is dead
             onDied?.Invoke();
-            // Disable its collider
-            //col.enabled = false;
-            // Hide it from view
-            //meshRenderer.enabled = false;
             // Drop mana
-            //DropMana();
-            // Start the coroutine to respawn it after a delay if the dummy respawns
+            manaDropper.DropMana(transform.parent);
+            // Destroy the enemy game object
             Destroy(gameObject);
         }
     }
-
-    //private void Die()
-    //{
-        //Destroy(gameObject); // Destroy the enemy
-    //}
 }
