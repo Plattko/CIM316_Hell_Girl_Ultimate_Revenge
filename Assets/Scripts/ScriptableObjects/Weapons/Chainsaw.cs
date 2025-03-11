@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewChainsaw", menuName = "Weapons/Chainsaw")]
-public class Chainsaw : Weapon
+public class Chainsaw : WeaponSO
 {
     
 }

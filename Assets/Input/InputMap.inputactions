@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "UseWeapon",
+                    "type": "Button",
+                    "id": "056ca53f-7c38-4125-8146-9432a48bd482",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "UseSpell",
                     "type": "Button",
                     "id": "5598ee01-6745-4415-aac9-443d1923c646",
@@ -311,6 +320,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c5d59d02-57d6-4b3a-846d-4e9932081981",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "UseWeapon",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

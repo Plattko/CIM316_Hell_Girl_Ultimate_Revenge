@@ -64,6 +64,15 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""UseWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""056ca53f-7c38-4125-8146-9432a48bd482"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""UseSpell"",
                     ""type"": ""Button"",
                     ""id"": ""5598ee01-6745-4415-aac9-443d1923c646"",
@@ -333,6 +342,17 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c5d59d02-57d6-4b3a-846d-4e9932081981"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""UseWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -924,6 +944,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Fire = m_Player.FindAction("Fire", throwIfNotFound: true);
         m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_UseWeapon = m_Player.FindAction("UseWeapon", throwIfNotFound: true);
         m_Player_UseSpell = m_Player.FindAction("UseSpell", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         // UI
@@ -1003,6 +1024,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Fire;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_UseWeapon;
     private readonly InputAction m_Player_UseSpell;
     private readonly InputAction m_Player_Interact;
     public struct PlayerActions
@@ -1013,6 +1035,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         public InputAction @Look => m_Wrapper.m_Player_Look;
         public InputAction @Fire => m_Wrapper.m_Player_Fire;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @UseWeapon => m_Wrapper.m_Player_UseWeapon;
         public InputAction @UseSpell => m_Wrapper.m_Player_UseSpell;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
@@ -1036,6 +1059,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Dash.started += instance.OnDash;
             @Dash.performed += instance.OnDash;
             @Dash.canceled += instance.OnDash;
+            @UseWeapon.started += instance.OnUseWeapon;
+            @UseWeapon.performed += instance.OnUseWeapon;
+            @UseWeapon.canceled += instance.OnUseWeapon;
             @UseSpell.started += instance.OnUseSpell;
             @UseSpell.performed += instance.OnUseSpell;
             @UseSpell.canceled += instance.OnUseSpell;
@@ -1058,6 +1084,9 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
             @Dash.started -= instance.OnDash;
             @Dash.performed -= instance.OnDash;
             @Dash.canceled -= instance.OnDash;
+            @UseWeapon.started -= instance.OnUseWeapon;
+            @UseWeapon.performed -= instance.OnUseWeapon;
+            @UseWeapon.canceled -= instance.OnUseWeapon;
             @UseSpell.started -= instance.OnUseSpell;
             @UseSpell.performed -= instance.OnUseSpell;
             @UseSpell.canceled -= instance.OnUseSpell;
@@ -1250,6 +1279,7 @@ public partial class @InputMap: IInputActionCollection2, IDisposable
         void OnLook(InputAction.CallbackContext context);
         void OnFire(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnUseWeapon(InputAction.CallbackContext context);
         void OnUseSpell(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
     }
