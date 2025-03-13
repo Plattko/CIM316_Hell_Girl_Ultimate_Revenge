@@ -389,7 +389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -464,7 +464,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -661,7 +661,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1009,7 +1009,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1393,7 +1393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1469,13 +1469,16 @@ MonoBehaviour:
   rb: {fileID: 1040152354}
   moveSpeed: 8
   idleSlow: 0.9
-  lastMoveDir: {x: 0, y: 0}
   dashDistance: 10
   dashDuration: 0.2
   dashCooldown: 0.5
   spriteRenderer: {fileID: 1767230554}
+  animationController: {fileID: 0}
+  weaponManager: {fileID: 0}
   spellManager: {fileID: 311259552}
   interactor: {fileID: 1040152357}
+  weaponSpriteRenderer: {fileID: 0}
+  tempHitbox: {fileID: 0}
 --- !u!114 &1040152352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1936,12 +1939,6 @@ MonoBehaviour:
   col: {fileID: 1128723531}
   doesDummyRespawn: 1
   respawnDelay: 5
-  manaPickupPrefab: {fileID: 650365402667616731, guid: 51bee7b305b40b243b9c7afd36fd4d79, type: 3}
-  minManaDrop: 1
-  maxManaDrop: 3
-  minDropForceX: 2
-  maxDropForceX: 3
-  dropForceY: 2
 --- !u!1 &1137047943
 GameObject:
   m_ObjectHideFlags: 0
@@ -2075,7 +2072,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2150,7 +2147,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2225,7 +2222,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2418,7 +2415,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2647,7 +2644,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

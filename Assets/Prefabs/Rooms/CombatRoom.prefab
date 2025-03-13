@@ -1194,6 +1194,7 @@ MonoBehaviour:
   - {fileID: 1110686625094591044}
   - {fileID: 1526276892895795323}
   - {fileID: 5902482746427768459}
+  healthPickupPrefab: {fileID: 650365402667616731, guid: f0c22e7a5c99f064d839201b55d23333, type: 3}
 --- !u!1 &4011377662032668175
 GameObject:
   m_ObjectHideFlags: 0

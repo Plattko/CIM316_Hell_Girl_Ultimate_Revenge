@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class CombatRoom : MonoBehaviour
 {
+    // Gate references
     [SerializeField] private GameObject[] gates = new GameObject[4];
     
-    [HideInInspector] public bool isRoomCleared;
-    private int maxWavesToClear = 2;
+    // Wave variables
+    private bool isRoomCleared;
     private int wavesToClear;
     private int wavesCleared = 0;
-    private float newWaveDelay = 2f;
+    private float doubleWaveChance = 0.25f;
+    private float newWaveDelay = 1f;
 
+    // Enemy variables
     [SerializeField] private GameObject enemyPrefab;
     [SerializeField] private GameObject enemySpawnIndicatorPrefab;
     [SerializeField] private GameObject[] enemySpawnLayouts;
@@ -19,8 +22,9 @@ public class CombatRoom : MonoBehaviour
     private int enemiesToKill;
     private int enemiesKilled = 0;
 
-    // TEMPORARY
-    //[SerializeField] private GameObject healthPickupPrefab;
+    // Health pickup variables
+    [SerializeField] private GameObject healthPickupPrefab;
+    private float heartSpawnChance = 0.33f;
 
     public void InitialiseRoom()
     {
@@ -35,9 +39,8 @@ public class CombatRoom : MonoBehaviour
                     gate.GetComponent<Animator>().Play("Gate_Close");
                 }
             }
-            // Randomly set the number to waves to clear between 1 and the max amount of waves to clear
-            //wavesToClear = Random.Range(1, maxWavesToClear + 1);
-            wavesToClear = Random.value < 0.25f ? maxWavesToClear : 1;
+            // Randomly set the number to waves to clear between 1 and 2 based on the double wave chance
+            wavesToClear = Random.value < doubleWaveChance ? 2 : 1;
             // Spawn a wave
             SpawnWave();
         }
@@ -79,8 +82,6 @@ public class CombatRoom : MonoBehaviour
         DamnedSoul enemy = Instantiate(enemyPrefab, spawnPoint + Vector3.up, Quaternion.identity).GetComponent<DamnedSoul>();
         // Set the enemy's parent to the room it is in
         enemy.transform.parent = transform;
-        // TEMP: Disable respawning on the test dummy
-        //enemy.doesDummyRespawn = false;
         // Subscribe to the enemy's on died event so this script update the number of enemies killed
         enemy.onDied += OnEnemyDied;
     }
@@ -111,11 +112,12 @@ public class CombatRoom : MonoBehaviour
         // Set the room to cleared
         isRoomCleared = true;
 
-        //if (Random.value < 0.33f)
-        //{
-        //    GameObject healthPickup = Instantiate(healthPickupPrefab, transform.position + Vector3.up, Quaternion.identity);
-        //    healthPickup.transform.parent = transform;
-        //}
+        // Choose whether to spawn a heart using the heart spawn chance
+        if (Random.value < heartSpawnChance)
+        {
+            GameObject healthPickup = Instantiate(healthPickupPrefab, transform.position + Vector3.up, Quaternion.identity);
+            healthPickup.transform.parent = transform;
+        }
 
         // Open the gates
         foreach (GameObject gate in gates)

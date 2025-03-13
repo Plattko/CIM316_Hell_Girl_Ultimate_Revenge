@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6797062597317468269}
   - component: {fileID: 7100687904153010807}
   m_Layer: 0
-  m_Name: chainsaw_test-removebg-preview
+  m_Name: Chainsaw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

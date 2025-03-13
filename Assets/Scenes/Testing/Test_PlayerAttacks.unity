@@ -238,7 +238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -313,7 +313,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -607,7 +607,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -784,7 +784,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -857,13 +857,16 @@ MonoBehaviour:
   rb: {fileID: 1040152354}
   moveSpeed: 8
   idleSlow: 0.9
-  lastMoveDir: {x: 0, y: 0}
   dashDistance: 10
   dashDuration: 0.2
   dashCooldown: 0.5
   spriteRenderer: {fileID: 1767230554}
+  animationController: {fileID: 0}
+  weaponManager: {fileID: 0}
   spellManager: {fileID: 0}
   interactor: {fileID: 0}
+  weaponSpriteRenderer: {fileID: 0}
+  tempHitbox: {fileID: 0}
 --- !u!114 &1040152352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,6 +1004,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: ae70d527-9b14-48a7-8841-aeb691aa1f6d
     m_ActionName: Player/Interact[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 056ca53f-7c38-4125-8146-9432a48bd482
+    m_ActionName: Player/UseWeapon[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1118,10 +1125,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74cd7b33e972e394487b5d44ff033d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  knifePrefab: {fileID: 0}
+  knifeSpawnPoint: {fileID: 0}
+  knifeSpeed: 10
+  baseDamage: 10
+  damageMultiplier: 1.5
   attackCooldown: 0.5
   resetTime: 1
-  damage: 10
-  damageMultiplier: 1.5
 --- !u!1 &1071892798
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+  currentHealth: 0
 --- !u!65 &1190904261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1330,7 +1341,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1405,7 +1416,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1480,7 +1491,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 603fb9583bb4eba4298ffd55b4a05837, type: 3}
+  m_Sprite: {fileID: 1977156216, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1673,7 +1684,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1854,7 +1865,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 832dab6ee810fbf48827c0be6d5213d3, type: 3}
+  m_Sprite: {fileID: -1717983673, guid: bb258e92db5e64c4ca78b827c336d01d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

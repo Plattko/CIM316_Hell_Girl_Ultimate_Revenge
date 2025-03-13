@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -2468366311047080990}
   - component: {fileID: 2915484894405867995}
   m_Layer: 0
-  m_Name: Dammed Soul
+  m_Name: DammedSoul
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
