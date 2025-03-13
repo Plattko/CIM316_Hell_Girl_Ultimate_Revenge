@@ -8,6 +8,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public int maxHealth = 5;
     public int curHealth { get; private set; }
 
+    // TEMPORARY
+    [SerializeField] private PlayerController playerController;
+
     private void Start()
     {
         // Set the player's current health to their max health
@@ -32,6 +35,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(float amount)
     {
+        // Do nothing if the player is dashing
+        if (playerController.isDashing) return;
         // Decrease the health by the damage amount
         curHealth -= Mathf.RoundToInt(amount);
         // Restart the scene if the player reaches 0 health

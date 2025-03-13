@@ -88,22 +88,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bccc76506d652d41894ea7d64d752b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 4115384690146855817}
-  startUnvisited: {fileID: 1918291604, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  startVisited: {fileID: 1137733279, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  startCurrent: {fileID: -1292355495, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  combatUnvisited: {fileID: -450435575, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  combatVisited: {fileID: 107495839, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  combatCurrent: {fileID: -997307591, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  itemUnvisited: {fileID: -177257961, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  itemVisited: {fileID: 1084313885, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  itemCurrent: {fileID: -746607354, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  minibossUnvisited: {fileID: 882446937, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  minibossVisited: {fileID: -2003146844, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  minibossCurrent: {fileID: 371219397, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  bossUnvisited: {fileID: 1513754433, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  bossVisited: {fileID: 971313885, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  bossCurrent: {fileID: 1449890971, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  ascensionUnvisited: {fileID: -1487179275, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  ascensionVisited: {fileID: 1579257814, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
-  ascensionCurrent: {fileID: -1951023798, guid: 8a509b2719cfe5f4faaa7b13d7ead6ab, type: 3}
+  startUnvisited: {fileID: 1531986162, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  startVisited: {fileID: 302214344, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  startCurrent: {fileID: -6099293, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  combatUnvisited: {fileID: -1571634760, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  combatVisited: {fileID: 1222638795, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  combatCurrent: {fileID: -460102855, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  itemUnvisited: {fileID: -1872876148, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  itemVisited: {fileID: -258446114, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  itemCurrent: {fileID: 341450512, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  minibossUnvisited: {fileID: 2023713693, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  minibossVisited: {fileID: -1153493364, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  minibossCurrent: {fileID: -218859744, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  bossUnvisited: {fileID: 309811545, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  bossVisited: {fileID: 2111163029, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  bossCurrent: {fileID: -554463905, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  ascensionUnvisited: {fileID: -999273616, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  ascensionVisited: {fileID: -1477606743, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  ascensionCurrent: {fileID: -1460983398, guid: 18c3960a0e12a3244aeae2bc51d4acf5, type: 3}
+  isVisited: 0

@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
     private Coroutine dashCoroutine;
     private bool canDash = true;
-    private bool isDashing = false;
+    public bool isDashing { get; private set; }
     [SerializeField] private float dashDistance = 10f;
     [SerializeField] private float dashDuration = 0.2f;
     [SerializeField] private float dashCooldown = 1.0f;

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 18c3960a0e12a3244aeae2bc51d4acf5
+guid: ba7882ec47b78e54495fc879e2541f11
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 900
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: P_MapRoomIcons3_0
+      name: Damned_Soul_Death_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 16
-        width: 8
-        height: 8
+        y: 3840
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdc896810fc46a346a77cd330fb568f9
-      internalID: 1531986162
+      spriteID: 0dee7887a3859fd4abb681c46b8d1969
+      internalID: -1773045362
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_1
+      name: Damned_Soul_Death_1
       rect:
         serializedVersion: 2
-        x: 8
-        y: 16
-        width: 8
-        height: 8
+        x: 1540
+        y: 3840
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +132,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df6f1c4478e34a34295aed0fc789c1e9
-      internalID: -1571634760
+      spriteID: 9d99c2bf1cc8bbe43967800a29152e80
+      internalID: 851939241
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_2
+      name: Damned_Soul_Death_2
       rect:
         serializedVersion: 2
-        x: 16
-        y: 16
-        width: 8
-        height: 8
+        x: 3080
+        y: 3840
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f0ce825fd3417144da418a1034119329
-      internalID: -1872876148
+      spriteID: d7d6aa3e959dbc84a9403a3a4ef4d462
+      internalID: -1631796554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_3
+      name: Damned_Soul_Death_3
       rect:
         serializedVersion: 2
-        x: 24
-        y: 16
-        width: 8
-        height: 8
+        x: 4620
+        y: 3840
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,62 +174,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d94070f29ed9bd14da1543104c3e4906
-      internalID: 2023713693
+      spriteID: 582e6d50ce9e81142b2f483be45e955a
+      internalID: -1257164431
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_4
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dec9b31dc2528c648af26ca6c6a64d80
-      internalID: 309811545
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons3_5
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 16
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 707b2e7f84d0cd843b8d72e340b5cb22
-      internalID: -999273616
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons3_6
+      name: Damned_Soul_Death_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 8
-        width: 8
-        height: 8
+        y: 1920
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +195,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43d805787d4882a4790698ef804fdfb8
-      internalID: 302214344
+      spriteID: 2c95249268f2b42479dac42e6eb86df4
+      internalID: -2138911847
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_7
+      name: Damned_Soul_Death_5
       rect:
         serializedVersion: 2
-        x: 8
-        y: 8
-        width: 8
-        height: 8
+        x: 1540
+        y: 1920
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +216,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96463fdf38a03cb4c9c8475a1195a9ce
-      internalID: 1222638795
+      spriteID: 272c4cd0317d8d747b68cbc8fa1f9989
+      internalID: -2113904347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_8
+      name: Damned_Soul_Death_6
       rect:
         serializedVersion: 2
-        x: 16
-        y: 8
-        width: 8
-        height: 8
+        x: 3080
+        y: 1920
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,20 +237,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9a6f8654939dd04392a11d867249ecb
-      internalID: -258446114
+      spriteID: 90a4b9cb92574a647be0bb9505009f8b
+      internalID: 1161078031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_9
+      name: Damned_Soul_Death_7
       rect:
         serializedVersion: 2
-        x: 24
-        y: 8
-        width: 8
-        height: 8
+        x: 4620
+        y: 1920
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -300,62 +258,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5232e64f6f9a888458b7ae4da5752f36
-      internalID: -1153493364
+      spriteID: dce93e9cd09b3bd41a8e63e747cbda1c
+      internalID: 1430465861
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_10
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 8
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d6ddcf90a80929e4c9413563a6465a01
-      internalID: 2111163029
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons3_11
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 8
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dfccedd98a1408a48a9e3fbd831daab1
-      internalID: -1477606743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons3_12
+      name: Damned_Soul_Death_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 8
-        height: 8
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,20 +279,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0f874fdce417ab41a599f4b4b7fd0e0
-      internalID: -6099293
+      spriteID: 9b6587510ecfce24bb3d4fd4e2cc28fd
+      internalID: -719991524
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_13
+      name: Damned_Soul_Death_9
       rect:
         serializedVersion: 2
-        x: 8
+        x: 1540
         y: 0
-        width: 8
-        height: 8
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -384,20 +300,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed1f9e97053be134a951d8cfd8e6e256
-      internalID: -460102855
+      spriteID: 88ba9c7762718fb44b129f50359f6f45
+      internalID: -1196785271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P_MapRoomIcons3_14
+      name: Damned_Soul_Death_10
       rect:
         serializedVersion: 2
-        x: 16
+        x: 3080
         y: 0
-        width: 8
-        height: 8
+        width: 1540
+        height: 1920
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -405,71 +321,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 04e36872a77ae014ab4d3b5a8b13955b
-      internalID: 341450512
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons3_15
-      rect:
-        serializedVersion: 2
-        x: 24
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ae689b0cd948fe439ca9aa237b4317b
-      internalID: -218859744
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons3_16
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b19826e3473af0d4880b2cd44a16143f
-      internalID: -554463905
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: P_MapRoomIcons3_17
-      rect:
-        serializedVersion: 2
-        x: 40
-        y: 0
-        width: 8
-        height: 8
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6f71b49b9ee10ba4d94fceb24afe802b
-      internalID: -1460983398
+      spriteID: d28cc6b26f7cd074aad17490a8234244
+      internalID: -1268867505
       vertices: []
       indices: 
       edges: []
@@ -477,7 +330,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 1d5aa889a5d33c24187ebc1e5de7b3d1
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -485,24 +338,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      P_MapRoomIcons3_0: 1531986162
-      P_MapRoomIcons3_1: -1571634760
-      P_MapRoomIcons3_10: 2111163029
-      P_MapRoomIcons3_11: -1477606743
-      P_MapRoomIcons3_12: -6099293
-      P_MapRoomIcons3_13: -460102855
-      P_MapRoomIcons3_14: 341450512
-      P_MapRoomIcons3_15: -218859744
-      P_MapRoomIcons3_16: -554463905
-      P_MapRoomIcons3_17: -1460983398
-      P_MapRoomIcons3_2: -1872876148
-      P_MapRoomIcons3_3: 2023713693
-      P_MapRoomIcons3_4: 309811545
-      P_MapRoomIcons3_5: -999273616
-      P_MapRoomIcons3_6: 302214344
-      P_MapRoomIcons3_7: 1222638795
-      P_MapRoomIcons3_8: -258446114
-      P_MapRoomIcons3_9: -1153493364
+      Damned_Soul_Death_0: -1773045362
+      Damned_Soul_Death_1: 851939241
+      Damned_Soul_Death_10: -1268867505
+      Damned_Soul_Death_2: -1631796554
+      Damned_Soul_Death_3: -1257164431
+      Damned_Soul_Death_4: -2138911847
+      Damned_Soul_Death_5: -2113904347
+      Damned_Soul_Death_6: 1161078031
+      Damned_Soul_Death_7: 1430465861
+      Damned_Soul_Death_8: -719991524
+      Damned_Soul_Death_9: -1196785271
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
