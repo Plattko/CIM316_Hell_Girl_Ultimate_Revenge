@@ -48,6 +48,7 @@ MonoBehaviour:
   numberOfAttacks: 5
   attackCounterResetTime: 1.5
   weaponData: {fileID: 0}
+  swingSFX: {fileID: 8300000, guid: f354a389b74bb6546b2bfaa98f7c0f76, type: 3}
 --- !u!1 &7676524716360512244
 GameObject:
   m_ObjectHideFlags: 0

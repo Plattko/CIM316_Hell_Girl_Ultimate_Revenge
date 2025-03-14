@@ -10,6 +10,8 @@ public class PlayerAnimationController : MonoBehaviour
     private int moveSpeedHash;
     private int isDashingHash;
     private int isAttackingHash;
+
+    [SerializeField] private AudioClip[] footstepSFX;
     
     private void Awake()
     {
@@ -39,5 +41,10 @@ public class PlayerAnimationController : MonoBehaviour
     public void SetIsAttacking(bool isAttacking)
     {
         animator.SetBool(isAttackingHash, isAttacking);
+    }
+
+    public void PlayFootstep()
+    {
+        SFXManager.Instance.PlayRandomAudioClip(footstepSFX, transform, 0.5f, 0.75f, true, 0.2f);
     }
 }

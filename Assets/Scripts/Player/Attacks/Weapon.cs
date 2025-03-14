@@ -30,6 +30,7 @@ public class Weapon : MonoBehaviour
 
     // TEMPORARY
     private BoxCollider attackHitbox;
+    [SerializeField] private AudioClip swingSFX;
 
     private void Awake()
     {
@@ -68,6 +69,8 @@ public class Weapon : MonoBehaviour
         // Pause the timer so it doesn't end during an attack
         attackCounterResetTimer.StopTimer();
         anim.SetBool("isActive", true);
+        // Play the swing SFX
+        SFXManager.Instance.PlayAudioClip(swingSFX, transform, 1.1f, 1.25f, true);
         anim.SetInteger("attackCounter", CurAttackCounter);
     }
 

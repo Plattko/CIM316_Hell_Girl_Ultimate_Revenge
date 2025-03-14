@@ -6,15 +6,17 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance { get; private set; }
     
-    [SerializeField] private RoomManager roomManager;
     [SerializeField] private HUD hud;
     [SerializeField] private Minimap minimap;
     [SerializeField] private FadeToBlack fadeToBlack;
+    [SerializeField] private GameObject pauseMenu;
 
     private void Awake()
     {
         if (Instance != null && Instance != this) { Destroy(this); }
         else { Instance = this; }
+
+        pauseMenu.SetActive(false);
     }
 
     public void UpdateHealth(int curHealth)
@@ -45,5 +47,15 @@ public class UIManager : MonoBehaviour
     public IEnumerator FadeIn()
     {
         yield return fadeToBlack.FadeIn();
+    }
+
+    public void OpenPauseMenu()
+    {
+        pauseMenu.SetActive(true);
+    }
+
+    public void ClosePauseMenu()
+    {
+        pauseMenu.SetActive(false);
     }
 }
