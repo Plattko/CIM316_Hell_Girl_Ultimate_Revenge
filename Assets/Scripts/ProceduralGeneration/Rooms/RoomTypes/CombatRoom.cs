@@ -15,7 +15,7 @@ public class CombatRoom : MonoBehaviour
     private float newWaveDelay = 1f;
 
     // Enemy variables
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private GameObject enemySpawnIndicatorPrefab;
     [SerializeField] private GameObject[] enemySpawnLayouts;
     private List<GameObject> usedSpawnLayouts = new List<GameObject>();
@@ -78,12 +78,21 @@ public class CombatRoom : MonoBehaviour
     {
         // Wait for the spawn delay
         yield return new WaitForSeconds(delay);
-        // Instantiate the enemy at the spawn point
-        DamnedSoul enemy = Instantiate(enemyPrefab, spawnPoint + Vector3.up, Quaternion.identity).GetComponent<DamnedSoul>();
+        // Instantiate a random enemy at the spawn point
+        GameObject enemy = Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length)], spawnPoint + Vector3.up, Quaternion.identity);
         // Set the enemy's parent to the room it is in
         enemy.transform.parent = transform;
         // Subscribe to the enemy's on died event so this script update the number of enemies killed
-        enemy.onDied += OnEnemyDied;
+        DamnedSoul damnedSoul = enemy.GetComponent<DamnedSoul>();
+        if (damnedSoul != null)
+        {
+            damnedSoul.onDied += OnEnemyDied;
+        }
+        RangedImp rangedImp = enemy.GetComponent<RangedImp>();
+        if (rangedImp != null)
+        {
+            rangedImp.onDied += OnEnemyDied;
+        }
     }
 
     private void OnEnemyDied()

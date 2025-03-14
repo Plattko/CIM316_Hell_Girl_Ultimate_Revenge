@@ -12,27 +12,29 @@ public class DamnedSoul : MonoBehaviour, IDamageable
     private Rigidbody rb;
     private ManaDropper manaDropper;
 
-    // Movement/combat variables
-    public float speed = 3f;
-    public int damageAmount = 1;
-    public float bounceBackDistance = 2f;
-    private Vector3 bounceDirection;
-
-    // Detection range
-    public float detectionRange = 5f;
-
-    // Health variables
+    [Header("Health")]
     [SerializeField] private int maxHealth = 20;
     private float curHealth;
     private bool isDead;
 
-    //private bool isBouncing;
+    [Header("Movement & Combat")]
+    public float speed = 3f;
+    public int damageAmount = 1;
+
+    public float bounceBackDistance = 2f;
+    public float bounceBackDuration = 1f;
+    private bool isBouncing;
+
+    public float detectionRange = 5f;
+    private bool isEngaged;
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         // Get a reference to the mana dropper script
         manaDropper = GetComponentInChildren<ManaDropper>();
+        // Get a reference to the player
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // Set the enemy's health to its max health
         curHealth = maxHealth;
@@ -40,23 +42,26 @@ public class DamnedSoul : MonoBehaviour, IDamageable
 
     void Update()
     {
-        if (player != null)
-        {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+        // Do nothing if the player is null
+        if (player == null) return;
 
-            if (distanceToPlayer <= detectionRange)
+        // Check if the enemy is engaged
+        if (isEngaged)
+        {
+            // Chase the player if the enemy isn't bouncing back
+            if (!isBouncing)
             {
                 Vector3 direction = (player.position - transform.position).normalized;
                 rb.velocity = direction * speed;
-                
-                //if (!isBouncing)
-                //{
-                //    rb.velocity = direction * speed;
-                //}
             }
-            else
+        }
+        // If they aren't engaged, check the distance to the player and become engaged if they are in range
+        else
+        {
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+            if (distanceToPlayer <= detectionRange)
             {
-                rb.velocity = Vector3.zero; // Stop movement if out of range
+                isEngaged = true;
             }
         }
     }
@@ -65,28 +70,36 @@ public class DamnedSoul : MonoBehaviour, IDamageable
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Collsion Detected");
-            // Damage the player via the ScriptableObject
+            Debug.Log("Collsion detected.");
+            // Damage the player
             IDamageable damageable = collision.GetComponent<IDamageable>();
             if (damageable != null)
             {
                 damageable.TakeDamage(damageAmount);
-                Debug.Log("Damage Delt");
+                Debug.Log("Damage dealt.");
             }
 
-            // Bounce back
-            bounceDirection = -(player.position - transform.position).normalized;
-            StartCoroutine(BounceBack());
+            // Bounce back if the player isn't dashing
+            PlayerController playerController = collision.GetComponent<PlayerController>();
+            if (!playerController.isDashing)
+            {
+                StartCoroutine(BounceBack());
+            }
         }
     }
 
     IEnumerator BounceBack()
     {
-        //isBouncing = true;
-        rb.velocity = bounceDirection * bounceBackDistance;
-        yield return new WaitForSeconds(2f); // Short delay
-        rb.velocity = Vector3.zero; // Stop movement after bounce
-        //isBouncing = false;
+        isBouncing = true;
+        // Set the bounce direction to the opposite of the direction to the player
+        Vector3 bounceDirection = -(player.position - transform.position).normalized;
+        // Set the enemy's velocity to the speed required to travel the bounce back distance over its duration in the bounce back direction
+        rb.velocity = bounceDirection * (bounceBackDistance / bounceBackDuration);
+        // Wait for the bounce back duration
+        yield return new WaitForSeconds(bounceBackDuration);
+        // Stop movement after bounce
+        rb.velocity = Vector3.zero;
+        isBouncing = false;
     }
 
     public void TakeDamage(float amount)
@@ -102,7 +115,7 @@ public class DamnedSoul : MonoBehaviour, IDamageable
         {
             // Set the enemy to dead
             isDead = true;
-            // Signal that the enemy is dead
+            // Signal that the enemy died
             onDied?.Invoke();
             // Drop mana
             manaDropper.DropMana(transform.parent);

@@ -5,42 +5,50 @@ using System;
 
 public class RangedImp : MonoBehaviour, IDamageable
 {
-    public float speed = 3f;
-    public float attackRange = 5f;
-    public float fireRate = 1f;
-    public GameObject projectilePrefab;
-    public Transform firePoint;
+    // Events
+    public event Action onDied;
 
+    // Reference variables
     private Transform player;
-    private float nextFireTime;
-    private int currentHealth;
-
     private ManaDropper manaDropper;
 
+    [Header("Health")]
     [SerializeField] private int maxHealth = 20;
     private float curHealth;
     private bool isDead;
 
-    public event Action onDied;
+    [Header("Movement & Combat")]
+    public float speed = 3f;
+
+    public GameObject projectilePrefab;
+    public Transform firePoint;
+    public float attackRange = 5f;
+    public float fireRate = 1f;
+    private float nextFireTime;
 
     void Start()
     {
+        // Get a reference to the mana dropper script
+        manaDropper = GetComponentInChildren<ManaDropper>();
+        // Get a reference to the player
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        currentHealth = maxHealth; // Set health to full at start
+        // Set the enemy's health to its max health
+        curHealth = maxHealth;
     }
 
     void Update()
     {
+        // Do nothing if the player is null
         if (player == null) return;
 
-        float distance = Vector3.Distance(transform.position, player.position);
+        float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         // Maintain attack range while following the player
-        if (distance > attackRange)
+        if (distanceToPlayer > attackRange)
         {
             MoveTowardsPlayer();
         }
-        else if (distance < attackRange - 0.5f) // Move back slightly if too close
+        else if (distanceToPlayer < attackRange - 0.5f) // Move back slightly if too close
         {
             MoveAwayFromPlayer();
         }
@@ -87,27 +95,12 @@ public class RangedImp : MonoBehaviour, IDamageable
         {
             // Set the enemy to dead
             isDead = true;
-            // Signal that the enemy is dead
+            // Signal that the enemy died
             onDied?.Invoke();
             // Drop mana
-            //manaDropper.DropMana(transform.parent);
+            manaDropper.DropMana(transform.parent);
             // Destroy the enemy game object
             Destroy(gameObject);
         }
     }
-
-    void Die()
-    {
-        Debug.Log("Imp has been defeated!");
-        Destroy(gameObject); // Remove Imp from the game
-    }
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-        // If Imp collides with specific tagged objects, take damage
-        //if (other.CompareTag("Spell") || other.CompareTag("Dagger") || other.CompareTag("Chainsaw") || other.CompareTag("Bullet"))
-        //{
-            //TakeDamage(3); // Adjust damage as needed
-        //}
-    //}
 }

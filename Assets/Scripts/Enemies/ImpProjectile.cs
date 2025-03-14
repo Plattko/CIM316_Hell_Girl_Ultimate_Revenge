@@ -38,6 +38,17 @@ public class ImpProjectile : MonoBehaviour
                 damageable.TakeDamage(damageAmount);
                 Debug.Log("Damage Delt");
             }
+            // Destroy the projectile if the player isn't dashing
+            PlayerController playerController = collision.GetComponent<PlayerController>();
+            if (!playerController.isDashing)
+            {
+                Destroy(gameObject);
+            }
+        }
+        // Destroy the projectile if it collides with something other than an enemy
+        else if (!collision.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
         }
     }
 }

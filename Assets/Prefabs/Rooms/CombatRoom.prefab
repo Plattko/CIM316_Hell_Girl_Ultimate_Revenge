@@ -1185,7 +1185,9 @@ MonoBehaviour:
   - {fileID: 2870692690390673905}
   - {fileID: 1105797018608695804}
   - {fileID: 4156139092167079421}
-  enemyPrefab: {fileID: 5964796263086382468, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
+  enemyPrefabs:
+  - {fileID: 1666680193277912074, guid: 1652744893da42b48a0b92034d736342, type: 3}
+  - {fileID: 5964796263086382468, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
   enemySpawnIndicatorPrefab: {fileID: 7561993631305040600, guid: 05306c11060c25c47960c05bd14a70ca, type: 3}
   enemySpawnLayouts:
   - {fileID: 2386519190967188570}

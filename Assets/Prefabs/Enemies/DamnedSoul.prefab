@@ -84,7 +84,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5384616, y: 1.9230769}
+  m_Size: {x: 1.7111228, y: 2.1333334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -177,7 +177,8 @@ MonoBehaviour:
   speed: 3
   damageAmount: 1
   bounceBackDistance: 3
-  detectionRange: 5
+  bounceBackDuration: 0.5
+  detectionRange: 50
   maxHealth: 1
 --- !u!114 &7500823765308540994
 MonoBehaviour:
