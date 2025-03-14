@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ImpProjectile : MonoBehaviour
+
 {
     public float speed = 10f;
     public float lifetime = 3f;
     private Vector3 direction;
     public int damageAmount = 1;
 
-
-    // Reference to the player's ScriptableObject
-    public PlayerCharacter playerCharacter;
 
     void Start()
     {
@@ -28,15 +26,16 @@ public class ImpProjectile : MonoBehaviour
         transform.position += direction * speed * Time.deltaTime;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider collision)
     {
-        if (other.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("Collsion Detected");
             // Damage the player via the ScriptableObject
-            if (playerCharacter != null)
+            IDamageable damageable = collision.GetComponent<IDamageable>();
+            if (damageable != null)
             {
-                playerCharacter.TakeDamage(damageAmount);
+                damageable.TakeDamage(damageAmount);
                 Debug.Log("Damage Delt");
             }
         }

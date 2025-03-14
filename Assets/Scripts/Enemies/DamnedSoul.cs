@@ -18,6 +18,9 @@ public class DamnedSoul : MonoBehaviour, IDamageable
     public float bounceBackDistance = 2f;
     private Vector3 bounceDirection;
 
+    // Detection range
+    public float detectionRange = 5f;
+
     // Health variables
     [SerializeField] private int maxHealth = 20;
     private float curHealth;
@@ -37,8 +40,17 @@ public class DamnedSoul : MonoBehaviour, IDamageable
     {
         if (player != null)
         {
-            Vector3 direction = (player.position - transform.position).normalized;
-            rb.velocity = direction * speed;
+            float distanceToPlayer = Vector3.Distance(transform.position, player.position);
+
+            if (distanceToPlayer <= detectionRange)
+            {
+                Vector3 direction = (player.position - transform.position).normalized;
+                rb.velocity = direction * speed;
+            }
+            else
+            {
+                rb.velocity = Vector3.zero; // Stop movement if out of range
+            }
         }
     }
 

@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class NavigationScript : MonoBehaviour
 {
-    public Transform player;
-    private NavMeshAgent agent;
+    [SerializeField] Transform player;
+    [SerializeField] NavMeshAgent agent;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +17,9 @@ public class NavigationScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.destination = player.position;
+        if (player != null)
+        {
+          agent.SetDestination(player.position);
+        }
     }
 }
