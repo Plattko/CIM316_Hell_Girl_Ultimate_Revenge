@@ -45,6 +45,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097786a724966614c882155915df0d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSpriteRenderer: {fileID: 1579282617127478913}
+  tempHitbox: {fileID: 5022808737538422823}
+  cam: {fileID: 1823592193936048008}
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &527131433266656689
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,8 +647,6 @@ MonoBehaviour:
   dashGruntSFX:
   - {fileID: 8300000, guid: dca5875397d039d4b924175b6785c488, type: 3}
   - {fileID: 8300000, guid: 65a3f42fe89fc7a47a3a854d5a52916f, type: 3}
-  weaponSpriteRenderer: {fileID: 1579282617127478913}
-  tempHitbox: {fileID: 5022808737538422823}
 --- !u!114 &9184109745951044258
 MonoBehaviour:
   m_ObjectHideFlags: 0
