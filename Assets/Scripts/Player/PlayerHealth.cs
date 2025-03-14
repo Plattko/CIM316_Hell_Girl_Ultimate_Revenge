@@ -8,6 +8,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public int maxHealth = 5;
     public int curHealth { get; private set; }
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] hurtSFX;
+
     // TEMPORARY
     [SerializeField] private PlayerController playerController;
 
@@ -39,8 +42,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (playerController.isDashing) return;
         // Decrease the health by the damage amount
         curHealth -= Mathf.RoundToInt(amount);
+        // Play the hurt SFX if the player is still alive
+        if (curHealth > 0)
+        {
+            SFXManager.Instance.PlayRandomAudioClip(hurtSFX, transform, 0.75f, 1f, true);
+        }
         // Restart the scene if the player reaches 0 health
-        if (curHealth <= 0)
+        else
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }

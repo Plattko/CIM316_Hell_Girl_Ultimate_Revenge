@@ -26,6 +26,8 @@ public class DamnedSoul : MonoBehaviour, IDamageable
     private float curHealth;
     private bool isDead;
 
+    //private bool isBouncing;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -46,6 +48,11 @@ public class DamnedSoul : MonoBehaviour, IDamageable
             {
                 Vector3 direction = (player.position - transform.position).normalized;
                 rb.velocity = direction * speed;
+                
+                //if (!isBouncing)
+                //{
+                //    rb.velocity = direction * speed;
+                //}
             }
             else
             {
@@ -75,9 +82,11 @@ public class DamnedSoul : MonoBehaviour, IDamageable
 
     IEnumerator BounceBack()
     {
+        //isBouncing = true;
         rb.velocity = bounceDirection * bounceBackDistance;
         yield return new WaitForSeconds(2f); // Short delay
         rb.velocity = Vector3.zero; // Stop movement after bounce
+        //isBouncing = false;
     }
 
     public void TakeDamage(float amount)

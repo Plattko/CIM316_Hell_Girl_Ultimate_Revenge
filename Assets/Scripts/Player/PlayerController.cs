@@ -33,6 +33,13 @@ public class PlayerController : MonoBehaviour
     [Header("Interaction")]
     [SerializeField] private Interactor interactor;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] dashWooshSFX;
+    [SerializeField] private AudioClip[] dashGruntSFX;
+    private float dashGruntChance = 0.33f;
+    private int maxDashWithoutGrunt = 2;
+    private int dashWithoutGruntCounter = 0;
+
     // TEMPORARY
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
     [SerializeField] private GameObject tempHitbox;
@@ -112,6 +119,18 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         // Tell the animation controller the player is dashing
         animationController.SetIsDashing(true);
+        // Play the dash woosh SFX
+        SFXManager.Instance.PlayRandomAudioClip(dashWooshSFX, transform, 1.1f, 1f, true);
+        // Have a chance of playing the dash grunt SFX and guarantee it plays after a certain number of dashes without it playing
+        if (Random.value < dashGruntChance || dashWithoutGruntCounter >= maxDashWithoutGrunt)
+        {
+            SFXManager.Instance.PlayRandomAudioClip(dashGruntSFX, transform, 0.5f, 1f, true, 0.05f);
+            dashWithoutGruntCounter = 0;
+        }
+        else
+        {
+            dashWithoutGruntCounter++;
+        }
         // Set the player's velocity to speed required to travel the dash's distance over its duration in the direction of the move input
         rb.velocity = moveInput * (dashDistance / dashDuration);
         // Wait for the dash duration and set dashing to false
@@ -233,6 +252,14 @@ public class PlayerController : MonoBehaviour
         if (context.performed)
         {
             interactor.Interact();
+        }
+    }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            GameManager.Instance.TogglePause();
         }
     }
 }
