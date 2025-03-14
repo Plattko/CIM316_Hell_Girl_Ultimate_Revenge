@@ -1186,7 +1186,6 @@ MonoBehaviour:
   - {fileID: 2870692690390673905}
   - {fileID: 1105797018608695804}
   - {fileID: 4156139092167079421}
-  isRoomCleared: 0
   enemyPrefab: {fileID: 1666680193277912074, guid: 1652744893da42b48a0b92034d736342, type: 3}
   enemySpawnIndicatorPrefab: {fileID: 7561993631305040600, guid: 05306c11060c25c47960c05bd14a70ca, type: 3}
   enemySpawnLayouts:
@@ -1737,7 +1736,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.030000001
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: 71078c3635fc54145ab922b262e9be3f, type: 2}
   m_BuildHeightMesh: 0

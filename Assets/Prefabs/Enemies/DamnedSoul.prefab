@@ -155,12 +155,12 @@ NavMeshAgent:
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
+  m_AutoTraverseOffMeshLink: 0
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1.9230769
   m_BaseOffset: 0.96153843
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &1325622905169607201
 MonoBehaviour:
@@ -176,7 +176,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   damageAmount: 1
-  bounceBackDistance: 10
+  bounceBackDistance: 3
+  detectionRange: 5
   maxHealth: 1
 --- !u!114 &7500823765308540994
 MonoBehaviour:
@@ -191,6 +192,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 6612110380082510357, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
+  agent: {fileID: 5379582854701556426}
 --- !u!1001 &8323276119811521112
 PrefabInstance:
   m_ObjectHideFlags: 0
