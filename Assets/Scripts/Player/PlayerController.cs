@@ -29,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [Header("Combat")]
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private SpellManager spellManager;
+    private Weapon weapon;
 
     [Header("Interaction")]
     [SerializeField] private Interactor interactor;
@@ -40,9 +41,11 @@ public class PlayerController : MonoBehaviour
     private int maxDashWithoutGrunt = 2;
     private int dashWithoutGruntCounter = 0;
 
-    // TEMPORARY
-    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
-    [SerializeField] private GameObject tempHitbox;
+    private void Awake()
+    {
+        weapon = transform.Find("Weapon").GetComponent<Weapon>();
+        weapon.SetPlayerController(this);
+    }
 
     private void OnEnable()
     {

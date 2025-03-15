@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 097786a724966614c882155915df0d9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponSpriteRenderer: {fileID: 1579282617127478913}
+  tempHitbox: {fileID: 5022808737538422823}
+  playerAim: {fileID: 0}
 --- !u!1 &527131433266656689
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Weapon
       objectReference: {fileID: 0}
+    - target: {fileID: 4103438161904156559, guid: 75f77850abb20bd44b5a7c567d346133, type: 3}
+      propertyPath: <Data>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 279b6d6e97a47b24b9e8173c57beb8e0, type: 2}
     - target: {fileID: 5053455248636630879, guid: 75f77850abb20bd44b5a7c567d346133, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
