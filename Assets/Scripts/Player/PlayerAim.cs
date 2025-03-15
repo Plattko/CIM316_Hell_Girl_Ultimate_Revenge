@@ -13,7 +13,7 @@ public class PlayerAim : MonoBehaviour
         Aim();
     }
 
-    private (bool success, Vector3 position) GetMouseWorldPosition()
+    public (bool success, Vector3 position) GetMouseWorldPosition()
     {
         // Create a ray from the mouse's position
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
