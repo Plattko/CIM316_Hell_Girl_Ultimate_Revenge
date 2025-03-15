@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3772429839364043407}
   m_Layer: 14
   m_Name: HealthPickup
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 4008815919728764366}
   m_Layer: 13
   m_Name: EnvironmentCollider
-  m_TagString: Untagged
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

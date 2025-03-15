@@ -24,19 +24,19 @@ public class SpellManager : MonoBehaviour
         curMana = maxMana;
     }
 
-    private void Update()
-    {
-        // Debug use mana hotkey
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            UseMana(1);
-        }
-        // Debug gain mana hotkey
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            GainMana(1);
-        }
-    }
+    //private void Update()
+    //{
+    //    // Debug use mana hotkey
+    //    if (Input.GetKeyDown(KeyCode.N))
+    //    {
+    //        UseMana(1);
+    //    }
+    //    // Debug gain mana hotkey
+    //    if (Input.GetKeyDown(KeyCode.M))
+    //    {
+    //        GainMana(1);
+    //    }
+    //}
 
     //-------------------------------------------------------------
     // CASTING

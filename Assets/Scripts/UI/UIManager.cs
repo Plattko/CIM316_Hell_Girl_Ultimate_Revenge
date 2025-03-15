@@ -51,11 +51,13 @@ public class UIManager : MonoBehaviour
 
     public void OpenPauseMenu()
     {
+        hud.gameObject.SetActive(false);
         pauseMenu.SetActive(true);
     }
 
     public void ClosePauseMenu()
     {
         pauseMenu.SetActive(false);
+        hud.gameObject.SetActive(true);
     }
 }

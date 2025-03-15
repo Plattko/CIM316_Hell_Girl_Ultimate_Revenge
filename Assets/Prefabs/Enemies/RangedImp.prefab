@@ -211,6 +211,7 @@ MonoBehaviour:
   firePoint: {fileID: 7138750966128551324}
   attackRange: 5
   fireRate: 3
+  initialFireDelay: 1
 --- !u!1001 &6254533140230530674
 PrefabInstance:
   m_ObjectHideFlags: 0

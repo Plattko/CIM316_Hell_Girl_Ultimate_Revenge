@@ -45,8 +45,8 @@ public class ImpProjectile : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-        // Destroy the projectile if it collides with something other than an enemy
-        else if (!collision.CompareTag("Enemy"))
+        // Destroy the projectile if it collides with something other than an enemy or pickup
+        else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Pickup"))
         {
             Destroy(gameObject);
         }

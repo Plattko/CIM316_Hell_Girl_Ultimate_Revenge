@@ -43,8 +43,8 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        weapon = transform.Find("Weapon").GetComponent<Weapon>();
-        weapon.SetPlayerController(this);
+        weapon = GetComponentInChildren<Weapon>();
+        //weapon.SetPlayerController(this);
     }
 
     private void OnEnable()

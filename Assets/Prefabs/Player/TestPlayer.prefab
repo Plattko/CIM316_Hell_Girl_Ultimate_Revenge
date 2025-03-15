@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSpriteRenderer: {fileID: 1579282617127478913}
   tempHitbox: {fileID: 5022808737538422823}
-  playerAim: {fileID: 0}
+  playerAim: {fileID: 5919162810834104384}
 --- !u!1 &527131433266656689
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aimPivot: {fileID: 5919162810834104384}
-  curSpell: {fileID: 11400000, guid: 5475b0a03f5b8bc4eaa285c8e26d8b0b, type: 2}
+  curSpell: {fileID: 0}
   spellItemPrefab: {fileID: 6411330787752470317, guid: 0a2f948b8549a2542a7af667f05ba736, type: 3}
 --- !u!1 &5022808737538422823
 GameObject:

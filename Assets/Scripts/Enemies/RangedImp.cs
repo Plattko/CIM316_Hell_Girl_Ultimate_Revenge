@@ -24,6 +24,7 @@ public class RangedImp : MonoBehaviour, IDamageable
     public Transform firePoint;
     public float attackRange = 5f;
     public float fireRate = 1f;
+    public float initialFireDelay = 1f;
     private float nextFireTime;
 
     void Start()
@@ -34,6 +35,8 @@ public class RangedImp : MonoBehaviour, IDamageable
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
         // Set the enemy's health to its max health
         curHealth = maxHealth;
+        // Set the enemy's nextFireTime to the initial fire delay so it doesn't shoot immediately upon spawning
+        nextFireTime = Time.time + initialFireDelay;
     }
 
     void Update()

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
@@ -22,19 +21,19 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         UIManager.Instance.UpdateHealth(curHealth);
     }
 
-    private void Update()
-    {
-        // Debug key to deal 1 damage to the player
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            TakeDamage(1);
-        }
-        // Debug key to restore 1 health for the player
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            Heal(1);
-        }
-    }
+    //private void Update()
+    //{
+    //    // Debug key to deal 1 damage to the player
+    //    if (Input.GetKeyDown(KeyCode.G))
+    //    {
+    //        TakeDamage(1);
+    //    }
+    //    // Debug key to restore 1 health for the player
+    //    if (Input.GetKeyDown(KeyCode.H))
+    //    {
+    //        Heal(1);
+    //    }
+    //}
 
     public void TakeDamage(float amount)
     {
@@ -50,7 +49,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         // Restart the scene if the player reaches 0 health
         else
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameManager.Instance.ReloadScene();
         }
         // Update the health UI
         UIManager.Instance.UpdateHealth(curHealth);
