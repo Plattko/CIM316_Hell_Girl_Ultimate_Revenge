@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.SceneManagement;
+using System.Collections;
+using System;
 
 namespace DialogueEditor
 {
@@ -29,8 +32,6 @@ namespace DialogueEditor
         public static ConversationStartEvent OnConversationStarted;
         public static ConversationEndEvent OnConversationEnded;
 
-        // User-Facing options
-        // Drawn by custom inspector
         public bool ScrollText;
         public float ScrollSpeed = 1;
         public Sprite BackgroundImage;
@@ -39,67 +40,60 @@ namespace DialogueEditor
         public bool OptionImageSliced;
         public bool AllowMouseInteraction;
 
-        // Non-User facing 
-        // Not exposed via custom inspector
-        // 
-        // Base panels
         public RectTransform DialoguePanel;
         public RectTransform OptionsPanel;
-        // Dialogue UI
         public Image DialogueBackground;
         public Image NpcIcon;
-        public TMPro.TextMeshProUGUI NameText;
-        public TMPro.TextMeshProUGUI DialogueText;
-        // Components
+        public TextMeshProUGUI NameText;
+        public TextMeshProUGUI DialogueText;
         public AudioSource AudioPlayer;
-        // Prefabs
         public UIConversationButton ButtonPrefab;
-        // Default values
         public Sprite BlankSprite;
 
-        // Getter properties
-        public bool IsConversationActive
-        {
-            get
-            {
-                return m_state != eState.NONE && m_state != eState.Off;
-            }
-        }
+        public bool IsConversationActive => m_state != eState.NONE && m_state != eState.Off;
 
-        // Private
         private float m_elapsedScrollTime;
         private int m_scrollIndex;
         public int m_targetScrollTextCount;
         private eState m_state;
         private float m_stateTime;
-        
+
         private Conversation m_conversation;
         private SpeechNode m_currentSpeech;
         private OptionNode m_selectedOption;
-
-        // Selection options
         private List<UIConversationButton> m_uiOptions;
         private int m_currentSelectedIndex;
 
+        private NPCConversation npcConversation;
+        private PlayerController playerController;
+        private bool m_dialogueFinishedScrolling = false;
+        private bool m_conversationEnding = false;
+        private bool m_showingOption = false;
+        private float BUTTON_COOLDOWN = 2f; // 2-second cooldown for button presses
+        private bool isConversationActive = false;
+        private bool endingConversation = false;
 
-        //--------------------------------------
-        // Awake, Start, Destroy, Update
-        //--------------------------------------
+        private bool canProcessClick = true;
+        private Coroutine fadeCoroutine;
+
+        public event Action OnDialogueEnd;
 
         private void Awake()
         {
-            // Destroy myself if I am not the singleton
             if (Instance != null && Instance != this)
             {
-                GameObject.Destroy(this.gameObject);
+                Destroy(this.gameObject);
             }
             Instance = this;
 
             m_uiOptions = new List<UIConversationButton>();
-
             NpcIcon.sprite = BlankSprite;
             DialogueText.text = "";
             TurnOffUI();
+
+            npcConversation = FindObjectOfType<NPCConversation>();
+            playerController = FindObjectOfType<PlayerController>();
+            BUTTON_COOLDOWN = 0;
         }
 
         private void OnDestroy()
@@ -109,6 +103,54 @@ namespace DialogueEditor
 
         private void Update()
         {
+            Debug.Log($"m_dialogueFinishedScrolling set to: {m_dialogueFinishedScrolling}");
+            // Handle NPC image visibility based on scrolling state
+            BUTTON_COOLDOWN = Mathf.Max(0, BUTTON_COOLDOWN - Time.deltaTime);
+
+            // Handle left mouse button click and state transitions
+            if (Input.GetMouseButtonDown(0) && m_dialogueFinishedScrolling && !m_showingOption && isConversationActive && canProcessClick)
+            {
+                // Start cooldown period
+                canProcessClick = false;
+
+                switch (m_state)
+                {
+                    case eState.TransitioningDialogueBoxOn:
+                    case eState.ScrollingText:
+                    case eState.TransitioningOptionsOn:
+                    case eState.Idle:
+                        SpeechNode nextSpeech = GetValidSpeechOfNode(m_currentSpeech);
+                        if (nextSpeech != null)
+                        {
+                            if (playerController != null)
+                            {
+                                playerController.DisableMovement();
+                            }
+                            DisableCursor();
+                            SetupSpeech(nextSpeech);
+
+                            if (playerController != null)
+                            {
+                                playerController.DisableMovement();
+                            }
+                        }
+                        else
+                        {
+                            EndConversation();
+                            endingConversation = false;
+                        }
+                        break;
+
+                    case eState.TransitioningOptionsOff:
+                    case eState.TransitioningDialogueOff:
+                        break;
+
+                    default:
+                        break;
+                }
+            }
+
+            // Call existing logic based on the state if not left-clicked
             switch (m_state)
             {
                 case eState.TransitioningDialogueBoxOn:
@@ -134,9 +176,55 @@ namespace DialogueEditor
                 case eState.TransitioningDialogueOff:
                     TransitioningDialogueBoxOff_Update();
                     break;
+
+                default:
+                    break;
             }
         }
 
+        public void DisableAllColliders()
+        {
+            Collider[] allColliders = FindObjectsOfType<Collider>();
+            foreach (Collider collider in allColliders)
+            {
+                collider.enabled = false;
+                Debug.Log("disable colliders");
+            }
+        }
+
+        public void EnableAllColliders()
+        {
+            Collider[] allColliders = FindObjectsOfType<Collider>();
+            foreach (Collider collider in allColliders)
+            {
+                collider.enabled = true;
+                Debug.Log("enable colliders");
+            }
+        }
+
+        private bool IsDreamScene()
+        {
+            string sceneName = SceneManager.GetActiveScene().name;
+            return sceneName.Contains("Dream");
+        }
+
+        private void ResetClickProcessing()
+        {
+            canProcessClick = true;
+        }
+
+
+        void DisableCursor()
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
+        void EnableCursor()
+        {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+        }
 
 
         //--------------------------------------
@@ -145,6 +233,23 @@ namespace DialogueEditor
 
         public void StartConversation(NPCConversation conversation)
         {
+            Debug.Log("Starting conversation");
+
+            playerController = FindObjectOfType<PlayerController>();
+            DisableCursor();
+            if (playerController != null)
+            {
+                playerController.DisableMovement();
+            }
+
+
+            if (IsDreamScene())
+            {
+                DisableAllColliders();
+            }
+
+            isConversationActive = true;
+
             m_conversation = conversation.Deserialize();
             if (OnConversationStarted != null)
                 OnConversationStarted.Invoke();
@@ -160,6 +265,23 @@ namespace DialogueEditor
 
             if (OnConversationEnded != null)
                 OnConversationEnded.Invoke();
+            m_conversationEnding = false;
+            isConversationActive = false;
+            Debug.Log("Ending conversation");
+
+            if (IsDreamScene())
+            {
+                EnableAllColliders();
+            }
+
+
+            endingConversation = true;
+
+            EnableCursor();
+            if (playerController != null)
+            {
+                playerController.EnableMovement();
+            }
         }
 
         public void SelectNextOption()
@@ -184,6 +306,7 @@ namespace DialogueEditor
 
         public void PressSelectedOption()
         {
+            // If the cooldown has expired, proceed with the action
             if (m_state != eState.Idle) { return; }
             if (m_currentSelectedIndex < 0) { return; }
             if (m_currentSelectedIndex >= m_uiOptions.Count) { return; }
@@ -191,6 +314,7 @@ namespace DialogueEditor
 
             UIConversationButton button = m_uiOptions[m_currentSelectedIndex];
             button.OnButtonPressed();
+            DisableCursor();
         }
 
         public void AlertHover(UIConversationButton button)
@@ -218,7 +342,7 @@ namespace DialogueEditor
                 LogWarning("parameter \'" + paramName + "\' does not exist.");
             }
         }
-        
+
         public void SetBool(string paramName, bool value)
         {
             eParamStatus status;
@@ -338,6 +462,7 @@ namespace DialogueEditor
             SetColorAlpha(NameText, t);
         }
 
+        // Modify the ScrollingText_Update method to set the flag when the dialogue finishes scrolling
         private void ScrollingText_Update()
         {
             const float charactersPerSecond = 1500;
@@ -353,13 +478,73 @@ namespace DialogueEditor
                 DialogueText.maxVisibleCharacters = m_scrollIndex;
                 m_scrollIndex++;
 
-                // Finished?
+                // Finished scrolling?
                 if (m_scrollIndex >= m_targetScrollTextCount)
                 {
+                    ResetClickProcessing();
+                    // Set the flag to indicate that the dialogue has finished scrolling
+                    m_dialogueFinishedScrolling = true;
+
+                    // Activate the GameObject with the tag "NPCImage"
+                    /*GameObject npcImage = GameObject.FindWithTag("NPCImage");
+                    if (npcImage != null)
+                    {
+                        npcImage.SetActive(true);
+
+                        // Start the fade in/out coroutine
+                        if (fadeCoroutine != null)
+                        {
+                            StopCoroutine(fadeCoroutine);
+                        }
+                        fadeCoroutine = StartCoroutine(FadeInOut(npcImage.GetComponent<CanvasGroup>()));
+                    }*/
+
+                    // Find the parent GameObject with the tag "NPCImage"
+
+
+                    // Automatically transition to options once scrolling is finished
                     SetState(eState.TransitioningOptionsOn);
                 }
             }
         }
+
+        private IEnumerator FadeInOut(CanvasGroup canvasGroup)
+        {
+            float duration = 1.5f; // Time to fade in or out
+            float alpha = 0;
+            bool fadingIn = true;
+
+            while (m_dialogueFinishedScrolling && !m_showingOption)
+            {
+                while (fadingIn)
+                {
+                    alpha += Time.deltaTime / duration;
+                    canvasGroup.alpha = Mathf.Clamp01(alpha);
+
+                    if (alpha >= 1)
+                    {
+                        fadingIn = false;
+                    }
+                    yield return null;
+                }
+
+                while (!fadingIn)
+                {
+                    alpha -= Time.deltaTime / duration;
+                    canvasGroup.alpha = Mathf.Clamp01(alpha);
+
+                    if (alpha <= 0)
+                    {
+                        fadingIn = true;
+                    }
+                    yield return null;
+                }
+            }
+
+            // Reset alpha when the coroutine stops
+            canvasGroup.alpha = 0;
+        }
+
 
         private void TransitionOptionsOn_Update()
         {
@@ -450,13 +635,16 @@ namespace DialogueEditor
 
 
 
-
         //--------------------------------------
         // Do Speech
         //--------------------------------------
 
         private void SetupSpeech(SpeechNode speech)
         {
+            // Debug.Log("set up speech");
+            // Reset the flag at the beginning of the method
+            m_dialogueFinishedScrolling = false;
+
             if (speech == null)
             {
                 EndConversation();
@@ -540,6 +728,13 @@ namespace DialogueEditor
                 AudioPlayer.Play();
             }
 
+            // Set the dialogue active flag and disable the component if the next node is a speech node
+            if (GetValidSpeechOfNode(speech) != null)
+            {
+                npcConversation.isDialogueActive = true;
+
+            }
+
             if (ScrollText)
             {
                 SetState(eState.ScrollingText);
@@ -547,8 +742,10 @@ namespace DialogueEditor
             else
             {
                 SetState(eState.TransitioningOptionsOn);
-            }            
+            }
         }
+
+
 
 
 
@@ -564,11 +761,27 @@ namespace DialogueEditor
 
         public void OptionSelected(OptionNode option)
         {
-            m_selectedOption = option;
-            DoParamAction(option);
-            if (option.Event != null)
-                option.Event.Invoke();
-            SetState(eState.TransitioningOptionsOff);
+            if (BUTTON_COOLDOWN <= 0)
+            {
+                Debug.Log("selected options");
+                m_dialogueFinishedScrolling = false;
+                m_showingOption = false;
+                BUTTON_COOLDOWN = 2;
+                // Update the last button press time
+                // BUTTON_COOLDOWN -= Time.time;
+                m_selectedOption = option;
+                DoParamAction(option);
+                if (option.Event != null)
+                    option.Event.Invoke();
+                SetState(eState.TransitioningOptionsOff);
+                DisableCursor();
+            }
+
+            else
+            {
+                // If the cooldown has not expired, ignore the button press
+                Debug.Log("Button press cooldown in effect. Please wait.");
+            }
         }
 
         public void EndButtonSelected()
@@ -657,6 +870,9 @@ namespace DialogueEditor
             // Display new options
             if (m_currentSpeech.ConnectionType == Connection.eConnectionType.Option)
             {
+                Debug.Log("create options");
+                EnableCursor();
+                m_showingOption = true;
                 for (int i = 0; i < m_currentSpeech.Connections.Count; i++)
                 {
                     OptionConnection connection = m_currentSpeech.Connections[i] as OptionConnection;
@@ -667,8 +883,10 @@ namespace DialogueEditor
                     }
                 }
             }
+
+
             // Display Continue/End options
-            else
+            /* else
             {
                 bool notAutoAdvance = !m_currentSpeech.AutomaticallyAdvance;
                 bool allowVisibleOptionWithAuto = (m_currentSpeech.AutomaticallyAdvance && m_currentSpeech.AutoAdvanceShouldDisplayOption);
@@ -700,6 +918,7 @@ namespace DialogueEditor
                 }
 
             }
+            */
             SetSelectedOption(0);
 
             // Set the button sprite and alpha
@@ -754,6 +973,7 @@ namespace DialogueEditor
         {
             UIConversationButton button = GameObject.Instantiate(ButtonPrefab, OptionsPanel);
             m_uiOptions.Add(button);
+            EnableCursor();
             return button;
         }
 
