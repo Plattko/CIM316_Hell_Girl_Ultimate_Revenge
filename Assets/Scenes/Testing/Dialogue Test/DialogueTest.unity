@@ -209,40 +209,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentIDCounter: 25
-  json: "{\"Options\":[],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":400,\"yPos\":-2747},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Where...
-    am I...?\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":403,\"yPos\":-2634},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"You're
-    in Hell, my dear!\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":403,\"yPos\":-2499},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Gah
-    !! Who are you?!\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":399,\"yPos\":-2374},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I'm
+  json: "{\"Options\":[],\"Parameters\":[],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":1}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":340,\"yPos\":-2731},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Where...
+    am I...?\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":343,\"yPos\":-2618},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"You're
+    in Hell, my dear!\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"???\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":343,\"yPos\":-2483},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Gah
+    !! Who are you?!\",\"parentUIDs\":[1],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":339,\"yPos\":-2358},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I'm
     The Devil's Advocate, welcome to Hell, Helena.\",\"parentUIDs\":[2],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":402,\"yPos\":-2247},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I'm
-    in...\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":404,\"yPos\":-2122},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"..
-    WHAT??!\",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":404,\"yPos\":-1992},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hell!
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":5}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":342,\"yPos\":-2231},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I'm
+    in...\",\"parentUIDs\":[3],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":344,\"yPos\":-2106},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"..
+    WHAT??!\",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":344,\"yPos\":-1976},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hell!
     It's quite marvellous, no?\",\"parentUIDs\":[5],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":403,\"yPos\":-1867},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Marve-wha-NO!\",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":406,\"yPos\":-1737},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
-    need to leave, I have to get back to the surface.\",\"parentUIDs\":[7],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":401,\"yPos\":-1610},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Why
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":343,\"yPos\":-1851},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Marve-wha-NO!\",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":346,\"yPos\":-1721},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+    need to leave, I have to get back to the surface.\",\"parentUIDs\":[7],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":341,\"yPos\":-1594},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Why
     would you ever want to leave?\",\"parentUIDs\":[8],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":396,\"yPos\":-1490},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"You\u2019ve
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":336,\"yPos\":-1474},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"You\u2019ve
     made quite the name for yourself, you know. So many souls have eagerly awaited
     your demise.\",\"parentUIDs\":[9],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":12}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":394,\"yPos\":-1363},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"But...
-    Judith... I have to get back to Judith.\",\"parentUIDs\":[10],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":394,\"yPos\":-1242},\"ID\":12,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I\u2019m
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":12}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":334,\"yPos\":-1347},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"But...
+    Judith... I have to get back to Judith.\",\"parentUIDs\":[10],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":13}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":334,\"yPos\":-1226},\"ID\":12,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I\u2019m
     afraid I cannot allow that to happen, dear. Your corrupt soul now belongs to
     Hell, there\u2019s no escaping such a fate.\",\"parentUIDs\":[11],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":14}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":396,\"yPos\":-1114},\"ID\":13,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"No\u2026
-    I can\u2019t-I won\u2019t allow it!\",\"parentUIDs\":[12],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":15}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":400,\"yPos\":-987},\"ID\":14,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Judith...\",\"parentUIDs\":[13],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":16}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":401,\"yPos\":-859},\"ID\":15,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"JUDITH
-    CAN'T GET AWAY WITH THIS!\",\"parentUIDs\":[14],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":17}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":391,\"yPos\":-731},\"ID\":16,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I\u2019M
-    GONNA GET HER AND TAKE HER DOWN WITH ME.\",\"parentUIDs\":[15],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":18}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":397,\"yPos\":-599},\"ID\":17,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[16],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":19}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":397,\"yPos\":-464},\"ID\":18,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Oh
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":14}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":336,\"yPos\":-1098},\"ID\":13,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"No\u2026
+    I can\u2019t-I won\u2019t allow it!\",\"parentUIDs\":[12],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":15}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":340,\"yPos\":-971},\"ID\":14,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Judith...\",\"parentUIDs\":[13],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":16}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":341,\"yPos\":-843},\"ID\":15,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"JUDITH
+    CAN'T GET AWAY WITH THIS!\",\"parentUIDs\":[14],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":17}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":331,\"yPos\":-715},\"ID\":16,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I\u2019M
+    GONNA GET HER AND TAKE HER DOWN WITH ME.\",\"parentUIDs\":[15],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":18}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":337,\"yPos\":-583},\"ID\":17,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"!\",\"parentUIDs\":[16],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":19}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":337,\"yPos\":-448},\"ID\":18,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Oh
     my, how devilish!\",\"parentUIDs\":[17],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":399,\"yPos\":-328},\"ID\":19,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hm\u2026
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":20}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":339,\"yPos\":-312},\"ID\":19,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hm\u2026
     I suppose there may be one way\u2026\",\"parentUIDs\":[18],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":21}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":401,\"yPos\":-197},\"ID\":20,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"There
-    is? Tell me, please!\",\"parentUIDs\":[19],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":22}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":398,\"yPos\":-54},\"ID\":21,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Well\u2026
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":21}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":341,\"yPos\":-181},\"ID\":20,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"There
+    is? Tell me, please!\",\"parentUIDs\":[19],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":22}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":338,\"yPos\":-38},\"ID\":21,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Well\u2026
     to get there, you will need a weapon.\",\"parentUIDs\":[20],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":23}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":397,\"yPos\":80},\"ID\":22,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I'm
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":23}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":337,\"yPos\":96},\"ID\":22,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I'm
     sure you're familiar with such a tool.\",\"parentUIDs\":[21],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
-    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":24}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":398,\"yPos\":213},\"ID\":23,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Heh..
-    Quite.\",\"parentUIDs\":[22],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":401,\"yPos\":358},\"ID\":24,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let\u2019s
+    Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":24}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":338,\"yPos\":229},\"ID\":23,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Heh..
+    Quite.\",\"parentUIDs\":[22],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Helena\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":341,\"yPos\":374},\"ID\":24,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let\u2019s
     practice, shall we?\",\"parentUIDs\":[23],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"The
     Devil's Advocate\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
@@ -277,9 +277,11 @@ MonoBehaviour:
   - {fileID: 1234043124}
   ContinueFont: {fileID: 0}
   EndConversationFont: {fileID: 0}
+  TextColor: {r: 1, g: 1, b: 1, a: 1}
   Event:
     m_PersistentCalls:
       m_Calls: []
+  isDialogueActive: 0
 --- !u!4 &433737460
 Transform:
   m_ObjectHideFlags: 0
@@ -551,7 +553,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 23
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -29053758, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043127
 MonoBehaviour:
@@ -608,7 +610,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 20
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -604589721, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043130
 MonoBehaviour:
@@ -684,7 +686,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 16
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -206497781, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043134
 MonoBehaviour:
@@ -703,7 +705,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 15
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -206497781, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043135
 MonoBehaviour:
@@ -722,7 +724,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 14
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -1763977804, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043136
 MonoBehaviour:
@@ -741,7 +743,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 13
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -604589721, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043137
 MonoBehaviour:
@@ -779,7 +781,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 11
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -1763977804, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043139
 MonoBehaviour:
@@ -836,7 +838,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 8
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -1763977804, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043142
 MonoBehaviour:
@@ -855,7 +857,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 7
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -604589721, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043143
 MonoBehaviour:
@@ -893,7 +895,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 5
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -604589721, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043145
 MonoBehaviour:
@@ -912,7 +914,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 4
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -1763977804, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043146
 MonoBehaviour:
@@ -950,7 +952,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 2
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -604589721, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1234043148
 MonoBehaviour:
@@ -988,7 +990,7 @@ MonoBehaviour:
       m_Calls: []
   NodeID: 0
   TMPFont: {fileID: 11400000, guid: 6df11b09f49cce34485f3a008df69f62, type: 2}
-  Icon: {fileID: 0}
+  Icon: {fileID: -1763977804, guid: 2ca6d92e9f1d8114ca91df16a404d24e, type: 3}
   Audio: {fileID: 0}
 --- !u!1001 &1403411451
 PrefabInstance:
