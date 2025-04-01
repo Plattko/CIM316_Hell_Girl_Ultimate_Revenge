@@ -71,11 +71,10 @@ public class FallenAngel : MonoBehaviour, IDamageable
             if (player != null)
             {
                 GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
-                Rigidbody2D rb = projectile.GetComponent<Rigidbody2D>();
-                if (rb != null)
+                ImpProjectile projScript = projectile.GetComponent<ImpProjectile>();
+                if (projScript != null)
                 {
-                    Vector2 direction = (player.position - firePoint.position).normalized;
-                    rb.velocity = direction * projectileSpeed;
+                    projScript.SetDirection(player.position - firePoint.position);
                 }
             }
             yield return new WaitForSeconds(fireRate);
