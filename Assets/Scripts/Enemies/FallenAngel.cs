@@ -28,12 +28,15 @@ public class FallenAngel : MonoBehaviour, IDamageable
 
     [Header("Minion Summon Settings")]
     public GameObject[] minions;
-    public Transform summonPoint;
+    public Transform[] summonPoints;
     private bool summonedMinions = false;
 
     private Transform player;
     private bool usingBeamAttack = false;
     private Coroutine attackRoutine;
+
+    [SerializeField] private GameObject enemySpawnIndicatorPrefab;
+
 
     void Start()
     {
@@ -90,12 +93,16 @@ public class FallenAngel : MonoBehaviour, IDamageable
     void SummonMinions()
     {
         summonedMinions = true;
-        for (int i = 0; i < 2; i++)
+
+        foreach (Transform summonPoint in summonPoints)
         {
-            int randomIndex = UnityEngine.Random.Range(0, minions.Length);
-            GameObject minion = minions[randomIndex];
-            Instantiate(minion, summonPoint.position, Quaternion.identity);
+            // Instantiate an enemy spawn indicator at the position of the spawn point
+            GameObject enemySpawnIndicator = Instantiate(enemySpawnIndicatorPrefab, summonPoint.position, Quaternion.identity);
+            // Spawn an enemy at the spawn point after the enemy spawn indicator's animation ends
+
+            StartCoroutine(SpawnEnemy(enemySpawnIndicator.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length, summonPoint.position));
         }
+
     }
 
     IEnumerator BeamAttack()
@@ -147,6 +154,15 @@ public class FallenAngel : MonoBehaviour, IDamageable
         float y = bounds.max.y; // Ensure the beam spawns on top
 
         return new Vector3(x, y, z);
+    }
+
+    private IEnumerator SpawnEnemy(float delay, Vector3 summonPoint)
+    {
+        yield return new WaitForSeconds(delay);
+
+        int randomIndex = UnityEngine.Random.Range(0, minions.Length);
+        GameObject minion = minions[randomIndex];
+        Instantiate(minion, summonPoint, Quaternion.identity);
     }
 
     public void TakeDamage(float amount)
