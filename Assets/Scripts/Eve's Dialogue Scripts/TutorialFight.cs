@@ -39,7 +39,12 @@ public class TutorialFight : MonoBehaviour
 
     public IEnumerator CheckForEnemyAfterDelay()
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
+        while (!enemyDefeated)
+        {
+            CheckForEnemy();
+            yield return new WaitForSeconds(1);
+        }
         CheckForEnemy();
 
     }
