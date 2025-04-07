@@ -3,44 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-// How the weapon and Weapon Manager communicate
+// How the Weapon and Weapon Manager communicate
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private int numberOfAttacks;
-    [SerializeField] private float attackCounterResetTime;
+    // Events
+    public event Action onEnter;
+    public event Action onExit;
 
+    // References
+    [field: SerializeField] public WeaponDataSO Data { get; private set; }
+    public PlayerController PlayerController { get; private set; }
+
+    private Animator anim;
+    private GameObject animGameObject;
+    public WeaponAnimationEventHandler AnimEventHandler { get; private set; }
+
+    // Attack counter variables
     public int CurAttackCounter
     {
         get => curAttackCounter;
-        private set => curAttackCounter = value >= numberOfAttacks ? 0 : value;
+        private set => curAttackCounter = value >= Data.NumberOfAttacks ? 0 : value;
     }
-    
-    // Events
-    public event Action onExit;
-    
-    // References
-    [SerializeField] private WeaponSO weaponData;
-    private Animator anim;
-    private GameObject animGameObject;
-    private WeaponAnimationEventHandler animEventHandler;
-
     private int curAttackCounter;
-
     private Timer attackCounterResetTimer;
+    [SerializeField] private float attackCounterResetTime;
 
     // TEMPORARY
-    private BoxCollider attackHitbox;
+    private SphereCollider attackHitbox;
     [SerializeField] private AudioClip swingSFX;
 
     private void Awake()
     {
         animGameObject = transform.Find("Animations").gameObject;
         anim = animGameObject.GetComponent<Animator>();
-        animEventHandler = animGameObject.GetComponent<WeaponAnimationEventHandler>();
+        AnimEventHandler = animGameObject.GetComponent<WeaponAnimationEventHandler>();
 
         attackCounterResetTimer = new Timer(attackCounterResetTime);
 
-        attackHitbox = transform.Find("TempHitbox").GetComponent<BoxCollider>();
+        attackHitbox = transform.Find("TempHitbox").GetComponent<SphereCollider>();
     }
 
     private void Update()
@@ -50,16 +50,21 @@ public class Weapon : MonoBehaviour
 
     private void OnEnable()
     {
-        animEventHandler.onFinished += Exit;
-        animEventHandler.onAttackHitboxUpdated += UpdateAttackHitbox;
+        AnimEventHandler.OnFinished += Exit;
+        AnimEventHandler.onAttackHitboxUpdated += UpdateAttackHitbox;
         attackCounterResetTimer.onTimerDone += ResetAttackCounter;
     }
 
     private void OnDisable()
     {
-        animEventHandler.onFinished -= Exit;
-        animEventHandler.onAttackHitboxUpdated += UpdateAttackHitbox;
+        AnimEventHandler.OnFinished -= Exit;
+        AnimEventHandler.onAttackHitboxUpdated += UpdateAttackHitbox;
         attackCounterResetTimer.onTimerDone -= ResetAttackCounter;
+    }
+
+    public void SetPlayerController(PlayerController playerController)
+    {
+        PlayerController = playerController;
     }
 
     public void Enter()
@@ -72,6 +77,7 @@ public class Weapon : MonoBehaviour
         // Play the swing SFX
         SFXManager.Instance.PlayAudioClip(swingSFX, transform, 1.1f, 1.25f, true);
         anim.SetInteger("attackCounter", CurAttackCounter);
+        onEnter?.Invoke();
     }
 
     private void Exit()

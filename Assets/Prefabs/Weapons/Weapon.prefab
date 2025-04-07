@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5053455248636630879}
   - component: {fileID: 4103438161904156559}
+  - component: {fileID: 8521768479947494573}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -45,10 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bce9e6bba9aac9340858be4e3ed9aabf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfAttacks: 5
+  <Data>k__BackingField: {fileID: 0}
   attackCounterResetTime: 1.5
-  weaponData: {fileID: 0}
   swingSFX: {fileID: 8300000, guid: f354a389b74bb6546b2bfaa98f7c0f76, type: 3}
+--- !u!114 &8521768479947494573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042430328587051784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1651a2132731b8c42ab3567de52fa757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7676524716360512244
 GameObject:
   m_ObjectHideFlags: 0

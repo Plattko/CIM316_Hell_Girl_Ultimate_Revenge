@@ -8,14 +8,9 @@ public class WeaponManager : MonoBehaviour
     // Events
     public event Action<bool> onAttackStateChanged;
 
-    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
-    [SerializeField] private GameObject tempHitbox;
     private Weapon weapon;
 
     private bool isAttacking;
-
-    // TEMPORARY
-    [SerializeField] private PlayerAim playerAim;
 
     private void Awake()
     {
@@ -28,7 +23,6 @@ public class WeaponManager : MonoBehaviour
         if (!isAttacking)
         {
             isAttacking = true;
-            SetAttackDirection();
             onAttackStateChanged?.Invoke(true);
             weapon.Enter();
         }
@@ -43,17 +37,6 @@ public class WeaponManager : MonoBehaviour
     {
         isAttacking = false;
         onAttackStateChanged?.Invoke(false);
-    }
-
-    private void SetAttackDirection()
-    {
-        var (success, position) = playerAim.GetMouseWorldPosition();
-        // Do nothing if getting the mouse's world position was unsuccessful
-        if (!success) return;
-
-        bool isAimingRight = position.x > transform.position.x;
-        weaponSpriteRenderer.flipX = !isAimingRight;
-        tempHitbox.transform.rotation = isAimingRight ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
     }
 
     //-------------------------------------------------------------

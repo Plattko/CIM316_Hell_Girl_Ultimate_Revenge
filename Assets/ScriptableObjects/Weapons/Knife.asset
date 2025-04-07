@@ -9,8 +9,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e47956725adfc174388342481f27d78a, type: 3}
+  m_Script: {fileID: 11500000, guid: 328c2c7c1ccddf04381042661d90bd1d, type: 3}
   m_Name: Knife
   m_EditorClassIdentifier: 
   name: Knife
   icon: {fileID: 21300000, guid: 940427c16dd6efc4a955cc50faa62c27, type: 3}
+  <NumberOfAttacks>k__BackingField: 5
+  <ComponentData>k__BackingField:
+  - rid: 1871630617366757376
+  references:
+    version: 2
+    RefIds:
+    - rid: 1871630617366757376
+      type: {class: MovementData, ns: , asm: Assembly-CSharp}
+      data:
+        <AttackData>k__BackingField:
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 8
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 8
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 8
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 8
+        - <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 8

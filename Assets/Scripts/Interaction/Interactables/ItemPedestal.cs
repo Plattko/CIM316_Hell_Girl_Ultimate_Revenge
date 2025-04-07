@@ -19,7 +19,7 @@ public class ItemPedestal : MonoBehaviour, IInteractable
     public void Interact(Interactor interactor)
     {
         Debug.Log("Interacted with " + name + ".");
-        if (item is WeaponSO)
+        if (item is WeaponDataSO)
         {
             // Get a reference to the interactor's weapon manager script
             WeaponManager interactorWeaponManager = interactor.GetComponentInChildren<WeaponManager>();
