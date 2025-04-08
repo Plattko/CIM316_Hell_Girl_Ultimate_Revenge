@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpellManager spellManager;
     private Weapon weapon;
 
+    private bool canAttack = true;
+
     [Header("Interaction")]
     [SerializeField] private Interactor interactor;
 
@@ -191,6 +193,19 @@ public class PlayerController : MonoBehaviour
     }
 
     //-------------------------------------------------------------
+    // ATTACKS
+    //-------------------------------------------------------------
+    public void DisableAttacks()
+    {
+        canAttack = false;
+    }
+
+    public void EnableAttacks()
+    {
+        canAttack = true;
+    }
+
+    //-------------------------------------------------------------
     // SPRITE & ANIMATIONS
     //-------------------------------------------------------------
     private void Flip()
@@ -227,6 +242,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseWeapon(InputAction.CallbackContext context)
     {
+        if (!canAttack) return;
+        
         if (context.performed)
         {
             weaponManager.StartAttacking();
@@ -240,6 +257,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseSpell(InputAction.CallbackContext context)
     {
+        if (!canAttack) return;
+
         // If the input is pressed, cast a spell through the Spell Manager script
         if (context.performed)
         {
