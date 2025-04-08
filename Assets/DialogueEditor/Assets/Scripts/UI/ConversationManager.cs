@@ -240,6 +240,7 @@ namespace DialogueEditor
             if (playerController != null)
             {
                 playerController.DisableMovement();
+                playerController.DisableAttacks();
             }
 
 
@@ -281,6 +282,7 @@ namespace DialogueEditor
             if (playerController != null)
             {
                 playerController.EnableMovement();
+                playerController.EnableAttacks();
             }
         }
 

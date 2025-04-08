@@ -5,27 +5,19 @@ using DialogueEditor;
 
 public class GameStartDialogue : MonoBehaviour
 {
-
     [SerializeField] private NPCConversation gameStartDialogue;
-    private PlayerController playerController;
 
     private void Start()
     {
         StartDialogue();
     }
+
     private void StartDialogue()
     {
         //Check if dialogue panel is active
         if (ConversationManager.Instance.DialoguePanel.gameObject.activeInHierarchy)
         {
             Debug.LogWarning("Cannot start a new conversation while the dialogue panel is active");
-        }
-
-        //Disable player movement 
-        playerController = FindAnyObjectByType<PlayerController>();
-        if(playerController != null)
-        {
-            playerController.DisableMovement();
         }
 
         //Start dialogue

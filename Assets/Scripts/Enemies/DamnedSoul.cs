@@ -118,7 +118,10 @@ public class DamnedSoul : MonoBehaviour, IDamageable
             // Signal that the enemy died
             onDied?.Invoke();
             // Drop mana
-            manaDropper.DropMana(transform.parent);
+            if (manaDropper != null)
+            {
+                manaDropper.DropMana(transform.parent);
+            }
             // Destroy the enemy game object
             Destroy(gameObject);
         }
