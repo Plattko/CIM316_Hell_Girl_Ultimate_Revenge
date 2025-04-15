@@ -15,6 +15,10 @@ public class WeaponDataSO : Item
         return ComponentData.OfType<T>().FirstOrDefault();
     }
 
-    [ContextMenu("Add Movement Data")]
-    private void AddMovementData() => ComponentData.Add(new MovementData());
+    public void AddData(ComponentData data)
+    {
+        if (ComponentData.FirstOrDefault(t => t.GetType() == data.GetType()) != null) return;
+        
+        ComponentData.Add(data);
+    }
 }

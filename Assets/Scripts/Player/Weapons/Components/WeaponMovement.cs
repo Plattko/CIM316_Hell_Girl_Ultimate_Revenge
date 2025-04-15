@@ -2,17 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponMovement : WeaponComponent
+public class WeaponMovement : WeaponComponent<MovementData, AttackMovement>
 {
-    private MovementData data;
-
-    protected override void Awake()
-    {
-        base.Awake();
-
-        data = weapon.Data.GetData<MovementData>();
-    }
-
     protected override void OnEnable()
     {
         base.OnEnable();
@@ -31,8 +22,6 @@ public class WeaponMovement : WeaponComponent
 
     private void HandleStartMovement()
     {
-        var curAttackData = data.AttackData[weapon.CurAttackCounter];
-
         Debug.Log("Start movement.");
         PlayerController.SetVelocity(curAttackData.Velocity, curAttackData.Direction);
     }

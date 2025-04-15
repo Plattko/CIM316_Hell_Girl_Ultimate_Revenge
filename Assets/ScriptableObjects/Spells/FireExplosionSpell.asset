@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireExplosionSpell
   m_EditorClassIdentifier: 
   name: Fire Explosion
-  icon: {fileID: 21300000, guid: e3bbf576fbf03dd44800f9178ca719f9, type: 3}
+  icon: {fileID: 21300000, guid: 5a9e82c7ce3949c479c11472fc6f784d, type: 3}
   manaCost: 3
   damage: 20
   castTime: 0.5

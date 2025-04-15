@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     private Vector3 moveInput;
+    private Vector3 lastMoveInput = Vector3.right;
     private bool canMove = true;
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float idleSlow = 0.9f;
@@ -135,7 +136,7 @@ public class PlayerController : MonoBehaviour
             dashWithoutGruntCounter++;
         }
         // Set the player's velocity to speed required to travel the dash's distance over its duration in the direction of the move input
-        rb.velocity = moveInput * (dashDistance / dashDuration);
+        rb.velocity = lastMoveInput * (dashDistance / dashDuration);
         // Wait for the dash duration and set dashing to false
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
@@ -243,7 +244,13 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         // Set the move input on the x and z axis
-        moveInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+        Vector3 input = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+        moveInput = input;
+        // Set the last move input to the last non-zero input
+        if (input != Vector3.zero)
+        {
+            lastMoveInput = input;
+        }
         // Set the move pressed bool in the animation controller
         bool isMovePressed = moveInput != Vector3.zero;
         animationController.SetIsMovePressed(isMovePressed);

@@ -40,3 +40,23 @@ public abstract class WeaponComponent : MonoBehaviour
         isAttackActive = false;
     }
 }
+
+public abstract class WeaponComponent<T1, T2> : WeaponComponent where T1 : ComponentData<T2> where T2 : AttackData
+{
+    protected T1 data;
+    protected T2 curAttackData;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        data = weapon.Data.GetData<T1>();
+    }
+
+    protected override void HandleEnter()
+    {
+        base.HandleEnter();
+
+        curAttackData = data.AttackData[weapon.CurAttackCounter];
+    }
+}
