@@ -5,7 +5,7 @@ using System;
 
 public class WeaponActionHitbox : WeaponComponent<ActionHitboxData, AttackActionHitbox>
 {
-    private event Action<Collider[]> OnDetectedCollider;
+    public event Action<Collider[]> OnDetectedCollider;
     
     private Vector3 offset;
 
@@ -39,11 +39,6 @@ public class WeaponActionHitbox : WeaponComponent<ActionHitboxData, AttackAction
 
         if (detected.Length == 0) return;
         OnDetectedCollider?.Invoke(detected);
-
-        foreach (Collider item in detected)
-        {
-            Debug.Log(item.name);
-        }
     }
 
     private void OnDrawGizmosSelected()

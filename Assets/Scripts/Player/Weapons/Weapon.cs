@@ -29,7 +29,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float attackCounterResetTime;
 
     // TEMPORARY
-    private SphereCollider attackHitbox;
     [SerializeField] private AudioClip swingSFX;
 
     private void Awake()
@@ -39,8 +38,6 @@ public class Weapon : MonoBehaviour
         AnimEventHandler = animGameObject.GetComponent<WeaponAnimationEventHandler>();
 
         attackCounterResetTimer = new Timer(attackCounterResetTime);
-
-        attackHitbox = transform.Find("TempHitbox").GetComponent<SphereCollider>();
     }
 
     private void Update()
@@ -51,14 +48,12 @@ public class Weapon : MonoBehaviour
     private void OnEnable()
     {
         AnimEventHandler.OnFinished += Exit;
-        AnimEventHandler.onAttackHitboxUpdated += UpdateAttackHitbox;
         attackCounterResetTimer.onTimerDone += ResetAttackCounter;
     }
 
     private void OnDisable()
     {
         AnimEventHandler.OnFinished -= Exit;
-        AnimEventHandler.onAttackHitboxUpdated += UpdateAttackHitbox;
         attackCounterResetTimer.onTimerDone -= ResetAttackCounter;
     }
 
@@ -89,9 +84,4 @@ public class Weapon : MonoBehaviour
     }
 
     private void ResetAttackCounter() => CurAttackCounter = 0;
-
-    private void UpdateAttackHitbox(bool isEnabled)
-    {
-        attackHitbox.enabled = isEnabled;
-    }
 }

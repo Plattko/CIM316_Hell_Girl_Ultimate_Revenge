@@ -18,6 +18,7 @@ MonoBehaviour:
   <ComponentData>k__BackingField:
   - rid: 1871630617366757376
   - rid: 1871630818938978305
+  - rid: 1871630842005553154
   references:
     version: 2
     RefIds:
@@ -69,3 +70,18 @@ MonoBehaviour:
         <DetectableLayers>k__BackingField:
           serializedVersion: 2
           m_Bits: 384
+    - rid: 1871630842005553154
+      type: {class: DamageData, ns: , asm: Assembly-CSharp}
+      data:
+        name: DamageData
+        attackData:
+        - name: Attack 1
+          <Damage>k__BackingField: 3
+        - name: Attack 2
+          <Damage>k__BackingField: 3
+        - name: Attack 3
+          <Damage>k__BackingField: 3
+        - name: Attack 4
+          <Damage>k__BackingField: 3
+        - name: Attack 5
+          <Damage>k__BackingField: 3

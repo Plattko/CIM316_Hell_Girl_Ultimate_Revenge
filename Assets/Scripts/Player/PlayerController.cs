@@ -48,7 +48,6 @@ public class PlayerController : MonoBehaviour
     [Header("Temporary")]
     [SerializeField] private PlayerAim playerAim;
     [SerializeField] private SpriteRenderer weaponSpriteRenderer;
-    [SerializeField] private GameObject tempHitbox;
 
     private void Awake()
     {
@@ -230,7 +229,6 @@ public class PlayerController : MonoBehaviour
                 // Flip the player's sprite, weapon sprite and temp hitbox in the direction they are facing
                 spriteRenderer.flipX = !isFacingRight;
                 weaponSpriteRenderer.flipX = !isFacingRight;
-                tempHitbox.transform.rotation = isFacingRight ? Quaternion.Euler(0, 0, 0) : Quaternion.Euler(0, 180, 0);
                 break;
 
             default:
