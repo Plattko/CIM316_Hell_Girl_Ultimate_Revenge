@@ -17,20 +17,55 @@ MonoBehaviour:
   <NumberOfAttacks>k__BackingField: 5
   <ComponentData>k__BackingField:
   - rid: 1871630617366757376
+  - rid: 1871630818938978305
   references:
     version: 2
     RefIds:
     - rid: 1871630617366757376
       type: {class: MovementData, ns: , asm: Assembly-CSharp}
       data:
-        <AttackData>k__BackingField:
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        name: MovementData
+        attackData:
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 8
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 8
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 8
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 8
-        - <Direction>k__BackingField: {x: 1, y: 0}
+        - name: 
+          <Direction>k__BackingField: {x: 1, y: 0}
           <Velocity>k__BackingField: 8
+    - rid: 1871630818938978305
+      type: {class: ActionHitboxData, ns: , asm: Assembly-CSharp}
+      data:
+        name: ActionHitboxData
+        attackData:
+        - name: Attack 1
+          Debug: 0
+          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxRadius>k__BackingField: 0.75
+        - name: Attack 2
+          Debug: 0
+          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxRadius>k__BackingField: 0.75
+        - name: Attack 3
+          Debug: 0
+          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxRadius>k__BackingField: 0.75
+        - name: Attack 4
+          Debug: 0
+          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxRadius>k__BackingField: 0.75
+        - name: Attack 5
+          Debug: 0
+          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxRadius>k__BackingField: 0.75
+        <DetectableLayers>k__BackingField:
+          serializedVersion: 2
+          m_Bits: 384
