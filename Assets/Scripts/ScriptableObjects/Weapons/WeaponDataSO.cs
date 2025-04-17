@@ -8,6 +8,8 @@ using System.Linq;
 public class WeaponDataSO : Item
 {
     [field: SerializeField] public int NumberOfAttacks { get; private set; }
+    [field: SerializeField] public RuntimeAnimatorController AnimController { get; private set; }
+    [field: SerializeField] public AudioClip swingSFX { get; private set; }
 
     [field: SerializeReference] public List<ComponentData> ComponentData { get; private set; }
 

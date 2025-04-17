@@ -21,6 +21,7 @@ public class WeaponGenerator : MonoBehaviour
     public void GenerateWeapon(WeaponDataSO data)
     {
         weapon.SetData(data);
+        weapon.Anim.runtimeAnimatorController = data.AnimController;
 
         curWeaponComponents.Clear();
         addedWeaponComponents.Clear();

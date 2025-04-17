@@ -14,8 +14,8 @@ public class Weapon : MonoBehaviour
     public WeaponDataSO Data { get; private set; }
     public PlayerController PlayerController { get; private set; }
 
-    private Animator anim;
     private GameObject animGameObject;
+    public Animator Anim { get; private set; }
     public WeaponAnimationEventHandler AnimEventHandler { get; private set; }
 
     // Attack counter variables
@@ -28,13 +28,10 @@ public class Weapon : MonoBehaviour
     private Timer attackCounterResetTimer;
     [SerializeField] private float attackCounterResetTime;
 
-    // TEMPORARY
-    [SerializeField] private AudioClip swingSFX;
-
     private void Awake()
     {
         animGameObject = transform.Find("Animations").gameObject;
-        anim = animGameObject.GetComponent<Animator>();
+        Anim = animGameObject.GetComponent<Animator>();
         AnimEventHandler = animGameObject.GetComponent<WeaponAnimationEventHandler>();
 
         attackCounterResetTimer = new Timer(attackCounterResetTime);
@@ -73,16 +70,16 @@ public class Weapon : MonoBehaviour
 
         // Pause the timer so it doesn't end during an attack
         attackCounterResetTimer.StopTimer();
-        anim.SetBool("isActive", true);
+        Anim.SetBool("isActive", true);
         // Play the swing SFX
-        SFXManager.Instance.PlayAudioClip(swingSFX, transform, 1.1f, 1.25f, true);
-        anim.SetInteger("attackCounter", CurAttackCounter);
+        SFXManager.Instance.PlayAudioClip(Data.swingSFX, transform, 1.1f, 1.25f, true);
+        Anim.SetInteger("attackCounter", CurAttackCounter);
         onEnter?.Invoke();
     }
 
     private void Exit()
     {
-        anim.SetBool("isActive", false);
+        Anim.SetBool("isActive", false);
         CurAttackCounter++;
         attackCounterResetTimer.StartTimer();
         onExit?.Invoke();

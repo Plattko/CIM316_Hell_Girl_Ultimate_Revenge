@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCounterResetTime: 1.5
-  swingSFX: {fileID: 8300000, guid: f354a389b74bb6546b2bfaa98f7c0f76, type: 3}
 --- !u!114 &1485818582402905057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +157,7 @@ Animator:
   m_GameObject: {fileID: 7676524716360512244}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: bb8bea15e348d964bbaccfddfbd4d458, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
