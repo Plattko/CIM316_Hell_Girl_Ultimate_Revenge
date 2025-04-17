@@ -11,7 +11,7 @@ public class Weapon : MonoBehaviour
     public event Action onExit;
 
     // References
-    [field: SerializeField] public WeaponDataSO Data { get; private set; }
+    public WeaponDataSO Data { get; private set; }
     public PlayerController PlayerController { get; private set; }
 
     private Animator anim;
@@ -60,6 +60,11 @@ public class Weapon : MonoBehaviour
     public void SetPlayerController(PlayerController playerController)
     {
         PlayerController = playerController;
+    }
+
+    public void SetData(WeaponDataSO data)
+    {
+        Data = data;
     }
 
     public void Enter()

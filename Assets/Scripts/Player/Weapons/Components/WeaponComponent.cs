@@ -18,17 +18,19 @@ public abstract class WeaponComponent : MonoBehaviour
         eventHandler = GetComponentInChildren<WeaponAnimationEventHandler>();
     }
 
-    protected virtual void OnEnable()
+    protected virtual void Start()
     {
         weapon.onEnter += HandleEnter;
         weapon.onExit += HandleExit;
     }
 
-    protected virtual void OnDisable()
+    protected virtual void OnDestroy()
     {
         weapon.onEnter -= HandleEnter;
         weapon.onExit -= HandleExit;
     }
+
+    public virtual void Initialise() { }
 
     protected virtual void HandleEnter()
     {
@@ -46,9 +48,9 @@ public abstract class WeaponComponent<T1, T2> : WeaponComponent where T1 : Compo
     protected T1 data;
     protected T2 curAttackData;
 
-    protected override void Awake()
+    public override void Initialise()
     {
-        base.Awake();
+        base.Initialise();
 
         data = weapon.Data.GetData<T1>();
     }

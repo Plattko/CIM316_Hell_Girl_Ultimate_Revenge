@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using System.Linq;
 
 [CreateAssetMenu(fileName = "NewWeaponData", menuName = "Data/Weapon Data/Basic Weapon Data", order = 0)]
@@ -13,6 +14,11 @@ public class WeaponDataSO : Item
     public T GetData<T>()
     {
         return ComponentData.OfType<T>().FirstOrDefault();
+    }
+
+    public List<Type> GetComponentDependencies()
+    {
+        return ComponentData.Select(component => component.ComponentDependency).ToList();
     }
 
     public void AddData(ComponentData data)

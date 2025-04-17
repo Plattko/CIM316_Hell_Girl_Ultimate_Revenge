@@ -6,23 +6,18 @@ public class WeaponDamage : WeaponComponent<DamageData, AttackDamage>
 {
     private WeaponActionHitbox hitbox;
 
-    protected override void Awake()
+    protected override void Start()
     {
-        base.Awake();
+        base.Start();
 
         hitbox = GetComponent<WeaponActionHitbox>();
-    }
-
-    protected override void OnEnable()
-    {
-        base.OnEnable();
 
         hitbox.OnDetectedCollider += HandleDetectedCollider;
     }
 
-    protected override void OnDisable()
+    protected override void OnDestroy()
     {
-        base.OnDisable();
+        base.OnDestroy();
 
         hitbox.OnDetectedCollider -= HandleDetectedCollider;
     }
