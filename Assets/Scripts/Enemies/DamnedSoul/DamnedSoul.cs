@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using System;
+using System.Runtime.CompilerServices;
 
 public class DamnedSoul : MonoBehaviour, IDamageable
 {
@@ -28,34 +29,35 @@ public class DamnedSoul : MonoBehaviour, IDamageable
     public float detectionRange = 5f;
     private bool isEngaged;
 
+    //Animation variables
+
+    private Animator animator;
+    public bool IsMoving { get; private set; }
+    public bool IsAttacking { get; private set; }
+
+
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        // Get a reference to the mana dropper script
         manaDropper = GetComponentInChildren<ManaDropper>();
-        // Get a reference to the player
         player = GameObject.FindGameObjectWithTag("Player").transform;
-        // Set the enemy's health to its max health
         curHealth = maxHealth;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
-        // Do nothing if the player is null
         if (player == null) return;
 
-        // Check if the enemy is engaged
         if (isEngaged)
         {
-            // Chase the player if the enemy isn't bouncing back
             if (!isBouncing)
             {
                 Vector3 direction = (player.position - transform.position).normalized;
                 rb.velocity = direction * speed;
             }
         }
-        // If they aren't engaged, check the distance to the player and become engaged if they are in range
         else
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -64,22 +66,24 @@ public class DamnedSoul : MonoBehaviour, IDamageable
                 isEngaged = true;
             }
         }
+
+        // Check if the Rigidbody is moving
+        IsMoving = rb.velocity.magnitude > 0.1f;
+        animator.SetBool("IsMoving", IsMoving);
     }
 
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Collsion detected.");
-            // Damage the player
+            Debug.Log("Collision detected.");
             IDamageable damageable = collision.GetComponent<IDamageable>();
+
             if (damageable != null)
             {
-                damageable.TakeDamage(damageAmount);
-                Debug.Log("Damage dealt.");
+                StartCoroutine(HandleAttack(damageable));
             }
 
-            // Bounce back if the player isn't dashing
             PlayerController playerController = collision.GetComponent<PlayerController>();
             if (!playerController.isDashing)
             {
@@ -88,38 +92,40 @@ public class DamnedSoul : MonoBehaviour, IDamageable
         }
     }
 
+    private IEnumerator HandleAttack(IDamageable damageable)
+    {
+        IsAttacking = true;
+        animator.SetBool("IsAttacking", true);
+        damageable.TakeDamage(damageAmount);
+        Debug.Log("Damage dealt.");
+
+        yield return new WaitForSeconds(2.7f);
+
+        IsAttacking = false;
+        animator.SetBool("IsAttacking", false);
+    }
+
     IEnumerator BounceBack()
     {
         isBouncing = true;
-        // Set the bounce direction to the opposite of the direction to the player
         Vector3 bounceDirection = -(player.position - transform.position).normalized;
-        // Set the enemy's velocity to the speed required to travel the bounce back distance over its duration in the bounce back direction
         rb.velocity = bounceDirection * (bounceBackDistance / bounceBackDuration);
-        // Wait for the bounce back duration
         yield return new WaitForSeconds(bounceBackDuration);
-        // Stop movement after bounce
         rb.velocity = Vector3.zero;
         isBouncing = false;
     }
 
     public void TakeDamage(float amount)
     {
-        // Do nothing if the enemy is dead
         if (isDead) { return; }
 
-        // Reduce health by the damage amount
         curHealth -= amount;
 
-        // Kill the enemy if it reaches 0 health
         if (curHealth <= 0)
         {
-            // Set the enemy to dead
             isDead = true;
-            // Signal that the enemy died
             onDied?.Invoke();
-            // Drop mana
             manaDropper.DropMana(transform.parent);
-            // Destroy the enemy game object
             Destroy(gameObject);
         }
     }
