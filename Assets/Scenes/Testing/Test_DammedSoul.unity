@@ -604,6 +604,63 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 324430201}
   m_CullTransparentMesh: 1
+--- !u!1001 &467231482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1666680193277912074, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_Name
+      value: DamnedSoul
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6.217
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5168282897991168366, guid: 1652744893da42b48a0b92034d736342, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1652744893da42b48a0b92034d736342, type: 3}
 --- !u!1 &487318190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1477,8 +1534,8 @@ MonoBehaviour:
   weaponManager: {fileID: 0}
   spellManager: {fileID: 311259552}
   interactor: {fileID: 1040152357}
-  weaponSpriteRenderer: {fileID: 0}
-  tempHitbox: {fileID: 0}
+  dashWooshSFX: []
+  dashGruntSFX: []
 --- !u!114 &1040152352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3136,63 +3193,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132338386}
   m_CullTransparentMesh: 1
---- !u!1001 &760094237428460023
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2329186214696910821, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_Name
-      value: Dammed Soul v2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -11.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.929
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7491274575095510673, guid: 1652744893da42b48a0b92034d736342, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1652744893da42b48a0b92034d736342, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3208,5 +3208,5 @@ SceneRoots:
   - {fileID: 1040152350}
   - {fileID: 1701489331}
   - {fileID: 962679216}
-  - {fileID: 760094237428460023}
   - {fileID: 790496855}
+  - {fileID: 467231482}
