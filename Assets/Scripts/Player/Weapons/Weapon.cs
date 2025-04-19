@@ -66,8 +66,6 @@ public class Weapon : MonoBehaviour
 
     public void Enter()
     {
-        Debug.Log("Entered " + transform.name);
-
         // Pause the timer so it doesn't end during an attack
         attackCounterResetTimer.StopTimer();
         Anim.SetBool("isActive", true);
