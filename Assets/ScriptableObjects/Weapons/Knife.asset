@@ -51,23 +51,23 @@ MonoBehaviour:
         attackData:
         - name: Attack 1
           Debug: 0
-          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxOffset>k__BackingField: 1
           <HitboxRadius>k__BackingField: 0.75
         - name: Attack 2
           Debug: 0
-          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxOffset>k__BackingField: 1
           <HitboxRadius>k__BackingField: 0.75
         - name: Attack 3
           Debug: 0
-          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxOffset>k__BackingField: 1
           <HitboxRadius>k__BackingField: 0.75
         - name: Attack 4
           Debug: 0
-          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxOffset>k__BackingField: 1
           <HitboxRadius>k__BackingField: 0.75
         - name: Attack 5
           Debug: 0
-          <HitboxOffset>k__BackingField: {x: 1, y: 0, z: 0}
+          <HitboxOffset>k__BackingField: 1
           <HitboxRadius>k__BackingField: 0.75
         <DetectableLayers>k__BackingField:
           serializedVersion: 2

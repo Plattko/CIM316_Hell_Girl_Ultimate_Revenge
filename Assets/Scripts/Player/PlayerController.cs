@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
     private Weapon weapon;
     private bool isAttacking;
 
+    [field: SerializeField] public Transform WeaponAimPivot { get; private set; }
+
     [Header("Interaction")]
     [SerializeField] private Interactor interactor;
 
@@ -188,10 +190,9 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-    public void SetVelocity(float velocity, Vector2 direction)
+    public void SetVelocity(float velocity, Vector3 direction)
     {
-        int facingDir = isFacingRight ? 1 : -1;
-        rb.velocity = direction * facingDir * velocity;
+        rb.velocity = direction * velocity;
     }
 
     public void SetVelocityZero()
@@ -278,7 +279,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseSpell(InputAction.CallbackContext context)
     {
-        if (context.performed && !isDashing)
+        if (context.performed && !isDashing && !isAttacking)
         {
             spellManager.CastSpell();
         }

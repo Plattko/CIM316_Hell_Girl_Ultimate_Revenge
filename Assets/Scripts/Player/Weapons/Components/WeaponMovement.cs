@@ -23,7 +23,7 @@ public class WeaponMovement : WeaponComponent<MovementData, AttackMovement>
     private void HandleStartMovement()
     {
         Debug.Log("Start movement.");
-        PlayerController.SetVelocity(curAttackData.Velocity, curAttackData.Direction);
+        PlayerController.SetVelocity(curAttackData.Velocity, PlayerController.WeaponAimPivot.forward * curAttackData.Direction.x);
     }
 
     private void HandleStopMovement()

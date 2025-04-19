@@ -28,12 +28,7 @@ public class WeaponActionHitbox : WeaponComponent<ActionHitboxData, AttackAction
     private void HandleAttackAction()
     {
         int offsetDir = PlayerController.isFacingRight ? 1 : -1;
-        offset.Set(
-            transform.position.x + (curAttackData.HitboxOffset.x * offsetDir),
-            transform.position.y + curAttackData.HitboxOffset.y,
-            transform.position.z + curAttackData.HitboxOffset.z
-            );
-
+        offset = transform.position + (PlayerController.WeaponAimPivot.forward * curAttackData.HitboxOffset);
 
         detected = Physics.OverlapSphere(offset, curAttackData.HitboxRadius, data.DetectableLayers);
 
@@ -48,7 +43,8 @@ public class WeaponActionHitbox : WeaponComponent<ActionHitboxData, AttackAction
         foreach (AttackActionHitbox item in data.AttackData)
         {
             if (!item.Debug) continue;
-            Gizmos.DrawWireSphere(transform.position + item.HitboxOffset, item.HitboxRadius);
+
+            Gizmos.DrawWireSphere(offset, item.HitboxRadius);
         }
     }
 }

@@ -6,8 +6,9 @@ public class PlayerAim : MonoBehaviour
 {
     [SerializeField] private Camera cam;
     [SerializeField] private LayerMask mouseLayer;
-    
-    [SerializeField] private Transform aimPivot;
+
+    [SerializeField] private Transform weaponAimPivot;
+    [SerializeField] private Transform spellAimPivot;
 
     private void Update()
     {
@@ -25,8 +26,26 @@ public class PlayerAim : MonoBehaviour
         Vector3 direction = position - transform.position;
         // Ignore the y axis
         direction.y = 0;
-        // Face the aim pivot towards the aim direction
-        aimPivot.forward = direction;
+        // Face the spell aim pivot towards the aim direction
+        spellAimPivot.forward = direction;
+        // Aim the weapon pivot
+        AimWeapon(spellAimPivot.eulerAngles.y);
+    }
+
+    private void AimWeapon(float rot)
+    {
+        float pivotRot = rot;
+
+        if (rot <= 180)
+        {
+            pivotRot = Mathf.Clamp(pivotRot, 60f, 120f);
+        }
+        else
+        {
+            pivotRot = Mathf.Clamp(pivotRot, 240f, 300f);
+        }
+        
+        weaponAimPivot.rotation = Quaternion.Euler(0f, pivotRot, 0f);
     }
 
     public (bool success, Vector3 position) GetMouseWorldPosition()

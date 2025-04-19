@@ -8,6 +8,6 @@ public class AttackActionHitbox : AttackData
 {
     public bool Debug;
     
-    [field: SerializeField] public Vector3 HitboxOffset { get; private set; }
+    [field: SerializeField] public float HitboxOffset { get; private set; }
     [field: SerializeField] public float HitboxRadius { get; private set; }
 }
