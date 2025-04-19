@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
 
     [field: SerializeField] public Transform WeaponAimPivot { get; private set; }
 
+    private bool canAttack = true;
+
     [Header("Interaction")]
     [SerializeField] private Interactor interactor;
 
@@ -201,6 +203,19 @@ public class PlayerController : MonoBehaviour
     }
 
     //-------------------------------------------------------------
+    // ATTACKS
+    //-------------------------------------------------------------
+    public void DisableAttacks()
+    {
+        canAttack = false;
+    }
+
+    public void EnableAttacks()
+    {
+        canAttack = true;
+    }
+
+    //-------------------------------------------------------------
     // SPRITE & ANIMATIONS
     //-------------------------------------------------------------
     private void Flip(FlipType flipType)
@@ -265,6 +280,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseWeapon(InputAction.CallbackContext context)
     {
+        if (!canAttack) return;
+        
         if (context.performed && !isDashing)
         {
             Flip(FlipType.OnAttack);
@@ -279,6 +296,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseSpell(InputAction.CallbackContext context)
     {
+        if (!canAttack) return;
+
         if (context.performed && !isDashing && !isAttacking)
         {
             spellManager.CastSpell();
