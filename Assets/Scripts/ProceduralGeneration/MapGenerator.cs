@@ -13,8 +13,8 @@ public class MapGenerator : MonoBehaviour
     // The position at the centre of the grid/the offset of the centre of the grid from (0, 0)
     private Vector2Int gridCentre;
     // The number of rooms to generate
-    private int flatRoomCount = 12;
-    private int varRoomCount = 3;
+    private int flatRoomCount = 8;
+    private int varRoomCount = 2;
     private int roomCount;
 
     // The starting and ending percentage chance a room will be replaced with a branch room

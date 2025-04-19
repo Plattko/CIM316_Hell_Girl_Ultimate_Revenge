@@ -9,8 +9,75 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f35a5c3e6405e649852c8672d98ae6d, type: 3}
+  m_Script: {fileID: 11500000, guid: 328c2c7c1ccddf04381042661d90bd1d, type: 3}
   m_Name: Chainsaw
   m_EditorClassIdentifier: 
   name: Chainsaw
   icon: {fileID: 21300000, guid: af38578c20ab00e4aba5f70cdc577af0, type: 3}
+  <NumberOfAttacks>k__BackingField: 3
+  <AnimController>k__BackingField: {fileID: 9100000, guid: 146ab628b7aaf8d4fb2d3a77f86e857b, type: 2}
+  <swingSFX>k__BackingField: {fileID: 8300000, guid: 7a2c1964c253347459ecd716cb7b422d, type: 3}
+  <ComponentData>k__BackingField:
+  - rid: 1871630866913951744
+  - rid: 1871630866913951745
+  - rid: 1871630866913951746
+  - rid: 1871630912857571329
+  references:
+    version: 2
+    RefIds:
+    - rid: 1871630866913951744
+      type: {class: MovementData, ns: , asm: Assembly-CSharp}
+      data:
+        name: MovementData
+        attackData:
+        - name: Attack 1
+          <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 12
+        - name: Attack 2
+          <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 12
+        - name: Attack 3
+          <Direction>k__BackingField: {x: 1, y: 0}
+          <Velocity>k__BackingField: 12
+    - rid: 1871630866913951745
+      type: {class: ActionHitboxData, ns: , asm: Assembly-CSharp}
+      data:
+        name: ActionHitboxData
+        attackData:
+        - name: Attack 1
+          Debug: 0
+          <HitboxOffset>k__BackingField: 1
+          <HitboxRadius>k__BackingField: 0.75
+        - name: Attack 2
+          Debug: 0
+          <HitboxOffset>k__BackingField: 1
+          <HitboxRadius>k__BackingField: 0.75
+        - name: Attack 3
+          Debug: 0
+          <HitboxOffset>k__BackingField: 1
+          <HitboxRadius>k__BackingField: 0.75
+        <DetectableLayers>k__BackingField:
+          serializedVersion: 2
+          m_Bits: 384
+    - rid: 1871630866913951746
+      type: {class: DamageData, ns: , asm: Assembly-CSharp}
+      data:
+        name: DamageData
+        attackData:
+        - name: Attack 1
+          <Damage>k__BackingField: 3
+        - name: Attack 2
+          <Damage>k__BackingField: 3
+        - name: Attack 3
+          <Damage>k__BackingField: 3
+    - rid: 1871630912857571329
+      type: {class: KnockbackData, ns: , asm: Assembly-CSharp}
+      data:
+        name: KnockbackData
+        attackData:
+        - name: Attack 1
+          <Strength>k__BackingField: 8
+        - name: Attack 2
+          <Strength>k__BackingField: 8
+        - name: Attack 3
+          <Strength>k__BackingField: 8

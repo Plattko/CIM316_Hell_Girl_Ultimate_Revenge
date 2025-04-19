@@ -9,11 +9,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     private Vector3 moveInput;
+    private Vector3 lastMoveInput = Vector3.right;
     private bool canMove = true;
     [SerializeField] private float moveSpeed = 3.0f;
     [SerializeField] private float idleSlow = 0.9f;
 
-    private bool isFacingRight = true;
+    public bool isFacingRight { get; private set; } = true;
 
     private Coroutine dashCoroutine;
     private bool canDash = true;
@@ -25,11 +26,15 @@ public class PlayerController : MonoBehaviour
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PlayerAnimationController animationController;
+    public enum FlipType { OnMove, OnAttack, }
 
     [Header("Combat")]
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private SpellManager spellManager;
     private Weapon weapon;
+    private bool isAttacking;
+
+    [field: SerializeField] public Transform WeaponAimPivot { get; private set; }
 
     private bool canAttack = true;
 
@@ -43,28 +48,27 @@ public class PlayerController : MonoBehaviour
     private int maxDashWithoutGrunt = 2;
     private int dashWithoutGruntCounter = 0;
 
+    // TEMPORARY
+    [Header("Temporary")]
+    [SerializeField] private PlayerAim playerAim;
+    [SerializeField] private SpriteRenderer weaponSpriteRenderer;
+
     private void Awake()
     {
         weapon = GetComponentInChildren<Weapon>();
-        //weapon.SetPlayerController(this);
+        weapon.SetPlayerController(this);
     }
 
     private void OnEnable()
     {
-        if (spellManager != null) { spellManager.onSpellCast += OnSpellCast; }
-        else { Debug.LogWarning("No Spell Manager detected."); }
-        
-        if (weaponManager != null) { weaponManager.onAttackStateChanged += OnAttackStateChanged; }
-        else { Debug.LogWarning("No Weapon Manager detected."); }
+        spellManager.onSpellCast += OnSpellCast;
+        weaponManager.onAttackStateChanged += OnAttackStateChanged;
     }
 
     private void OnDisable()
     {
-        if (spellManager != null) { spellManager.onSpellCast -= OnSpellCast; }
-        else { Debug.LogWarning("No Spell Manager detected."); }
-
-        if (weaponManager != null) { weaponManager.onAttackStateChanged -= OnAttackStateChanged; }
-        else { Debug.LogWarning("No Weapon Manager detected."); }
+        spellManager.onSpellCast -= OnSpellCast;
+        weaponManager.onAttackStateChanged -= OnAttackStateChanged;
     }
 
     private void Update()
@@ -75,19 +79,19 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Do nothing if the player can't move or is dashing
-        if (canMove && !isDashing)
+        if (canMove && !isDashing && !isAttacking)
         {
             // Update the player's movement
             Move();
             // Update the player's facing direction
-            Flip();
+            Flip(FlipType.OnMove);
         }
     }
 
     private void OnAttackStateChanged(bool isAttacking)
     {
         animationController.SetIsAttacking(isAttacking);
+        this.isAttacking = isAttacking;
     }
 
     private void OnSpellCast(float castTime, bool lockoutDuringCast)
@@ -116,11 +120,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator Dash() // TODO: Make player unable to be damaged when dashing
+    private IEnumerator Dash()
     {
-        // Disable the ability to dash
         canDash = false;
-        // Set dashing to true
         isDashing = true;
         // Tell the animation controller the player is dashing
         animationController.SetIsDashing(true);
@@ -129,7 +131,7 @@ public class PlayerController : MonoBehaviour
         // Have a chance of playing the dash grunt SFX and guarantee it plays after a certain number of dashes without it playing
         if (Random.value < dashGruntChance || dashWithoutGruntCounter >= maxDashWithoutGrunt)
         {
-            SFXManager.Instance.PlayRandomAudioClip(dashGruntSFX, transform, 0.5f, 1f, true, 0.05f);
+            SFXManager.Instance.PlayRandomAudioClip(dashGruntSFX, transform, 0.4f, 1f, true, 0.05f);
             dashWithoutGruntCounter = 0;
         }
         else
@@ -137,7 +139,7 @@ public class PlayerController : MonoBehaviour
             dashWithoutGruntCounter++;
         }
         // Set the player's velocity to speed required to travel the dash's distance over its duration in the direction of the move input
-        rb.velocity = moveInput * (dashDistance / dashDuration);
+        rb.velocity = lastMoveInput * (dashDistance / dashDuration);
         // Wait for the dash duration and set dashing to false
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
@@ -164,18 +166,11 @@ public class PlayerController : MonoBehaviour
 
     public void DisableMovement()
     {
-        // Disable movement
         canMove = false;
         // Interrupt the dash
         InterruptDash();
         // Set the player's velocity to 0
-        rb.velocity = Vector3.zero;
-    }
-
-    public void EnableMovement()
-    {
-        // Enable movement
-        canMove = true;
+        SetVelocityZero();
     }
 
     private IEnumerator DisableMovementTemp(float duration)
@@ -185,11 +180,26 @@ public class PlayerController : MonoBehaviour
         // Interrupt the dash
         InterruptDash();
         // Set the player's velocity to 0
-        rb.velocity = Vector3.zero;
+        SetVelocityZero();
         // Wait for the lockout duration
         yield return new WaitForSeconds(duration);
         // Re-enable movement
         canMove = true;
+    }
+
+    public void EnableMovement()
+    {
+        canMove = true;
+    }
+
+    public void SetVelocity(float velocity, Vector3 direction)
+    {
+        rb.velocity = direction * velocity;
+    }
+
+    public void SetVelocityZero()
+    {
+        rb.velocity = Vector3.zero;
     }
 
     //-------------------------------------------------------------
@@ -208,15 +218,38 @@ public class PlayerController : MonoBehaviour
     //-------------------------------------------------------------
     // SPRITE & ANIMATIONS
     //-------------------------------------------------------------
-    private void Flip()
+    private void Flip(FlipType flipType)
     {
-        // If the player changes direction, update their facing direction
-        if (isFacingRight && moveInput.x < 0 || !isFacingRight && moveInput.x > 0)
+        switch (flipType)
         {
-            isFacingRight = !isFacingRight;
+            case FlipType.OnMove:
+                // If the player changes direction, update their facing direction
+                if (isFacingRight && moveInput.x < 0 || !isFacingRight && moveInput.x > 0)
+                {
+                    isFacingRight = !isFacingRight;
+                }
+                // Flip the player's sprite in the direction they are facing
+                spriteRenderer.flipX = !isFacingRight;
+                break;
+
+            case FlipType.OnAttack:
+                // Get the mouse's world position
+                var (success, position) = playerAim.GetMouseWorldPosition();
+                // Do nothing if getting the mouse's world position was unsuccessful
+                if (!success) return;
+                // Get the player's aim direction
+                bool isAimingRight = position.x > transform.position.x;
+                // Set the player's facing direction to their aim direction
+                isFacingRight = isAimingRight;
+
+                // Flip the player's sprite, weapon sprite and temp hitbox in the direction they are facing
+                spriteRenderer.flipX = !isFacingRight;
+                weaponSpriteRenderer.flipX = !isFacingRight;
+                break;
+
+            default:
+                break;
         }
-        // Flip the player's sprite in the direction they are facing
-        spriteRenderer.flipX = !isFacingRight;
     }
 
     //-------------------------------------------------------------
@@ -225,7 +258,13 @@ public class PlayerController : MonoBehaviour
     public void OnMove(InputAction.CallbackContext context)
     {
         // Set the move input on the x and z axis
-        moveInput = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+        Vector3 input = new Vector3(context.ReadValue<Vector2>().x, 0, context.ReadValue<Vector2>().y);
+        moveInput = input;
+        // Set the last move input to the last non-zero input
+        if (input != Vector3.zero)
+        {
+            lastMoveInput = input;
+        }
         // Set the move pressed bool in the animation controller
         bool isMovePressed = moveInput != Vector3.zero;
         animationController.SetIsMovePressed(isMovePressed);
@@ -233,7 +272,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        // If the input is pressed and the player can dash, dash
         if (context.performed && canMove && canDash)
         {
             dashCoroutine = StartCoroutine(Dash());
@@ -244,8 +282,9 @@ public class PlayerController : MonoBehaviour
     {
         if (!canAttack) return;
         
-        if (context.performed)
+        if (context.performed && !isDashing)
         {
+            Flip(FlipType.OnAttack);
             weaponManager.StartAttacking();
         }
 
@@ -259,8 +298,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!canAttack) return;
 
-        // If the input is pressed, cast a spell through the Spell Manager script
-        if (context.performed)
+        if (context.performed && !isDashing && !isAttacking)
         {
             spellManager.CastSpell();
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System;
 
-public class DamnedSoul : MonoBehaviour, IDamageable
+public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
 {
     // Events
     public event Action onDied;
@@ -28,6 +28,10 @@ public class DamnedSoul : MonoBehaviour, IDamageable
     public float detectionRange = 5f;
     private bool isEngaged;
 
+    // Knockback
+    private bool isInKnockback;
+    private float knockbackDuration = 0.5f;
+    private Coroutine knockbackCoroutine;
 
     void Start()
     {
@@ -49,7 +53,7 @@ public class DamnedSoul : MonoBehaviour, IDamageable
         if (isEngaged)
         {
             // Chase the player if the enemy isn't bouncing back
-            if (!isBouncing)
+            if (!isBouncing && !isInKnockback)
             {
                 Vector3 direction = (player.position - transform.position).normalized;
                 rb.velocity = direction * speed;
@@ -68,6 +72,8 @@ public class DamnedSoul : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter(Collider collision)
     {
+        if (isInKnockback) return;
+        
         if (collision.CompareTag("Player"))
         {
             Debug.Log("Collsion detected.");
@@ -125,5 +131,33 @@ public class DamnedSoul : MonoBehaviour, IDamageable
             // Destroy the enemy game object
             Destroy(gameObject);
         }
+    }
+
+    public void Knockback(Vector3 direction, float strength)
+    {
+        isInKnockback = true;
+        InterruptKnockback();
+        knockbackCoroutine = StartCoroutine(TakeKnockback(direction * strength));
+    }
+
+    private IEnumerator TakeKnockback(Vector3 initVel)
+    {
+        float elapsedTime = 0;
+
+        while (elapsedTime < knockbackDuration)
+        {
+            rb.velocity = Vector3.Lerp(initVel, Vector3.zero, elapsedTime / knockbackDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        isInKnockback = false;
+    }
+
+    private void InterruptKnockback()
+    {
+        if (knockbackCoroutine == null) return;
+        StopCoroutine(knockbackCoroutine);
+        isInKnockback = false;
     }
 }
