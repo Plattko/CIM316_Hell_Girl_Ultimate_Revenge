@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 1
     m_Value: {x: 1, y: 1, z: 1, w: -0.113142714}
@@ -533,16 +533,16 @@ MonoBehaviour:
   active: 1
   _FogIntensity:
     m_OverrideState: 1
-    m_Value: 0.507
+    m_Value: 0.5
   _EnergyLoss:
     m_OverrideState: 1
-    m_Value: 0.609
+    m_Value: 1
   _UseGradient:
     m_OverrideState: 1
     m_Value: 0
   _FogColor:
     m_OverrideState: 1
-    m_Value: {r: 0.05660379, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.009433985, g: 0, b: 0, a: 1}
   _GradientStart:
     m_OverrideState: 1
     m_Value: -345
@@ -563,10 +563,10 @@ MonoBehaviour:
     m_Value: {r: 1, g: 0.60175204, b: 0.07075471, a: 1}
   _SunIntensity:
     m_OverrideState: 1
-    m_Value: 0.413
+    m_Value: 0.344
   _SunPower:
     m_OverrideState: 1
-    m_Value: 3.71
+    m_Value: 5.92
   _UseDistanceFog:
     m_OverrideState: 1
     m_Value: 1
@@ -587,22 +587,22 @@ MonoBehaviour:
     m_Value: 100
   _FogDensity:
     m_OverrideState: 1
-    m_Value: 0.01
+    m_Value: 0.0244
   _UseSkyboxHeightFog:
     m_OverrideState: 1
     m_Value: 0
   _SkyboxFogOffset:
     m_OverrideState: 1
-    m_Value: 0.021
+    m_Value: 0.004
   _SkyboxFogHardness:
     m_OverrideState: 1
-    m_Value: 0.798
+    m_Value: 0.074
   _SkyboxFogIntensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.185
   _SkyboxFill:
     m_OverrideState: 1
-    m_Value: 0.1
+    m_Value: 0
   _UseHeightFog:
     m_OverrideState: 1
     m_Value: 1
@@ -656,7 +656,7 @@ MonoBehaviour:
     m_Value: 7
   _BlurWeight:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 2.4
   _Intensity:
     m_OverrideState: 1
     m_Value: 0.569
