@@ -266,7 +266,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
-        if (context.performed && canMove && canDash)
+        if (context.performed && canMove && canDash && !isAttacking)
         {
             dashCoroutine = StartCoroutine(Dash());
         }
