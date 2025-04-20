@@ -124,15 +124,10 @@ namespace DialogueEditor
                         {
                             if (playerController != null)
                             {
-                                playerController.DisableMovement();
+                                playerController.ToggleMovement(false);
                             }
                             DisableCursor();
                             SetupSpeech(nextSpeech);
-
-                            if (playerController != null)
-                            {
-                                playerController.DisableMovement();
-                            }
                         }
                         else
                         {
@@ -239,8 +234,8 @@ namespace DialogueEditor
             DisableCursor();
             if (playerController != null)
             {
-                playerController.DisableMovement();
-                playerController.DisableAttacks();
+                playerController.ToggleMovement(false);
+                playerController.ToggleAttacks(false);
             }
 
 
@@ -281,8 +276,8 @@ namespace DialogueEditor
             EnableCursor();
             if (playerController != null)
             {
-                playerController.EnableMovement();
-                playerController.EnableAttacks();
+                playerController.ToggleMovement(true);
+                playerController.ToggleAttacks(true);
             }
         }
 

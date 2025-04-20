@@ -65,4 +65,17 @@ public class Minimap : MonoBehaviour
             mapArea.anchoredPosition -= new Vector2(newRoomVector.x * iconSize, newRoomVector.y * iconSize);
         }
     }
+
+    public void ClearMap()
+    {
+        // Destroy the minimap's room icon objects
+        foreach (Transform roomIcon in mapArea)
+        {
+            Destroy(roomIcon.gameObject);
+        }
+        // Clear the room icons dictionary
+        roomIcons.Clear();
+        // Reset the minimap position
+        mapArea.anchoredPosition = Vector2.zero;
+    }
 }

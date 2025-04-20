@@ -17,20 +17,13 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     private GameObject player;
 
+    [field: SerializeField] public Transform Map { get; private set; }
+
     // Room transition variables
     [SerializeField] private float roomTransitionDuration = 0.1f;
     [SerializeField] private float playerMoveDelay = 0.33f;
 
-    private void OnEnable()
-    {
-        if (player != null)
-        {
-            // Subscribe to the player's spell manager's spell dropped event
-            player.GetComponentInChildren<SpellManager>().onSpellDropped += ParentObjectToRoom;
-        }
-    }
-
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (player != null)
         {
@@ -42,7 +35,7 @@ public class RoomManager : MonoBehaviour
     //-------------------------------------------------------------
     // SPAWNING ROOMS
     //-------------------------------------------------------------
-    public void SpawnRooms(Room[,] rooms, Vector2Int gridCentre)
+    public void SpawnRooms(Room[,] rooms, Vector2Int gridCentre, bool spawnPlayer)
     {
         // A double for loop allows us to check every position in the rooms array
         for (int x = 0; x < rooms.GetLength(0); x++)
@@ -84,10 +77,17 @@ public class RoomManager : MonoBehaviour
 
         // Get the starting position of the player as the position of the current (starting) room + 1 on the y axis so the player isn't in the floor
         Vector3 startingPos = roomsDict[curRoom].roomObj.transform.position + Vector3.up;
-        // Spawn the player in the starting room
-        player = Instantiate(playerPrefab, startingPos, Quaternion.identity);
-        // Subscribe to the player's spell manager's spell dropped event
-        player.GetComponentInChildren<SpellManager>().onSpellDropped += ParentObjectToRoom;
+        if (spawnPlayer)
+        {
+            // Spawn the player in the starting room
+            player = Instantiate(playerPrefab, startingPos, Quaternion.identity);
+            // Subscribe to the player's spell manager's spell dropped event
+            player.GetComponentInChildren<SpellManager>().onSpellDropped += ParentObjectToRoom;
+        }
+        else
+        {
+            TeleportPlayer(startingPos);
+        }
     }
 
     private GameObject SpawnRoom(Room roomData, Vector2Int gridCentre)
@@ -121,7 +121,19 @@ public class RoomManager : MonoBehaviour
         Vector2Int roomPos = roomData.gridPos - gridCentre;
         // Instantiate the room prefab at the correct position in the grid multiplied by the room spacing value to space the rooms out
         GameObject roomObj = Instantiate(roomPrefab, new Vector3(roomPos.x * roomSpacing, 0f, roomPos.y * roomSpacing), Quaternion.identity);
+        roomObj.transform.parent = Map;
         return roomObj;
+    }
+
+    public void ClearRooms()
+    {
+        // Destroy the room objects
+        foreach (Transform room in Map)
+        {
+            Destroy(room.gameObject);
+        }
+        // Clear the rooms dictionary
+        roomsDict.Clear();
     }
 
     //-------------------------------------------------------------
@@ -135,9 +147,7 @@ public class RoomManager : MonoBehaviour
     private IEnumerator RoomTransition(int newRoomDir)
     {
         // Disable the player's movement
-        player.GetComponent<PlayerController>().DisableMovement();
-        // Disable the player's Rigidbody interpolation
-        player.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.None;
+        TogglePlayerInput(false);
 
         // Fade to black
         yield return UIManager.Instance.FadeOut();
@@ -151,7 +161,7 @@ public class RoomManager : MonoBehaviour
                 // Set the new room to the room up
                 newRoom = curRoom + Vector2Int.up;
                 // Teleport the player to the new room's bottom spawn point
-                player.transform.position = roomsDict[newRoom].roomObj.GetComponent<RoomPaths>().entryPoints[1].transform.position;
+                TeleportPlayer(roomsDict[newRoom].roomObj.GetComponent<RoomPaths>().entryPoints[1].transform.position);
                 break;
 
             // Player went DOWN
@@ -159,7 +169,7 @@ public class RoomManager : MonoBehaviour
                 // Set the new room to the room down
                 newRoom = curRoom + Vector2Int.down;
                 // Teleport the player to the new room's top spawn point
-                player.transform.position = roomsDict[newRoom].roomObj.GetComponent<RoomPaths>().entryPoints[0].transform.position;
+                TeleportPlayer(roomsDict[newRoom].roomObj.GetComponent<RoomPaths>().entryPoints[0].transform.position);
                 break;
 
             // Player went LEFT
@@ -167,7 +177,7 @@ public class RoomManager : MonoBehaviour
                 // Set the new room to the room left
                 newRoom = curRoom + Vector2Int.left;
                 // Teleport the player to the new room's right spawn point
-                player.transform.position = roomsDict[newRoom].roomObj.GetComponent<RoomPaths>().entryPoints[3].transform.position;
+                TeleportPlayer(roomsDict[newRoom].roomObj.GetComponent<RoomPaths>().entryPoints[3].transform.position);
                 break;
 
             // Player went RIGHT
@@ -175,7 +185,7 @@ public class RoomManager : MonoBehaviour
                 // Set the new room to the room right
                 newRoom = curRoom + Vector2Int.right;
                 // Teleport the player to the new room's left spawn point
-                player.transform.position = roomsDict[newRoom].roomObj.GetComponent<RoomPaths>().entryPoints[2].transform.position;
+                TeleportPlayer(roomsDict[newRoom].roomObj.GetComponent<RoomPaths>().entryPoints[2].transform.position);
                 break;
 
             default:
@@ -220,12 +230,26 @@ public class RoomManager : MonoBehaviour
                 break;
         }
 
-        // Re-enable the player's Rigidbody interpolation
-        player.GetComponent<Rigidbody>().interpolation = RigidbodyInterpolation.Interpolate;
         // Re-enable the player's movement
-        player.GetComponent<PlayerController>().EnableMovement();
+        TogglePlayerInput(true);
     }
 
+    public void TogglePlayerInput(bool enabled)
+    {
+        PlayerController playerController = player.GetComponent<PlayerController>();
+        playerController.ToggleMovement(enabled);
+        playerController.ToggleAttacks(enabled);
+    }
+
+    private void TeleportPlayer(Vector3 targetPos)
+    {
+        // Set the player's position to the target position
+        player.GetComponent<Rigidbody>().position = targetPos;
+    }
+
+    //-------------------------------------------------------------
+    // PARENTING TO ROOMS
+    //-------------------------------------------------------------
     private void ParentObjectToRoom(GameObject obj)
     {
         obj.transform.parent = roomsDict[curRoom].roomObj.transform;

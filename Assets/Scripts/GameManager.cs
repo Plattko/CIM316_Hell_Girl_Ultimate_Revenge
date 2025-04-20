@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    [SerializeField] private MapGenerator mapGenerator;
+
     private bool isGamePaused = false;
 
     private void Awake()
@@ -45,6 +47,11 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         Time.timeScale = 1;
+    }
+
+    public void GenerateNewMap()
+    {
+        mapGenerator.StartCoroutine(mapGenerator.GenerateNewMap());
     }
 
     public void QuitGame()

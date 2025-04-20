@@ -27,8 +27,6 @@ public class MapGenerator : MonoBehaviour
     // List of the taken grid positions to make it easier to check whether a position is taken
     private List<Vector2Int> takenPositions = new List<Vector2Int>();
 
-    [SerializeField] private GameObject mapSpritePrefab;
-
     // TEMPORARY
     [SerializeField] private RoomManager roomManager;
     [SerializeField] private Minimap minimap;
@@ -50,8 +48,40 @@ public class MapGenerator : MonoBehaviour
 
         PlaceRooms();
         PlaceRoomDoors();
-        roomManager.SpawnRooms(rooms, gridCentre);
+        roomManager.SpawnRooms(rooms, gridCentre, true);
         minimap.DrawMap(rooms, gridCentre);
+    }
+
+    public IEnumerator GenerateNewMap()
+    {
+        // Disable the player's movement
+        roomManager.TogglePlayerInput(false);
+
+        // Fade to black
+        yield return UIManager.Instance.FadeOut();
+
+        takenPositions.Clear();
+        roomManager.ClearRooms();
+        minimap.ClearMap();
+
+        // Create the 2D room array at the size of the grid
+        rooms = new Room[gridSizeX, gridSizeY];
+        // Randomly set the number of rooms by combining the flat and variable room count
+        roomCount = flatRoomCount + Random.Range(0, varRoomCount + 1);
+        // If the room count is greater than the number of spaces in the grid, reduce it to the number of spaces
+        roomCount = Mathf.Clamp(roomCount, 0, rooms.Length);
+        Debug.Log("Room count: " + roomCount);
+
+        PlaceRooms();
+        PlaceRoomDoors();
+        roomManager.SpawnRooms(rooms, gridCentre, false);
+        minimap.DrawMap(rooms, gridCentre);
+
+        // Fade back in
+        yield return UIManager.Instance.FadeIn();
+
+        // Re-enable the player's movement
+        roomManager.TogglePlayerInput(true);
     }
 
     private void PlaceRooms()

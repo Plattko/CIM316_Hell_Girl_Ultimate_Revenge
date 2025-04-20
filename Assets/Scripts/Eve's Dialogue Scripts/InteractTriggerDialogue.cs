@@ -34,7 +34,7 @@ public class InteractTriggerDialogue : MonoBehaviour, IInteractable
         playerController = FindAnyObjectByType<PlayerController>();
         if (playerController != null)
         {
-            playerController.DisableMovement();
+            playerController.ToggleMovement(false);
         }
 
         //Start dialogue

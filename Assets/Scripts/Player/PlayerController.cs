@@ -164,13 +164,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void DisableMovement()
+    public void ToggleMovement(bool enabled)
     {
-        canMove = false;
-        // Interrupt the dash
-        InterruptDash();
-        // Set the player's velocity to 0
-        SetVelocityZero();
+        canMove = enabled;
+        
+        if (!enabled)
+        {
+            // Interrupt the dash
+            InterruptDash();
+            // Set the player's velocity to 0
+            SetVelocityZero();
+        }
     }
 
     private IEnumerator DisableMovementTemp(float duration)
@@ -187,11 +191,6 @@ public class PlayerController : MonoBehaviour
         canMove = true;
     }
 
-    public void EnableMovement()
-    {
-        canMove = true;
-    }
-
     public void SetVelocity(float velocity, Vector3 direction)
     {
         rb.velocity = direction * velocity;
@@ -205,14 +204,9 @@ public class PlayerController : MonoBehaviour
     //-------------------------------------------------------------
     // ATTACKS
     //-------------------------------------------------------------
-    public void DisableAttacks()
+    public void ToggleAttacks(bool enabled)
     {
-        canAttack = false;
-    }
-
-    public void EnableAttacks()
-    {
-        canAttack = true;
+        canAttack = enabled;
     }
 
     //-------------------------------------------------------------
