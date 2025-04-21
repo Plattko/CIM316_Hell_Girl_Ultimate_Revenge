@@ -26,9 +26,14 @@ public class RangedImp : MonoBehaviour, IDamageable
     public float fireRate = 1f;
     public float initialFireDelay = 1f;
     private float nextFireTime;
+    private Animator animator;
+
+    private Vector3 lastPosition;
+    private float movementThreshold = 0.01f;
 
     void Start()
     {
+        lastPosition = transform.position;
         // Get a reference to the mana dropper script
         manaDropper = GetComponentInChildren<ManaDropper>();
         // Get a reference to the player
@@ -37,12 +42,32 @@ public class RangedImp : MonoBehaviour, IDamageable
         curHealth = maxHealth;
         // Set the enemy's nextFireTime to the initial fire delay so it doesn't shoot immediately upon spawning
         nextFireTime = Time.time + initialFireDelay;
+        animator = GetComponent<Animator>();
     }
 
     void Update()
     {
+        Vector3 movement = transform.position - lastPosition;
+
+        if (animator != null)
+        {
+            bool isMoving = movement.magnitude > movementThreshold;
+            animator.SetBool("IsMoving", isMoving);
+        }
+
+        lastPosition = transform.position;
         // Do nothing if the player is null
         if (player == null) return;
+
+        if (player != null)
+        {
+            Vector3 directionToPlayer = player.position - transform.position;
+
+            if (directionToPlayer.x < 0)
+                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            else if (directionToPlayer.x > 0)
+                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        }
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
@@ -62,6 +87,7 @@ public class RangedImp : MonoBehaviour, IDamageable
             Shoot();
             nextFireTime = Time.time + fireRate;
         }
+
     }
 
     void MoveTowardsPlayer()
@@ -76,13 +102,7 @@ public class RangedImp : MonoBehaviour, IDamageable
 
     void Shoot()
     {
-        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
-        ImpProjectile projScript = projectile.GetComponent<ImpProjectile>();
-
-        if (projScript != null)
-        {
-            projScript.SetDirection(player.position - firePoint.position);
-        }
+        StartCoroutine(ShootWithAnimationDelay());
     }
 
     public void TakeDamage(float amount)
@@ -104,6 +124,43 @@ public class RangedImp : MonoBehaviour, IDamageable
             manaDropper.DropMana(transform.parent);
             // Destroy the enemy game object
             Destroy(gameObject);
+        }
+    }
+
+    IEnumerator ResetAttackAnimation()
+    {
+        yield return new WaitForSeconds(0.2f); // Adjust timing to match animation
+        if (animator != null)
+        {
+            animator.SetBool("IsAttacking", false);
+        }
+    }
+
+    IEnumerator ShootWithAnimationDelay()
+    {
+        // Trigger the attack animation
+        if (animator != null)
+        {
+            animator.SetBool("IsAttacking", true);
+        }
+
+        // Wait a moment before firing to sync with the animation
+        yield return new WaitForSeconds(0.2f); // adjust to fit your animation
+
+        // Fire the projectile
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+        ImpProjectile projScript = projectile.GetComponent<ImpProjectile>();
+
+        if (projScript != null)
+        {
+            projScript.SetDirection(player.position - firePoint.position);
+        }
+
+        // Reset attack animation after it's played
+        yield return new WaitForSeconds(0.2f); // adjust based on anim length
+        if (animator != null)
+        {
+            animator.SetBool("IsAttacking", false);
         }
     }
 }
