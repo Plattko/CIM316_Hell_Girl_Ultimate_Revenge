@@ -152,12 +152,12 @@ TextureImporter:
       name: upper_wing_spritesheet_0
       rect:
         serializedVersion: 2
-        x: 89
+        x: 0
         y: 0
-        width: 959
+        width: 1000
         height: 1000
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -173,12 +173,12 @@ TextureImporter:
       name: upper_wing_spritesheet_1
       rect:
         serializedVersion: 2
-        x: 1089
+        x: 1000
         y: 0
-        width: 959
+        width: 1000
         height: 1000
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,12 +194,12 @@ TextureImporter:
       name: upper_wing_spritesheet_2
       rect:
         serializedVersion: 2
-        x: 2080
+        x: 2000
         y: 0
-        width: 959
+        width: 1000
         height: 1000
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -215,12 +215,12 @@ TextureImporter:
       name: upper_wing_spritesheet_3
       rect:
         serializedVersion: 2
-        x: 3074
+        x: 3000
         y: 0
-        width: 959
+        width: 1000
         height: 1000
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -236,12 +236,12 @@ TextureImporter:
       name: upper_wing_spritesheet_4
       rect:
         serializedVersion: 2
-        x: 4041
+        x: 4000
         y: 0
-        width: 959
+        width: 1000
         height: 1000
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -249,27 +249,6 @@ TextureImporter:
       bones: []
       spriteID: b31739b93c83db14b9deb514f242bda6
       internalID: -403710588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: upper_wing_spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 4041
-        y: 0
-        width: 959
-        height: 1000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4b06cdb4130f0e42a9c72a35c854b59
-      internalID: -2138196675
       vertices: []
       indices: 
       edges: []
@@ -290,7 +269,6 @@ TextureImporter:
       upper_wing_spritesheet_2: 1191049039
       upper_wing_spritesheet_3: 732028799
       upper_wing_spritesheet_4: -403710588
-      upper_wing_spritesheet_5: -2138196675
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
