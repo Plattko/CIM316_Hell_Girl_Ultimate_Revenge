@@ -648,6 +648,37 @@ Transform:
   - {fileID: 4149747968301083698}
   m_Father: {fileID: 416431619403745655}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &2275341543758549292
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4927298508703491168}
+  m_Layer: 0
+  m_Name: InitialEntryPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 2974397684917235467, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4927298508703491168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2275341543758549292}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: -8}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7284434944915072997}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2836662838396317944
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +923,7 @@ MonoBehaviour:
   - {fileID: 2870692690390673905}
   - {fileID: 1105797018608695804}
   - {fileID: 4156139092167079421}
+  <InitialEntryPoint>k__BackingField: {fileID: 4927298508703491168}
   miniboss: {fileID: 3068107606209876224}
   healthPickupPrefab: {fileID: 650365402667616731, guid: f0c22e7a5c99f064d839201b55d23333, type: 3}
 --- !u!1 &4011377662032668175
@@ -1308,7 +1340,7 @@ Transform:
   m_GameObject: {fileID: 5028168397043467402}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.65, z: 6}
+  m_LocalPosition: {x: 0, y: 1.65, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1412,13 +1444,13 @@ MonoBehaviour:
   beamPrefab: {fileID: 4570907530461187212, guid: a06c0c1e2f48bce4ea428248ad131cb2, type: 3}
   beamDelay: 3
   beamsPerAttack: 5
+  enemySpawnIndicatorPrefab: {fileID: 7561993631305040600, guid: 05306c11060c25c47960c05bd14a70ca, type: 3}
   minions:
   - {fileID: 1666680193277912074, guid: 1652744893da42b48a0b92034d736342, type: 3}
   - {fileID: 5964796263086382468, guid: 23ad631cdaed9f145ab0104e4c98343f, type: 3}
   summonPoints:
   - {fileID: 5972604398029226537}
   - {fileID: 3988148870168262260}
-  enemySpawnIndicatorPrefab: {fileID: 7561993631305040600, guid: 05306c11060c25c47960c05bd14a70ca, type: 3}
 --- !u!1 &5031416366785549940
 GameObject:
   m_ObjectHideFlags: 0
@@ -2407,6 +2439,7 @@ Transform:
   - {fileID: 2723517632294256582}
   - {fileID: 1811389623837623017}
   - {fileID: 2994370612088555302}
+  - {fileID: 4927298508703491168}
   m_Father: {fileID: 2009028399865037651}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7795790460313968965

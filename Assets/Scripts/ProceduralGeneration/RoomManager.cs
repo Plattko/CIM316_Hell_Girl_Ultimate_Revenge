@@ -9,6 +9,8 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GameObject[] combatRoomPrefabs;
     [SerializeField] private GameObject itemRoomPrefab;
     [SerializeField] private GameObject ascensionRoomPrefab;
+    [SerializeField] private GameObject minibossRoomPrefab;
+    //[SerializeField] private GameObject bossRoomPrefab;
     [SerializeField] private int roomSpacing = 50;
 
     private Dictionary<Vector2Int, Room> roomsDict = new Dictionary<Vector2Int, Room>();
@@ -113,6 +115,14 @@ public class RoomManager : MonoBehaviour
                 roomPrefab = ascensionRoomPrefab;
                 break;
 
+            case Room.RoomType.Miniboss:
+                roomPrefab = minibossRoomPrefab;
+                break;
+
+            //case Room.RoomType.Boss:
+            //    roomPrefab = bossRoomPrefab;
+            //    break;
+
             default:
                 break;
         }
@@ -193,6 +203,12 @@ public class RoomManager : MonoBehaviour
                 break;
         }
 
+        // TODO: Poorly planned, find better way to set player's position
+        if (roomsDict[newRoom].roomObj.TryGetComponent(out MinibossRoom minibossRoom) && !minibossRoom.IsRoomCleared)
+        {
+            TeleportPlayer(roomsDict[newRoom].roomObj.GetComponent<MinibossRoom>().InitialEntryPoint.position);
+        }
+
         // Disable the previous room
         roomsDict[curRoom].roomObj.SetActive(false);
         // Enable the new room
@@ -221,6 +237,10 @@ public class RoomManager : MonoBehaviour
                 break;
 
             case Room.RoomType.Miniboss:
+                // Initialise the room
+                roomsDict[curRoom].roomObj.GetComponent<MinibossRoom>().InitialiseRoom();
+                // Wait for the player move delay
+                yield return new WaitForSeconds(playerMoveDelay);
                 break;
 
             case Room.RoomType.Boss:

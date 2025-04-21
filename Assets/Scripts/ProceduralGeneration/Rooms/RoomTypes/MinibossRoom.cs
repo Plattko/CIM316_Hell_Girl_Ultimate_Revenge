@@ -7,10 +7,12 @@ public class MinibossRoom : MonoBehaviour
     // Gate references
     [SerializeField] private GameObject[] gates = new GameObject[4];
 
+    [field: SerializeField] public Transform InitialEntryPoint { get; private set; }
+
     // Clear variables
     [SerializeField] private FallenAngel miniboss;
     private List<GameObject> additionalEnemies = new List<GameObject>();
-    private bool isRoomCleared;
+    public bool IsRoomCleared { get; private set; }
 
     // Health pickup variables
     [SerializeField] private GameObject healthPickupPrefab;
@@ -30,16 +32,14 @@ public class MinibossRoom : MonoBehaviour
 
     public void InitialiseRoom()
     {
-        // If the room hasn't been cleared, close the gates
-        if (!isRoomCleared)
+        if (IsRoomCleared) return;
+        
+        // Close the gates to prevent the player from leaving
+        foreach (GameObject gate in gates)
         {
-            // Close the gates to prevent the player from leaving
-            foreach (GameObject gate in gates)
+            if (gate.activeInHierarchy)
             {
-                if (gate.activeInHierarchy)
-                {
-                    gate.GetComponent<Animator>().Play("Gate_Close");
-                }
+                gate.GetComponent<Animator>().Play("Gate_Close");
             }
         }
     }
@@ -52,7 +52,7 @@ public class MinibossRoom : MonoBehaviour
     private void RoomCleared()
     {
         // Set the room to cleared
-        isRoomCleared = true;
+        IsRoomCleared = true;
 
         // Choose whether to spawn a heart using the heart spawn chance
         if (Random.value < heartSpawnChance)

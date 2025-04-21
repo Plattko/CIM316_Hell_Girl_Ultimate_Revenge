@@ -571,6 +571,7 @@ MonoBehaviour:
   - {fileID: 3517050197319322069, guid: db552b46c621b7241945e693ea0f0c68, type: 3}
   itemRoomPrefab: {fileID: 4689660836299987125, guid: 2eddcf4a10742d64791418814693f68d, type: 3}
   ascensionRoomPrefab: {fileID: 4689660836299987125, guid: 13b4d6579a7144b47a7f1ad1c506a1cb, type: 3}
+  minibossRoomPrefab: {fileID: 3517050197319322069, guid: b6857f243f129174580d50bbaaef17e2, type: 3}
   roomSpacing: 50
   playerPrefab: {fileID: 5512676325496533754, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
   <Map>k__BackingField: {fileID: 590163815}
@@ -3439,11 +3440,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad11b3252af8be46865fe5724791f28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomManager: {fileID: 113235994}
+  minimap: {fileID: 15660564}
   mapSize: {x: 9, y: 9}
   branchChanceStart: 0.5
   branchChanceEnd: 0.01
-  roomManager: {fileID: 113235994}
-  minimap: {fileID: 15660564}
 --- !u!4 &727196271
 Transform:
   m_ObjectHideFlags: 0
