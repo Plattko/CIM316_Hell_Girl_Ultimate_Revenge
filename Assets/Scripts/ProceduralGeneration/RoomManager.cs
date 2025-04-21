@@ -10,7 +10,7 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GameObject itemRoomPrefab;
     [SerializeField] private GameObject ascensionRoomPrefab;
     [SerializeField] private GameObject minibossRoomPrefab;
-    //[SerializeField] private GameObject bossRoomPrefab;
+    [SerializeField] private GameObject bossRoomPrefab;
     [SerializeField] private int roomSpacing = 50;
 
     private Dictionary<Vector2Int, Room> roomsDict = new Dictionary<Vector2Int, Room>();
@@ -119,9 +119,9 @@ public class RoomManager : MonoBehaviour
                 roomPrefab = minibossRoomPrefab;
                 break;
 
-            //case Room.RoomType.Boss:
-            //    roomPrefab = bossRoomPrefab;
-            //    break;
+            case Room.RoomType.Boss:
+                roomPrefab = bossRoomPrefab;
+                break;
 
             default:
                 break;
@@ -156,7 +156,7 @@ public class RoomManager : MonoBehaviour
 
     private IEnumerator RoomTransition(int newRoomDir)
     {
-        // Disable the player's movement
+        // Disable the player's movement and attacks
         TogglePlayerInput(false);
 
         // Fade to black
@@ -203,10 +203,17 @@ public class RoomManager : MonoBehaviour
                 break;
         }
 
+        // TEMPORARY: Check if it's the boss room in order to execute end-demo behaviour
+        var isBossRoom = roomsDict[newRoom].roomType == Room.RoomType.Boss;
+
         // TODO: Poorly planned, find better way to set player's position
         if (roomsDict[newRoom].roomObj.TryGetComponent(out MinibossRoom minibossRoom) && !minibossRoom.IsRoomCleared)
         {
             TeleportPlayer(roomsDict[newRoom].roomObj.GetComponent<MinibossRoom>().InitialEntryPoint.position);
+        }
+        else if (isBossRoom)
+        {
+            TeleportPlayer(roomsDict[newRoom].roomObj.GetComponent<BossRoom>().InitialEntryPoint.position);
         }
 
         // Disable the previous room
@@ -220,8 +227,13 @@ public class RoomManager : MonoBehaviour
 
         // Wait for the room transition duration
         yield return new WaitForSeconds(roomTransitionDuration);
-        // Fade back in
-        yield return UIManager.Instance.FadeIn();
+
+        // TEMPORARY: Ignore if boss room
+        if (!isBossRoom)
+        {
+            // Fade back in
+            yield return UIManager.Instance.FadeIn();
+        }
 
         // Initialise the room the player entered
         switch (roomsDict[curRoom].roomType)
@@ -244,14 +256,20 @@ public class RoomManager : MonoBehaviour
                 break;
 
             case Room.RoomType.Boss:
+                // Initialise the room
+                roomsDict[curRoom].roomObj.GetComponent<BossRoom>().InitialiseRoom();
                 break;
 
             default:
                 break;
         }
 
-        // Re-enable the player's movement
-        TogglePlayerInput(true);
+        // TEMPORARY: Ignore if boss room
+        if (!isBossRoom)
+        {
+            // Re-enable the player's movement and attacks
+            TogglePlayerInput(true);
+        }
     }
 
     public void TogglePlayerInput(bool enabled)

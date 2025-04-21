@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Minimap minimap;
     [SerializeField] private FadeToBlack fadeToBlack;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject endOfDemoMenu;
 
     private void Awake()
     {
@@ -59,5 +60,11 @@ public class UIManager : MonoBehaviour
     {
         pauseMenu.SetActive(false);
         hud.gameObject.SetActive(true);
+    }
+
+    public void OpenEndOfDemoMenu()
+    {
+        hud.gameObject.SetActive(false);
+        endOfDemoMenu.SetActive(true);
     }
 }

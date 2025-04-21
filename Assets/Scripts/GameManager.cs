@@ -54,6 +54,12 @@ public class GameManager : MonoBehaviour
         mapGenerator.StartCoroutine(mapGenerator.GenerateNewMap());
     }
 
+    public void EndDemo()
+    {
+        Time.timeScale = 0;
+        UIManager.Instance.OpenEndOfDemoMenu();
+    }
+
     public void QuitGame()
     {
         Application.Quit();

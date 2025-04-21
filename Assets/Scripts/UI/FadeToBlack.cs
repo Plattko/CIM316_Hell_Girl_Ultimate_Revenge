@@ -38,5 +38,7 @@ public class FadeToBlack : MonoBehaviour
 
             yield return null;
         }
+
+        fadeImage.color = endColour;
     }
 }

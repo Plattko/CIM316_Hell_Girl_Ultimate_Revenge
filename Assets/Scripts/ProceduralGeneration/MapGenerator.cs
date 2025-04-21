@@ -198,10 +198,10 @@ public class MapGenerator : MonoBehaviour
         {
             endRoomType = Room.RoomType.Miniboss;
         }
-        //else if (mapNum == 3)
-        //{
-        //    endRoomType = Room.RoomType.Boss;
-        //}
+        else if (mapNum == 3)
+        {
+            endRoomType = Room.RoomType.Boss;
+        }
         // Place the end room at the chosen position
         rooms[endRoomPos.x, endRoomPos.y] = new Room(endRoomPos, endRoomType);
         // Remove the chosen position from the list of empty room positions
