@@ -94,12 +94,28 @@ public class DamnedSoul : MonoBehaviour, IDamageable
 
     private IEnumerator HandleAttack(IDamageable damageable)
     {
+        // Calculate direction to player first
+        Vector3 directionToPlayer = player.position - transform.position;
+
+        // Flip sprite to face the player (assuming default face-left sprite)
+        if (directionToPlayer.x > 0)
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        else
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
+        // Trigger attack animation
         IsAttacking = true;
         animator.SetBool("IsAttacking", true);
+
+        // Delay for wind-up
+        yield return new WaitForSeconds(0.3f); // adjust this to match your animation timing
+
+        // Apply damage
         damageable.TakeDamage(damageAmount);
         Debug.Log("Damage dealt.");
 
-        yield return new WaitForSeconds(2.7f);
+        // Wait for animation to finish before resetting
+        yield return new WaitForSeconds(0.5f); // adjust to match your attack anim length
 
         IsAttacking = false;
         animator.SetBool("IsAttacking", false);
@@ -107,17 +123,23 @@ public class DamnedSoul : MonoBehaviour, IDamageable
 
     IEnumerator BounceBack()
     {
+        // Slight delay before bounce starts
+        yield return new WaitForSeconds(0.2f); // Adjust as needed for timing
+
         isBouncing = true;
+
         Vector3 bounceDirection = -(player.position - transform.position).normalized;
         rb.velocity = bounceDirection * (bounceBackDistance / bounceBackDuration);
+
         yield return new WaitForSeconds(bounceBackDuration);
+
         rb.velocity = Vector3.zero;
         isBouncing = false;
     }
 
     public void TakeDamage(float amount)
     {
-        if (isDead) { return; }
+        if (isDead) return;
 
         curHealth -= amount;
 
@@ -125,8 +147,32 @@ public class DamnedSoul : MonoBehaviour, IDamageable
         {
             isDead = true;
             onDied?.Invoke();
-            manaDropper.DropMana(transform.parent);
-            Destroy(gameObject);
+            StartCoroutine(Die());
         }
+    }
+
+    private IEnumerator Die()
+    {
+        // Set the IsDead flag to true to trigger the death animation
+        animator.SetBool("IsDead", true);
+
+        // Stop all movement immediately
+        rb.velocity = Vector3.zero;
+
+        // Drop mana
+        manaDropper.DropMana(transform.parent);
+
+        // Ensure the death animation is playing
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+
+        // Wait until the death animation finishes playing
+        while (stateInfo.normalizedTime < 1f)
+        {
+            yield return null;
+            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        }
+
+        // Destroy the object after the death animation finishes
+        Destroy(gameObject);
     }
 }
