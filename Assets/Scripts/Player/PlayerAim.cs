@@ -12,6 +12,8 @@ public class PlayerAim : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.IsGamePaused) return;
+
         // Update the player's aim
         Aim();
     }

@@ -5,6 +5,8 @@ using System;
 
 public class RoomManager : MonoBehaviour
 {
+    [field: SerializeField] public Transform Map { get; private set; }
+
     [SerializeField] private GameObject startingRoomPrefab;
     [SerializeField] private GameObject[] combatRoomPrefabs;
     [SerializeField] private GameObject itemRoomPrefab;
@@ -19,11 +21,14 @@ public class RoomManager : MonoBehaviour
     [SerializeField] private GameObject playerPrefab;
     private GameObject player;
 
-    [field: SerializeField] public Transform Map { get; private set; }
 
     // Room transition variables
     [SerializeField] private float roomTransitionDuration = 0.1f;
     [SerializeField] private float playerMoveDelay = 0.33f;
+
+    // Onboarding variables
+    [SerializeField] private GameObject onboardingRoomPrefab;
+    private bool hasOnboardedPlayer;
 
     private void OnDestroy()
     {
@@ -100,7 +105,15 @@ public class RoomManager : MonoBehaviour
         switch (roomData.roomType)
         {
             case Room.RoomType.Start:
-                roomPrefab = startingRoomPrefab;
+                if (!hasOnboardedPlayer)
+                {
+                    roomPrefab = onboardingRoomPrefab;
+                    hasOnboardedPlayer = true;
+                }
+                else
+                {
+                    roomPrefab = startingRoomPrefab;
+                }
                 break;
 
             case Room.RoomType.Combat:
@@ -160,7 +173,7 @@ public class RoomManager : MonoBehaviour
         TogglePlayerInput(false);
 
         // Fade to black
-        yield return UIManager.Instance.FadeOut();
+        yield return UIManager.Instance.FadeOut(0.25f);
 
         // Set the new room based on the path the player went through and teleport them to the correct entry point of the new room
         Vector2Int newRoom = Vector2Int.zero;
@@ -232,7 +245,7 @@ public class RoomManager : MonoBehaviour
         if (!isBossRoom)
         {
             // Fade back in
-            yield return UIManager.Instance.FadeIn();
+            yield return UIManager.Instance.FadeIn(0.1f);
         }
 
         // Initialise the room the player entered

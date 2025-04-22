@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetActive(false);
     }
 
+    //-------------------------------------------------------------
+    // UPDATING HUD
+    //-------------------------------------------------------------
     public void UpdateHealth(int curHealth)
     {
         hud.UpdateHealth(curHealth);
@@ -40,31 +43,65 @@ public class UIManager : MonoBehaviour
         minimap.UpdateMap(newRoomPos, prevRoom);
     }
 
-    public IEnumerator FadeOut()
+    //-------------------------------------------------------------
+    // HUD VISIBILITY
+    //-------------------------------------------------------------
+    public void ToggleHUDVisibility(bool enabled)
     {
-        yield return fadeToBlack.FadeOut();
+        hud.ToggleHUDVisibility(enabled);
     }
 
-    public IEnumerator FadeIn()
+    public void FadeOutHUD()
     {
-        yield return fadeToBlack.FadeIn();
+        StartCoroutine(hud.FadeOutHUD());
     }
 
+    public void FadeInHUD()
+    {
+        StartCoroutine(hud.FadeInHUD());
+    }
+    //-------------------------------------------------------------
+    // FADE TO BLACK
+    //-------------------------------------------------------------
+    public IEnumerator FadeOut(float duration)
+    {
+        yield return fadeToBlack.FadeOut(duration);
+    }
+
+    public IEnumerator FadeIn(float duration)
+    {
+        yield return fadeToBlack.FadeIn(duration);
+    }
+
+    public void ToggleBlack(bool enabled)
+    {
+        fadeToBlack.ToggleBlack(enabled);
+    }
+
+    //-------------------------------------------------------------
+    // PAUSE MENU
+    //-------------------------------------------------------------
     public void OpenPauseMenu()
     {
-        hud.gameObject.SetActive(false);
+        ToggleHUDVisibility(false);
         pauseMenu.SetActive(true);
     }
 
     public void ClosePauseMenu()
     {
         pauseMenu.SetActive(false);
-        hud.gameObject.SetActive(true);
+        if (!GameManager.Instance.IsInOnboarding)
+        {
+            ToggleHUDVisibility(true);
+        }
     }
 
+    //-------------------------------------------------------------
+    // END OF DEMO MENU
+    //-------------------------------------------------------------
     public void OpenEndOfDemoMenu()
     {
-        hud.gameObject.SetActive(false);
+        ToggleHUDVisibility(false);
         endOfDemoMenu.SetActive(true);
     }
 }

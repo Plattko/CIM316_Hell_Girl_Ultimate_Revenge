@@ -67,11 +67,11 @@ namespace DialogueEditor
         private NPCConversation npcConversation;
         private PlayerController playerController;
         private bool m_dialogueFinishedScrolling = false;
-        private bool m_conversationEnding = false;
+        //private bool m_conversationEnding = false;
         private bool m_showingOption = false;
         private float BUTTON_COOLDOWN = 2f; // 2-second cooldown for button presses
         private bool isConversationActive = false;
-        private bool endingConversation = false;
+        //private bool endingConversation = false;
 
         private bool canProcessClick = true;
         private Coroutine fadeCoroutine;
@@ -126,13 +126,13 @@ namespace DialogueEditor
                             {
                                 playerController.ToggleMovement(false);
                             }
-                            DisableCursor();
+                            //DisableCursor();
                             SetupSpeech(nextSpeech);
                         }
                         else
                         {
                             EndConversation();
-                            endingConversation = false;
+                            //endingConversation = false;
                         }
                         break;
 
@@ -230,8 +230,9 @@ namespace DialogueEditor
         {
             Debug.Log("Starting conversation");
 
+            //DisableCursor();
+            GameManager.Instance.TogglePauseInput(false);
             playerController = FindObjectOfType<PlayerController>();
-            DisableCursor();
             if (playerController != null)
             {
                 playerController.ToggleMovement(false);
@@ -261,7 +262,8 @@ namespace DialogueEditor
 
             if (OnConversationEnded != null)
                 OnConversationEnded.Invoke();
-            m_conversationEnding = false;
+            OnDialogueEnd?.Invoke();
+            //m_conversationEnding = false;
             isConversationActive = false;
             Debug.Log("Ending conversation");
 
@@ -271,9 +273,10 @@ namespace DialogueEditor
             }
 
 
-            endingConversation = true;
+            //endingConversation = true;
 
-            EnableCursor();
+            //EnableCursor();
+            GameManager.Instance.TogglePauseInput(true);
             if (playerController != null)
             {
                 playerController.ToggleMovement(true);
@@ -311,7 +314,7 @@ namespace DialogueEditor
 
             UIConversationButton button = m_uiOptions[m_currentSelectedIndex];
             button.OnButtonPressed();
-            DisableCursor();
+            //DisableCursor();
         }
 
         public void AlertHover(UIConversationButton button)
@@ -771,7 +774,7 @@ namespace DialogueEditor
                 if (option.Event != null)
                     option.Event.Invoke();
                 SetState(eState.TransitioningOptionsOff);
-                DisableCursor();
+                //DisableCursor();
             }
 
             else

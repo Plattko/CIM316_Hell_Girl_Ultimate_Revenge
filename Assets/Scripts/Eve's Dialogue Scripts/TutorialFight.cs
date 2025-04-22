@@ -22,6 +22,7 @@ public class TutorialFight : MonoBehaviour
         StartCoroutine(SpawnEnemyAfterDelay());
         StartCoroutine(CheckForEnemyAfterDelay());
     }
+
     public void CheckForEnemy()
     {
         if (tutorialEnemy == null)

@@ -60,7 +60,7 @@ public class MapGenerator : MonoBehaviour
         roomManager.TogglePlayerInput(false);
 
         // Fade to black
-        yield return UIManager.Instance.FadeOut();
+        yield return UIManager.Instance.FadeOut(0.25f);
 
         takenPositions.Clear();
         roomManager.ClearRooms();
@@ -83,7 +83,7 @@ public class MapGenerator : MonoBehaviour
         minimap.DrawMap(rooms, gridCentre);
 
         // Fade back in
-        yield return UIManager.Instance.FadeIn();
+        yield return UIManager.Instance.FadeIn(0.1f);
 
         // Re-enable the player's movement
         roomManager.TogglePlayerInput(true);

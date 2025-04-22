@@ -14,16 +14,16 @@ public class FadeToBlack : MonoBehaviour
     private Color transparent = new Color(0, 0, 0, 0);
     private Color black = Color.black;
 
-    public IEnumerator FadeOut()
+    public IEnumerator FadeOut(float duration)
     {
         // Fade from transparent to black over the fade out duration
-        yield return Fade(transparent, black, fadeOutDuration);
+        yield return Fade(transparent, black, duration);
     }
 
-    public IEnumerator FadeIn()
+    public IEnumerator FadeIn(float duration)
     {
         // Fade from black to transparent over the fade in duration
-        yield return Fade(black, transparent, fadeInDuration);
+        yield return Fade(black, transparent, duration);
     }
 
     private IEnumerator Fade(Color startColour, Color endColour, float duration)
@@ -40,5 +40,10 @@ public class FadeToBlack : MonoBehaviour
         }
 
         fadeImage.color = endColour;
+    }
+
+    public void ToggleBlack(bool enabled)
+    {
+        fadeImage.color = enabled ? black : transparent;
     }
 }

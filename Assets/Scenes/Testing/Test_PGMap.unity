@@ -473,6 +473,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 103069649}
+  - component: {fileID: 103069651}
   - component: {fileID: 103069650}
   m_Layer: 5
   m_Name: HUD
@@ -520,6 +521,21 @@ MonoBehaviour:
   heartIcons: {fileID: 1322707949}
   spellIcon: {fileID: 1011041101}
   manaIcons: {fileID: 231085808}
+  canvasGroup: {fileID: 103069651}
+  fadeOutDuration: 0.25
+  fadeInDuration: 0.25
+--- !u!225 &103069651
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103069648}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &113235992
 GameObject:
   m_ObjectHideFlags: 0
@@ -564,6 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c519dfee683984b910b7881fd753da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <Map>k__BackingField: {fileID: 590163815}
   startingRoomPrefab: {fileID: 4689660836299987125, guid: a5dd48b72bee4614f99fff48ae9b49c4, type: 3}
   combatRoomPrefabs:
   - {fileID: 3517050197319322069, guid: a8877e4076e1fa247b12bd66038258b9, type: 3}
@@ -575,9 +592,9 @@ MonoBehaviour:
   bossRoomPrefab: {fileID: 3517050197319322069, guid: 6b8b9f3b1692d334a9e12f5589fc7420, type: 3}
   roomSpacing: 50
   playerPrefab: {fileID: 5512676325496533754, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
-  <Map>k__BackingField: {fileID: 590163815}
   roomTransitionDuration: 0.1
   playerMoveDelay: 0.33
+  onboardingRoomPrefab: {fileID: 4689660836299987125, guid: a2485345dd354724cafbdbcc5f66e055, type: 3}
 --- !u!1 &129573534
 GameObject:
   m_ObjectHideFlags: 0

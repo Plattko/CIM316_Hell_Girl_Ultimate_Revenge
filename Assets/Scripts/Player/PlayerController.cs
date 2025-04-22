@@ -207,6 +207,7 @@ public class PlayerController : MonoBehaviour
     public void ToggleAttacks(bool enabled)
     {
         canAttack = enabled;
+        WeaponAimPivot.gameObject.SetActive(enabled);
     }
 
     //-------------------------------------------------------------
@@ -266,6 +267,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnDash(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.IsGamePaused) return;
+        
         if (context.performed && canMove && canDash && !isAttacking)
         {
             dashCoroutine = StartCoroutine(Dash());
@@ -274,6 +277,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseWeapon(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.IsGamePaused) return;
+        
         if (!canAttack) return;
         
         if (context.performed && !isDashing)
@@ -290,6 +295,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnUseSpell(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.IsGamePaused) return;
+        
         if (!canAttack) return;
 
         if (context.performed && !isDashing && !isAttacking)
@@ -300,6 +307,8 @@ public class PlayerController : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+        if (GameManager.Instance.IsGamePaused) return;
+
         if (context.performed)
         {
             interactor.Interact();

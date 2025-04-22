@@ -9,17 +9,31 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private MapGenerator mapGenerator;
 
-    private bool isGamePaused = false;
+    public bool IsGamePaused { get; private set; }
+    private bool canPause = true;
+
+    public bool IsInOnboarding { get; private set; }
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(this); }
-        else { Instance = this; }
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        }
+        else 
+        { 
+            Instance = this;
+        }
     }
 
+    //-------------------------------------------------------------
+    // PAUSING
+    //-------------------------------------------------------------
     public void TogglePause()
     {
-        if (!isGamePaused)
+        if (!canPause) return;
+        
+        if (!IsGamePaused)
         {
             OpenPauseMenu();
         }
@@ -31,18 +45,42 @@ public class GameManager : MonoBehaviour
 
     public void OpenPauseMenu()
     {
-        isGamePaused = true;
+        IsGamePaused = true;
         Time.timeScale = 0;
         UIManager.Instance.OpenPauseMenu();
     }
 
     public void ClosePauseMenu()
     {
-        isGamePaused = false;
+        IsGamePaused = false;
         Time.timeScale = 1;
         UIManager.Instance.ClosePauseMenu();
     }
 
+    public void TogglePauseInput(bool enabled)
+    {
+        canPause = enabled;
+    }
+
+    //-------------------------------------------------------------
+    // QUITTING
+    //-------------------------------------------------------------
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
+
+    //-------------------------------------------------------------
+    // ONBOARDING
+    //-------------------------------------------------------------
+    public void ToggleOnboardingMode(bool enabled)
+    {
+        IsInOnboarding = enabled;
+    }
+
+    //-------------------------------------------------------------
+    // RESTARTING/GENERATING NEW MAP
+    //-------------------------------------------------------------
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -54,14 +92,12 @@ public class GameManager : MonoBehaviour
         mapGenerator.StartCoroutine(mapGenerator.GenerateNewMap());
     }
 
+    //-------------------------------------------------------------
+    // END OF DEMO
+    //-------------------------------------------------------------
     public void EndDemo()
     {
         Time.timeScale = 0;
         UIManager.Instance.OpenEndOfDemoMenu();
-    }
-
-    public void QuitGame()
-    {
-        Application.Quit();
     }
 }
