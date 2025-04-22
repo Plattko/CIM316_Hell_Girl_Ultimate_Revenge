@@ -3,7 +3,7 @@ using UnityEngine;
 using System;
 using System.Runtime.CompilerServices;
 
-public class DamnedSoul : MonoBehaviour, IDamageable
+public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
 {
     // Events
     public event Action onDied;
@@ -29,35 +29,46 @@ public class DamnedSoul : MonoBehaviour, IDamageable
     public float detectionRange = 5f;
     private bool isEngaged;
 
+    // Knockback
+    private bool isInKnockback;
+    private float knockbackDuration = 0.5f;
+    private Coroutine knockbackCoroutine;
+
     //Animation variables
 
     private Animator animator;
     public bool IsMoving { get; private set; }
     public bool IsAttacking { get; private set; }
 
-
-
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        manaDropper = GetComponentInChildren<ManaDropper>();
-        player = GameObject.FindGameObjectWithTag("Player").transform;
-        curHealth = maxHealth;
+        // Get a reference to the animator
         animator = GetComponent<Animator>();
+        // Get a reference to the mana dropper script
+        manaDropper = GetComponentInChildren<ManaDropper>();
+        // Get a reference to the player
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        // Set the enemy's health to its max health
+        curHealth = maxHealth;
     }
 
     void Update()
     {
-        if (player == null) return;
+        // Do nothing if the player is null
+        if (player == null || isDead) return;
 
+        // Check if the enemy is engaged
         if (isEngaged)
         {
-            if (!isBouncing)
+            // Chase the player if the enemy isn't bouncing back or in knockback
+            if (!isBouncing && !isInKnockback)
             {
                 Vector3 direction = (player.position - transform.position).normalized;
                 rb.velocity = direction * speed;
             }
         }
+        // If they aren't engaged, check the distance to the player and become engaged if they are in range
         else
         {
             float distanceToPlayer = Vector3.Distance(transform.position, player.position);
@@ -74,16 +85,18 @@ public class DamnedSoul : MonoBehaviour, IDamageable
 
     private void OnTriggerEnter(Collider collision)
     {
+        if (isInKnockback || isDead) return;
+
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Collision detected.");
+            // Attack the player
             IDamageable damageable = collision.GetComponent<IDamageable>();
-
             if (damageable != null)
             {
                 StartCoroutine(HandleAttack(damageable));
             }
 
+            // Bounce back if the player isn't dashing
             PlayerController playerController = collision.GetComponent<PlayerController>();
             if (!playerController.isDashing)
             {
@@ -121,38 +134,44 @@ public class DamnedSoul : MonoBehaviour, IDamageable
         animator.SetBool("IsAttacking", false);
     }
 
-    IEnumerator BounceBack()
+    private IEnumerator BounceBack()
     {
         // Slight delay before bounce starts
         yield return new WaitForSeconds(0.2f); // Adjust as needed for timing
 
         isBouncing = true;
-
+        // Set the bounce direction to the opposite of the direction to the player
         Vector3 bounceDirection = -(player.position - transform.position).normalized;
+        // Set the enemy's velocity to the speed required to travel the bounce back distance over its duration in the bounce back direction
         rb.velocity = bounceDirection * (bounceBackDistance / bounceBackDuration);
-
+        // Wait for the bounce back duration
         yield return new WaitForSeconds(bounceBackDuration);
-
+        // Stop movement after bounce
         rb.velocity = Vector3.zero;
         isBouncing = false;
     }
 
     public void TakeDamage(float amount)
     {
+        // Do nothing if the enemy is dead
         if (isDead) return;
 
+        // Reduce health by the damage amount
         curHealth -= amount;
 
+        // Kill the enemy if it reaches 0 health
         if (curHealth <= 0)
         {
-            isDead = true;
-            onDied?.Invoke();
-            StartCoroutine(Die());
+            Die();
         }
     }
 
-    private IEnumerator Die()
+    private void Die()
     {
+        // Set the enemy to dead
+        isDead = true;
+        // Signal that the enemy died
+        onDied?.Invoke();
         // Set the IsDead flag to true to trigger the death animation
         animator.SetBool("IsDead", true);
 
@@ -160,19 +179,49 @@ public class DamnedSoul : MonoBehaviour, IDamageable
         rb.velocity = Vector3.zero;
 
         // Drop mana
-        manaDropper.DropMana(transform.parent);
-
-        // Ensure the death animation is playing
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-
-        // Wait until the death animation finishes playing
-        while (stateInfo.normalizedTime < 1f)
+        if (manaDropper != null)
         {
-            yield return null;
-            stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+            manaDropper.DropMana(transform.parent);
         }
+    }
 
+    public void Destroy()
+    {
         // Destroy the object after the death animation finishes
         Destroy(gameObject);
+    }
+
+    //-------------------------------------------------------------
+    // KNOCKBACK
+    //-------------------------------------------------------------
+    public void Knockback(Vector3 direction, float strength)
+    {
+        // Do nothing if the enemy is dead
+        if (isDead) return;
+
+        isInKnockback = true;
+        InterruptKnockback();
+        knockbackCoroutine = StartCoroutine(TakeKnockback(direction * strength));
+    }
+
+    private IEnumerator TakeKnockback(Vector3 initVel)
+    {
+        float elapsedTime = 0;
+
+        while (elapsedTime < knockbackDuration)
+        {
+            rb.velocity = Vector3.Lerp(initVel, Vector3.zero, elapsedTime / knockbackDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        isInKnockback = false;
+    }
+
+    private void InterruptKnockback()
+    {
+        if (knockbackCoroutine == null) return;
+        StopCoroutine(knockbackCoroutine);
+        isInKnockback = false;
     }
 }
