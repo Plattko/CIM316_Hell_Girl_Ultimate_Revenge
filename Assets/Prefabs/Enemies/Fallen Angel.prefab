@@ -205,9 +205,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5732159271359180894}
-  animationName: LowerWing
+  enterAnimationName: LowerWingUnfold
+  exitAnimationName: LowerWingFold
   spriteToDisable: {fileID: 1266802350278812946}
   spriteToEnable: {fileID: 2042597149897939274}
+  playerTag: Player
+  angleThreshold: 45
 --- !u!95 &5732159271359180894
 Animator:
   serializedVersion: 5
@@ -218,7 +221,7 @@ Animator:
   m_GameObject: {fileID: 1266802350278812946}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 00c2a127db3184e418815599c21847a7, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6de25c1ec4a2baf48869cbadf07ac625, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -239,6 +242,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6808354382482980194}
   - component: {fileID: 4812087110522230944}
+  - component: {fileID: 2431982064940412014}
+  - component: {fileID: 9213621118117330341}
   m_Layer: 0
   m_Name: lower wing right unfolded
   m_TagString: Untagged
@@ -313,6 +318,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &2431982064940412014
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042597149897939274}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6de25c1ec4a2baf48869cbadf07ac625, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &9213621118117330341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042597149897939274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5df7adda543c884ebef320cd60fe557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2431982064940412014}
+  enterAnimationName: LowerWingUnfold
+  exitAnimationName: LowerWingFold
+  spriteToDisable: {fileID: 2042597149897939274}
+  spriteToEnable: {fileID: 1266802350278812946}
+  playerTag: Player
+  angleThreshold: 45
 --- !u!1 &2111624573807869626
 GameObject:
   m_ObjectHideFlags: 0
@@ -419,6 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8495126900775431710}
   - component: {fileID: 1767682570591487994}
+  - component: {fileID: 7487211207317388232}
   m_Layer: 0
   m_Name: upper_wing_left_unfolded
   m_TagString: Untagged
@@ -493,6 +539,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &7487211207317388232
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3729595827285904190}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 235b6111788a21d45a4066f05516bfef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4169215701846018733
 GameObject:
   m_ObjectHideFlags: 0
@@ -646,9 +713,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4631149586567532048}
-  animationName: UpperWing
+  enterAnimationName: 
+  exitAnimationName: 
   spriteToDisable: {fileID: 4460995843020094499}
   spriteToEnable: {fileID: 3729595827285904190}
+  playerTag: Player
+  angleThreshold: 45
 --- !u!1 &4825331415674277723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1069,9 +1139,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1964668723870448615}
-  animationName: UpperWing
+  enterAnimationName: 
+  exitAnimationName: 
   spriteToDisable: {fileID: 6178037193827337319}
   spriteToEnable: {fileID: 4825331415674277723}
+  playerTag: Player
+  angleThreshold: 45
 --- !u!1 &6523210583464891749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1422,6 +1495,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 7074667834995100929}
-  animationName: LowerWing
+  enterAnimationName: 
+  exitAnimationName: 
   spriteToDisable: {fileID: 9153257991868086031}
   spriteToEnable: {fileID: 5727487544408233930}
+  playerTag: Player
+  angleThreshold: 45
