@@ -103,7 +103,7 @@ namespace DialogueEditor
 
         private void Update()
         {
-            Debug.Log($"m_dialogueFinishedScrolling set to: {m_dialogueFinishedScrolling}");
+            //Debug.Log($"m_dialogueFinishedScrolling set to: {m_dialogueFinishedScrolling}");
             // Handle NPC image visibility based on scrolling state
             BUTTON_COOLDOWN = Mathf.Max(0, BUTTON_COOLDOWN - Time.deltaTime);
 
