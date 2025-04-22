@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+    [SerializeField] private RoomManager roomManager;
+    [SerializeField] private Minimap minimap;
+
     // The physical size of the map
     [SerializeField] private Vector2Int mapSize = new Vector2Int(4, 4);
 
@@ -27,11 +30,8 @@ public class MapGenerator : MonoBehaviour
     // List of the taken grid positions to make it easier to check whether a position is taken
     private List<Vector2Int> takenPositions = new List<Vector2Int>();
 
-    [SerializeField] private GameObject mapSpritePrefab;
-
-    // TEMPORARY
-    [SerializeField] private RoomManager roomManager;
-    [SerializeField] private Minimap minimap;
+    // The number of the map the player is on
+    private int mapNum = 1;
 
     private void Start()
     {
@@ -50,8 +50,43 @@ public class MapGenerator : MonoBehaviour
 
         PlaceRooms();
         PlaceRoomDoors();
-        roomManager.SpawnRooms(rooms, gridCentre);
+        roomManager.SpawnRooms(rooms, gridCentre, true);
         minimap.DrawMap(rooms, gridCentre);
+    }
+
+    public IEnumerator GenerateNewMap()
+    {
+        // Disable the player's movement
+        roomManager.TogglePlayerInput(false);
+
+        // Fade to black
+        yield return UIManager.Instance.FadeOut(0.25f);
+
+        takenPositions.Clear();
+        roomManager.ClearRooms();
+        minimap.ClearMap();
+
+        // Increase the map count
+        mapNum++;
+
+        // Create the 2D room array at the size of the grid
+        rooms = new Room[gridSizeX, gridSizeY];
+        // Randomly set the number of rooms by combining the flat and variable room count
+        roomCount = flatRoomCount + Random.Range(0, varRoomCount + 1);
+        // If the room count is greater than the number of spaces in the grid, reduce it to the number of spaces
+        roomCount = Mathf.Clamp(roomCount, 0, rooms.Length);
+        Debug.Log("Room count: " + roomCount);
+
+        PlaceRooms();
+        PlaceRoomDoors();
+        roomManager.SpawnRooms(rooms, gridCentre, false);
+        minimap.DrawMap(rooms, gridCentre);
+
+        // Fade back in
+        yield return UIManager.Instance.FadeIn(0.1f);
+
+        // Re-enable the player's movement
+        roomManager.TogglePlayerInput(true);
     }
 
     private void PlaceRooms()
@@ -149,18 +184,28 @@ public class MapGenerator : MonoBehaviour
 
     private void SetRoomTypes(List<Vector2Int> emptyRoomPositions)
     {
-        // Randomly select an empty room position to place the ascension room
-        Vector2Int ascensionRoomPos = Vector2Int.zero;
+        // Randomly select an empty room position to place the end room
+        Vector2Int endRoomPos = Vector2Int.zero;
         do
         {
-            ascensionRoomPos = emptyRoomPositions[Random.Range(0, emptyRoomPositions.Count)];
+            endRoomPos = emptyRoomPositions[Random.Range(0, emptyRoomPositions.Count)];
         }
         // Repeat if the chosen position is adjacent to the starting room
-        while (IsAdjacentToRoomType(ascensionRoomPos, Room.RoomType.Start));
-        // Place the ascension room at the chosen position
-        rooms[ascensionRoomPos.x, ascensionRoomPos.y] = new Room(ascensionRoomPos, Room.RoomType.Ascension);
+        while (IsAdjacentToRoomType(endRoomPos, Room.RoomType.Start));
+        // Make the end room an ascension room on the first map, miniboss room on the second map //and boss room on the third map
+        Room.RoomType endRoomType = Room.RoomType.Ascension;
+        if (mapNum == 2)
+        {
+            endRoomType = Room.RoomType.Miniboss;
+        }
+        else if (mapNum == 3)
+        {
+            endRoomType = Room.RoomType.Boss;
+        }
+        // Place the end room at the chosen position
+        rooms[endRoomPos.x, endRoomPos.y] = new Room(endRoomPos, endRoomType);
         // Remove the chosen position from the list of empty room positions
-        emptyRoomPositions.Remove(ascensionRoomPos);
+        emptyRoomPositions.Remove(endRoomPos);
 
         // Randomly select an empty room position to place the item room
         Vector2Int itemRoomPos = Vector2Int.zero;

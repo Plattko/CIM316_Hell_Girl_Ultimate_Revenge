@@ -30,13 +30,11 @@ public class ImpProjectile : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Debug.Log("Collsion Detected");
             // Damage the player via the ScriptableObject
             IDamageable damageable = collision.GetComponent<IDamageable>();
             if (damageable != null)
             {
                 damageable.TakeDamage(damageAmount);
-                Debug.Log("Damage Delt");
             }
             // Destroy the projectile if the player isn't dashing
             PlayerController playerController = collision.GetComponent<PlayerController>();

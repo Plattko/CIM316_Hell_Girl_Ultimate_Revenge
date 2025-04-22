@@ -14,6 +14,12 @@ public class HUD : MonoBehaviour
     [SerializeField] private Image spellIcon;
     [SerializeField] private RectTransform manaIcons;
 
+    // Visibility
+    [SerializeField] private CanvasGroup canvasGroup;
+
+    public float fadeOutDuration = 0.25f;
+    public float fadeInDuration = 0.25f;
+
     public void UpdateHealth(int curHealth)
     {
         for (int i = 0; i < manaIcons.childCount; i++)
@@ -58,5 +64,41 @@ public class HUD : MonoBehaviour
         }
         // Set the spell icon to the new spell's icon
         spellIcon.sprite = newSpell.icon;
+    }
+
+    //-------------------------------------------------------------
+    // VISIBILITY
+    //-------------------------------------------------------------
+    public void ToggleHUDVisibility(bool enabled)
+    {
+        canvasGroup.alpha = enabled ? 1 : 0;
+    }
+
+    public IEnumerator FadeOutHUD()
+    {
+        // Fade from transparent to black over the fade out duration
+        yield return Fade(1, 0, fadeOutDuration);
+    }
+
+    public IEnumerator FadeInHUD()
+    {
+        // Fade from black to transparent over the fade in duration
+        yield return Fade(0, 1, fadeInDuration);
+    }
+
+    private IEnumerator Fade(float startAlpha, float endAlpha, float duration)
+    {
+        float elapsedTime = 0;
+
+        // Lerp from the start colour to the end colour over the fade's duration
+        while (elapsedTime < duration)
+        {
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        canvasGroup.alpha = endAlpha;
     }
 }
