@@ -13,16 +13,18 @@ public class HUD : MonoBehaviour
     [Header("Spells")]
     [SerializeField] private Image spellIcon;
     [SerializeField] private RectTransform manaIcons;
+    private bool spellAnimHasPlayed;
 
     // Visibility
     [SerializeField] private CanvasGroup canvasGroup;
+    [SerializeField] private Animator anim;
 
     public float fadeOutDuration = 0.25f;
     public float fadeInDuration = 0.25f;
 
     public void UpdateHealth(int curHealth)
     {
-        for (int i = 0; i < manaIcons.childCount; i++)
+        for (int i = 0; i < heartIcons.childCount; i++)
         {
             // Show a number of full health icons equal to the player's current health
             if (i < curHealth)
@@ -37,6 +39,21 @@ public class HUD : MonoBehaviour
         }
     }
 
+    public IEnumerator PlaySpellPickedUpAnim()
+    {
+        anim.Play("HUD_SpellPickedUp");
+
+        while (!spellAnimHasPlayed)
+        {
+            yield return null;
+        }
+    }
+
+    public void OnSpellAnimPlayed()
+    {
+        spellAnimHasPlayed = true;
+    }
+
     public void UpdateMana(int curMana)
     {
         // Show a number of mana icons equal to the player's current mana
@@ -45,23 +62,18 @@ public class HUD : MonoBehaviour
             // Enable a number of mana icons equal to the player's current mana
             if (i < curMana)
             {
-                manaIcons.GetChild(i).gameObject.SetActive(true);
+                manaIcons.GetChild(i).GetComponent<Image>().enabled = true;
             }
             // Disable the rest
             else
             {
-                manaIcons.GetChild(i).gameObject.SetActive(false);
+                manaIcons.GetChild(i).GetComponent<Image>().enabled = false;
             }
         }
     }
 
     public void UpdateSpell(Spell newSpell)
     {
-        // Show the spell icon if it is hidden
-        if (!spellIcon.enabled)
-        {
-            spellIcon.enabled = true;
-        }
         // Set the spell icon to the new spell's icon
         spellIcon.sprite = newSpell.icon;
     }

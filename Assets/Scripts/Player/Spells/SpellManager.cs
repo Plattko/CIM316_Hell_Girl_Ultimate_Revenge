@@ -81,6 +81,13 @@ public class SpellManager : MonoBehaviour
     //-------------------------------------------------------------
     public void SwapSpell(Spell newSpell)
     {
+        // Trigger if it's the first spell the player picks up
+        if (!GameManager.Instance.PlayerHasSpell)
+        {
+            StartCoroutine(EquipFirstSpell(newSpell));
+            return;
+        }
+        
         // If the player already has a spell, drop it
         if (curSpell != null)
         {
@@ -90,6 +97,18 @@ public class SpellManager : MonoBehaviour
         curSpell = newSpell;
         // Update the spell UI
         UIManager.Instance.UpdateSpell(newSpell);
+    }
+
+    private IEnumerator EquipFirstSpell(Spell spell)
+    {
+        // Set PlayerHasSpell to true
+        GameManager.Instance.TogglePlayerHasSpell(true);
+        // Update the spell UI
+        UIManager.Instance.UpdateSpell(spell);
+        // Wait until the spell picked up UI animation has played
+        yield return UIManager.Instance.PlaySpellPickedUpAnim();
+        // Set the player's current spell to the new spell
+        curSpell = spell;
     }
 
     private void DropSpell()

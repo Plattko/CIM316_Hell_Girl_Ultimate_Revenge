@@ -15,6 +15,8 @@ public class GameManager : MonoBehaviour
     [field: SerializeField] public bool HasOnboardedPlayer { get; private set; }
     public bool IsInOnboarding { get; private set; }
 
+    public bool PlayerHasSpell { get; private set; }
+
     private void Awake()
     {
         if (Instance != null && Instance != this) 
@@ -128,5 +130,13 @@ public class GameManager : MonoBehaviour
         StatsManager.Instance.ToggleRunTimer(false);
         Time.timeScale = 0;
         UIManager.Instance.OpenEndOfDemoMenu();
+    }
+
+    //-------------------------------------------------------------
+    // Player
+    //-------------------------------------------------------------
+    public void TogglePlayerHasSpell(bool hasSpell)
+    {
+        PlayerHasSpell = hasSpell;
     }
 }

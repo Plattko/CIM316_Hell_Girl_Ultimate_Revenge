@@ -31,6 +31,11 @@ public class UIManager : MonoBehaviour
         hud.UpdateHealth(curHealth);
     }
 
+    public IEnumerator PlaySpellPickedUpAnim()
+    {
+        yield return hud.PlaySpellPickedUpAnim();
+    }
+
     public void UpdateSpell(Spell newSpell)
     {
         hud.UpdateSpell(newSpell);

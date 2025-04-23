@@ -786,6 +786,7 @@ GameObject:
   m_Component:
   - component: {fileID: 103069649}
   - component: {fileID: 103069651}
+  - component: {fileID: 103069652}
   - component: {fileID: 103069650}
   m_Layer: 5
   m_Name: HUD
@@ -834,6 +835,7 @@ MonoBehaviour:
   spellIcon: {fileID: 1011041101}
   manaIcons: {fileID: 231085808}
   canvasGroup: {fileID: 103069651}
+  anim: {fileID: 103069652}
   fadeOutDuration: 0.25
   fadeInDuration: 0.25
 --- !u!225 &103069651
@@ -848,6 +850,27 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!95 &103069652
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103069648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f80b52234319f1b4191924eb7ffd6e0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &113235992
 GameObject:
   m_ObjectHideFlags: 0
@@ -6189,7 +6212,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1076558648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8470,7 +8493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapGenerator: {fileID: 727196270}
-  <HasOnboardedPlayer>k__BackingField: 0
+  <HasOnboardedPlayer>k__BackingField: 1
 --- !u!1 &1400206151
 GameObject:
   m_ObjectHideFlags: 0
