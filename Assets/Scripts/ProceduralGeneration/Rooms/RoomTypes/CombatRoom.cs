@@ -136,5 +136,8 @@ public class CombatRoom : MonoBehaviour
                 gate.GetComponent<Animator>().Play("Gate_Open");
             }
         }
+
+        // Increase the rooms cleared stat
+        StatsManager.Instance.IncreaseRoomsCleared();
     }
 }

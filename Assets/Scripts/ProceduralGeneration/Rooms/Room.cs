@@ -26,6 +26,9 @@ public class Room
     // Reference to the spawned room object
     public GameObject roomObj;
 
+    // Whether the room has been visited
+    public bool IsVisited;
+
     // A constructor to pass information into an instance once created
     public Room(Vector2Int _gridPos, RoomType _roomType)
     {

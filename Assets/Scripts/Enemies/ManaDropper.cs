@@ -13,6 +13,9 @@ public class ManaDropper : MonoBehaviour
 
     public void DropMana(Transform manaParentTransform)
     {
+        // Don't drop mana if the player has no spell
+        if (!GameManager.Instance.PlayerHasSpell) return;
+        
         // Roll the amount of mana to drop
         int manaDropAmount = Random.Range(minManaDrop, maxManaDrop + 1);
         // Spawn a number of mana pickups equal to the mana drop amount and give each one a random drop force

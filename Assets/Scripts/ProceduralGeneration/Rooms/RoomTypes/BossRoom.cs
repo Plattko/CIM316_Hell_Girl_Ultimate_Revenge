@@ -59,6 +59,9 @@ public class BossRoom : MonoBehaviour
         // Make the ascension leech descend
         AscensionLeech leech = GetComponentInChildren<AscensionLeech>();
         leech.StartCoroutine(leech.Descend());
+
+        // Increase the rooms cleared stat
+        StatsManager.Instance.IncreaseRoomsCleared();
     }
 
     private IEnumerator EndDemo()

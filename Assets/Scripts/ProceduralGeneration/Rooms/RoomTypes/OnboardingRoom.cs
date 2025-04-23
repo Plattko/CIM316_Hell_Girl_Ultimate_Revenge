@@ -72,6 +72,7 @@ public class OnboardingRoom : MonoBehaviour
         {
             UIManager.Instance.FadeInHUD();
             GameManager.Instance.ToggleOnboardingMode(false);
+            StatsManager.Instance.ToggleRunTimer(true);
         }
     }
 }

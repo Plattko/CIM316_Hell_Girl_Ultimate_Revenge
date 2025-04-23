@@ -216,6 +216,10 @@ public class FallenAngel : MonoBehaviour, IDamageable
         {
             isDead = true;
             onDied?.Invoke();
+
+            // Increase the enemies killed stat
+            StatsManager.Instance.IncreaseEnemiesKilled();
+
             Destroy(gameObject);
         }
     }

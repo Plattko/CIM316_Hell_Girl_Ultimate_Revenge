@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
     public bool IsGamePaused { get; private set; }
     private bool canPause = true;
 
+    [field: SerializeField] public bool HasOnboardedPlayer { get; private set; }
     public bool IsInOnboarding { get; private set; }
+
+    public bool PlayerHasSpell { get; private set; }
 
     private void Awake()
     {
@@ -46,6 +49,7 @@ public class GameManager : MonoBehaviour
     public void OpenPauseMenu()
     {
         IsGamePaused = true;
+        StatsManager.Instance.ToggleRunTimer(false);
         Time.timeScale = 0;
         UIManager.Instance.OpenPauseMenu();
     }
@@ -53,6 +57,7 @@ public class GameManager : MonoBehaviour
     public void ClosePauseMenu()
     {
         IsGamePaused = false;
+        StatsManager.Instance.ToggleRunTimer(true);
         Time.timeScale = 1;
         UIManager.Instance.ClosePauseMenu();
     }
@@ -63,8 +68,26 @@ public class GameManager : MonoBehaviour
     }
 
     //-------------------------------------------------------------
+    // DYING
+    //-------------------------------------------------------------
+    public void GameOver()
+    {
+        canPause = false;
+        IsGamePaused = true;
+        StatsManager.Instance.ToggleRunTimer(false);
+        Time.timeScale = 0;
+        UIManager.Instance.OpenDeathMenu();
+    }
+
+    //-------------------------------------------------------------
     // QUITTING
     //-------------------------------------------------------------
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
+    }
+
     public void QuitGame()
     {
         Application.Quit();
@@ -76,6 +99,11 @@ public class GameManager : MonoBehaviour
     public void ToggleOnboardingMode(bool enabled)
     {
         IsInOnboarding = enabled;
+
+        if (!enabled)
+        {
+            HasOnboardedPlayer = true;
+        }
     }
 
     //-------------------------------------------------------------
@@ -97,7 +125,18 @@ public class GameManager : MonoBehaviour
     //-------------------------------------------------------------
     public void EndDemo()
     {
+        canPause = false;
+        IsGamePaused = true;
+        StatsManager.Instance.ToggleRunTimer(false);
         Time.timeScale = 0;
         UIManager.Instance.OpenEndOfDemoMenu();
+    }
+
+    //-------------------------------------------------------------
+    // Player
+    //-------------------------------------------------------------
+    public void TogglePlayerHasSpell(bool hasSpell)
+    {
+        PlayerHasSpell = hasSpell;
     }
 }

@@ -59,7 +59,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         // Restart the scene if the player reaches 0 health
         else
         {
-            GameManager.Instance.ReloadScene();
+            GameManager.Instance.GameOver();
         }
         // Update the health UI
         UIManager.Instance.UpdateHealth(curHealth);

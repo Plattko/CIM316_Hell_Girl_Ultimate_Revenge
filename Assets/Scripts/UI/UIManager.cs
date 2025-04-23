@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class UIManager : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Minimap minimap;
     [SerializeField] private FadeToBlack fadeToBlack;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject deathMenu;
     [SerializeField] private GameObject endOfDemoMenu;
 
     private void Awake()
@@ -18,6 +20,7 @@ public class UIManager : MonoBehaviour
         else { Instance = this; }
 
         pauseMenu.SetActive(false);
+        endOfDemoMenu.SetActive(false);
     }
 
     //-------------------------------------------------------------
@@ -26,6 +29,11 @@ public class UIManager : MonoBehaviour
     public void UpdateHealth(int curHealth)
     {
         hud.UpdateHealth(curHealth);
+    }
+
+    public IEnumerator PlaySpellPickedUpAnim()
+    {
+        yield return hud.PlaySpellPickedUpAnim();
     }
 
     public void UpdateSpell(Spell newSpell)
@@ -60,6 +68,7 @@ public class UIManager : MonoBehaviour
     {
         StartCoroutine(hud.FadeInHUD());
     }
+
     //-------------------------------------------------------------
     // FADE TO BLACK
     //-------------------------------------------------------------
@@ -84,6 +93,7 @@ public class UIManager : MonoBehaviour
     public void OpenPauseMenu()
     {
         ToggleHUDVisibility(false);
+        EventSystem.current.SetSelectedGameObject(null);
         pauseMenu.SetActive(true);
     }
 
@@ -94,6 +104,15 @@ public class UIManager : MonoBehaviour
         {
             ToggleHUDVisibility(true);
         }
+    }
+
+    //-------------------------------------------------------------
+    // DEATH MENU
+    //-------------------------------------------------------------
+    public void OpenDeathMenu()
+    {
+        ToggleHUDVisibility(false);
+        deathMenu.SetActive(true);
     }
 
     //-------------------------------------------------------------

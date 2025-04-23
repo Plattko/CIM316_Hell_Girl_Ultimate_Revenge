@@ -74,15 +74,21 @@ public class MinibossRoom : MonoBehaviour
         foreach (GameObject enemy in additionalEnemies)
         {
             if (enemy == null) continue;
-            
-            if (enemy.TryGetComponent(out IDamageable damageable))
-            {
-                damageable.TakeDamage(float.MaxValue);
-            }
+
+            //if (enemy.TryGetComponent(out IDamageable damageable))
+            //{
+            //    damageable.TakeDamage(float.MaxValue);
+            //}
+
+            // Destroy the enemy game object
+            Destroy(enemy);
         }
 
         // Make the ascension leech descend
         AscensionLeech leech = GetComponentInChildren<AscensionLeech>();
         leech.StartCoroutine(leech.Descend());
+
+        // Increase the rooms cleared stat
+        StatsManager.Instance.IncreaseRoomsCleared();
     }
 }
