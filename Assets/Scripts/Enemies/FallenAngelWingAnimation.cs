@@ -22,16 +22,31 @@ public class FallenAngelWingAnimation : MonoBehaviour
     private string previousArc = "";
 
 
-    void Start()
+    //void Start()
+    //{
+    //    GameObject playerObj = GameObject.FindGameObjectWithTag(playerTag);
+    //    if (playerObj != null)
+    //    {
+    //        playerTransform = playerObj.transform;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogWarning("Player not found with tag: " + playerTag);
+    //    }
+    //}
+    void OnEnable()
     {
-        GameObject playerObj = GameObject.FindGameObjectWithTag(playerTag);
-        if (playerObj != null)
+        if (playerTransform == null)
         {
-            playerTransform = playerObj.transform;
-        }
-        else
-        {
-            Debug.LogWarning("Player not found with tag: " + playerTag);
+            GameObject playerObj = GameObject.FindGameObjectWithTag(playerTag);
+            if (playerObj != null)
+            {
+                playerTransform = playerObj.transform;
+            }
+            else
+            {
+                Debug.LogWarning("Player not found with tag: " + playerTag);
+            }
         }
     }
 

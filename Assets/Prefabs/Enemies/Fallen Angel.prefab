@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8775060844549461011}
   - component: {fileID: 5827374741498203909}
   m_Layer: 0
-  m_Name: eye_opening_spritesheet_0
+  m_Name: Eye Closed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,11 +27,11 @@ Transform:
   m_GameObject: {fileID: 421793779072916631}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.025, y: 1.855, z: 0}
+  m_LocalPosition: {x: 0.019, y: 0.034, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1399641188385904869}
+  m_Father: {fileID: 5352404012943108290}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8775060844549461011
 SpriteRenderer:
@@ -116,7 +116,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2999552330622559645}
   - component: {fileID: 8818750396862337960}
-  - component: {fileID: 766434841458074803}
   - component: {fileID: 5732159271359180894}
   m_Layer: 0
   m_Name: lower wing right folded
@@ -192,25 +191,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &766434841458074803
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266802350278812946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5df7adda543c884ebef320cd60fe557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 5732159271359180894}
-  enterAnimationName: LowerWingUnfold
-  exitAnimationName: LowerWingFold
-  spriteToDisable: {fileID: 1266802350278812946}
-  spriteToEnable: {fileID: 2042597149897939274}
-  playerTag: Player
-  angleThreshold: 45
 --- !u!95 &5732159271359180894
 Animator:
   serializedVersion: 5
@@ -243,7 +223,6 @@ GameObject:
   - component: {fileID: 6808354382482980194}
   - component: {fileID: 4812087110522230944}
   - component: {fileID: 2431982064940412014}
-  - component: {fileID: 9213621118117330341}
   m_Layer: 0
   m_Name: lower wing right unfolded
   m_TagString: Untagged
@@ -339,25 +318,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9213621118117330341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042597149897939274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5df7adda543c884ebef320cd60fe557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 2431982064940412014}
-  enterAnimationName: LowerWingUnfold
-  exitAnimationName: LowerWingFold
-  spriteToDisable: {fileID: 2042597149897939274}
-  spriteToEnable: {fileID: 1266802350278812946}
-  playerTag: Player
-  angleThreshold: 45
 --- !u!1 &2111624573807869626
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +350,61 @@ Transform:
   - {fileID: 6793188801689315319}
   m_Father: {fileID: 1399641188385904869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2321034623960489163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8325633919489679248}
+  - component: {fileID: 2244897539648266723}
+  m_Layer: 0
+  m_Name: Lower wing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8325633919489679248
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2321034623960489163}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 525065689076014135}
+  - {fileID: 3063947129381292497}
+  m_Father: {fileID: 1399641188385904869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2244897539648266723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2321034623960489163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5df7adda543c884ebef320cd60fe557, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  foldedWingLeft: {fileID: 9153257991868086031}
+  unfoldedWingLeft: {fileID: 5727487544408233930}
+  leftWingAnimator: {fileID: 7074667834995100929}
+  foldedWingRight: {fileID: 1266802350278812946}
+  unfoldedWingRight: {fileID: 2042597149897939274}
+  rightWingAnimator: {fileID: 5732159271359180894}
+  unfoldAnimation: LowerWingUnfold
+  foldAnimation: LowerWingFold
+  playerTag: Player
 --- !u!1 &2861648889721791076
 GameObject:
   m_ObjectHideFlags: 0
@@ -415,13 +430,13 @@ Transform:
   m_GameObject: {fileID: 2861648889721791076}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.12, z: 0}
+  m_LocalPosition: {x: 0, y: 1.1199999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2999552330622559645}
   - {fileID: 6808354382482980194}
-  m_Father: {fileID: 1399641188385904869}
+  m_Father: {fileID: 8325633919489679248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3614619685826090120
 GameObject:
@@ -591,7 +606,7 @@ Transform:
   m_Children:
   - {fileID: 7588530184909356887}
   - {fileID: 656284155546741246}
-  m_Father: {fileID: 1399641188385904869}
+  m_Father: {fileID: 8325633919489679248}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4460995843020094499
 GameObject:
@@ -604,7 +619,6 @@ GameObject:
   - component: {fileID: 8600467078188186670}
   - component: {fileID: 8172319237158487782}
   - component: {fileID: 4631149586567532048}
-  - component: {fileID: 6533286869554375361}
   m_Layer: 0
   m_Name: upper_wing_left _folded
   m_TagString: Untagged
@@ -700,25 +714,61 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6533286869554375361
+--- !u!1 &4494422629096814983
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2938386910393752918}
+  - component: {fileID: 7953050676506730915}
+  m_Layer: 0
+  m_Name: UpperWing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2938386910393752918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4494422629096814983}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1571518398103325792}
+  - {fileID: 4896082997915951590}
+  m_Father: {fileID: 1399641188385904869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7953050676506730915
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4460995843020094499}
-  m_Enabled: 1
+  m_GameObject: {fileID: 4494422629096814983}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5df7adda543c884ebef320cd60fe557, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 4631149586567532048}
-  enterAnimationName: 
-  exitAnimationName: 
-  spriteToDisable: {fileID: 4460995843020094499}
-  spriteToEnable: {fileID: 3729595827285904190}
+  foldedWingLeft: {fileID: 4460995843020094499}
+  unfoldedWingLeft: {fileID: 3729595827285904190}
+  leftWingAnimator: {fileID: 4631149586567532048}
+  foldedWingRight: {fileID: 6178037193827337319}
+  unfoldedWingRight: {fileID: 4825331415674277723}
+  rightWingAnimator: {fileID: 3334223507999156936}
+  unfoldAnimation: UpperWingUnfold
+  foldAnimation: UpperWingFold
   playerTag: Player
-  angleThreshold: 45
 --- !u!1 &4825331415674277723
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,6 +779,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8985110718428962297}
   - component: {fileID: 2676341661204378599}
+  - component: {fileID: 8853899335383681671}
   m_Layer: 0
   m_Name: upper_wing_right_unfolded
   m_TagString: Untagged
@@ -803,6 +854,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &8853899335383681671
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4825331415674277723}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0d39297e3bc3c8b4d817d6cb75d66073, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &4827026459243029934
 GameObject:
   m_ObjectHideFlags: 0
@@ -813,7 +885,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6793188801689315319}
   - component: {fileID: 1490217360633210964}
-  - component: {fileID: 1993564348788828146}
   m_Layer: 0
   m_Name: Fire Point
   m_TagString: Untagged
@@ -850,58 +921,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   centerObject: {fileID: 3647759465358234059}
   radius: 2
---- !u!212 &1993564348788828146
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4827026459243029934}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: -1567442681, guid: 4eb147c90caa6f744879434cb6db930a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 2, y: 2.0019531}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
 --- !u!1 &5727487544408233930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1017,7 +1036,7 @@ Transform:
   m_Children:
   - {fileID: 8600467078188186670}
   - {fileID: 8495126900775431710}
-  m_Father: {fileID: 1399641188385904869}
+  m_Father: {fileID: 2938386910393752918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6178037193827337319
 GameObject:
@@ -1029,8 +1048,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4049813024785643246}
   - component: {fileID: 1042268136216335628}
-  - component: {fileID: 1964668723870448615}
-  - component: {fileID: 2952805309405416421}
+  - component: {fileID: 3334223507999156936}
   m_Layer: 0
   m_Name: upper_wing_right_folded
   m_TagString: Untagged
@@ -1105,7 +1123,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &1964668723870448615
+--- !u!95 &3334223507999156936
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -1115,7 +1133,7 @@ Animator:
   m_GameObject: {fileID: 6178037193827337319}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1dac39381d6f41347bcf15baa2926b19, type: 2}
+  m_Controller: {fileID: 9100000, guid: 06c088248a2643e419ce27781cb1cf2b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1126,25 +1144,57 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2952805309405416421
+--- !u!1 &6460132061471913790
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5352404012943108290}
+  - component: {fileID: 5716574813520621340}
+  m_Layer: 0
+  m_Name: EyeRing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5352404012943108290
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6460132061471913790}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.618, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3056461228684991429}
+  - {fileID: 3195857274112682572}
+  m_Father: {fileID: 1399641188385904869}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5716574813520621340
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6178037193827337319}
+  m_GameObject: {fileID: 6460132061471913790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5df7adda543c884ebef320cd60fe557, type: 3}
+  m_Script: {fileID: 11500000, guid: 3b19198eae97b594a939c00e2f63a6ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 1964668723870448615}
-  enterAnimationName: 
-  exitAnimationName: 
-  spriteToDisable: {fileID: 6178037193827337319}
-  spriteToEnable: {fileID: 4825331415674277723}
-  playerTag: Player
-  angleThreshold: 45
+  fallenAngel: {fileID: 2118532016151227056}
+  transitionAnimator: {fileID: 5827374741498203909}
+  animationTriggerName: Phase2
+  objectToDisable: {fileID: 421793779072916631}
+  objectToEnable: {fileID: 8358364891489609687}
 --- !u!1 &6523210583464891749
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1226,7 @@ Transform:
   m_Children:
   - {fileID: 4049813024785643246}
   - {fileID: 8985110718428962297}
-  m_Father: {fileID: 1399641188385904869}
+  m_Father: {fileID: 2938386910393752918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6604846528967197087
 GameObject:
@@ -1222,6 +1272,7 @@ GameObject:
   - component: {fileID: 2118532016151227056}
   - component: {fileID: 8306002862172687428}
   - component: {fileID: 4887248693871754369}
+  - component: {fileID: 665753726749869822}
   m_Layer: 0
   m_Name: Fallen Angel
   m_TagString: Untagged
@@ -1244,12 +1295,10 @@ Transform:
   m_Children:
   - {fileID: 637817353602176381}
   - {fileID: 2632971932482472199}
-  - {fileID: 3195857274112682572}
+  - {fileID: 5352404012943108290}
   - {fileID: 3647759465358234059}
-  - {fileID: 525065689076014135}
-  - {fileID: 3063947129381292497}
-  - {fileID: 4896082997915951590}
-  - {fileID: 1571518398103325792}
+  - {fileID: 8325633919489679248}
+  - {fileID: 2938386910393752918}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2153871092883959857
@@ -1330,7 +1379,10 @@ MonoBehaviour:
   summonPoints:
   - {fileID: 637817353602176381}
   - {fileID: 2632971932482472199}
+  wingAnimationScript: {fileID: 7953050676506730915}
   enemySpawnIndicatorPrefab: {fileID: 7561993631305040600, guid: 05306c11060c25c47960c05bd14a70ca, type: 3}
+  eyeRingAnimator: {fileID: 8291809214745209236}
+  eyeRingTrigger: EyeAttack
 --- !u!136 &8306002862172687428
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1375,6 +1427,127 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &665753726749869822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229544076843892538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ab38d02cb3922242898e424ddb0c033, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  triggerPercentage: 0.75
+  targetScript: {fileID: 7953050676506730915}
+--- !u!1 &8358364891489609687
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3056461228684991429}
+  - component: {fileID: 3025131045946723679}
+  - component: {fileID: 8291809214745209236}
+  m_Layer: 0
+  m_Name: Eye Open
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3056461228684991429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358364891489609687}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.026, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5352404012943108290}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &3025131045946723679
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358364891489609687}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: -1003351601, guid: 115259b326d3bce4e870f0dbee8023ba, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1.65, y: 1.6613188}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!95 &8291809214745209236
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8358364891489609687}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b270feab116db8c429de53fd34ae90c6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &9153257991868086031
 GameObject:
   m_ObjectHideFlags: 0
@@ -1386,7 +1559,6 @@ GameObject:
   - component: {fileID: 7588530184909356887}
   - component: {fileID: 2173551858385315875}
   - component: {fileID: 7074667834995100929}
-  - component: {fileID: 7423658021284761615}
   m_Layer: 0
   m_Name: lower wing Left folded
   m_TagString: Untagged
@@ -1482,22 +1654,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7423658021284761615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9153257991868086031}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e5df7adda543c884ebef320cd60fe557, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 7074667834995100929}
-  enterAnimationName: 
-  exitAnimationName: 
-  spriteToDisable: {fileID: 9153257991868086031}
-  spriteToEnable: {fileID: 5727487544408233930}
-  playerTag: Player
-  angleThreshold: 45

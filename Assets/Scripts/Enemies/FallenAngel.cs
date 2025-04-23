@@ -35,7 +35,13 @@ public class FallenAngel : MonoBehaviour, IDamageable
     private bool usingBeamAttack = false;
     private Coroutine attackRoutine;
 
+    [SerializeField] private FallenAngelWingAnimation wingAnimationScript; // DRAG THIS IN FROM INSPECTOR
+
     [SerializeField] private GameObject enemySpawnIndicatorPrefab;
+
+    [Header("Eye Ring Beam Animation")]
+    [SerializeField] private Animator eyeRingAnimator;
+    [SerializeField] private string eyeRingTrigger = "EyeAttack"; // Make sure this matches the Trigger name
 
 
     void Start()
@@ -51,10 +57,16 @@ public class FallenAngel : MonoBehaviour, IDamageable
     {
         if (player == null) return;
 
-        // Health-based behavior changes
+        // Health -based behavior changes
         if (currentHealth <= maxHealth * 0.75f && !summonedMinions)
         {
             SummonMinions();
+
+            if (wingAnimationScript != null && !wingAnimationScript.enabled)
+            {
+                wingAnimationScript.enabled = true;
+                Debug.Log("FallenAngelWingAnimation script has been ENABLED.");
+            }
         }
 
         if (currentHealth <= maxHealth * 0.5f && !usingBeamAttack)
@@ -107,7 +119,20 @@ public class FallenAngel : MonoBehaviour, IDamageable
 
     IEnumerator BeamAttack()
     {
-        yield return new WaitForSeconds(0.5f); // Small delay before beams spawn
+        Debug.Log("BeamAttack initiated.");
+
+        if (eyeRingAnimator != null && !string.IsNullOrEmpty(eyeRingTrigger))
+        {
+            Debug.Log("Playing EyeAttack animation.");
+            eyeRingAnimator.ResetTrigger(eyeRingTrigger);  // optional, helps if stuck in loop
+            eyeRingAnimator.SetTrigger(eyeRingTrigger);
+        }
+        else
+        {
+            Debug.LogWarning("EyeRing animator or trigger not set.");
+        }
+
+        yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i < beamsPerAttack; i++)
         {
@@ -177,5 +202,10 @@ public class FallenAngel : MonoBehaviour, IDamageable
             onDied?.Invoke();
             Destroy(gameObject);
         }
+    }
+
+    public float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 }
