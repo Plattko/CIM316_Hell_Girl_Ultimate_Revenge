@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5379582854701556426}
   - component: {fileID: 1325622905169607201}
   - component: {fileID: 7500823765308540994}
+  - component: {fileID: 8074604317401948905}
   m_Layer: 7
   m_Name: DamnedSoul
   m_TagString: Enemy
@@ -194,6 +195,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 6612110380082510357, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
   agent: {fileID: 5379582854701556426}
+--- !u!95 &8074604317401948905
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1666680193277912074}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 62834eb7491c36b4faa914efc476f412, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8323276119811521112
 PrefabInstance:
   m_ObjectHideFlags: 0

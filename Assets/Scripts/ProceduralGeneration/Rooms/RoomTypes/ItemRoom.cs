@@ -13,7 +13,7 @@ public class ItemRoom : MonoBehaviour
         Weapons,
         Spells,
     }
-    public ItemType itemType = ItemType.Weapons;
+    public ItemType itemType { get; private set; } = ItemType.Weapons;
 
     private void OnEnable()
     {
@@ -36,8 +36,7 @@ public class ItemRoom : MonoBehaviour
     private void Start()
     {
         // Randomly set the room's item type
-        //itemType = Random.value < 0.5f ? ItemType.Weapons : ItemType.Spells;
-        itemType = ItemType.Spells;
+        itemType = Random.value < 0.5f ? ItemType.Weapons : ItemType.Spells;
         // Choose between using the weapon pool or spell pool based on the room's item type
         List<Item> availableItems = new List<Item>();
         if (itemType == ItemType.Weapons) { availableItems = weaponPool; }

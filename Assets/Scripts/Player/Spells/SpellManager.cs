@@ -5,18 +5,20 @@ using UnityEngine;
 
 public class SpellManager : MonoBehaviour
 {
+    // Events
+    public event Action<float, bool> onSpellCast;
+    public event Action<GameObject> onSpellDropped;
+
     // Player mana variables
     public int maxMana { get; private set; } = 5;
     public int curMana { get; private set; }
 
     // Spell variables
-    [SerializeField] private PlayerAim aimPivot;
-    public Spell curSpell;
+    public Spell curSpell { get; private set; }
     private float cooldownTime;
-    public event Action<float, bool> onSpellCast;
 
+    [SerializeField] private Transform aimPivot;
     [SerializeField] private GameObject spellItemPrefab;
-    public event Action<GameObject> onSpellDropped;
 
     private void Start()
     {
@@ -51,7 +53,7 @@ public class SpellManager : MonoBehaviour
         // Cast the spell
         if (curSpell.hasDirection)
         {
-            curSpell.CastWithDirection(gameObject, aimPivot.transform.forward);
+            curSpell.CastWithDirection(gameObject, aimPivot.forward);
         }
         else
         {

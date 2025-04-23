@@ -19,12 +19,12 @@ public class ItemPedestal : MonoBehaviour, IInteractable
     public void Interact(Interactor interactor)
     {
         Debug.Log("Interacted with " + name + ".");
-        if (item is WeaponSO)
+        if (item is WeaponDataSO)
         {
             // Get a reference to the interactor's weapon manager script
-            WeaponManager interactorWeaponManager = interactor.GetComponentInChildren<WeaponManager>();
+            WeaponGenerator interactorWeaponGenerator = interactor.GetComponentInChildren<WeaponGenerator>();
             // Update the interactor's current weapon to this weapon
-            //interactorWeaponManager.SwapWeapon((WeaponSO)item);
+            interactorWeaponGenerator.GenerateWeapon((WeaponDataSO)item);
             Debug.Log("Picked up " + item.name + ".");
         }
         else if (item is Spell)

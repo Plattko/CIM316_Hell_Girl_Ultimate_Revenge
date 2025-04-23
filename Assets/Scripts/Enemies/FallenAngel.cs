@@ -8,6 +8,7 @@ public class FallenAngel : MonoBehaviour, IDamageable
 {
     // Events
     public event Action onDied;
+    public event Action<GameObject> onMinionSummoned;
 
     [Header("Health Settings")]
     public float maxHealth = 100f;
@@ -27,6 +28,7 @@ public class FallenAngel : MonoBehaviour, IDamageable
     public int beamsPerAttack = 5; // Number of beams per beam attack
 
     [Header("Minion Summon Settings")]
+    [SerializeField] private GameObject enemySpawnIndicatorPrefab;
     public GameObject[] minions;
     public Transform[] summonPoints;
     private bool summonedMinions = false;
@@ -75,6 +77,9 @@ public class FallenAngel : MonoBehaviour, IDamageable
         }
     }
 
+    //-------------------------------------------------------------
+    // PROJECTILE ATTACK
+    //-------------------------------------------------------------
     IEnumerator FireProjectile()
     {
         while (!isDead)
@@ -102,21 +107,38 @@ public class FallenAngel : MonoBehaviour, IDamageable
         }
     }
 
+    //-------------------------------------------------------------
+    // SUMMONING MINIONS
+    //-------------------------------------------------------------
     void SummonMinions()
     {
         summonedMinions = true;
 
+        // Display an enemy spawn indicator and then spawn an enemy at each of the spawn layout's spawn points
         foreach (Transform summonPoint in summonPoints)
         {
             // Instantiate an enemy spawn indicator at the position of the spawn point
             GameObject enemySpawnIndicator = Instantiate(enemySpawnIndicatorPrefab, summonPoint.position, Quaternion.identity);
             // Spawn an enemy at the spawn point after the enemy spawn indicator's animation ends
-
-            StartCoroutine(SpawnEnemy(enemySpawnIndicator.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length, summonPoint.position));
+            StartCoroutine(SpawnMinion(enemySpawnIndicator.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length, summonPoint.position));
         }
-
     }
 
+    private IEnumerator SpawnMinion(float delay, Vector3 summonPoint)
+    {
+        // Wait for the spawn delay
+        yield return new WaitForSeconds(delay);
+        // Instantiate a random minion at the spawn point
+        GameObject minion = Instantiate(minions[UnityEngine.Random.Range(0, minions.Length)], summonPoint + Vector3.up, Quaternion.identity);
+        // Set the enemy's parent to the room it is in
+        minion.transform.parent = transform;
+        // Signal that a minion was summoned
+        onMinionSummoned?.Invoke(minion);
+    }
+
+    //-------------------------------------------------------------
+    // BEAM ATTACK
+    //-------------------------------------------------------------
     IEnumerator BeamAttack()
     {
         Debug.Log("BeamAttack initiated.");
@@ -181,15 +203,9 @@ public class FallenAngel : MonoBehaviour, IDamageable
         return new Vector3(x, y, z);
     }
 
-    private IEnumerator SpawnEnemy(float delay, Vector3 summonPoint)
-    {
-        yield return new WaitForSeconds(delay);
-
-        int randomIndex = UnityEngine.Random.Range(0, minions.Length);
-        GameObject minion = minions[randomIndex];
-        Instantiate(minion, summonPoint, Quaternion.identity);
-    }
-
+    //-------------------------------------------------------------
+    // HEALTH
+    //-------------------------------------------------------------
     public void TakeDamage(float amount)
     {
         if (isDead) return;

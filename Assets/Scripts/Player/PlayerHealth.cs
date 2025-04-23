@@ -39,6 +39,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         // Do nothing if the player is dashing
         if (playerController.isDashing) return;
+
+        // Onboarding functionality
+        if (GameManager.Instance.IsInOnboarding)
+        {
+            // Play the hurt SFX
+            SFXManager.Instance.PlayRandomAudioClip(hurtSFX, transform, 0.75f, 1f, true);
+            // Do nothing else
+            return;
+        }
+
         // Decrease the health by the damage amount
         curHealth -= Mathf.RoundToInt(amount);
         // Play the hurt SFX if the player is still alive
