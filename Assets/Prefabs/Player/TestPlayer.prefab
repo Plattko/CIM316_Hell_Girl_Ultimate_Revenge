@@ -173,12 +173,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d034e5848f269f7409940f9b9958d342, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  afterImagePrefab: {fileID: 1246530430150949909, guid: 7046e27db68661949beea7d96a415cfa, type: 3}
   playerSR: {fileID: 1815527593154101904}
+  afterImagePrefab: {fileID: 1246530430150949909, guid: 7046e27db68661949beea7d96a415cfa, type: 3}
+  spawnFrequency: 0.02
   startColour: {r: 1, g: 0.57254905, b: 0.99215686, a: 0}
   startAlpha: 0.8
   afterImageDuration: 0.075
-  spawnFrequency: 0.02
 --- !u!1 &1560499146114454235
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,12 +413,12 @@ Transform:
   m_Children:
   - {fileID: 2682833431637547151}
   - {fileID: 2639483359937034680}
+  - {fileID: 5695899071110921949}
   - {fileID: 7362945796637451302}
   - {fileID: 7286404775285459591}
   - {fileID: 1646594216708087833}
   - {fileID: 1563973175013391134}
   - {fileID: 49739571562047385}
-  - {fileID: 5695899071110921949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3120346800674700079
