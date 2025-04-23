@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
     [Header("Sprite")]
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PlayerAnimationController animationController;
+    [SerializeField] private GameObject afterImageGenerator;
     public enum FlipType { OnMove, OnAttack, }
 
     [Header("Combat")]
@@ -126,6 +127,8 @@ public class PlayerController : MonoBehaviour
         isDashing = true;
         // Tell the animation controller the player is dashing
         animationController.SetIsDashing(true);
+        // Start spawning after images
+        afterImageGenerator.SetActive(true);
         // Play the dash woosh SFX
         SFXManager.Instance.PlayRandomAudioClip(dashWooshSFX, transform, 1.1f, 1f, true);
         // Have a chance of playing the dash grunt SFX and guarantee it plays after a certain number of dashes without it playing
@@ -145,6 +148,8 @@ public class PlayerController : MonoBehaviour
         isDashing = false;
         // Tell the animation controller the player is no longer dashing
         animationController.SetIsDashing(false);
+        // Stop spawning after images
+        afterImageGenerator.SetActive(false);
         // Wait for the dash cooldown duration and re-enable the ability to dash
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
@@ -161,6 +166,8 @@ public class PlayerController : MonoBehaviour
             canDash = true;
             // Tell the animation controller the player is no longer dashing
             animationController.SetIsDashing(false);
+            // Stop spawning after images
+            afterImageGenerator.SetActive(false);
         }
     }
 

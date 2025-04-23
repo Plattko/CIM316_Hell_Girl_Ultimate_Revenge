@@ -129,6 +129,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1150695578593599750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5695899071110921949}
+  - component: {fileID: 5593910674570467781}
+  m_Layer: 0
+  m_Name: AfterImageGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &5695899071110921949
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150695578593599750}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6612110380082510357}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5593910674570467781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1150695578593599750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d034e5848f269f7409940f9b9958d342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  afterImagePrefab: {fileID: 1246530430150949909, guid: 7046e27db68661949beea7d96a415cfa, type: 3}
+  playerSR: {fileID: 1815527593154101904}
+  startColour: {r: 1, g: 0.57254905, b: 0.99215686, a: 0}
+  startAlpha: 0.8
+  afterImageDuration: 0.075
+  spawnFrequency: 0.02
 --- !u!1 &1560499146114454235
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,6 +418,7 @@ Transform:
   - {fileID: 1646594216708087833}
   - {fileID: 1563973175013391134}
   - {fileID: 49739571562047385}
+  - {fileID: 5695899071110921949}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &3120346800674700079
@@ -635,6 +686,7 @@ MonoBehaviour:
   dashCooldown: 0.5
   spriteRenderer: {fileID: 1815527593154101904}
   animationController: {fileID: 3894704286638000610}
+  afterImageGenerator: {fileID: 1150695578593599750}
   weaponManager: {fileID: 8840149213579755783}
   spellManager: {fileID: 4227291240003483198}
   <WeaponAimPivot>k__BackingField: {fileID: 1646594216708087833}
