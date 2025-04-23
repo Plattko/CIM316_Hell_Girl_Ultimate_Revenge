@@ -52,12 +52,24 @@ public class MapGenerator : MonoBehaviour
         PlaceRoomDoors();
         roomManager.SpawnRooms(rooms, gridCentre, true);
         minimap.DrawMap(rooms, gridCentre);
+
+        // If the player has already been onboarded, start the run timer
+        if (GameManager.Instance.HasOnboardedPlayer)
+        {
+            StatsManager.Instance.ToggleRunTimer(true);
+        }
+        // Increase the floor reached stat
+        StatsManager.Instance.IncreaseFloorReached();
     }
 
     public IEnumerator GenerateNewMap()
     {
         // Disable the player's movement
         roomManager.TogglePlayerInput(false);
+        // Turn off the ability to pause while generating a new map
+        GameManager.Instance.TogglePauseInput(false);
+        // Turn off the run timer while generating a new map
+        StatsManager.Instance.ToggleRunTimer(false);
 
         // Fade to black
         yield return UIManager.Instance.FadeOut(0.25f);
@@ -68,6 +80,8 @@ public class MapGenerator : MonoBehaviour
 
         // Increase the map count
         mapNum++;
+        // Increase the floor reached stat
+        StatsManager.Instance.IncreaseFloorReached();
 
         // Create the 2D room array at the size of the grid
         rooms = new Room[gridSizeX, gridSizeY];
@@ -85,6 +99,10 @@ public class MapGenerator : MonoBehaviour
         // Fade back in
         yield return UIManager.Instance.FadeIn(0.1f);
 
+        // Re-enable the ability to pause
+        GameManager.Instance.TogglePauseInput(true);
+        // Re-enable the run timer
+        StatsManager.Instance.ToggleRunTimer(true);
         // Re-enable the player's movement
         roomManager.TogglePlayerInput(true);
     }

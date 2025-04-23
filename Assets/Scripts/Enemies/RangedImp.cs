@@ -122,6 +122,10 @@ public class RangedImp : MonoBehaviour, IDamageable
             onDied?.Invoke();
             // Drop mana
             manaDropper.DropMana(transform.parent);
+
+            // Increase the enemies killed stat
+            StatsManager.Instance.IncreaseEnemiesKilled();
+
             // Destroy the enemy game object
             Destroy(gameObject);
         }

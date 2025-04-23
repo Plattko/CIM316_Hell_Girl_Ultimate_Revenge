@@ -37,6 +37,9 @@ public class ItemPedestal : MonoBehaviour, IInteractable
         }
         // Signal that the item was chosen
         onItemChosen?.Invoke();
+
+        // Increase the items picked up stat
+        StatsManager.Instance.IncreaseItemsPickedUp();
     }
 
     public void Clear()

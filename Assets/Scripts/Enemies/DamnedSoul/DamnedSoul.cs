@@ -183,6 +183,12 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         {
             manaDropper.DropMana(transform.parent);
         }
+
+        if (!GameManager.Instance.IsInOnboarding)
+        {
+            // Increase the enemies killed stat
+            StatsManager.Instance.IncreaseEnemiesKilled();
+        }
     }
 
     public void Destroy()

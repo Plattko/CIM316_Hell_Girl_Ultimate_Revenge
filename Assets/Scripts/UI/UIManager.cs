@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Minimap minimap;
     [SerializeField] private FadeToBlack fadeToBlack;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject deathMenu;
     [SerializeField] private GameObject endOfDemoMenu;
 
     private void Awake()
@@ -98,6 +99,15 @@ public class UIManager : MonoBehaviour
         {
             ToggleHUDVisibility(true);
         }
+    }
+
+    //-------------------------------------------------------------
+    // DEATH MENU
+    //-------------------------------------------------------------
+    public void OpenDeathMenu()
+    {
+        ToggleHUDVisibility(false);
+        deathMenu.SetActive(true);
     }
 
     //-------------------------------------------------------------

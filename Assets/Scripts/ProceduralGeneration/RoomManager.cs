@@ -28,7 +28,6 @@ public class RoomManager : MonoBehaviour
 
     // Onboarding variables
     [SerializeField] private GameObject onboardingRoomPrefab;
-    private bool hasOnboardedPlayer;
 
     private void OnDestroy()
     {
@@ -95,6 +94,10 @@ public class RoomManager : MonoBehaviour
         {
             TeleportPlayer(startingPos);
         }
+        // Increase the rooms cleared stat to include the starting room
+        StatsManager.Instance.IncreaseRoomsCleared();
+        // Set the room to visited
+        roomsDict[curRoom].IsVisited = true;
     }
 
     private GameObject SpawnRoom(Room roomData, Vector2Int gridCentre)
@@ -105,10 +108,9 @@ public class RoomManager : MonoBehaviour
         switch (roomData.roomType)
         {
             case Room.RoomType.Start:
-                if (!hasOnboardedPlayer)
+                if (!GameManager.Instance.HasOnboardedPlayer)
                 {
                     roomPrefab = onboardingRoomPrefab;
-                    hasOnboardedPlayer = true;
                 }
                 else
                 {
@@ -251,6 +253,9 @@ public class RoomManager : MonoBehaviour
         // Initialise the room the player entered
         switch (roomsDict[curRoom].roomType)
         {
+            case Room.RoomType.Start:
+                break;
+
             case Room.RoomType.Combat:
                 // Initialise the room
                 roomsDict[curRoom].roomObj.GetComponent<CombatRoom>().InitialiseRoom();
@@ -273,8 +278,26 @@ public class RoomManager : MonoBehaviour
                 roomsDict[curRoom].roomObj.GetComponent<BossRoom>().InitialiseRoom();
                 break;
 
+            case Room.RoomType.Ascension:
+                break;
+
             default:
                 break;
+        }
+
+        // TODO: Messy solution, refactor code so that the Room class's IsVisited variable
+        // and the CombatRoom, MinibossRoom and BossRoom's isRoomCleared variables don't create redundancy
+        Room roomData = roomsDict[curRoom];
+        if (!roomData.IsVisited)
+        {
+            // If the room isn't a combat room, miniboss room or boss room, increase the rooms cleared stat
+            if (roomData.roomType != Room.RoomType.Combat && roomData.roomType != Room.RoomType.Miniboss && roomData.roomType != Room.RoomType.Boss)
+            {
+                StatsManager.Instance.IncreaseRoomsCleared();
+            }
+
+            // Set the room to visited
+            roomData.IsVisited = true;
         }
 
         // TEMPORARY: Ignore if boss room
