@@ -39,8 +39,6 @@ public class FallenAngel : MonoBehaviour, IDamageable
 
     [SerializeField] private FallenAngelWingAnimation wingAnimationScript; // DRAG THIS IN FROM INSPECTOR
 
-    [SerializeField] private GameObject enemySpawnIndicatorPrefab;
-
     [Header("Eye Ring Beam Animation")]
     [SerializeField] private Animator eyeRingAnimator;
     [SerializeField] private string eyeRingTrigger = "EyeAttack"; // Make sure this matches the Trigger name
