@@ -917,20 +917,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <Map>k__BackingField: {fileID: 590163815}
-  startingRoomPrefab: {fileID: 4689660836299987125, guid: a5dd48b72bee4614f99fff48ae9b49c4, type: 3}
+  onboardingRoomPrefab: {fileID: 1223577051717357076, guid: 693e3a7326c5a284895b12832d8dfcfd, type: 3}
+  startingRoomPrefab: {fileID: 6970164176545065443, guid: 11601b148151f78439825b7cd1286103, type: 3}
   combatRoomPrefabs:
   - {fileID: 3517050197319322069, guid: a8877e4076e1fa247b12bd66038258b9, type: 3}
   - {fileID: 3517050197319322069, guid: 8e2f6e5d068d74c4fa7d201576fce276, type: 3}
   - {fileID: 3517050197319322069, guid: db552b46c621b7241945e693ea0f0c68, type: 3}
-  itemRoomPrefab: {fileID: 4689660836299987125, guid: 2eddcf4a10742d64791418814693f68d, type: 3}
-  ascensionRoomPrefab: {fileID: 4689660836299987125, guid: 13b4d6579a7144b47a7f1ad1c506a1cb, type: 3}
+  itemRoomPrefab: {fileID: 3163593867667602640, guid: 50a2e57c2354b074d957ebbe53f192fd, type: 3}
+  ascensionRoomPrefab: {fileID: 3272603530212142330, guid: 1d282ffd247bc564c8d37a6fa90d3aa8, type: 3}
   minibossRoomPrefab: {fileID: 3517050197319322069, guid: b6857f243f129174580d50bbaaef17e2, type: 3}
   bossRoomPrefab: {fileID: 3517050197319322069, guid: 6b8b9f3b1692d334a9e12f5589fc7420, type: 3}
   roomSpacing: 50
-  playerPrefab: {fileID: 5512676325496533754, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
   roomTransitionDuration: 0.1
   playerMoveDelay: 0.33
-  onboardingRoomPrefab: {fileID: 4689660836299987125, guid: a2485345dd354724cafbdbcc5f66e055, type: 3}
+  playerPrefab: {fileID: 5512676325496533754, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
 --- !u!1 &157522285
 GameObject:
   m_ObjectHideFlags: 0
