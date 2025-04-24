@@ -16,6 +16,10 @@ public class BossRoom : MonoBehaviour
     [SerializeField] private GameObject healthPickupPrefab;
     private float heartSpawnChance = 0.33f;
 
+    // SFX variables
+    [SerializeField] private AudioClip gateCloseSFX;
+    [SerializeField] private AudioClip gateOpenSFX;
+
     // End of demo variables
     private float endDemoDelay = 0.5f;
 
@@ -31,6 +35,8 @@ public class BossRoom : MonoBehaviour
                 gate.GetComponent<Animator>().Play("Gate_Close");
             }
         }
+        // Play the gate close SFX
+        SFXManager.Instance.PlayAudioClip(gateCloseSFX, transform, 1f);
 
         StartCoroutine(EndDemo());
     }
@@ -55,6 +61,8 @@ public class BossRoom : MonoBehaviour
                 gate.GetComponent<Animator>().Play("Gate_Open");
             }
         }
+        // Play the gate open SFX
+        SFXManager.Instance.PlayAudioClip(gateOpenSFX, transform, 1f);
 
         // Make the ascension leech descend
         AscensionLeech leech = GetComponentInChildren<AscensionLeech>();

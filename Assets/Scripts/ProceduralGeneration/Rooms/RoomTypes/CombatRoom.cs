@@ -26,6 +26,10 @@ public class CombatRoom : MonoBehaviour
     [SerializeField] private GameObject healthPickupPrefab;
     private float heartSpawnChance = 0.33f;
 
+    // SFX variables
+    [SerializeField] private AudioClip gateCloseSFX;
+    [SerializeField] private AudioClip gateOpenSFX;
+
     public void InitialiseRoom()
     {
         // If the room hasn't been cleared, close the gates and spawn a wave of enemies
@@ -39,6 +43,8 @@ public class CombatRoom : MonoBehaviour
                     gate.GetComponent<Animator>().Play("Gate_Close");
                 }
             }
+            // Play the gate close SFX
+            SFXManager.Instance.PlayAudioClip(gateCloseSFX, transform, 1f);
             // Randomly set the number to waves to clear between 1 and 2 based on the double wave chance
             wavesToClear = Random.value < doubleWaveChance ? 2 : 1;
             // Spawn a wave
@@ -136,6 +142,8 @@ public class CombatRoom : MonoBehaviour
                 gate.GetComponent<Animator>().Play("Gate_Open");
             }
         }
+        // Play the gate open SFX
+        SFXManager.Instance.PlayAudioClip(gateOpenSFX, transform, 1f);
 
         // Increase the rooms cleared stat
         StatsManager.Instance.IncreaseRoomsCleared();

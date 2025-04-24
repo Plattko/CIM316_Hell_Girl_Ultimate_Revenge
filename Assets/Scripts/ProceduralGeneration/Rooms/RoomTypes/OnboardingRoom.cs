@@ -12,6 +12,9 @@ public class OnboardingRoom : MonoBehaviour
     [SerializeField] private TutorialFight tutorialFight;
     private int dialogueIndex = 0;
 
+    // SFX variables
+    [SerializeField] private AudioClip gateOpenSFX;
+
     private void OnEnable()
     {
         conversationManager.OnDialogueEnd += OnDialogueEnd;
@@ -56,6 +59,8 @@ public class OnboardingRoom : MonoBehaviour
                 gate.GetComponent<Animator>().Play("Gate_Open");
             }
         }
+        // Play the gate open SFX
+        SFXManager.Instance.PlayAudioClip(gateOpenSFX, transform, 1f);
     }
 
     private void OnDialogueEnd()

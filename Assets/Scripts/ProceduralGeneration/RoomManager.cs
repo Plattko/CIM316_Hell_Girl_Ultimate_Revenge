@@ -7,6 +7,8 @@ public class RoomManager : MonoBehaviour
 {
     [field: SerializeField] public Transform Map { get; private set; }
 
+    [Header("Room Spawning Variables")]
+    [SerializeField] private GameObject onboardingRoomPrefab;
     [SerializeField] private GameObject startingRoomPrefab;
     [SerializeField] private GameObject[] combatRoomPrefabs;
     [SerializeField] private GameObject itemRoomPrefab;
@@ -18,16 +20,13 @@ public class RoomManager : MonoBehaviour
     private Dictionary<Vector2Int, Room> roomsDict = new Dictionary<Vector2Int, Room>();
     private Vector2Int curRoom;
 
-    [SerializeField] private GameObject playerPrefab;
-    private GameObject player;
-
-
-    // Room transition variables
+    [Header("Room Transition Variables")]
     [SerializeField] private float roomTransitionDuration = 0.1f;
     [SerializeField] private float playerMoveDelay = 0.33f;
 
-    // Onboarding variables
-    [SerializeField] private GameObject onboardingRoomPrefab;
+    [Header("Player Prefab")]
+    [SerializeField] private GameObject playerPrefab;
+    private GameObject player;
 
     private void OnDestroy()
     {
