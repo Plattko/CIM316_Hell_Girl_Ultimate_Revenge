@@ -1560,7 +1560,7 @@ GameObject:
   - component: {fileID: 664430097637475319}
   - component: {fileID: 4103259846612984632}
   m_Layer: 0
-  m_Name: AscensionRoom
+  m_Name: Old_AscensionRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

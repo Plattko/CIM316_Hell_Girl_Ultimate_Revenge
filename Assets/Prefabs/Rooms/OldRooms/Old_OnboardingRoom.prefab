@@ -2685,7 +2685,7 @@ GameObject:
   - component: {fileID: 4103259846612984632}
   - component: {fileID: 6819068762226665839}
   m_Layer: 0
-  m_Name: OnboardingRoom
+  m_Name: Old_OnboardingRoom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
