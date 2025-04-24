@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using System;
 using System.Runtime.CompilerServices;
+using UnityEngine.UI;
 
 public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
 {
@@ -40,6 +41,9 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
     public bool IsMoving { get; private set; }
     public bool IsAttacking { get; private set; }
 
+    [Header("UI")]
+    public Slider healthSlider;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -51,6 +55,12 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         player = GameObject.FindGameObjectWithTag("Player").transform;
         // Set the enemy's health to its max health
         curHealth = maxHealth;
+
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = curHealth;
+        }
     }
 
     void Update()
@@ -158,6 +168,11 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
 
         // Reduce health by the damage amount
         curHealth -= amount;
+        //sets health slider to current health
+        if (healthSlider != null)
+        {
+            healthSlider.value = curHealth;
+        }
 
         // Kill the enemy if it reaches 0 health
         if (curHealth <= 0)

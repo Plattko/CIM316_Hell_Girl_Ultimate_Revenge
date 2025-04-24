@@ -1451,6 +1451,10 @@ MonoBehaviour:
   summonPoints:
   - {fileID: 5972604398029226537}
   - {fileID: 3988148870168262260}
+  wingAnimationScript: {fileID: 0}
+  eyeRingAnimator: {fileID: 0}
+  eyeRingTrigger: EyeAttack
+  healthSlider: {fileID: 0}
 --- !u!1 &5031416366785549940
 GameObject:
   m_ObjectHideFlags: 0
