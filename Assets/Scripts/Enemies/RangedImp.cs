@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 public class RangedImp : MonoBehaviour, IDamageable
 {
@@ -31,6 +32,9 @@ public class RangedImp : MonoBehaviour, IDamageable
     private Vector3 lastPosition;
     private float movementThreshold = 0.01f;
 
+    [Header("UI")]
+    public Slider healthSlider;
+
     void Start()
     {
         lastPosition = transform.position;
@@ -43,6 +47,12 @@ public class RangedImp : MonoBehaviour, IDamageable
         // Set the enemy's nextFireTime to the initial fire delay so it doesn't shoot immediately upon spawning
         nextFireTime = Time.time + initialFireDelay;
         animator = GetComponent<Animator>();
+
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = curHealth;
+        }
     }
 
     void Update()
@@ -112,6 +122,11 @@ public class RangedImp : MonoBehaviour, IDamageable
 
         // Reduce health by the damage amount
         curHealth -= amount;
+
+        if (healthSlider != null)
+        {
+            healthSlider.value = curHealth;
+        }
 
         // Kill the enemy if it reaches 0 health
         if (curHealth <= 0)

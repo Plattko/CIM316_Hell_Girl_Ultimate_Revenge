@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Linq;
+using UnityEngine.UI;
 
 public class FallenAngel : MonoBehaviour, IDamageable
 {
@@ -43,11 +44,30 @@ public class FallenAngel : MonoBehaviour, IDamageable
     [SerializeField] private Animator eyeRingAnimator;
     [SerializeField] private string eyeRingTrigger = "EyeAttack"; // Make sure this matches the Trigger name
 
+    [Header("UI")]
+    public Slider healthSlider;
+
+
 
     void Start()
     {
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
+
+        if (healthSlider == null)
+        {
+            GameObject sliderObject = GameObject.Find("FallenAngelHealthSlider"); // <- Replace with your actual name
+            if (sliderObject != null)
+            {
+                healthSlider = sliderObject.GetComponent<Slider>();
+            }
+        }
+
+        if (healthSlider != null)
+        {
+            healthSlider.maxValue = maxHealth;
+            healthSlider.value = currentHealth;
+        }
 
         // Start projectile attack loop
         attackRoutine = StartCoroutine(FireProjectile());
@@ -209,6 +229,11 @@ public class FallenAngel : MonoBehaviour, IDamageable
         if (isDead) return;
 
         currentHealth -= amount;
+
+        if (healthSlider != null)
+        {
+            healthSlider.value = currentHealth;
+        }
 
         if (currentHealth <= 0)
         {
