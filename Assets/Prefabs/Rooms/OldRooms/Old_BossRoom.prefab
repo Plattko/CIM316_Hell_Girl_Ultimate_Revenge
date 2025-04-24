@@ -924,6 +924,8 @@ MonoBehaviour:
   - {fileID: 4156139092167079421}
   <InitialEntryPoint>k__BackingField: {fileID: 4927298508703491168}
   healthPickupPrefab: {fileID: 650365402667616731, guid: f0c22e7a5c99f064d839201b55d23333, type: 3}
+  gateCloseSFX: {fileID: 8300000, guid: fe25a9eecb7fbd44ab7ee7a547c45571, type: 3}
+  gateOpenSFX: {fileID: 8300000, guid: 5213e9fa4405fb8498a3fd99bdfc613b, type: 3}
 --- !u!1 &4011377662032668175
 GameObject:
   m_ObjectHideFlags: 0

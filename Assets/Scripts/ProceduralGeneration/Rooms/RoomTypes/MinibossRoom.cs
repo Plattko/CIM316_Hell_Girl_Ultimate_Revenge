@@ -18,6 +18,10 @@ public class MinibossRoom : MonoBehaviour
     [SerializeField] private GameObject healthPickupPrefab;
     private float heartSpawnChance = 0.33f;
 
+    // SFX variables
+    [SerializeField] private AudioClip gateCloseSFX;
+    [SerializeField] private AudioClip gateOpenSFX;
+
     private void OnEnable()
     {
         miniboss.onDied += RoomCleared;
@@ -42,6 +46,8 @@ public class MinibossRoom : MonoBehaviour
                 gate.GetComponent<Animator>().Play("Gate_Close");
             }
         }
+        // Play the gate close SFX
+        SFXManager.Instance.PlayAudioClip(gateCloseSFX, transform, 1f);
     }
 
     private void OnMinionSummoned(GameObject minion)
@@ -61,15 +67,6 @@ public class MinibossRoom : MonoBehaviour
             healthPickup.transform.parent = transform;
         }
 
-        // Open the gates
-        foreach (GameObject gate in gates)
-        {
-            if (gate.activeInHierarchy)
-            {
-                gate.GetComponent<Animator>().Play("Gate_Open");
-            }
-        }
-
         // Kill the additional enemies
         foreach (GameObject enemy in additionalEnemies)
         {
@@ -83,6 +80,17 @@ public class MinibossRoom : MonoBehaviour
             // Destroy the enemy game object
             Destroy(enemy);
         }
+
+        // Open the gates
+        foreach (GameObject gate in gates)
+        {
+            if (gate.activeInHierarchy)
+            {
+                gate.GetComponent<Animator>().Play("Gate_Open");
+            }
+        }
+        // Play the gate open SFX
+        SFXManager.Instance.PlayAudioClip(gateOpenSFX, transform, 1f);
 
         // Make the ascension leech descend
         AscensionLeech leech = GetComponentInChildren<AscensionLeech>();
