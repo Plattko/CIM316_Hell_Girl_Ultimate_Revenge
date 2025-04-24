@@ -18,6 +18,7 @@ public class ImpProjectile : MonoBehaviour
 
     public void SetDirection(Vector3 dir)
     {
+        dir.y = 0;
         direction = dir.normalized;
     }
 

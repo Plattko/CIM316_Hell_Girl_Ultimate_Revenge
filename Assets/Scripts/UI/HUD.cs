@@ -15,7 +15,10 @@ public class HUD : MonoBehaviour
     [SerializeField] private RectTransform manaIcons;
     private bool spellAnimHasPlayed;
 
-    // Visibility
+    [Header("Boss Health Bar")]
+    [SerializeField] private Slider bossHealthBar;
+
+    [Header("Visibility")]
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Animator anim;
 
@@ -76,6 +79,20 @@ public class HUD : MonoBehaviour
     {
         // Set the spell icon to the new spell's icon
         spellIcon.sprite = newSpell.icon;
+    }
+
+    //-------------------------------------------------------------
+    // BOSS HEALTH BAR
+    //-------------------------------------------------------------
+    public void SetBossHealthBar(float maxValue, float curValue)
+    {
+        bossHealthBar.maxValue = maxValue;
+        bossHealthBar.value = curValue;
+    }
+
+    public void UpdateBossHealthBar(float value)
+    {
+        bossHealthBar.value = value;
     }
 
     //-------------------------------------------------------------

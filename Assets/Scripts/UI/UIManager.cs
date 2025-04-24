@@ -51,6 +51,16 @@ public class UIManager : MonoBehaviour
         minimap.UpdateMap(newRoomPos, prevRoom);
     }
 
+    public void SetBossHealthBar(float maxValue, float curValue)
+    {
+        hud.SetBossHealthBar(maxValue, curValue);
+    }
+
+    public void UpdateBossHealthBar(float value)
+    {
+        hud.UpdateBossHealthBar(value);
+    }
+
     //-------------------------------------------------------------
     // HUD VISIBILITY
     //-------------------------------------------------------------
