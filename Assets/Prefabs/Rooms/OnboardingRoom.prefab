@@ -4476,6 +4476,7 @@ GameObject:
   - component: {fileID: 1466484195325729390}
   - component: {fileID: 7976995407285458894}
   - component: {fileID: 4706989724335434329}
+  - component: {fileID: 3388291373851141865}
   m_Layer: 7
   m_Name: TutorialEnemy
   m_TagString: Enemy
@@ -4518,7 +4519,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: -876546973899608171, guid: 4be517c687f86c2429317256be3dc9c8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4640,6 +4641,20 @@ MonoBehaviour:
   bounceBackDuration: 0.5
   detectionRange: 50
   healthSlider: {fileID: 0}
+--- !u!114 &3388291373851141865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7690084748345775288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b08c2a2e3d41b142a1fd92a039dd9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColour: {r: 1, g: 0, b: 0, a: 1}
+  flashTime: 0.25
 --- !u!1 &8297609653728814219
 GameObject:
   m_ObjectHideFlags: 0

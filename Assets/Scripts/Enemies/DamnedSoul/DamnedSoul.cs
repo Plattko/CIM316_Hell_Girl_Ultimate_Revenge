@@ -31,6 +31,8 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
     public float detectionRange = 5f;
     private bool isEngaged;
 
+    private Coroutine attackCoroutine;
+
     // Knockback
     private bool isInKnockback;
     private float knockbackDuration = 0.5f;
@@ -71,6 +73,14 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         // Do nothing if the player is null
         if (player == null || isDead) return;
 
+        // Calculate direction to player first
+        Vector3 directionToPlayer = player.position - transform.position;
+        // Flip sprite to face the player (assuming default face-left sprite)
+        if (directionToPlayer.x > 0)
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        else
+            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+
         // Check if the enemy is engaged
         if (isEngaged)
         {
@@ -106,7 +116,7 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
             IDamageable damageable = collision.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                StartCoroutine(HandleAttack(damageable));
+                attackCoroutine = StartCoroutine(HandleAttack(damageable));
             }
 
             // Bounce back if the player isn't dashing
@@ -120,15 +130,6 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
 
     private IEnumerator HandleAttack(IDamageable damageable)
     {
-        // Calculate direction to player first
-        Vector3 directionToPlayer = player.position - transform.position;
-
-        // Flip sprite to face the player (assuming default face-left sprite)
-        if (directionToPlayer.x > 0)
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        else
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-
         // Trigger attack animation
         IsAttacking = true;
         animator.SetBool("IsAttacking", true);
@@ -143,6 +144,15 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         // Wait for animation to finish before resetting
         yield return new WaitForSeconds(0.5f); // adjust to match your attack anim length
 
+        IsAttacking = false;
+        animator.SetBool("IsAttacking", false);
+    }
+
+    private void InterruptAttack()
+    {
+        if (attackCoroutine == null) return;
+
+        StopCoroutine(attackCoroutine);
         IsAttacking = false;
         animator.SetBool("IsAttacking", false);
     }
@@ -169,6 +179,8 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         // Do nothing if the enemy is dead
         if (isDead) return;
 
+        // Interrupt the enemy's attack
+        InterruptAttack();
         // Reduce health by the damage amount
         curHealth -= amount;
         // Play the damage flash
