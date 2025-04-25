@@ -12,6 +12,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     // TEMPORARY
     [SerializeField] private PlayerController playerController;
+    [SerializeField] private DamageFlash damageFlash;
 
     private void Start()
     {
@@ -45,12 +46,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             // Play the hurt SFX
             SFXManager.Instance.PlayRandomAudioClip(hurtSFX, transform, 0.75f, 1f, true);
+            // Play the damage flash
+            damageFlash.DoDamageFlash();
             // Do nothing else
             return;
         }
 
         // Decrease the health by the damage amount
         curHealth -= Mathf.RoundToInt(amount);
+        // Play the damage flash
+        damageFlash.DoDamageFlash();
         // Play the hurt SFX if the player is still alive
         if (curHealth > 0)
         {

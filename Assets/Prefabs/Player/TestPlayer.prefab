@@ -97,7 +97,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1790d99f4abd55b48acdef022c5e2034, type: 2}
+  - {fileID: -876546973899608171, guid: 4be517c687f86c2429317256be3dc9c8, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 3827562850970609100}
   - component: {fileID: 9184109745951044258}
   - component: {fileID: 2384791155482624868}
+  - component: {fileID: 2191566498678633360}
   m_Layer: 6
   m_Name: TestPlayer
   m_TagString: Player
@@ -858,6 +859,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2be934df33b1d4340802123a50b9a14e, type: 3}
   - {fileID: 8300000, guid: 4fc62814ad68c0c428dcae0e7990f5c1, type: 3}
   playerController: {fileID: 295450895662419321}
+  damageFlash: {fileID: 2191566498678633360}
 --- !u!114 &2384791155482624868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -870,6 +872,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1369e917d422b4e44980bf51cf1b694d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2191566498678633360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5512676325496533754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b08c2a2e3d41b142a1fd92a039dd9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColour: {r: 1, g: 0, b: 0, a: 1}
+  flashTime: 0.25
 --- !u!1 &7010070399734384747
 GameObject:
   m_ObjectHideFlags: 0

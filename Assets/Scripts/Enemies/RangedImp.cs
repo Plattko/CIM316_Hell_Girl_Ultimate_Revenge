@@ -11,6 +11,7 @@ public class RangedImp : MonoBehaviour, IDamageable
 
     // Reference variables
     private Transform player;
+    private DamageFlash damageFlash;
     private ManaDropper manaDropper;
 
     [Header("Health")]
@@ -38,6 +39,8 @@ public class RangedImp : MonoBehaviour, IDamageable
     void Start()
     {
         lastPosition = transform.position;
+        // Get a reference to the damage flash script
+        damageFlash = GetComponent<DamageFlash>();
         // Get a reference to the mana dropper script
         manaDropper = GetComponentInChildren<ManaDropper>();
         // Get a reference to the player
@@ -122,6 +125,8 @@ public class RangedImp : MonoBehaviour, IDamageable
 
         // Reduce health by the damage amount
         curHealth -= amount;
+        // Play the damage flash
+        damageFlash.DoDamageFlash();
 
         if (healthSlider != null)
         {

@@ -12,6 +12,7 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
     // Reference variables
     private Transform player;
     private Rigidbody rb;
+    private DamageFlash damageFlash;
     private ManaDropper manaDropper;
 
     [Header("Health")]
@@ -49,6 +50,8 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         rb = GetComponent<Rigidbody>();
         // Get a reference to the animator
         animator = GetComponent<Animator>();
+        // Get a reference to the damage flash script
+        damageFlash = GetComponent<DamageFlash>();
         // Get a reference to the mana dropper script
         manaDropper = GetComponentInChildren<ManaDropper>();
         // Get a reference to the player
@@ -168,6 +171,8 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
 
         // Reduce health by the damage amount
         curHealth -= amount;
+        // Play the damage flash
+        damageFlash.DoDamageFlash();
         //sets health slider to current health
         if (healthSlider != null)
         {

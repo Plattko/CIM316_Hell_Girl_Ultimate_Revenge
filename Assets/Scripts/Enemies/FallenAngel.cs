@@ -43,9 +43,13 @@ public class FallenAngel : MonoBehaviour, IDamageable
     [Header("Eye Ring Beam Animation")]
     [SerializeField] private Animator eyeRingAnimator;
     [SerializeField] private string eyeRingTrigger = "EyeAttack"; // Make sure this matches the Trigger name
+
+    private DamageFlash damageFlash;
     
     void Start()
     {
+        damageFlash = GetComponent<DamageFlash>();
+        
         currentHealth = maxHealth;
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
 
@@ -211,6 +215,8 @@ public class FallenAngel : MonoBehaviour, IDamageable
         if (isDead) return;
 
         currentHealth -= amount;
+        // Play the damage flash
+        damageFlash.DoDamageFlash();
 
         UIManager.Instance.UpdateBossHealthBar(currentHealth);
 
