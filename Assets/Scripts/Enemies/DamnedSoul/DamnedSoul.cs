@@ -108,23 +108,20 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
 
     private void OnTriggerEnter(Collider collision)
     {
+        // Do nothing if in knockback or dead
         if (isInKnockback || isDead) return;
+        // Do nothing if it isn't the player
+        if (!collision.CompareTag("Player")) return;
+        // Do nothing if the player is dashing
+        PlayerController playerController = collision.GetComponent<PlayerController>();
+        if (playerController.isDashing) return;
 
-        if (collision.CompareTag("Player"))
+        // Attack the player and bounce back
+        IDamageable damageable = collision.GetComponent<IDamageable>();
+        if (damageable != null)
         {
-            // Attack the player
-            IDamageable damageable = collision.GetComponent<IDamageable>();
-            if (damageable != null)
-            {
-                attackCoroutine = StartCoroutine(HandleAttack(damageable));
-            }
-
-            // Bounce back if the player isn't dashing
-            PlayerController playerController = collision.GetComponent<PlayerController>();
-            if (!playerController.isDashing)
-            {
-                StartCoroutine(BounceBack());
-            }
+            attackCoroutine = StartCoroutine(HandleAttack(damageable));
+            StartCoroutine(BounceBack());
         }
     }
 
