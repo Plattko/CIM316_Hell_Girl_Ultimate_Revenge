@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
+    // References
+    [SerializeField] private PlayerController playerController;
+    [SerializeField] private DamageFlash damageFlash;
+
+    [Header("Health")]
     public int maxHealth = 5;
     public int curHealth { get; private set; }
 
+    private float invulnDuration = 0.5f;
+    private float invulnEndTime;
+
     [Header("Audio")]
     [SerializeField] private AudioClip[] hurtSFX;
-
-    // TEMPORARY
-    [SerializeField] private PlayerController playerController;
-    [SerializeField] private DamageFlash damageFlash;
 
     private void Start()
     {
@@ -40,6 +44,11 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         // Do nothing if the player is dashing
         if (playerController.isDashing) return;
+        // Do nothing if the player is in post-damage invuln frames
+        if (Time.time < invulnEndTime) return;
+
+        // Set the new invuln end time
+        invulnEndTime = Time.time + invulnDuration;
 
         // Onboarding functionality
         if (GameManager.Instance.IsInOnboarding)
