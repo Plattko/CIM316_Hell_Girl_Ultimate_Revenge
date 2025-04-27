@@ -10,6 +10,7 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
     public event Action onDied;
 
     // Reference variables
+    [SerializeField] private SpriteRenderer sr;
     [SerializeField] private CapsuleCollider triggerCollider;
     [SerializeField] private CapsuleCollider environmentCollider;
     private Transform player;
@@ -78,10 +79,7 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         // Calculate direction to player first
         Vector3 directionToPlayer = player.position - transform.position;
         // Flip sprite to face the player (assuming default face-left sprite)
-        if (directionToPlayer.x > 0)
-            transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        else
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        sr.flipX = directionToPlayer.x > 0 ? true : false;
 
         // Check if the enemy is engaged
         if (isEngaged)

@@ -10,6 +10,7 @@ public class RangedImp : MonoBehaviour, IDamageable
     public event Action onDied;
 
     // Reference variables
+    [SerializeField] private SpriteRenderer sr;
     private Transform player;
     private DamageFlash damageFlash;
     private ManaDropper manaDropper;
@@ -74,12 +75,9 @@ public class RangedImp : MonoBehaviour, IDamageable
 
         if (player != null)
         {
+            // Flip sprite to face player
             Vector3 directionToPlayer = player.position - transform.position;
-
-            if (directionToPlayer.x < 0)
-                transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-            else if (directionToPlayer.x > 0)
-                transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+            sr.flipX = directionToPlayer.x > 0 ? true : false;
         }
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
