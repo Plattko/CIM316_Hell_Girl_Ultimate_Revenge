@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 8929110831598900140}
   - component: {fileID: 7231593336010037355}
   - component: {fileID: 5378141007509175831}
+  - component: {fileID: 2644785157035010746}
   m_Layer: 7
   m_Name: RangedImp
   m_TagString: Enemy
@@ -517,6 +518,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashColour: {r: 1, g: 0, b: 0, a: 1}
   flashTime: 0.25
+--- !u!136 &2644785157035010746
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5964796263086382468}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.76824677
+  m_Height: 2.4976857
+  m_Direction: 1
+  m_Center: {x: -0.17576885, y: 0.054350734, z: 0}
 --- !u!1 &7448567417017927310
 GameObject:
   m_ObjectHideFlags: 0
