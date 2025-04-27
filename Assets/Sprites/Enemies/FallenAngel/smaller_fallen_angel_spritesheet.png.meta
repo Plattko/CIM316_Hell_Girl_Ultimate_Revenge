@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: aa7da4b905b06cc4cb11c08690e2d8ba
+guid: a45f1a25f32806d4da5ed82669082c01
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 900
+  spritePixelsToUnits: 450
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -149,13 +149,139 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fallen_angel_spritesheet_0
+      name: smaller_fallen_angel_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3000
+        width: 1250
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 181927607ed0d854999419070f87dfd6
+      internalID: 1071760719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smaller_fallen_angel_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 3000
+        width: 1250
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 334a7a04f512af24289bca34bc1dc64e
+      internalID: -1868111639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smaller_fallen_angel_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 3000
+        width: 1250
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 782f6569750617646b7d663dd7789931
+      internalID: -1136326561
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smaller_fallen_angel_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1500
+        width: 1250
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80728ef5142886f4892081b234b4dac9
+      internalID: 222455146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smaller_fallen_angel_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 1250
+        y: 1500
+        width: 1250
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 008581365e88b5f468ea58295805aaa5
+      internalID: -2057909378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smaller_fallen_angel_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 2500
+        y: 1500
+        width: 1250
+        height: 1500
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5b3d33086f59c04f90c2e2d0130bc70
+      internalID: -1245737872
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smaller_fallen_angel_spritesheet_6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 2543
-        height: 3000
+        width: 1250
+        height: 1500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +289,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b58cfe6400c038409c6566dcdba2d38
-      internalID: 340925227
+      spriteID: 12dadb100b0f0cf4682e103b7451654c
+      internalID: -1250623180
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fallen_angel_spritesheet_1
+      name: smaller_fallen_angel_spritesheet_7
       rect:
         serializedVersion: 2
-        x: 2535
+        x: 1250
         y: 0
-        width: 2543
-        height: 3000
+        width: 1250
+        height: 1500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +310,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dec5357d1491c1d40b4c28e10e0e4872
-      internalID: -384331944
+      spriteID: 0a83956780fe01b41a7261f85978129c
+      internalID: -1529191552
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fallen_angel_spritesheet_2
+      name: smaller_fallen_angel_spritesheet_8
       rect:
         serializedVersion: 2
-        x: 5090
+        x: 2500
         y: 0
-        width: 2543
-        height: 3000
+        width: 1250
+        height: 1500
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,134 +331,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72657114af9fa2e4d9a3b90c45f413e6
-      internalID: 1987059460
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fallen_angel_spritesheet_3
-      rect:
-        serializedVersion: 2
-        x: 7635
-        y: 0
-        width: 2543
-        height: 3000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 83dab41e24d9d7b4aaf7230901f8b678
-      internalID: -99431928
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fallen_angel_spritesheet_4
-      rect:
-        serializedVersion: 2
-        x: 10170
-        y: 0
-        width: 2543
-        height: 3000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da245e7ee8f4baa46be29972075d3203
-      internalID: -657500743
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fallen_angel_spritesheet_5
-      rect:
-        serializedVersion: 2
-        x: 12617
-        y: 0
-        width: 2543
-        height: 3000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 143a2ba05ea481346879d469046c2767
-      internalID: 763571830
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fallen_angel_spritesheet_6
-      rect:
-        serializedVersion: 2
-        x: 15034
-        y: 0
-        width: 2543
-        height: 3000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f662c9f6787eaba41adf59e22a4ed962
-      internalID: -981108397
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fallen_angel_spritesheet_7
-      rect:
-        serializedVersion: 2
-        x: 17451
-        y: 0
-        width: 2543
-        height: 3000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1bcd0999d4e4e7843bb61f7c67692740
-      internalID: 307535121
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fallen_angel_spritesheet_8
-      rect:
-        serializedVersion: 2
-        x: 19918
-        y: 0
-        width: 2543
-        height: 3000
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: eea4aa907fd1d974da9268cff9d828f2
-      internalID: 1003487
+      spriteID: 1fca62dbf0300ed4fb97b2d56548b08e
+      internalID: 553506791
       vertices: []
       indices: 
       edges: []
@@ -340,7 +340,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 70d56935b676b524ab67a7cb798e2fc4
+    spriteID: eee6975b96ebfa549b4ba5301553f418
     internalID: 0
     vertices: []
     indices: 
@@ -348,15 +348,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      fallen_angel_spritesheet_0: 340925227
-      fallen_angel_spritesheet_1: -384331944
-      fallen_angel_spritesheet_2: 1987059460
-      fallen_angel_spritesheet_3: -99431928
-      fallen_angel_spritesheet_4: -657500743
-      fallen_angel_spritesheet_5: 763571830
-      fallen_angel_spritesheet_6: -981108397
-      fallen_angel_spritesheet_7: 307535121
-      fallen_angel_spritesheet_8: 1003487
+      smaller_fallen_angel_spritesheet_0: 1071760719
+      smaller_fallen_angel_spritesheet_1: -1868111639
+      smaller_fallen_angel_spritesheet_2: -1136326561
+      smaller_fallen_angel_spritesheet_3: 222455146
+      smaller_fallen_angel_spritesheet_4: -2057909378
+      smaller_fallen_angel_spritesheet_5: -1245737872
+      smaller_fallen_angel_spritesheet_6: -1250623180
+      smaller_fallen_angel_spritesheet_7: -1529191552
+      smaller_fallen_angel_spritesheet_8: 553506791
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
