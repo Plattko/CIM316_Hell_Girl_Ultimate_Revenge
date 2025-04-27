@@ -6,6 +6,9 @@ using System.Linq;
 
 public class WeaponGenerator : MonoBehaviour
 {
+    // Events
+    public event Action<Item> onWeaponPickedUp;
+
     [SerializeField] private Weapon weapon;
     [SerializeField] private WeaponDataSO data;
 
@@ -15,11 +18,17 @@ public class WeaponGenerator : MonoBehaviour
 
     private void Start()
     {
-        GenerateWeapon(data);
+        GenerateWeapon(data, false);
     }
 
-    public void GenerateWeapon(WeaponDataSO data)
+    public void GenerateWeapon(WeaponDataSO data, bool triggerItemPickup)
     {
+        if (triggerItemPickup)
+        {
+            // Signal a weapon has been picked up
+            onWeaponPickedUp?.Invoke(data);
+        }
+
         weapon.SetData(data);
         weapon.Anim.runtimeAnimatorController = data.AnimController;
 

@@ -7,6 +7,7 @@ public class SpellManager : MonoBehaviour
 {
     // Events
     public event Action<float, bool> onSpellCast;
+    public event Action<Item> onSpellPickedUp;
     public event Action<GameObject> onSpellDropped;
 
     // Player mana variables
@@ -93,6 +94,8 @@ public class SpellManager : MonoBehaviour
         {
             DropSpell();
         }
+        // Signal a spell has been picked up
+        onSpellPickedUp?.Invoke(newSpell);
         // Set the player's current spell to the new spell
         curSpell = newSpell;
         // Update the spell UI
@@ -103,6 +106,8 @@ public class SpellManager : MonoBehaviour
     {
         // Set PlayerHasSpell to true
         GameManager.Instance.TogglePlayerHasSpell(true);
+        // Signal a spell has been picked up
+        onSpellPickedUp?.Invoke(spell);
         // Update the spell UI
         UIManager.Instance.UpdateSpell(spell);
         // Wait until the spell picked up UI animation has played

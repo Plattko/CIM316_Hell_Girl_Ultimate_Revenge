@@ -12,6 +12,9 @@ public class OnboardingRoom : MonoBehaviour
     [SerializeField] private TutorialFight tutorialFight;
     private int dialogueIndex = 0;
 
+    // Knife reference
+    [SerializeField] private Item knifeItem;
+
     // SFX variables
     [SerializeField] private AudioClip gateOpenSFX;
 
@@ -43,10 +46,16 @@ public class OnboardingRoom : MonoBehaviour
         UIManager.Instance.ToggleBlack(true);
     }
 
-    public void FadeIn()
+    public void GiveHelenaKnife()
     {
-        // Fade in from black screen
-        UIManager.Instance.StartCoroutine(UIManager.Instance.FadeIn(0.25f));
+        PlayerController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        StartCoroutine(playerController.StartItemPickup(knifeItem, false));
+    }
+
+    public void EndItemPickup()
+    {
+        PlayerController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        playerController.EndItemPickup();
     }
 
     public void OpenGates()
@@ -61,6 +70,11 @@ public class OnboardingRoom : MonoBehaviour
         }
         // Play the gate open SFX
         SFXManager.Instance.PlayAudioClip(gateOpenSFX, transform, 1f);
+    }
+    public void FadeIn()
+    {
+        // Fade in from black screen
+        UIManager.Instance.StartCoroutine(UIManager.Instance.FadeIn(0.25f));
     }
 
     private void OnDialogueEnd()

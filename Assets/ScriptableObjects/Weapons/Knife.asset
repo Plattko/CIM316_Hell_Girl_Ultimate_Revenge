@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   name: Knife
+  description: Old reliable
   icon: {fileID: -1543100523, guid: c9ebbcc74f04a7d44b46f5fe3f8fdcc7, type: 3}
   <NumberOfAttacks>k__BackingField: 5
   <AnimController>k__BackingField: {fileID: 9100000, guid: bb8bea15e348d964bbaccfddfbd4d458, type: 2}

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 724af5fa66bc1324fab143e16c560384, type: 3}
   m_Name: FireExplosionSpell
   m_EditorClassIdentifier: 
-  name: Fire Explosion
+  name: Immolation
+  description: KABOOM
   icon: {fileID: 21300000, guid: 5a9e82c7ce3949c479c11472fc6f784d, type: 3}
   manaCost: 3
   damage: 9

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HUD : MonoBehaviour
 {
@@ -15,6 +16,13 @@ public class HUD : MonoBehaviour
     [SerializeField] private RectTransform manaIcons;
     private bool spellAnimHasPlayed;
 
+    [Header("Item Banner")]
+    [SerializeField] private CanvasGroup itemBannerGroup;
+    [SerializeField] private TextMeshProUGUI itemNameText;
+    [SerializeField] private TextMeshProUGUI itemDescriptionText;
+    [SerializeField] private float itemBannerFadeOutDuration = 0.15f;
+    [SerializeField] private float itemBannerFadeInDuration = 0.15f;
+
     [Header("Boss Health Bar")]
     [SerializeField] private Slider bossHealthBar;
 
@@ -22,8 +30,13 @@ public class HUD : MonoBehaviour
     [SerializeField] private CanvasGroup canvasGroup;
     [SerializeField] private Animator anim;
 
-    public float fadeOutDuration = 0.25f;
-    public float fadeInDuration = 0.25f;
+    [SerializeField] private float fadeOutDuration = 0.25f;
+    [SerializeField] private float fadeInDuration = 0.25f;
+
+    private void Start()
+    {
+        itemBannerGroup.alpha = 0f;
+    }
 
     public void UpdateHealth(int curHealth)
     {
@@ -81,6 +94,38 @@ public class HUD : MonoBehaviour
         spellIcon.sprite = newSpell.icon;
     }
 
+    public void SetItemBanner(string itemName, string itemDescription)
+    {
+        itemNameText.text = itemName;
+        itemDescriptionText.text = itemDescription;
+    }
+
+    public IEnumerator FadeOutItemBanner()
+    {
+        yield return FadeItemBanner(1, 0, itemBannerFadeOutDuration);
+    }
+
+    public IEnumerator FadeInItemBanner()
+    {
+        yield return FadeItemBanner(0, 1, itemBannerFadeInDuration);
+    }
+
+    private IEnumerator FadeItemBanner(float startAlpha, float endAlpha, float duration)
+    {
+        float elapsedTime = 0;
+
+        // Lerp from the start colour to the end colour over the fade's duration
+        while (elapsedTime < duration)
+        {
+            itemBannerGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsedTime / duration);
+            elapsedTime += Time.deltaTime;
+
+            yield return null;
+        }
+
+        itemBannerGroup.alpha = endAlpha;
+    }
+
     //-------------------------------------------------------------
     // BOSS HEALTH BAR
     //-------------------------------------------------------------
@@ -105,13 +150,11 @@ public class HUD : MonoBehaviour
 
     public IEnumerator FadeOutHUD()
     {
-        // Fade from transparent to black over the fade out duration
         yield return Fade(1, 0, fadeOutDuration);
     }
 
     public IEnumerator FadeInHUD()
     {
-        // Fade from black to transparent over the fade in duration
         yield return Fade(0, 1, fadeInDuration);
     }
 

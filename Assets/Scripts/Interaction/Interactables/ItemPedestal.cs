@@ -24,7 +24,7 @@ public class ItemPedestal : MonoBehaviour, IInteractable
             // Get a reference to the interactor's weapon manager script
             WeaponGenerator interactorWeaponGenerator = interactor.GetComponentInChildren<WeaponGenerator>();
             // Update the interactor's current weapon to this weapon
-            interactorWeaponGenerator.GenerateWeapon((WeaponDataSO)item);
+            interactorWeaponGenerator.GenerateWeapon((WeaponDataSO)item, true);
             Debug.Log("Picked up " + item.name + ".");
         }
         else if (item is Spell)

@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d36138f920071469a2a6c68437f7a7, type: 3}
   m_Name: FireProjectileSpell
   m_EditorClassIdentifier: 
-  name: Fire Projectile
+  name: Fireball
+  description: Rain hellfire
   icon: {fileID: 21300000, guid: beb0272f26a0800478098979d8a82a0a, type: 3}
   manaCost: 1
   damage: 4.5

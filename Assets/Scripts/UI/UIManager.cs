@@ -51,6 +51,21 @@ public class UIManager : MonoBehaviour
         minimap.UpdateMap(newRoomPos, prevRoom);
     }
 
+    public void SetItemBanner(string itemName, string itemDescription)
+    {
+        hud.SetItemBanner(itemName, itemDescription);
+    }
+
+    public void FadeOutItemBanner()
+    {
+        StartCoroutine(hud.FadeOutItemBanner());
+    }
+
+    public void FadeInItemBanner()
+    {
+        StartCoroutine(hud.FadeInItemBanner());
+    }
+
     public void SetBossHealthBar(float maxValue, float curValue)
     {
         hud.SetBossHealthBar(maxValue, curValue);

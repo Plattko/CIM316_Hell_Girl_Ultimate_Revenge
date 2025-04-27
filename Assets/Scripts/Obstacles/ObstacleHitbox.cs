@@ -31,7 +31,7 @@ public class ObstacleHitbox : MonoBehaviour
             damageable.TakeDamage(damage);
         }
         // Apply knockback if object is knockbackable
-        if (other.TryGetComponent(out IKnockbackable knockbackable))
+        if (dealKnockback && other.TryGetComponent(out IKnockbackable knockbackable))
         {
             Vector3 direction = (other.transform.position - transform.position).normalized;
             direction.y = 0;

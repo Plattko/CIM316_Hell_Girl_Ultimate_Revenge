@@ -27,10 +27,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private PlayerAnimationController animationController;
     [SerializeField] private GameObject afterImageGenerator;
+    [SerializeField] private SpriteRenderer itemDisplaySpriteRenderer;
     public enum FlipType { OnMove, OnAttack, }
 
     [Header("Combat")]
     [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private WeaponGenerator weaponGenerator;
     [SerializeField] private SpellManager spellManager;
     private Weapon weapon;
     private bool isAttacking;
@@ -41,6 +43,7 @@ public class PlayerController : MonoBehaviour
 
     [Header("Interaction")]
     [SerializeField] private Interactor interactor;
+    private float itemPickupDuration = 1.25f;
 
     [Header("Audio")]
     [SerializeField] private AudioClip[] dashWooshSFX;
@@ -62,14 +65,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
-        spellManager.onSpellCast += OnSpellCast;
         weaponManager.onAttackStateChanged += OnAttackStateChanged;
+        weaponGenerator.onWeaponPickedUp += RegularItemPickup;
+        spellManager.onSpellCast += OnSpellCast;
+        spellManager.onSpellPickedUp += RegularItemPickup;
     }
 
     private void OnDisable()
     {
-        spellManager.onSpellCast -= OnSpellCast;
         weaponManager.onAttackStateChanged -= OnAttackStateChanged;
+        weaponGenerator.onWeaponPickedUp -= RegularItemPickup;
+        spellManager.onSpellCast -= OnSpellCast;
+        spellManager.onSpellPickedUp -= RegularItemPickup;
     }
 
     private void Update()
@@ -215,6 +222,44 @@ public class PlayerController : MonoBehaviour
     {
         canAttack = enabled;
         WeaponAimPivot.gameObject.SetActive(enabled);
+    }
+
+    //-------------------------------------------------------------
+    // PICKING UP ITEMS
+    //-------------------------------------------------------------
+    private void RegularItemPickup(Item item)
+    {
+        StartCoroutine(StartItemPickup(item, true));
+    }
+
+    public IEnumerator StartItemPickup(Item item, bool endsAutomatically)
+    {
+        itemDisplaySpriteRenderer.sprite = item.icon;
+        itemDisplaySpriteRenderer.enabled = true;
+        UIManager.Instance.SetItemBanner(item.name, item.description);
+        UIManager.Instance.FadeInItemBanner();
+        ToggleMovement(false);
+        ToggleAttacks(false);
+        animationController.SetIsItemPickedUp(true);
+
+        if (endsAutomatically)
+        {
+            yield return new WaitForSeconds(itemPickupDuration);
+            EndItemPickup();
+        }
+        yield return null;
+    }
+
+    public void EndItemPickup()
+    {
+        itemDisplaySpriteRenderer.enabled = false;
+        UIManager.Instance.FadeOutItemBanner();
+        animationController.SetIsItemPickedUp(false);
+        if (!GameManager.Instance.IsInOnboarding)
+        {
+            ToggleMovement(true);
+            ToggleAttacks(true);
+        }
     }
 
     //-------------------------------------------------------------

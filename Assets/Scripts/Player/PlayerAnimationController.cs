@@ -10,6 +10,7 @@ public class PlayerAnimationController : MonoBehaviour
     private int moveSpeedHash;
     private int isDashingHash;
     private int isAttackingHash;
+    private int isItemPickedUpHash;
 
     [SerializeField] private AudioClip[] footstepSFX;
     
@@ -21,6 +22,7 @@ public class PlayerAnimationController : MonoBehaviour
         moveSpeedHash = Animator.StringToHash("moveSpeed");
         isDashingHash = Animator.StringToHash("isDashing");
         isAttackingHash = Animator.StringToHash("isAttacking");
+        isItemPickedUpHash = Animator.StringToHash("isItemPickedUp");
     }
 
     public void SetIsMovePressed(bool _isMovePressed)
@@ -41,6 +43,11 @@ public class PlayerAnimationController : MonoBehaviour
     public void SetIsAttacking(bool isAttacking)
     {
         animator.SetBool(isAttackingHash, isAttacking);
+    }
+
+    public void SetIsItemPickedUp(bool isItemPickedUp)
+    {
+        animator.SetBool(isItemPickedUpHash, isItemPickedUp);
     }
 
     public void PlayFootstep()
