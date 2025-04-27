@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
 
     public bool PlayerHasSpell { get; private set; }
 
+    public bool DoSpellRoom { get; private set; } = true;
+
     private void Awake()
     {
         if (Instance != null && Instance != this) 
@@ -104,6 +106,14 @@ public class GameManager : MonoBehaviour
         {
             HasOnboardedPlayer = true;
         }
+    }
+
+    //-------------------------------------------------------------
+    // ITEM ROOM
+    //-------------------------------------------------------------
+    public void ToggleItemRoom()
+    {
+        DoSpellRoom = !DoSpellRoom;
     }
 
     //-------------------------------------------------------------

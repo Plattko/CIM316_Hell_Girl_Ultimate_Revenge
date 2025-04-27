@@ -35,10 +35,11 @@ public class ItemRoom : MonoBehaviour
 
     private void Start()
     {
-        // Randomly set the room's item type
-        itemType = Random.value < 0.5f ? ItemType.Weapons : ItemType.Spells;
+        // Alternate between spell rooms and weapon rooms
+        itemType = GameManager.Instance.DoSpellRoom ? ItemType.Spells : ItemType.Weapons;
+        GameManager.Instance.ToggleItemRoom();
         // Choose between using the weapon pool or spell pool based on the room's item type
-        List<Item> availableItems = new List<Item>();
+        List <Item> availableItems = new List<Item>();
         if (itemType == ItemType.Weapons) { availableItems = weaponPool; }
         else if (itemType == ItemType.Spells) { availableItems = spellPool; }
         // Give each pedestal an item from the list of available items without repetition

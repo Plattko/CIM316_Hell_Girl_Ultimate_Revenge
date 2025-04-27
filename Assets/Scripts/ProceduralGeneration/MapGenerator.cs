@@ -33,6 +33,9 @@ public class MapGenerator : MonoBehaviour
     // The number of the map the player is on
     private int mapNum = 1;
 
+    // Map transition variables
+    [SerializeField] private float mapTransitionDuration = 0.1f;
+
     private void Start()
     {
         // Set the grid size directly to the map size because each map tile's dimensions is 1x1
@@ -96,8 +99,11 @@ public class MapGenerator : MonoBehaviour
         roomManager.SpawnRooms(rooms, gridCentre, false);
         minimap.DrawMap(rooms, gridCentre);
 
+        // Wait for the map transition duration
+        yield return new WaitForSeconds(mapTransitionDuration);
+
         // Fade back in
-        yield return UIManager.Instance.FadeIn(0.1f);
+        yield return UIManager.Instance.FadeIn(0.25f);
 
         // Re-enable the ability to pause
         GameManager.Instance.TogglePauseInput(true);
