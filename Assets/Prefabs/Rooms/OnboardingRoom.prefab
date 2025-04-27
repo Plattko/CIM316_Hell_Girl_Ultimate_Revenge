@@ -1367,8 +1367,9 @@ GameObject:
   - component: {fileID: 1293033482996197609}
   - component: {fileID: 4761839686576616985}
   - component: {fileID: 3177129473703502055}
+  - component: {fileID: 6221158080848448813}
   m_Layer: 0
-  m_Name: Devil'sAdvocate
+  m_Name: DevilsAdvocate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1424,6 +1425,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactDialogue: {fileID: 4476526478338761965}
+--- !u!95 &6221158080848448813
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728069887026743492}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f86de44c8eb4a1d469eeef18559b45d3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &734426671885596920
 GameObject:
   m_ObjectHideFlags: 0
@@ -2963,7 +2985,7 @@ GameObject:
   - component: {fileID: 1538623206114890163}
   - component: {fileID: 7392186956868274222}
   m_Layer: 0
-  m_Name: TDA_still_sprite
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3695,7 +3717,7 @@ GameObject:
   - component: {fileID: 6946595169905915629}
   - component: {fileID: 846160819828534624}
   m_Layer: 0
-  m_Name: Devil'sAdvocateManager
+  m_Name: DevilsAdvocateManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
