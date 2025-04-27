@@ -51,6 +51,8 @@ public class FallenAngel : MonoBehaviour, IDamageable
     [SerializeField] private AudioClip summonSFX;
     [SerializeField] private AudioClip deathSFX;
     [SerializeField] private AudioClip unfurlingWingsSFX;
+    [SerializeField] private AudioClip beamChargeSFX;
+    [SerializeField] private AudioClip beamFireSFX;
 
     private void Start()
     {
@@ -168,13 +170,21 @@ public class FallenAngel : MonoBehaviour, IDamageable
 
         //yield return new WaitForSeconds(0.5f);
 
+        // Play beam charge sound effect
+        SFXManager.Instance.PlayAudioClip(beamChargeSFX, transform, 0.5f);
+
         for (int i = 0; i < beamsPerAttack; i++)
         {
             SpawnBeamAtRandomGround();
         }
 
+        // Wait for the 50 frames of the beam animation before the beam fires
+        yield return new WaitForSeconds(50f / 60f);
+
+        // Play the beam fire sound effect
+        SFXManager.Instance.PlayAudioClip(beamFireSFX, transform, 0.33f);
+
         //yield return new WaitForSeconds(beamDelay);
-        yield return null;
     }
 
     private void SpawnBeamAtRandomGround()

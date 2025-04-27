@@ -1445,7 +1445,7 @@ MonoBehaviour:
   firePoint: {fileID: 6793188801689315319}
   projectileSpeed: 10
   fireRate: 2
-  beamPrefab: {fileID: 4570907530461187212, guid: a06c0c1e2f48bce4ea428248ad131cb2, type: 3}
+  beamPrefab: {fileID: 555756945661990338, guid: 724d98fe2055a574ea309d7e8640abc6, type: 3}
   beamDelay: 3
   beamsPerAttack: 5
   enemySpawnIndicatorPrefab: {fileID: 7561993631305040600, guid: 05306c11060c25c47960c05bd14a70ca, type: 3}
@@ -1464,6 +1464,8 @@ MonoBehaviour:
   summonSFX: {fileID: 8300000, guid: 60c538c9b02260a459dac802422a0911, type: 3}
   deathSFX: {fileID: 8300000, guid: d8de44041b4464d40af3f69c89dcb4ae, type: 3}
   unfurlingWingsSFX: {fileID: 8300000, guid: a277890a3514e9646b9b6da7f9dc7ca0, type: 3}
+  beamChargeSFX: {fileID: 8300000, guid: faed166e2c438554c93e7d699e605e3b, type: 3}
+  beamFireSFX: {fileID: 8300000, guid: 7b218bedad12ee149b039029cefb3047, type: 3}
 --- !u!114 &665753726749869822
 MonoBehaviour:
   m_ObjectHideFlags: 0
