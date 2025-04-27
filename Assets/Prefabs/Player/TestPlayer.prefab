@@ -562,7 +562,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5512676325496533754}
-  m_Material: {fileID: 13400000, guid: 19c6d627859a21142bdfefefacb6022e, type: 2}
+  m_Material: {fileID: 13400000, guid: 8f0aa989e180b1440b76162239cdeda0, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -853,13 +853,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d73d5b526c3f8a44a7db79556283784, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 295450895662419321}
+  damageFlash: {fileID: 2191566498678633360}
   maxHealth: 5
   hurtSFX:
   - {fileID: 8300000, guid: a050508ebbb45124099b827fc0c186bb, type: 3}
   - {fileID: 8300000, guid: 2be934df33b1d4340802123a50b9a14e, type: 3}
   - {fileID: 8300000, guid: 4fc62814ad68c0c428dcae0e7990f5c1, type: 3}
-  playerController: {fileID: 295450895662419321}
-  damageFlash: {fileID: 2191566498678633360}
 --- !u!114 &2384791155482624868
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -297,6 +297,61 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &5628605740189397447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8701588815469026098}
+  - component: {fileID: 7413062458484053483}
+  m_Layer: 15
+  m_Name: EnvironmentCollider
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8701588815469026098
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628605740189397447}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7138750966128551324}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &7413062458484053483
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628605740189397447}
+  m_Material: {fileID: 13400000, guid: 8f0aa989e180b1440b76162239cdeda0, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.76824677
+  m_Height: 2.4976857
+  m_Direction: 1
+  m_Center: {x: -0.17576885, y: 0.054350734, z: 0}
 --- !u!1 &5964796263086382468
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +363,7 @@ GameObject:
   - component: {fileID: 7138750966128551324}
   - component: {fileID: 3565865982877566960}
   - component: {fileID: 597261798076365176}
-  - component: {fileID: 1343692036380737656}
+  - component: {fileID: 9175651051550966311}
   - component: {fileID: 7550608955999751483}
   - component: {fileID: 8929110831598900140}
   - component: {fileID: 7231593336010037355}
@@ -336,6 +391,7 @@ Transform:
   - {fileID: 9219581626277890309}
   - {fileID: 6749436257483579235}
   - {fileID: 5582989759718834524}
+  - {fileID: 8701588815469026098}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3565865982877566960
@@ -415,9 +471,9 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!136 &1343692036380737656
+--- !u!136 &9175651051550966311
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

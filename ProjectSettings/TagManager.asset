@@ -23,7 +23,7 @@ TagManager:
   - PlayerSpells
   - PickupCollider
   - PickupTrigger
-  - 
+  - EnvironmentOnly
   - 
   - 
   - 

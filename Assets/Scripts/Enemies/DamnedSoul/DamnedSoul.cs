@@ -77,9 +77,9 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         Vector3 directionToPlayer = player.position - transform.position;
         // Flip sprite to face the player (assuming default face-left sprite)
         if (directionToPlayer.x > 0)
-            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
-        else
             transform.localScale = new Vector3(-Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+        else
+            transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
 
         // Check if the enemy is engaged
         if (isEngaged)
