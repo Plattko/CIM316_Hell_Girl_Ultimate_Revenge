@@ -70,7 +70,7 @@ public class Weapon : MonoBehaviour
         attackCounterResetTimer.StopTimer();
         Anim.SetBool("isActive", true);
         // Play the swing SFX
-        SFXManager.Instance.PlayAudioClip(Data.swingSFX, transform, 1.1f, 1.25f, true);
+        SFXManager.Instance.PlayRandomAudioClip(Data.swingSFX, transform, 1.1f, 1.25f, true);
         Anim.SetInteger("attackCounter", CurAttackCounter);
         onEnter?.Invoke();
     }
