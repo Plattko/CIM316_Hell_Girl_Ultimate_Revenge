@@ -12,6 +12,8 @@ public class OnboardingRoom : MonoBehaviour
     [SerializeField] private TutorialFight tutorialFight;
     private int dialogueIndex = 0;
 
+    [SerializeField] private Animator onboardingGraphicsAnimator;
+
     // Knife reference
     [SerializeField] private Item knifeItem;
 
@@ -84,6 +86,7 @@ public class OnboardingRoom : MonoBehaviour
         // If it's the end of the first conversation, spawn the enemy
         if (dialogueIndex == 1)
         {
+            onboardingGraphicsAnimator.Play("OnboardingRoomGraphics_Show");
             tutorialFight.SpawnEnemy();
         }
         // If it's the end of the second conversation, fade in the HUD and disable onboarding mode
