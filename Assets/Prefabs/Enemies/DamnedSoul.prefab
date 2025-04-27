@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 1325622905169607201}
   - component: {fileID: 7500823765308540994}
   - component: {fileID: 1762825991930438001}
-  - component: {fileID: -5134311128627157801}
   m_Layer: 7
   m_Name: DamnedSoul
   m_TagString: Enemy
@@ -234,29 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashColour: {r: 1, g: 0, b: 0, a: 1}
   flashTime: 0.25
---- !u!136 &-5134311128627157801
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1666680193277912074}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.75
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &3039164082047074409
 GameObject:
   m_ObjectHideFlags: 0
