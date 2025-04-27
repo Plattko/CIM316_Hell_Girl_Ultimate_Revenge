@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamage: 1
-  enemyDamage: 10
+  enemyDamage: 5
   dealKnockback: 0
   knockbackStrength: 5
 --- !u!1 &4349116353327665985
