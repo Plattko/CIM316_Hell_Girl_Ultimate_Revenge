@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
+    // Events
+    public event Action onDied;
+    
     // References
     [SerializeField] private PlayerController playerController;
     [SerializeField] private DamageFlash damageFlash;
@@ -15,8 +19,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private float invulnDuration = 0.5f;
     private float invulnEndTime;
 
+    private bool isDead;
+
     [Header("Audio")]
     [SerializeField] private AudioClip[] hurtSFX;
+    [SerializeField] private AudioClip deathGruntSFX;
+    [SerializeField] private AudioClip deathTollSFX;
 
     private void Start()
     {
@@ -42,6 +50,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     public void TakeDamage(float amount)
     {
+        // Do nothing if the player is dead
+        if (isDead) return;
+
         // Do nothing if the player is dashing
         if (playerController.isDashing) return;
         // Do nothing if the player is in post-damage invuln frames
@@ -73,7 +84,13 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         // Restart the scene if the player reaches 0 health
         else
         {
-            GameManager.Instance.GameOver();
+            // Set the player to dead
+            isDead = true;
+            // Signal that the player died
+            onDied?.Invoke();
+            // Play the death grunt SFX and death toll SFX
+            SFXManager.Instance.PlayAudioClip(deathGruntSFX, transform, 0.6f);
+            SFXManager.Instance.PlayAudioClip(deathTollSFX, transform, 0.5f);
         }
         // Update the health UI
         UIManager.Instance.UpdateHealth(curHealth);

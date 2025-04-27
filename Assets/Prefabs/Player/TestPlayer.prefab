@@ -880,6 +880,7 @@ MonoBehaviour:
   animationController: {fileID: 3894704286638000610}
   afterImageGenerator: {fileID: 1150695578593599750}
   itemDisplaySpriteRenderer: {fileID: 6271847853809404452}
+  playerHealth: {fileID: 9184109745951044258}
   weaponManager: {fileID: 8840149213579755783}
   weaponGenerator: {fileID: 6946156099706460547}
   spellManager: {fileID: 4227291240003483198}
@@ -947,6 +948,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a050508ebbb45124099b827fc0c186bb, type: 3}
   - {fileID: 8300000, guid: 2be934df33b1d4340802123a50b9a14e, type: 3}
   - {fileID: 8300000, guid: 4fc62814ad68c0c428dcae0e7990f5c1, type: 3}
+  deathGruntSFX: {fileID: 8300000, guid: 3cc96b6eaccb1364b91cba8e489bb9c1, type: 3}
+  deathTollSFX: {fileID: 8300000, guid: cf834930191bceb40a944d5c2f3e54a4, type: 3}
 --- !u!114 &2384791155482624868
 MonoBehaviour:
   m_ObjectHideFlags: 0

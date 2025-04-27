@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public enum FlipType { OnMove, OnAttack, }
 
     [Header("Combat")]
+    [SerializeField] private PlayerHealth playerHealth;
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private WeaponGenerator weaponGenerator;
     [SerializeField] private SpellManager spellManager;
@@ -65,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable()
     {
+        playerHealth.onDied += OnDied;
         weaponManager.onAttackStateChanged += OnAttackStateChanged;
         weaponGenerator.onWeaponPickedUp += RegularItemPickup;
         spellManager.onSpellCast += OnSpellCast;
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnDisable()
     {
+        playerHealth.onDied -= OnDied;
         weaponManager.onAttackStateChanged -= OnAttackStateChanged;
         weaponGenerator.onWeaponPickedUp -= RegularItemPickup;
         spellManager.onSpellCast -= OnSpellCast;
@@ -263,6 +266,22 @@ public class PlayerController : MonoBehaviour
     }
 
     //-------------------------------------------------------------
+    // DYING
+    //-------------------------------------------------------------
+    public void OnDied()
+    {
+        // Shift sprite object so Helena is still centred
+        Vector3 pos = spriteRenderer.transform.position;
+        float offset = spriteRenderer.flipX ? -0.45f : 0.45f;
+        spriteRenderer.transform.position = new Vector3(pos.x + offset, pos.y, pos.z);
+        // Disable movement and attacks
+        ToggleMovement(false);
+        ToggleAttacks(false);
+        // Tell the animation controller the player is dead
+        animationController.SetIsDead(true);
+    }
+
+    //-------------------------------------------------------------
     // SPRITE & ANIMATIONS
     //-------------------------------------------------------------
     private void Flip(FlipType flipType)
@@ -361,7 +380,7 @@ public class PlayerController : MonoBehaviour
     {
         if (GameManager.Instance.IsGamePaused) return;
 
-        if (context.performed)
+        if (context.performed && canMove && !isAttacking)
         {
             interactor.Interact();
         }
