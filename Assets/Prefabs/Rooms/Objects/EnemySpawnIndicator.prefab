@@ -94,6 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2551623666908703245}
   - component: {fileID: 201812526760150317}
+  - component: {fileID: 3645733247356658438}
   - component: {fileID: 7539262650334773776}
   m_Layer: 0
   m_Name: EnemySpawnIndicator
@@ -139,6 +140,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3645733247356658438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7561993631305040600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9641ca0cce12d5b45a2e5e75f3f3b6f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnSFX: {fileID: 8300000, guid: 02b3d1b316301c44ebb94022c7beaa91, type: 3}
 --- !u!114 &7539262650334773776
 MonoBehaviour:
   m_ObjectHideFlags: 0

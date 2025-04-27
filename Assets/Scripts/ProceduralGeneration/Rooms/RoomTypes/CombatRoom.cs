@@ -47,8 +47,8 @@ public class CombatRoom : MonoBehaviour
             SFXManager.Instance.PlayAudioClip(gateCloseSFX, transform, 1f);
             // Randomly set the number to waves to clear between 1 and 2 based on the double wave chance
             wavesToClear = Random.value < doubleWaveChance ? 2 : 1;
-            // Spawn a wave
-            SpawnWave();
+            // Spawn a wave after a short delay
+            Invoke("SpawnWave", 0.5f);
         }
     }
 
