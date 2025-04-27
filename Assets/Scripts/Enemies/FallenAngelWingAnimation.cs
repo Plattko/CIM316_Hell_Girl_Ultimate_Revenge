@@ -21,6 +21,7 @@ public class FallenAngelWingAnimation : MonoBehaviour
     private string currentArc = "";
     private string previousArc = "";
 
+    [SerializeField] private AudioClip wingUnfurlSFX;
 
     //void Start()
     //{
@@ -34,6 +35,7 @@ public class FallenAngelWingAnimation : MonoBehaviour
     //        Debug.LogWarning("Player not found with tag: " + playerTag);
     //    }
     //}
+
     void OnEnable()
     {
         if (playerTransform == null)
@@ -169,17 +171,22 @@ public class FallenAngelWingAnimation : MonoBehaviour
         {
             case "Right":
                 PlayUnfoldAnimation(rightWingAnimator, foldedWingRight, unfoldedWingRight);
+                SFXManager.Instance.PlayAudioClip(wingUnfurlSFX, transform, 1f, 1f, true);
                 PlayFoldAnimation(leftWingAnimator, unfoldedWingLeft, foldedWingLeft);
                 break;
 
             case "Left":
                 PlayUnfoldAnimation(leftWingAnimator, foldedWingLeft, unfoldedWingLeft);
+                SFXManager.Instance.PlayAudioClip(wingUnfurlSFX, transform, 1f, 1f, true);
                 PlayFoldAnimation(rightWingAnimator, unfoldedWingRight, foldedWingRight);
                 break;
 
             case "Front":
+                break;
+
             case "Back":
                 PlayUnfoldAnimation(leftWingAnimator, foldedWingLeft, unfoldedWingLeft);
+                SFXManager.Instance.PlayAudioClip(wingUnfurlSFX, transform, 1f, 1f, true);
                 PlayUnfoldAnimation(rightWingAnimator, foldedWingRight, unfoldedWingRight);
                 break;
         }
@@ -198,6 +205,8 @@ public class FallenAngelWingAnimation : MonoBehaviour
                 break;
 
             case "Front":
+                break;
+
             case "Back":
                 PlayFoldAnimation(leftWingAnimator, unfoldedWingLeft, foldedWingLeft);
                 PlayFoldAnimation(rightWingAnimator, unfoldedWingRight, foldedWingRight);

@@ -133,7 +133,7 @@ Transform:
   m_GameObject: {fileID: 1266802350278812946}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.421, y: -1.55, z: 0}
+  m_LocalPosition: {x: 1.4, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -204,7 +204,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 6de25c1ec4a2baf48869cbadf07ac625, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -239,7 +239,7 @@ Transform:
   m_GameObject: {fileID: 2042597149897939274}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.379, y: -1.507, z: 0}
+  m_LocalPosition: {x: 1.4, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -376,7 +376,7 @@ Transform:
   m_GameObject: {fileID: 2321034623960489163}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -405,6 +405,7 @@ MonoBehaviour:
   unfoldAnimation: LowerWingUnfold
   foldAnimation: LowerWingFold
   playerTag: Player
+  wingUnfurlSFX: {fileID: 8300000, guid: a277890a3514e9646b9b6da7f9dc7ca0, type: 3}
 --- !u!1 &2861648889721791076
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +431,7 @@ Transform:
   m_GameObject: {fileID: 2861648889721791076}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.1199999, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -465,7 +466,7 @@ Transform:
   m_GameObject: {fileID: 3729595827285904190}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.803, y: 0.571, z: 0}
+  m_LocalPosition: {x: -0.8, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -569,7 +570,7 @@ Transform:
   m_GameObject: {fileID: 4169215701846018733}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00018167496, y: 0.26776457, z: -0.5180397}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -604,7 +605,7 @@ Transform:
   m_GameObject: {fileID: 4460995843020094499}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.83781815, y: 0.598, z: 0.5180397}
+  m_LocalPosition: {x: -0.8, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -709,7 +710,7 @@ Transform:
   m_GameObject: {fileID: 4494422629096814983}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -738,6 +739,7 @@ MonoBehaviour:
   unfoldAnimation: UpperWingUnfold
   foldAnimation: UpperWingFold
   playerTag: Player
+  wingUnfurlSFX: {fileID: 8300000, guid: a277890a3514e9646b9b6da7f9dc7ca0, type: 3}
 --- !u!1 &4825331415674277723
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +767,7 @@ Transform:
   m_GameObject: {fileID: 4825331415674277723}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.819, y: 0.542, z: 0}
+  m_LocalPosition: {x: 0.8, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -889,7 +891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   centerObject: {fileID: 3647759465358234059}
-  radius: 2
+  radius: 1
 --- !u!1 &5727487544408233930
 GameObject:
   m_ObjectHideFlags: 0
@@ -916,7 +918,7 @@ Transform:
   m_GameObject: {fileID: 5727487544408233930}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.463, y: -0.6307646, z: 0.5180397}
+  m_LocalPosition: {x: -1.4, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -999,7 +1001,7 @@ Transform:
   m_GameObject: {fileID: 5769748998519985191}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00018167496, y: 0.26776457, z: -0.5180397}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1034,7 +1036,7 @@ Transform:
   m_GameObject: {fileID: 6178037193827337319}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.881, y: 0.595, z: 0.5180397}
+  m_LocalPosition: {x: 0.8, y: 0.8, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1170,7 +1172,7 @@ Transform:
   m_GameObject: {fileID: 6460132061471913790}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.618, z: 0}
+  m_LocalPosition: {x: 0, y: 1.618, z: 0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1220,7 +1222,7 @@ Transform:
   m_GameObject: {fileID: 6523210583464891749}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.00018167496, y: 0.26776457, z: -0.5180397}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1456,6 +1458,12 @@ MonoBehaviour:
   wingAnimationScript: {fileID: 7953050676506730915}
   eyeRingAnimator: {fileID: 8291809214745209236}
   eyeRingTrigger: EyeAttack
+  damageSFX:
+  - {fileID: 8300000, guid: 293c024b42dad4e49bc7d6a2325ec656, type: 3}
+  - {fileID: 8300000, guid: a582d51b56657da49a2fbbbf0b3437fc, type: 3}
+  summonSFX: {fileID: 8300000, guid: 60c538c9b02260a459dac802422a0911, type: 3}
+  deathSFX: {fileID: 8300000, guid: d8de44041b4464d40af3f69c89dcb4ae, type: 3}
+  unfurlingWingsSFX: {fileID: 8300000, guid: a277890a3514e9646b9b6da7f9dc7ca0, type: 3}
 --- !u!114 &665753726749869822
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1618,7 +1626,7 @@ Transform:
   m_GameObject: {fileID: 9153257991868086031}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.4178185, y: -0.68076456, z: 0.5180397}
+  m_LocalPosition: {x: -1.4, y: -0.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

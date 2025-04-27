@@ -45,8 +45,14 @@ public class FallenAngel : MonoBehaviour, IDamageable
     [SerializeField] private string eyeRingTrigger = "EyeAttack"; // Make sure this matches the Trigger name
 
     private DamageFlash damageFlash;
-    
-    void Start()
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip[] damageSFX;
+    [SerializeField] private AudioClip summonSFX;
+    [SerializeField] private AudioClip deathSFX;
+    [SerializeField] private AudioClip unfurlingWingsSFX;
+
+    private void Start()
     {
         damageFlash = GetComponent<DamageFlash>();
         
@@ -59,14 +65,17 @@ public class FallenAngel : MonoBehaviour, IDamageable
         attackRoutine = StartCoroutine(FireProjectile());
     }
 
-    void Update()
+    private void Update()
     {
         if (player == null) return;
 
         // Health -based behavior changes
         if (currentHealth <= maxHealth * 0.75f && !summonedMinions)
         {
-            SummonMinions();
+            summonedMinions = true;
+            // Play the summon SFX
+            SFXManager.Instance.PlayAudioClip(summonSFX, transform, 4f);
+            Invoke("SummonMinions", summonSFX.length);
 
             if (wingAnimationScript != null && !wingAnimationScript.enabled)
             {
@@ -78,13 +87,14 @@ public class FallenAngel : MonoBehaviour, IDamageable
         if (currentHealth <= maxHealth * 0.5f && !usingBeamAttack)
         {
             usingBeamAttack = true; // Enable beam attacks at 50% health
+
         }
     }
 
     //-------------------------------------------------------------
     // PROJECTILE ATTACK
     //-------------------------------------------------------------
-    IEnumerator FireProjectile()
+    private IEnumerator FireProjectile()
     {
         while (!isDead)
         {
@@ -100,8 +110,8 @@ public class FallenAngel : MonoBehaviour, IDamageable
 
                 attackCount++;
 
-                // If below 50% health, trigger beam attack every 5 ranged attacks
-                if (usingBeamAttack && attackCount % 5 == 0)
+                // If below 50% health, trigger beam attack every 3 ranged attacks
+                if (usingBeamAttack && attackCount % 3 == 0)
                 {
                     yield return StartCoroutine(BeamAttack());
                 }
@@ -114,10 +124,8 @@ public class FallenAngel : MonoBehaviour, IDamageable
     //-------------------------------------------------------------
     // SUMMONING MINIONS
     //-------------------------------------------------------------
-    void SummonMinions()
+    private void SummonMinions()
     {
-        summonedMinions = true;
-
         // Display an enemy spawn indicator and then spawn an enemy at each of the spawn layout's spawn points
         foreach (Transform summonPoint in summonPoints)
         {
@@ -143,7 +151,7 @@ public class FallenAngel : MonoBehaviour, IDamageable
     //-------------------------------------------------------------
     // BEAM ATTACK
     //-------------------------------------------------------------
-    IEnumerator BeamAttack()
+    private IEnumerator BeamAttack()
     {
         Debug.Log("BeamAttack initiated.");
 
@@ -158,17 +166,18 @@ public class FallenAngel : MonoBehaviour, IDamageable
             Debug.LogWarning("EyeRing animator or trigger not set.");
         }
 
-        yield return new WaitForSeconds(0.5f);
+        //yield return new WaitForSeconds(0.5f);
 
         for (int i = 0; i < beamsPerAttack; i++)
         {
             SpawnBeamAtRandomGround();
         }
 
-        yield return new WaitForSeconds(beamDelay);
+        //yield return new WaitForSeconds(beamDelay);
+        yield return null;
     }
 
-    void SpawnBeamAtRandomGround()
+    private void SpawnBeamAtRandomGround()
     {
         // Get all active ground objects
         GameObject[] groundObjects = GameObject.FindGameObjectsWithTag("Ground")
@@ -198,7 +207,7 @@ public class FallenAngel : MonoBehaviour, IDamageable
         Instantiate(beamPrefab, spawnPosition, Quaternion.identity);
     }
 
-    Vector3 GetRandomPointInBounds(Bounds bounds)
+    private Vector3 GetRandomPointInBounds(Bounds bounds)
     {
         float x = UnityEngine.Random.Range(bounds.min.x, bounds.max.x);
         float z = UnityEngine.Random.Range(bounds.min.z, bounds.max.z);
@@ -220,10 +229,18 @@ public class FallenAngel : MonoBehaviour, IDamageable
 
         UIManager.Instance.UpdateBossHealthBar(currentHealth);
 
-        if (currentHealth <= 0)
+        if (currentHealth > 0)
+        {
+            // Play the damage SFX
+            SFXManager.Instance.PlayRandomAudioClip(damageSFX, transform, 1.2f, 1f, true);
+        }
+        else
         {
             isDead = true;
             onDied?.Invoke();
+
+            // Play the death SFX
+            SFXManager.Instance.PlayAudioClip(deathSFX, transform, 2f);
 
             // Increase the enemies killed stat
             StatsManager.Instance.IncreaseEnemiesKilled();
