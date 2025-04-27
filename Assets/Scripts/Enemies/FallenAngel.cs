@@ -95,7 +95,7 @@ public class FallenAngel : MonoBehaviour, IDamageable
                 ImpProjectile projScript = projectile.GetComponent<ImpProjectile>();
                 if (projScript != null)
                 {
-                    projScript.SetDirection(player.position - firePoint.position);
+                    projScript.Initialise(player.position - firePoint.position);
                 }
 
                 attackCount++;

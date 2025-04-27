@@ -241,4 +241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamage: 1
-  enemyDamage: 10
+  enemyDamage: 2
+  dealKnockback: 1
+  knockbackStrength: 5

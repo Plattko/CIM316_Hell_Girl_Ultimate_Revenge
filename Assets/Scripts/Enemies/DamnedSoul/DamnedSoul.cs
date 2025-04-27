@@ -10,6 +10,8 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
     public event Action onDied;
 
     // Reference variables
+    [SerializeField] private CapsuleCollider triggerCollider;
+    [SerializeField] private CapsuleCollider environmentCollider;
     private Transform player;
     private Rigidbody rb;
     private DamageFlash damageFlash;
@@ -204,8 +206,11 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         // Set the IsDead flag to true to trigger the death animation
         animator.SetBool("IsDead", true);
 
-        // Stop all movement immediately
-        rb.velocity = Vector3.zero;
+        // Set its rigidbody to kinematic so it doesn't move
+        rb.isKinematic = true;
+        // Disable the colliders
+        triggerCollider.enabled = false;
+        environmentCollider.enabled = false;
 
         // Drop mana
         if (manaDropper != null)
