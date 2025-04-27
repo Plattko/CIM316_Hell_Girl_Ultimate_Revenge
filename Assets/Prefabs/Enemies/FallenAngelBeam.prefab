@@ -289,7 +289,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1699040152829614132}
   - component: {fileID: 7642412430387502578}
-  - component: {fileID: 1242691958850692316}
+  - component: {fileID: 1161145010188045339}
   m_Layer: 0
   m_Name: BeamHitbox
   m_TagString: Untagged
@@ -335,7 +335,7 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1242691958850692316
+--- !u!114 &1161145010188045339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -344,7 +344,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5783146779087100803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1e096b9ae04989409e6e00c6aa52b97, type: 3}
+  m_Script: {fileID: 11500000, guid: a1b9e3a77c3a5d54a8878321a5793252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerDamage: 1
