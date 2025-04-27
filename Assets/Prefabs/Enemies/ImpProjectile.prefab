@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8416794831259120221}
   - component: {fileID: -5996950157697550584}
+  - component: {fileID: 7084712701838584996}
   - component: {fileID: 9173170298927811555}
   - component: {fileID: 1893383548878690665}
   m_Layer: 0
@@ -86,6 +87,33 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!54 &7084712701838584996
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577055597057934985}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 1
 --- !u!135 &9173170298927811555
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -119,6 +147,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 831e7a8436abdb048aca77bdda658ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 12
   lifetime: 3
   damageAmount: 1

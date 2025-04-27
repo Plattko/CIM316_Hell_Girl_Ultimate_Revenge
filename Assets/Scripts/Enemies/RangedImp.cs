@@ -177,7 +177,7 @@ public class RangedImp : MonoBehaviour, IDamageable
 
         if (projScript != null)
         {
-            projScript.SetDirection(player.position - firePoint.position);
+            projScript.Initialise(player.position - firePoint.position);
         }
 
         // Reset attack animation after it's played

@@ -5,26 +5,27 @@ using UnityEngine;
 public class ImpProjectile : MonoBehaviour
 
 {
+    private Rigidbody rb;
+
     public float speed = 10f;
     public float lifetime = 3f;
     private Vector3 direction;
     public int damageAmount = 1;
 
-
     void Start()
     {
-         Destroy(gameObject, lifetime); // Destroy after time
+        rb = GetComponent<Rigidbody>();
+        Debug.Log(rb);
+        Destroy(gameObject, lifetime); // Destroy after time
     }
 
-    public void SetDirection(Vector3 dir)
+    public void Initialise(Vector3 dir)
     {
+        rb = GetComponent<Rigidbody>();
         dir.y = 0;
         direction = dir.normalized;
-    }
-
-    void Update()
-    {
-        transform.position += direction * speed * Time.deltaTime;
+        rb.velocity = direction * speed;
+        Debug.Log(rb.velocity.magnitude);
     }
 
     private void OnTriggerEnter(Collider collision)

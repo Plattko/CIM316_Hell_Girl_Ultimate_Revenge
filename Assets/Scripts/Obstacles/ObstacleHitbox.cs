@@ -6,6 +6,8 @@ public class ObstacleHitbox : MonoBehaviour
 {
     [SerializeField] private int playerDamage = 1;
     [SerializeField] private float enemyDamage = 10f;
+    [SerializeField] private bool dealKnockback;
+    [SerializeField] private float knockbackStrength = 5f;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -27,6 +29,13 @@ public class ObstacleHitbox : MonoBehaviour
         {
             // Deal damage
             damageable.TakeDamage(damage);
+        }
+        // Apply knockback if object is knockbackable
+        if (other.TryGetComponent(out IKnockbackable knockbackable))
+        {
+            Vector3 direction = (other.transform.position - transform.position).normalized;
+            direction.y = 0;
+            knockbackable.Knockback(direction, knockbackStrength);
         }
     }
 }

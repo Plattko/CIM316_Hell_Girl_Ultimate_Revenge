@@ -6,6 +6,7 @@ public class Explosion : MonoBehaviour
 {
     [HideInInspector] public float damage;
     [HideInInspector] public float duration;
+    private float knockbackStrength = 12f;
 
     public void Initialise(float _damage, float _duration)
     {
@@ -26,6 +27,13 @@ public class Explosion : MonoBehaviour
             damageable.TakeDamage(damage);
             // Print the damage dealt
             Debug.Log("Damaged " + other.name + " for " + damage + " damage.");
+        }
+        // Apply knockback if object is knockbackable
+        if (other.TryGetComponent(out IKnockbackable knockbackable))
+        {
+            Vector3 direction = (other.transform.position - transform.position).normalized;
+            direction.y = 0;
+            knockbackable.Knockback(direction, knockbackStrength);
         }
     }
 }
