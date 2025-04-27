@@ -511,7 +511,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.030000001
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 3ef4414d093f78c45857ec21631b2b63, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 684f9935022a12543803a83fafcb6c23, type: 2}
   m_BuildHeightMesh: 0
 --- !u!1 &1225092840535012150
 GameObject:
@@ -795,6 +795,7 @@ GameObject:
   - component: {fileID: 6309742986773483827}
   - component: {fileID: 5906763639493864068}
   - component: {fileID: 150664574710882822}
+  - component: {fileID: 1247134946376955427}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -888,6 +889,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.038681857, y: 0.027524613, z: 1.5645929e-15}
   m_Center: {x: -0.0005909243, y: -0.15324603, z: -1.1319028e-15}
+--- !u!208 &1247134946376955427
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644106229596005099}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.019000001, y: 0.014, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.001, y: -0.15300001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &1662526651787183552
 GameObject:
   m_ObjectHideFlags: 0
@@ -2023,6 +2040,7 @@ GameObject:
   - component: {fileID: 5684830040994046691}
   - component: {fileID: 3025539523105181524}
   - component: {fileID: 5146946989594223195}
+  - component: {fileID: 1650180966765801599}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -2116,6 +2134,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.027937308, y: 0.037144423, z: 0.0000000022139803}
   m_Center: {x: -0.10303116, y: 0, z: 0}
+--- !u!208 &1650180966765801599
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4840453260043776347}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.019000001, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.10300001, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4907558646221494592
 GameObject:
   m_ObjectHideFlags: 0
@@ -2892,6 +2926,7 @@ GameObject:
   - component: {fileID: 6522973111883070302}
   - component: {fileID: 1959443110735781844}
   - component: {fileID: 8951347200212955772}
+  - component: {fileID: 7417943598903278735}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -2985,6 +3020,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.03734883, y: 0.027524613, z: 0.000000008202972}
   m_Center: {x: -0.00002520068, y: 0.15324603, z: -0.000000045670873}
+--- !u!208 &7417943598903278735
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6436688986826561028}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.019000001, y: 0.014, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.15300001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &6507664604664497640
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,6 +3476,7 @@ GameObject:
   - component: {fileID: 491356496042620598}
   - component: {fileID: 2578905512706431126}
   - component: {fileID: 9073017759552924801}
+  - component: {fileID: 6606298271688393320}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Untagged
@@ -3518,6 +3570,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.027508557, y: 0.03779099, z: 0.0000000022525188}
   m_Center: {x: 0.10281678, y: 0.00006277672, z: -3.7417847e-12}
+--- !u!208 &6606298271688393320
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7665713274681204933}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.014, y: 0.019000001, z: 0.00001}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.10300001, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8191687925158440000
 GameObject:
   m_ObjectHideFlags: 0
