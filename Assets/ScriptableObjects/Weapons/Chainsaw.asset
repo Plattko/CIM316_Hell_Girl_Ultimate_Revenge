@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Chainsaw
   m_EditorClassIdentifier: 
   name: Chainsaw
-  icon: {fileID: 21300000, guid: af38578c20ab00e4aba5f70cdc577af0, type: 3}
+  icon: {fileID: -746070378, guid: c9ebbcc74f04a7d44b46f5fe3f8fdcc7, type: 3}
   <NumberOfAttacks>k__BackingField: 3
   <AnimController>k__BackingField: {fileID: 9100000, guid: 146ab628b7aaf8d4fb2d3a77f86e857b, type: 2}
   <swingSFX>k__BackingField: {fileID: 8300000, guid: 7a2c1964c253347459ecd716cb7b422d, type: 3}

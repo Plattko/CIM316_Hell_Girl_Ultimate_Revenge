@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Knife
   m_EditorClassIdentifier: 
   name: Knife
-  icon: {fileID: 21300000, guid: 940427c16dd6efc4a955cc50faa62c27, type: 3}
+  icon: {fileID: -1543100523, guid: c9ebbcc74f04a7d44b46f5fe3f8fdcc7, type: 3}
   <NumberOfAttacks>k__BackingField: 5
   <AnimController>k__BackingField: {fileID: 9100000, guid: bb8bea15e348d964bbaccfddfbd4d458, type: 2}
   <swingSFX>k__BackingField: {fileID: 8300000, guid: f354a389b74bb6546b2bfaa98f7c0f76, type: 3}
