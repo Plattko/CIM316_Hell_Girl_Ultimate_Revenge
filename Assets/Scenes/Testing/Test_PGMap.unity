@@ -7607,7 +7607,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ambiences:
   - {fileID: 8300000, guid: e37e5c79606a0464bb1102451cfdd67e, type: 3}
-  - {fileID: 8300000, guid: ccc36e0ce9d406f4dbdd0c960b7d643b, type: 3}
+  - {fileID: 8300000, guid: 4ee18adabdeb63444bbdcd918e1eda76, type: 3}
   - {fileID: 8300000, guid: d2c98d528a5f40f40a6e8007e66b014b, type: 3}
 --- !u!1 &1205020765
 GameObject:
@@ -9071,6 +9071,8 @@ MonoBehaviour:
   mapGenerator: {fileID: 727196270}
   <HasOnboardedPlayer>k__BackingField: 1
   <DivineEnemyMaterial>k__BackingField: {fileID: 2100000, guid: 1086068f24f222f4d9a687fb10fe4536, type: 2}
+  <HelenaGibberishSFX>k__BackingField: {fileID: 8300000, guid: 2211611e2a721a54d9094ab6fc2843c5, type: 3}
+  <TDAGibberishSFX>k__BackingField: {fileID: 8300000, guid: 2211611e2a721a54d9094ab6fc2843c5, type: 3}
 --- !u!1 &1400206151
 GameObject:
   m_ObjectHideFlags: 0

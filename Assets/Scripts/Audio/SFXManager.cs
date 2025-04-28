@@ -10,8 +10,14 @@ public class SFXManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) { Destroy(this); }
-        else { Instance = this; }
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        }
+        else
+        { 
+            Instance = this;
+        }
     }
 
     public void PlayAudioClip(AudioClip audioClip, Transform spawnTransform, float volume, float pitch = 1f, bool randomisePitch = false, float pitchRange = 0.1f)

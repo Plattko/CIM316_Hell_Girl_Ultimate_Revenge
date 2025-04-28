@@ -78,6 +78,9 @@ namespace DialogueEditor
 
         public event Action OnDialogueEnd;
 
+        // Audio
+        private bool playGibberishSFX;
+
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -477,6 +480,16 @@ namespace DialogueEditor
 
                 DialogueText.maxVisibleCharacters = m_scrollIndex;
                 m_scrollIndex++;
+                // Play dialogue gibberish SFX
+                if (NameText.text == "Helena" && playGibberishSFX)
+                {
+                    SFXManager.Instance.PlayAudioClip(GameManager.Instance.HelenaGibberishSFX, transform, 1f, 0.8f, true, 0.05f);
+                }
+                else if ((NameText.text == "The Devil's Advocate" || NameText.text == "???") && playGibberishSFX)
+                {
+                    SFXManager.Instance.PlayAudioClip(GameManager.Instance.TDAGibberishSFX, transform, 1f, 1f, true, 0.05f);
+                }
+                playGibberishSFX = !playGibberishSFX;
 
                 // Finished scrolling?
                 if (m_scrollIndex >= m_targetScrollTextCount)

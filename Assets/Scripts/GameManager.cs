@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
 
     // TEMPORARY
     [field: SerializeField] public Material DivineEnemyMaterial {get; private set;}
+    [field: SerializeField] public AudioClip HelenaGibberishSFX { get; private set; }
+    [field: SerializeField] public AudioClip TDAGibberishSFX { get; private set; }
 
     private void Awake()
     {

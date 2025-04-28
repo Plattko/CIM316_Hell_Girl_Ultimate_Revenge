@@ -7,7 +7,7 @@ public class AmbiencePlayer : MonoBehaviour
     [SerializeField] private AudioClip[] ambiences;
     private AudioSource audioSource;
 
-    private float maxVolume = 0.75f;
+    private float maxVolume = 0.65f;
 
     private float fadeInDuration = 15f;
     private float fadeOutDuration = 15f;
