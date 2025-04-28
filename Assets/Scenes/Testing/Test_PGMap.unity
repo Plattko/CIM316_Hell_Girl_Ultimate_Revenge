@@ -97,7 +97,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 27213d546f2fe3b4fb471796f7d0e7f8, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5110,6 +5110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSourcePrefab: {fileID: 8493354323799155705, guid: 1ccf98d1046e5454aa79c8651e6cca8c, type: 3}
+  clickSFX: {fileID: 8300000, guid: 3478a16859d3f824bab2d2e0cb1844bf, type: 3}
 --- !u!1 &727196269
 GameObject:
   m_ObjectHideFlags: 0
@@ -9558,6 +9559,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 2066441130}
   deathMenu: {fileID: 1898284291}
   endOfDemoMenu: {fileID: 385041117}
+  clickSFX: {fileID: 8300000, guid: 3478a16859d3f824bab2d2e0cb1844bf, type: 3}
 --- !u!114 &1463490064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14709,6 +14711,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1399775334}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
         m_MethodName: ClosePauseMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 727054805}
+        m_TargetAssemblyTypeName: SFXManager, Assembly-CSharp
+        m_MethodName: PlayButtonClickSFX
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

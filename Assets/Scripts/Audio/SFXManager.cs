@@ -8,6 +8,8 @@ public class SFXManager : MonoBehaviour
 
     [SerializeField] private AudioSource audioSourcePrefab;
 
+    [SerializeField] private AudioClip clickSFX;
+
     private void Awake()
     {
         if (Instance != null && Instance != this) 
@@ -66,5 +68,13 @@ public class SFXManager : MonoBehaviour
         float clipLength = audioSource.clip.length;
         // Destroy the audio source when the clip ends
         Destroy(audioSource.gameObject, clipLength);
+    }
+    
+    //-------------------------------------------------------------
+    // BUTTONS
+    //-------------------------------------------------------------
+    public void PlayButtonClickSFX()
+    {
+        PlayAudioClip(clickSFX, transform, 1f, 1f, true);
     }
 }
