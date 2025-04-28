@@ -17,6 +17,10 @@ public class ObstacleHitbox : MonoBehaviour
         }
         else if (other.CompareTag("Enemy"))
         {
+            // Do nothing if it is a divine enemy
+            SpriteRenderer sr = other.GetComponent<SpriteRenderer>();
+            if (sr != null && sr.sharedMaterial == GameManager.Instance.DivineEnemyMaterial) return;
+
             DealDamage(other, enemyDamage);
         }
     }

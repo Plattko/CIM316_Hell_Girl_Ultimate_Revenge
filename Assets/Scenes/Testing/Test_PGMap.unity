@@ -8925,6 +8925,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapGenerator: {fileID: 727196270}
   <HasOnboardedPlayer>k__BackingField: 1
+  <DivineEnemyMaterial>k__BackingField: {fileID: 2100000, guid: 1086068f24f222f4d9a687fb10fe4536, type: 2}
 --- !u!1 &1400206151
 GameObject:
   m_ObjectHideFlags: 0

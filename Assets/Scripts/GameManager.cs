@@ -19,6 +19,9 @@ public class GameManager : MonoBehaviour
 
     public bool DoSpellRoom { get; private set; } = true;
 
+    // TEMPORARY
+    [field: SerializeField] public Material DivineEnemyMaterial {get; private set;}
+
     private void Awake()
     {
         if (Instance != null && Instance != this) 

@@ -15,7 +15,7 @@ public class DamageFlash : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+        spriteRenderers = GetComponentsInChildren<SpriteRenderer>(true);
         materials = new Material[spriteRenderers.Length];
         for (int i = 0; i < spriteRenderers.Length; i++)
         {
@@ -51,6 +51,11 @@ public class DamageFlash : MonoBehaviour
             }
             elapsedTime += Time.deltaTime;
             yield return null;
+        }
+
+        foreach (Material material in materials)
+        {
+            material.SetFloat("_FlashAmount", 0f);
         }
     }
 }

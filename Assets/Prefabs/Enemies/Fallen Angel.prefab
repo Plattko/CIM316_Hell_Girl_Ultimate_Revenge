@@ -1444,7 +1444,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6577055597057934985, guid: d50f5755860a56143879c21084bf564b, type: 3}
   firePoint: {fileID: 6793188801689315319}
   projectileSpeed: 10
-  fireRate: 2
+  fireRate: 2.25
   beamPrefab: {fileID: 555756945661990338, guid: 724d98fe2055a574ea309d7e8640abc6, type: 3}
   beamDelay: 3
   beamsPerAttack: 5
@@ -1493,7 +1493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b08c2a2e3d41b142a1fd92a039dd9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  flashColour: {r: 1, g: 0, b: 0, a: 1}
+  flashColour: {r: 1, g: 0.9356412, b: 0.504717, a: 0}
   flashTime: 0.25
 --- !u!1 &8358364891489609687
 GameObject:

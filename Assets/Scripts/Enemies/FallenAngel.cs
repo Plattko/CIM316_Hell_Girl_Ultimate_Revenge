@@ -19,6 +19,7 @@ public class FallenAngel : MonoBehaviour, IDamageable
     [Header("Attack Settings")]
     public GameObject projectilePrefab;
     public Transform firePoint;
+    private float initialFireDelay = 1f;
     public float projectileSpeed = 10f;
     public float fireRate = 1.5f;
     private int attackCount = 0;
@@ -32,7 +33,8 @@ public class FallenAngel : MonoBehaviour, IDamageable
     [SerializeField] private GameObject enemySpawnIndicatorPrefab;
     public GameObject[] minions;
     public Transform[] summonPoints;
-    private bool summonedMinions = false;
+    //private bool summonedMinions = false;
+    private int timesSummonedMinions = 0;
 
     private Transform player;
     private bool usingBeamAttack = false;
@@ -72,12 +74,9 @@ public class FallenAngel : MonoBehaviour, IDamageable
         if (player == null) return;
 
         // Health -based behavior changes
-        if (currentHealth <= maxHealth * 0.75f && !summonedMinions)
+        if (currentHealth <= maxHealth * 0.75f && timesSummonedMinions == 0)
         {
-            summonedMinions = true;
-            // Play the summon SFX
-            SFXManager.Instance.PlayAudioClip(summonSFX, transform, 4f);
-            Invoke("SummonMinions", summonSFX.length);
+            StartCoroutine(SummonMinions());
 
             if (wingAnimationScript != null && !wingAnimationScript.enabled)
             {
@@ -91,6 +90,11 @@ public class FallenAngel : MonoBehaviour, IDamageable
             usingBeamAttack = true; // Enable beam attacks at 50% health
 
         }
+
+        if (currentHealth <= maxHealth * 0.25f && timesSummonedMinions == 1)
+        {
+            StartCoroutine(SummonMinions());
+        }
     }
 
     //-------------------------------------------------------------
@@ -98,6 +102,9 @@ public class FallenAngel : MonoBehaviour, IDamageable
     //-------------------------------------------------------------
     private IEnumerator FireProjectile()
     {
+        // Wait for the initial fire delay
+        yield return new WaitForSeconds(initialFireDelay);
+        
         while (!isDead)
         {
             if (player != null)
@@ -126,8 +133,18 @@ public class FallenAngel : MonoBehaviour, IDamageable
     //-------------------------------------------------------------
     // SUMMONING MINIONS
     //-------------------------------------------------------------
-    private void SummonMinions()
+    private IEnumerator SummonMinions()
     {
+        timesSummonedMinions++;
+
+        // Play the summon SFX x4 to increase volume past 1
+        SFXManager.Instance.PlayAudioClip(summonSFX, transform, 1f);
+        SFXManager.Instance.PlayAudioClip(summonSFX, transform, 1f);
+        SFXManager.Instance.PlayAudioClip(summonSFX, transform, 1f);
+        SFXManager.Instance.PlayAudioClip(summonSFX, transform, 1f);
+
+        yield return new WaitForSeconds(summonSFX.length * 0.33f);
+        
         // Display an enemy spawn indicator and then spawn an enemy at each of the spawn layout's spawn points
         foreach (Transform summonPoint in summonPoints)
         {
@@ -144,8 +161,10 @@ public class FallenAngel : MonoBehaviour, IDamageable
         yield return new WaitForSeconds(delay);
         // Instantiate a random minion at the spawn point
         GameObject minion = Instantiate(minions[UnityEngine.Random.Range(0, minions.Length)], summonPoint + Vector3.up, Quaternion.identity);
-        // Set the enemy's parent to the room it is in
+        // Set the minion's parent to the room it is in
         minion.transform.parent = transform;
+        // Set the minion's material to the divine enemy material to change their appearance and make them immune to spikes/beams
+        minion.GetComponent<SpriteRenderer>().material = GameManager.Instance.DivineEnemyMaterial;
         // Signal that a minion was summoned
         onMinionSummoned?.Invoke(minion);
     }

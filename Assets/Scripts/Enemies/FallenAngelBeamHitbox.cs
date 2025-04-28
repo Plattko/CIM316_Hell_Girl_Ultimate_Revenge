@@ -19,7 +19,11 @@ public class FallenAngelBeamHitbox : MonoBehaviour
         {
             // If the object has the Fallen Angel script, do nothing
             if (other.GetComponentInChildren<FallenAngel>() != null) return;
-            
+
+            // Do nothing if it is a divine enemy
+            SpriteRenderer sr = other.GetComponent<SpriteRenderer>();
+            if (sr != null && sr.sharedMaterial == GameManager.Instance.DivineEnemyMaterial) return;
+
             DealDamage(other, enemyDamage);
         }
     }
