@@ -8,10 +8,16 @@ public class Explosion : MonoBehaviour
     [HideInInspector] public float duration;
     private float knockbackStrength = 12f;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip explosionSFX;
+
     public void Initialise(float _damage, float _duration)
     {
         damage = _damage;
         duration = _duration;
+
+        // Play the explosion SFX
+        SFXManager.Instance.PlayAudioClip(explosionSFX, transform, 0.5f, 1f, true);
 
         // Destroy the explosion after the duration ends
         Destroy(gameObject, duration);

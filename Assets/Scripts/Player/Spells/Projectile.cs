@@ -10,11 +10,18 @@ public class Projectile : MonoBehaviour
     private float lifetime;
     private float knockbackStrength = 4f;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip thrownSFX;
+    [SerializeField] private AudioClip impactSFX;
+
     public void Initialise(Vector3 moveDir, float _moveSpeed, float _damage, float _duration)
     {
         moveSpeed = _moveSpeed;
         damage = _damage;
         lifetime = _duration;
+
+        // Play the thrown SFX
+        SFXManager.Instance.PlayAudioClip(thrownSFX, transform, 1f, 1f, true);
 
         // Set the project's velocity
         rb.velocity = moveDir * moveSpeed;
@@ -42,6 +49,10 @@ public class Projectile : MonoBehaviour
             knockbackable.Knockback(direction, knockbackStrength);
         }
 
+        // Play the impact SFX
+        SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1f, true);
+        SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1f, true);
+        SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1f, true);
         // Destroy the projectile
         Destroy(gameObject);
     }

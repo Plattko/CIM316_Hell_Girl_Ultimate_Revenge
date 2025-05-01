@@ -40,6 +40,8 @@ public class RangedImp : MonoBehaviour, IDamageable
     [Header("SFX")]
     [SerializeField] private AudioClip[] damageSFX;
     [SerializeField] private AudioClip[] deathSFX;
+    [SerializeField] private AudioClip fireballChargeSFX;
+    [SerializeField] private AudioClip fireballShotSFX;
 
     void Start()
     {
@@ -178,7 +180,7 @@ public class RangedImp : MonoBehaviour, IDamageable
         }
 
         // Wait a moment before firing to sync with the animation
-        yield return new WaitForSeconds(0.2f); // adjust to fit your animation
+        yield return new WaitForSeconds(0.33f); // adjust to fit your animation
 
         // Fire the projectile
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
@@ -195,5 +197,17 @@ public class RangedImp : MonoBehaviour, IDamageable
         {
             animator.SetBool("IsAttacking", false);
         }
+    }
+
+    public void PlayFireballChargeSFX()
+    {
+        // Play the fireball charge SFX
+        SFXManager.Instance.PlayAudioClip(fireballChargeSFX, transform, 0.75f, 1.5f, true);
+    }
+
+    public void PlayFireballShotSFX()
+    {
+        // Play the fireball shot SFX
+        SFXManager.Instance.PlayAudioClip(fireballShotSFX, transform, 0.75f, 1.5f, true);
     }
 }

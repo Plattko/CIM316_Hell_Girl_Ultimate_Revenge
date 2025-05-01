@@ -120,3 +120,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 0
   duration: 0
+  explosionSFX: {fileID: 8300000, guid: 2880bc6b01400f841a50b8c8568eb266, type: 3}

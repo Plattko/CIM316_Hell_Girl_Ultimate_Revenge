@@ -5145,7 +5145,7 @@ MonoBehaviour:
   mapSize: {x: 9, y: 9}
   branchChanceStart: 0.5
   branchChanceEnd: 0.01
-  mapTransitionDuration: 0.1
+  ascensionLeech: {fileID: 8300000, guid: 3bf328a34de5e114babf83ec54bdb2b3, type: 3}
 --- !u!4 &727196271
 Transform:
   m_ObjectHideFlags: 0
@@ -9070,7 +9070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapGenerator: {fileID: 727196270}
-  <HasOnboardedPlayer>k__BackingField: 1
+  <HasOnboardedPlayer>k__BackingField: 0
   <DivineEnemyMaterial>k__BackingField: {fileID: 2100000, guid: 1086068f24f222f4d9a687fb10fe4536, type: 2}
   <HelenaGibberishSFX>k__BackingField: {fileID: 8300000, guid: 2211611e2a721a54d9094ab6fc2843c5, type: 3}
   <TDAGibberishSFX>k__BackingField: {fileID: 8300000, guid: 2211611e2a721a54d9094ab6fc2843c5, type: 3}

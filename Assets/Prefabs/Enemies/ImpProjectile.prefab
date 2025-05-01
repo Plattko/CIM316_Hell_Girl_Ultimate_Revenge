@@ -150,3 +150,4 @@ MonoBehaviour:
   speed: 12
   lifetime: 3
   damageAmount: 1
+  impactSFX: {fileID: 8300000, guid: 61aad7566de528f4699aa99bf1fe9695, type: 3}

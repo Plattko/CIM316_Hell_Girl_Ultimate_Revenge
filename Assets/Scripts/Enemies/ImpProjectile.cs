@@ -12,6 +12,9 @@ public class ImpProjectile : MonoBehaviour
     private Vector3 direction;
     public int damageAmount = 1;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip impactSFX;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -42,12 +45,22 @@ public class ImpProjectile : MonoBehaviour
             PlayerController playerController = collision.GetComponent<PlayerController>();
             if (!playerController.isDashing)
             {
+                // Play the impact SFX
+                SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
+                SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
+                SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
+
                 Destroy(gameObject);
             }
         }
         // Destroy the projectile if it collides with something other than an enemy or pickup
         else if (!collision.CompareTag("Enemy") && !collision.CompareTag("Pickup"))
         {
+            // Play the impact SFX
+            SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
+            SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
+            SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
+
             Destroy(gameObject);
         }
     }

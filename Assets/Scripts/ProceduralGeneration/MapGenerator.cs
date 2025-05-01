@@ -33,8 +33,9 @@ public class MapGenerator : MonoBehaviour
     // The number of the map the player is on
     private int mapNum = 1;
 
-    // Map transition variables
-    [SerializeField] private float mapTransitionDuration = 0.1f;
+    [Header("SFX")]
+    [SerializeField] private AudioClip ascensionLeech;
+
 
     private void Start()
     {
@@ -99,8 +100,10 @@ public class MapGenerator : MonoBehaviour
         roomManager.SpawnRooms(rooms, gridCentre, false);
         minimap.DrawMap(rooms, gridCentre);
 
-        // Wait for the map transition duration
-        yield return new WaitForSeconds(mapTransitionDuration);
+        // Play the ascension leech SFX
+        SFXManager.Instance.PlayAudioClip(ascensionLeech, transform, 0.75f);
+        // Wait for the ascension leech SFX to play
+        yield return new WaitForSeconds(ascensionLeech.length);
 
         // Fade back in
         yield return UIManager.Instance.FadeIn(0.25f);

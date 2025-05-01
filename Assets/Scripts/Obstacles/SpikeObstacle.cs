@@ -45,6 +45,6 @@ public class SpikeObstacle : MonoBehaviour
 
     public void PlaySpikeSFX()
     {
-        SFXManager.Instance.PlayAudioClip(spikeSFX, transform, 1f, 1f, true);
+        SFXManager.Instance.PlayAudioClip(spikeSFX, transform, 0.75f, 1f, true);
     }
 }

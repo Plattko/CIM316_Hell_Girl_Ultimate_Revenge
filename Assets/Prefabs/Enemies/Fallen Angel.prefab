@@ -1466,6 +1466,7 @@ MonoBehaviour:
   unfurlingWingsSFX: {fileID: 8300000, guid: a277890a3514e9646b9b6da7f9dc7ca0, type: 3}
   beamChargeSFX: {fileID: 8300000, guid: faed166e2c438554c93e7d699e605e3b, type: 3}
   beamFireSFX: {fileID: 8300000, guid: 7b218bedad12ee149b039029cefb3047, type: 3}
+  projectileShotSFX: {fileID: 8300000, guid: 224e9433c26c00549badf396357bdf65, type: 3}
 --- !u!114 &665753726749869822
 MonoBehaviour:
   m_ObjectHideFlags: 0

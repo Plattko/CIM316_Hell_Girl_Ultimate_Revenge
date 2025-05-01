@@ -48,13 +48,14 @@ public class FallenAngel : MonoBehaviour, IDamageable
 
     private DamageFlash damageFlash;
 
-    [Header("Audio")]
+    [Header("SFX")]
     [SerializeField] private AudioClip[] damageSFX;
     [SerializeField] private AudioClip summonSFX;
     [SerializeField] private AudioClip deathSFX;
     [SerializeField] private AudioClip unfurlingWingsSFX;
     [SerializeField] private AudioClip beamChargeSFX;
     [SerializeField] private AudioClip beamFireSFX;
+    [SerializeField] private AudioClip projectileShotSFX;
 
     private void Start()
     {
@@ -109,6 +110,9 @@ public class FallenAngel : MonoBehaviour, IDamageable
         {
             if (player != null)
             {
+                // Play the fireball shot SFX
+                SFXManager.Instance.PlayAudioClip(projectileShotSFX, transform, 1f, 1.5f, true);
+
                 // Fire projectile
                 GameObject projectile = Instantiate(projectilePrefab, firePoint.position, Quaternion.identity);
                 ImpProjectile projScript = projectile.GetComponent<ImpProjectile>();
