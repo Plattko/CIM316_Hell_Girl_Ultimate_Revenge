@@ -15,4 +15,15 @@ public class SpawnTheDevilsAdvocate : MonoBehaviour
     {
         TDA.SetActive(false);
     }
+
+    public void RemoveTDAPostDelay()
+    {
+        StartCoroutine(RemoveAfterDelay());
+    }
+
+    public IEnumerator RemoveAfterDelay()
+    {
+        yield return new WaitForSeconds(1.5f);
+        RemoveTDA();
+    }
 }
