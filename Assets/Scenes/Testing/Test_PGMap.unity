@@ -9559,7 +9559,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 2066441130}
   deathMenu: {fileID: 1898284291}
   endOfDemoMenu: {fileID: 385041117}
-  clickSFX: {fileID: 8300000, guid: 3478a16859d3f824bab2d2e0cb1844bf, type: 3}
 --- !u!114 &1463490064
 MonoBehaviour:
   m_ObjectHideFlags: 0

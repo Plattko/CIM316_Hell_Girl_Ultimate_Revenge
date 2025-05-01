@@ -8,6 +8,9 @@ public class SpikeObstacle : MonoBehaviour
 
     private bool canTrigger = true;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip spikeSFX;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -38,5 +41,10 @@ public class SpikeObstacle : MonoBehaviour
     public void EnableTrigger()
     {
         canTrigger = true;
+    }
+
+    public void PlaySpikeSFX()
+    {
+        SFXManager.Instance.PlayAudioClip(spikeSFX, transform, 1f, 1f, true);
     }
 }

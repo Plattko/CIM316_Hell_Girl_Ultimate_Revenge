@@ -37,6 +37,10 @@ public class RangedImp : MonoBehaviour, IDamageable
     [Header("UI")]
     public Slider healthSlider;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip[] damageSFX;
+    [SerializeField] private AudioClip[] deathSFX;
+
     void Start()
     {
         lastPosition = transform.position;
@@ -131,13 +135,20 @@ public class RangedImp : MonoBehaviour, IDamageable
             healthSlider.value = curHealth;
         }
 
+        if (curHealth > 0)
+        {
+            // Play the damage SFX
+            SFXManager.Instance.PlayRandomAudioClip(damageSFX, transform, 0.5f, 1f, true);
+        }
         // Kill the enemy if it reaches 0 health
-        if (curHealth <= 0)
+        else
         {
             // Set the enemy to dead
             isDead = true;
             // Signal that the enemy died
             onDied?.Invoke();
+            // Play the death SFX
+            SFXManager.Instance.PlayRandomAudioClip(deathSFX, transform, 0.5f, 1f, true);
             // Drop mana
             manaDropper.DropMana(transform.parent);
 

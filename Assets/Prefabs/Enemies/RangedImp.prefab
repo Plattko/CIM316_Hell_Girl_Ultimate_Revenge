@@ -560,6 +560,15 @@ MonoBehaviour:
   fireRate: 3
   initialFireDelay: 1
   healthSlider: {fileID: 130068191578904349}
+  damageSFX:
+  - {fileID: 8300000, guid: 6720b59ff1c2b5c40b36b4a6bb3be347, type: 3}
+  - {fileID: 8300000, guid: df34607e41b11d14b8f57041ee64fcad, type: 3}
+  deathSFX:
+  - {fileID: 8300000, guid: d51abee945eff124abe4437287821076, type: 3}
+  fleshImpactSFX:
+  - {fileID: 8300000, guid: a0509b17eb4221d469e45805dfca2724, type: 3}
+  - {fileID: 8300000, guid: f448b727ebdea8c44960cab966372821, type: 3}
+  - {fileID: 8300000, guid: 7697823b55509bd43b351833e255074d, type: 3}
 --- !u!114 &5378141007509175831
 MonoBehaviour:
   m_ObjectHideFlags: 0

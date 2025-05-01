@@ -21,10 +21,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private bool isDead;
 
-    [Header("Audio")]
+    [Header("SFX")]
+    [SerializeField] private AudioClip regainHealthSFX;
     [SerializeField] private AudioClip[] hurtSFX;
     [SerializeField] private AudioClip deathGruntSFX;
     [SerializeField] private AudioClip deathTollSFX;
+
 
     private void Start()
     {
@@ -104,5 +106,9 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (curHealth > maxHealth) { curHealth = maxHealth; }
         // Update the health UI
         UIManager.Instance.UpdateHealth(curHealth);
+        // Set the regain health SFX's pitch based on the current mana
+        float pitch = 0.8f + (0.1f * curHealth);
+        // Play the regain health SFX
+        SFXManager.Instance.PlayAudioClip(regainHealthSFX, transform, 0.8f, pitch);
     }
 }

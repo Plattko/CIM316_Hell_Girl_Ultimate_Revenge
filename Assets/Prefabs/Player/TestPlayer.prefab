@@ -531,6 +531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   aimPivot: {fileID: 1563973175013391134}
   spellItemPrefab: {fileID: 6411330787752470317, guid: 0a2f948b8549a2542a7af667f05ba736, type: 3}
+  regainManaSFX: {fileID: 8300000, guid: 6806685a48987f44995b6a3f4faaf7bc, type: 3}
 --- !u!1 &5169406316550128034
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +945,7 @@ MonoBehaviour:
   playerController: {fileID: 295450895662419321}
   damageFlash: {fileID: 2191566498678633360}
   maxHealth: 5
+  regainHealthSFX: {fileID: 8300000, guid: d7c660fb12c1ca7438d32c9eb0914d27, type: 3}
   hurtSFX:
   - {fileID: 8300000, guid: a050508ebbb45124099b827fc0c186bb, type: 3}
   - {fileID: 8300000, guid: 2be934df33b1d4340802123a50b9a14e, type: 3}

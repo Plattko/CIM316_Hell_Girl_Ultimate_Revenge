@@ -50,6 +50,19 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
     [Header("UI")]
     public Slider healthSlider;
 
+    [Header("SFX")]
+    private float minGrowlWait = 5f;
+    private float maxGrowlWait = 10f;
+    private float nextGrowlTime = float.MaxValue;
+
+    private bool isGrowling;
+    private float growlEndTime = float.MaxValue;
+
+    [SerializeField] private AudioSource growlAudioSource;
+    [SerializeField] private AudioClip[] biteSFX;
+    [SerializeField] private AudioClip[] damageSFX;
+    [SerializeField] private AudioClip[] deathSFX;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -69,6 +82,8 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
             healthSlider.maxValue = maxHealth;
             healthSlider.value = curHealth;
         }
+
+        nextGrowlTime = Time.time + UnityEngine.Random.Range(minGrowlWait, maxGrowlWait);
     }
 
     void Update()
@@ -104,6 +119,19 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         // Check if the Rigidbody is moving
         IsMoving = rb.velocity.magnitude > 0.1f;
         animator.SetBool("IsMoving", IsMoving);
+
+        if (Time.time > nextGrowlTime)
+        {
+            nextGrowlTime = Time.time + UnityEngine.Random.Range(minGrowlWait, maxGrowlWait);
+            growlEndTime = Time.time + growlAudioSource.clip.length;
+            growlAudioSource.pitch = UnityEngine.Random.Range(0.8f, 1.2f);
+            growlAudioSource.Play();
+        }
+
+        if (isGrowling && Time.time > growlEndTime)
+        {
+            isGrowling = false;
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -176,8 +204,9 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         // Do nothing if the enemy is dead
         if (isDead) return;
 
-        // Interrupt the enemy's attack
+        // Interrupt the enemy's attack and growl SFX
         InterruptAttack();
+        InterruptGrowl();
         // Reduce health by the damage amount
         curHealth -= amount;
         // Play the damage flash
@@ -188,9 +217,17 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
             healthSlider.value = curHealth;
         }
 
-        // Kill the enemy if it reaches 0 health
-        if (curHealth <= 0)
+        if (curHealth > 0)
         {
+            // Play the damage SFX
+            SFXManager.Instance.PlayRandomAudioClip(damageSFX, transform, 0.5f, 1f, true);
+        }
+        // Kill the enemy if it reaches 0 health
+        else
+        {
+            // Play the death SFX
+            SFXManager.Instance.PlayRandomAudioClip(deathSFX, transform, 0.5f, 1f, true);
+            // Kill the enemy
             Die();
         }
     }
@@ -261,5 +298,24 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         if (knockbackCoroutine == null) return;
         StopCoroutine(knockbackCoroutine);
         isInKnockback = false;
+    }
+
+    //-------------------------------------------------------------
+    // AUDIO
+    //-------------------------------------------------------------
+
+    public void PlayBiteSFX()
+    {
+        InterruptGrowl();
+        SFXManager.Instance.PlayRandomAudioClip(biteSFX, transform, 1f, 1f, true);
+    }
+
+    private void InterruptGrowl()
+    {
+        if (!isGrowling) return;
+
+        isGrowling = false;
+        growlAudioSource.Stop();
+        nextGrowlTime = Time.time + UnityEngine.Random.Range(minGrowlWait, maxGrowlWait);
     }
 }

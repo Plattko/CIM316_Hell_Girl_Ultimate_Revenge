@@ -733,6 +733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bc2e16ef68b8ce4dbf340655cb07b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spikeSFX: {fileID: 8300000, guid: df1662a41cc63d04793b84e1b2200b29, type: 3}
 --- !u!1 &6735395322189013390
 GameObject:
   m_ObjectHideFlags: 0

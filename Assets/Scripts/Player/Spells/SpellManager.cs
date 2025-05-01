@@ -21,6 +21,9 @@ public class SpellManager : MonoBehaviour
     [SerializeField] private Transform aimPivot;
     [SerializeField] private GameObject spellItemPrefab;
 
+    [Header("SFX")]
+    [SerializeField] private AudioClip regainManaSFX;
+
     private void Start()
     {
         // Set the player's mana to their max mana
@@ -158,6 +161,10 @@ public class SpellManager : MonoBehaviour
             curMana = Mathf.Clamp(curMana, 0, maxMana);
             // Update the mana UI
             UIManager.Instance.UpdateMana(curMana);
+            // Set the regain mana SFX's pitch based on the current mana
+            float pitch = 0.8f + (0.1f * curMana);
+            // Play the regain mana SFX
+            SFXManager.Instance.PlayAudioClip(regainManaSFX, transform, 1f, pitch);
         }
     }
 }
