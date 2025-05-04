@@ -10,6 +10,9 @@ public class Projectile : MonoBehaviour
     private float lifetime;
     private float knockbackStrength = 4f;
 
+    [Header("VFX")]
+    [SerializeField] private GameObject impactVFX;
+
     [Header("SFX")]
     [SerializeField] private AudioClip thrownSFX;
     [SerializeField] private AudioClip impactSFX;
@@ -53,6 +56,8 @@ public class Projectile : MonoBehaviour
         SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1f, true);
         SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1f, true);
         SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1f, true);
+        // Spawn the impact VFX
+        Instantiate(impactVFX, transform.position, Quaternion.identity);
         // Destroy the projectile
         Destroy(gameObject);
     }

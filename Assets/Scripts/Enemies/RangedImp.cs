@@ -37,6 +37,9 @@ public class RangedImp : MonoBehaviour, IDamageable
     [Header("UI")]
     public Slider healthSlider;
 
+    [Header("VFX")]
+    [SerializeField] private GameObject smokePuffPrefab;
+
     [Header("SFX")]
     [SerializeField] private AudioClip[] damageSFX;
     [SerializeField] private AudioClip[] deathSFX;
@@ -157,12 +160,15 @@ public class RangedImp : MonoBehaviour, IDamageable
             // Increase the enemies killed stat
             StatsManager.Instance.IncreaseEnemiesKilled();
 
+            // Spawn the death smoke VFX
+            Instantiate(smokePuffPrefab, transform.position, Quaternion.identity);
+
             // Destroy the enemy game object
             Destroy(gameObject);
         }
     }
 
-    IEnumerator ResetAttackAnimation()
+    private IEnumerator ResetAttackAnimation()
     {
         yield return new WaitForSeconds(0.2f); // Adjust timing to match animation
         if (animator != null)

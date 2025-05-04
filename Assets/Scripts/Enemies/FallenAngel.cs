@@ -11,6 +11,8 @@ public class FallenAngel : MonoBehaviour, IDamageable
     public event Action onDied;
     public event Action<GameObject> onMinionSummoned;
 
+    [SerializeField] private CapsuleCollider col;
+
     [Header("Health Settings")]
     public float maxHealth = 100f;
     private float currentHealth;
@@ -42,11 +44,17 @@ public class FallenAngel : MonoBehaviour, IDamageable
 
     [SerializeField] private FallenAngelWingAnimation wingAnimationScript; // DRAG THIS IN FROM INSPECTOR
 
+    [Header("Animation")]
+    [SerializeField] private Animator anim;
+
     [Header("Eye Ring Beam Animation")]
     [SerializeField] private Animator eyeRingAnimator;
     [SerializeField] private string eyeRingTrigger = "EyeAttack"; // Make sure this matches the Trigger name
 
     private DamageFlash damageFlash;
+
+    [Header("VFX")]
+    [SerializeField] private GameObject deathChunksPrefab;
 
     [Header("SFX")]
     [SerializeField] private AudioClip[] damageSFX;
@@ -275,11 +283,23 @@ public class FallenAngel : MonoBehaviour, IDamageable
             // Play the death SFX
             SFXManager.Instance.PlayAudioClip(deathSFX, transform, 2f);
 
+            // Play the death animation
+            anim.Play("FallenAngel_Death");
+
             // Increase the enemies killed stat
             StatsManager.Instance.IncreaseEnemiesKilled();
-
-            Destroy(gameObject);
         }
+    }
+
+    public void PlayDeathVFX()
+    {
+        col.enabled = false;
+        Instantiate(deathChunksPrefab, transform.position, Quaternion.Euler(-90f, 0f, 0f));
+    }
+
+    public void DestroyGameObject()
+    {
+        Destroy(gameObject);
     }
 
     public float GetCurrentHealth()

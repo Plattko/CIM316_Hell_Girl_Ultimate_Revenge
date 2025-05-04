@@ -560,6 +560,7 @@ MonoBehaviour:
   fireRate: 3
   initialFireDelay: 1
   healthSlider: {fileID: 130068191578904349}
+  smokePuffPrefab: {fileID: 3352801881817819692, guid: 5efbbe7fbc1dcac42ad1b151d6306738, type: 3}
   damageSFX:
   - {fileID: 8300000, guid: 6720b59ff1c2b5c40b36b4a6bb3be347, type: 3}
   - {fileID: 8300000, guid: df34607e41b11d14b8f57041ee64fcad, type: 3}

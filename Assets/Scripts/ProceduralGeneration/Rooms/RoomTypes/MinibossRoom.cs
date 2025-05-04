@@ -60,25 +60,26 @@ public class MinibossRoom : MonoBehaviour
         // Set the room to cleared
         IsRoomCleared = true;
 
-        // Choose whether to spawn a heart using the heart spawn chance
-        if (Random.value < heartSpawnChance)
-        {
-            GameObject healthPickup = Instantiate(healthPickupPrefab, transform.position + new Vector3(0, 1, -2), Quaternion.identity);
-            healthPickup.transform.parent = transform;
-        }
-
         // Kill the additional enemies
         foreach (GameObject enemy in additionalEnemies)
         {
             if (enemy == null) continue;
 
-            //if (enemy.TryGetComponent(out IDamageable damageable))
-            //{
-            //    damageable.TakeDamage(float.MaxValue);
-            //}
-
             // Destroy the enemy game object
             Destroy(enemy);
+        }
+
+        // Clear the room after a delay
+        Invoke("ClearRoomAfterDelay", 3f);
+    }
+
+    private void ClearRoomAfterDelay()
+    {
+        // Choose whether to spawn a heart using the heart spawn chance
+        if (Random.value < heartSpawnChance)
+        {
+            GameObject healthPickup = Instantiate(healthPickupPrefab, transform.position + new Vector3(0, 1, -2), Quaternion.identity);
+            healthPickup.transform.parent = transform;
         }
 
         // Open the gates

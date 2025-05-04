@@ -11,8 +11,10 @@ public class FireExplosionSpell : Spell
     
     public override void Cast(GameObject parent)
     {
+        // Set the spawn position
+        Vector3 spawnPos = new Vector3(parent.transform.position.x, 0f, parent.transform.position.z);
         // Spawn the fire explosion
-        GameObject fireExplosion = Instantiate(fireExplosionPrefab, parent.transform.position, Quaternion.identity);
+        GameObject fireExplosion = Instantiate(fireExplosionPrefab, spawnPos, Quaternion.identity);
         // Set the explosion's values
         fireExplosion.GetComponent<Explosion>().Initialise(damage, explosionDuration);
     }

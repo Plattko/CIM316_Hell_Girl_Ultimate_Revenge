@@ -6422,6 +6422,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2118532016151227056, guid: 77f112ebb7cf1bb49aade830bc6046bf, type: 3}
+      propertyPath: maxHealth
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8229544076843892538, guid: 77f112ebb7cf1bb49aade830bc6046bf, type: 3}
       propertyPath: m_Name
       value: FallenAngel

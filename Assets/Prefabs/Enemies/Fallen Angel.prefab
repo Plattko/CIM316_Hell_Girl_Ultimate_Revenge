@@ -1293,7 +1293,7 @@ Transform:
   m_GameObject: {fileID: 8229544076843892538}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.680298, y: 1.0326481, z: 43.93365}
+  m_LocalPosition: {x: 0, y: 1.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1440,8 +1440,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4119d45139ee04ea4ea98cb503f7bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  col: {fileID: 8306002862172687428}
   maxHealth: 50
-  projectilePrefab: {fileID: 6577055597057934985, guid: d50f5755860a56143879c21084bf564b, type: 3}
+  projectilePrefab: {fileID: 6577055597057934985, guid: 1085d692bf3e27d40b75d61100966647, type: 3}
   firePoint: {fileID: 6793188801689315319}
   projectileSpeed: 10
   fireRate: 2.25
@@ -1456,8 +1457,10 @@ MonoBehaviour:
   - {fileID: 7388968665792384106}
   - {fileID: 1128195384506713466}
   wingAnimationScript: {fileID: 7953050676506730915}
+  anim: {fileID: 4887248693871754369}
   eyeRingAnimator: {fileID: 8291809214745209236}
   eyeRingTrigger: EyeAttack
+  deathChunksPrefab: {fileID: 8037571951548509220, guid: 506a0033a2df27344b4230736089978d, type: 3}
   damageSFX:
   - {fileID: 8300000, guid: 293c024b42dad4e49bc7d6a2325ec656, type: 3}
   - {fileID: 8300000, guid: a582d51b56657da49a2fbbbf0b3437fc, type: 3}

@@ -12,6 +12,9 @@ public class ImpProjectile : MonoBehaviour
     private Vector3 direction;
     public int damageAmount = 1;
 
+    [Header("VFX")]
+    [SerializeField] private GameObject impactVFX;
+
     [Header("SFX")]
     [SerializeField] private AudioClip impactSFX;
 
@@ -60,6 +63,9 @@ public class ImpProjectile : MonoBehaviour
             SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
             SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
             SFXManager.Instance.PlayAudioClip(impactSFX, transform, 1f, 1.25f, true);
+
+            // Spawn the impact VFX
+            Instantiate(impactVFX, transform.position, Quaternion.identity);
 
             Destroy(gameObject);
         }

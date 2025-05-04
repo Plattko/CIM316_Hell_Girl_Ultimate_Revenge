@@ -5,7 +5,7 @@ using UnityEngine;
 public class TutorialFight : MonoBehaviour
 {
     [SerializeField] private GameObject tutorialEnemy;
-    SpawnTheDevilsAdvocate spawnTDA;
+    private SpawnTheDevilsAdvocate spawnTDA;
 
     private bool enemyDefeated;
 
@@ -25,7 +25,7 @@ public class TutorialFight : MonoBehaviour
 
     public void CheckForEnemy()
     {
-        if (tutorialEnemy == null)
+        if (tutorialEnemy == null && !enemyDefeated)
         {
             enemyDefeated = true;
             spawnTDA.SpawnTDA();

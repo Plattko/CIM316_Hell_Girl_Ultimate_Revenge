@@ -35,6 +35,7 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
     private bool isEngaged;
 
     private Coroutine attackCoroutine;
+    private Coroutine bounceBackCoroutine;
 
     // Knockback
     private bool isInKnockback;
@@ -149,7 +150,7 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         if (damageable != null)
         {
             attackCoroutine = StartCoroutine(HandleAttack(damageable));
-            StartCoroutine(BounceBack());
+            bounceBackCoroutine = StartCoroutine(BounceBack());
         }
     }
 
@@ -180,6 +181,14 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         StopCoroutine(attackCoroutine);
         IsAttacking = false;
         animator.SetBool("IsAttacking", false);
+    }
+
+    private void InterruptBounceBack()
+    {
+        if (bounceBackCoroutine == null) return;
+
+        StopCoroutine(bounceBackCoroutine);
+        isBouncing = false;
     }
 
     private IEnumerator BounceBack()
@@ -241,6 +250,9 @@ public class DamnedSoul : MonoBehaviour, IDamageable, IKnockbackable
         // Set the IsDead flag to true to trigger the death animation
         animator.SetBool("IsDead", true);
 
+        // Interrupt bounce back and knockback
+        InterruptBounceBack();
+        InterruptKnockback();
         // Set its rigidbody to kinematic so it doesn't move
         rb.isKinematic = true;
         // Disable the colliders

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 176085498715754098}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -338,7 +338,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Time: 1
+  m_Time: 0.5
   m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
@@ -457,10 +457,10 @@ VisualEffect:
       m_Array: []
     m_Vector4f:
       m_Array:
-      - m_Value: {x: 43.56827, y: 4.3340173, z: 31.976954, w: 1}
+      - m_Value: {x: 23.968626, y: 2.384314, z: 17.591785, w: 1}
         m_Name: New Color
         m_Overridden: 1
-      - m_Value: {x: 67.26131, y: 5.490326, z: 116.51699, w: 1}
+      - m_Value: {x: 13.836277, y: 1.1294111, z: 23.96863, w: 1}
         m_Name: New Color 1
         m_Overridden: 1
     m_Uint:
