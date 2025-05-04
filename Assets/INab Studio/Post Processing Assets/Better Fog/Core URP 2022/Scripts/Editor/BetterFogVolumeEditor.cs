@@ -6,7 +6,7 @@ using INab.BetterFog.Core;
 
 namespace UnityEditor.Rendering.Universal
 {
-    [VolumeComponentEditor(typeof(INab.BetterFog.URP.BetterFogVolume))]
+    //[VolumeComponentEditor(typeof(INab.BetterFog.URP.BetterFogVolume))]
     public class BetterFogVolumeEditor : VolumeComponentEditor
     {
         // FogParameters
