@@ -15,6 +15,7 @@ public class HUD : MonoBehaviour
     [SerializeField] private Image spellIcon;
     [SerializeField] private RectTransform manaIcons;
     private bool spellAnimHasPlayed;
+    private bool spellOnboarding1HasPlayed;
 
     [Header("Item Banner")]
     [SerializeField] private CanvasGroup itemBannerGroup;
@@ -68,6 +69,26 @@ public class HUD : MonoBehaviour
     public void OnSpellAnimPlayed()
     {
         spellAnimHasPlayed = true;
+    }
+
+    public IEnumerator PlaySpellOnboarding1Anim()
+    {
+        anim.Play("HUD_SpellOnboarding1");
+
+        while (!spellOnboarding1HasPlayed)
+        {
+            yield return null;
+        }
+    }
+
+    public void OnSpellOnboarding1Played()
+    {
+        spellOnboarding1HasPlayed = true;
+    }
+
+    public void PlaySpellOnboarding2Anim()
+    {
+        anim.Play("HUD_SpellOnboarding2");
     }
 
     public void UpdateMana(int curMana)

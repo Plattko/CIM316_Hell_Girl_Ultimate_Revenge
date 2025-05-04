@@ -117,6 +117,22 @@ public class SpellManager : MonoBehaviour
         yield return UIManager.Instance.PlaySpellPickedUpAnim();
         // Set the player's current spell to the new spell
         curSpell = spell;
+
+        //// Play the correct UI animation
+        //if (PlayerPrefs.GetInt("SpellTutComplete", 0) == 0)
+        //{
+        //    // Wait until the spell picked up UI animation has played
+        //    yield return UIManager.Instance.PlaySpellOnboarding1Anim();
+        //    // Set the player's mana to 0
+        //    curMana = 0;
+        //}
+        //else
+        //{
+        //    // Wait until the spell picked up UI animation has played
+        //    yield return UIManager.Instance.PlaySpellPickedUpAnim();
+        //}
+        //// Set the player's current spell to the new spell
+        //curSpell = spell;
     }
 
     private void DropSpell()

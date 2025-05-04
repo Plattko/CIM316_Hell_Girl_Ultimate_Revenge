@@ -263,6 +263,17 @@ public class RoomManager : MonoBehaviour
                 break;
 
             case Room.RoomType.Item:
+                //SpellOnboardingRoom spellOnboardingRoom = roomsDict[curRoom].roomObj.GetComponent<SpellOnboardingRoom>();
+                //if (spellOnboardingRoom != null)
+                //{
+                //    spellOnboardingRoom.InitialiseRoom();
+                //}
+
+                //if (PlayerPrefs.GetInt("SpellTutComplete", 0) == 0)
+                //{
+                //    // Wait for the player move delay
+                //    yield return new WaitForSeconds(playerMoveDelay);
+                //}
                 break;
 
             case Room.RoomType.Miniboss:

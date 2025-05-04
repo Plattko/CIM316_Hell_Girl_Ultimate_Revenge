@@ -36,6 +36,16 @@ public class UIManager : MonoBehaviour
         yield return hud.PlaySpellPickedUpAnim();
     }
 
+    public IEnumerator PlaySpellOnboarding1Anim()
+    {
+        yield return hud.PlaySpellOnboarding1Anim();
+    }
+
+    public void PlaySpellOnboarding2Anim()
+    {
+        hud.PlaySpellOnboarding2Anim();
+    }
+
     public void UpdateSpell(Spell newSpell)
     {
         hud.UpdateSpell(newSpell);
