@@ -21,6 +21,8 @@ public class MainMenuManager : MonoBehaviour
 
     private IEnumerator StartGameSequence()
     {
+        PlayerPrefs.DeleteAll();
+
         SFXManager.Instance.PlayAudioClip(loadSFX, transform, 0.5f);
         yield return fadeToBlack.FadeOut(0.5f);
         yield return new WaitForSeconds(2.5f);

@@ -107,7 +107,7 @@ public class RoomManager : MonoBehaviour
         switch (roomData.roomType)
         {
             case Room.RoomType.Start:
-                if (!GameManager.Instance.HasOnboardedPlayer)
+                if (PlayerPrefs.GetInt("playerOnboardingComplete", 0) == 0)
                 {
                     roomPrefab = onboardingRoomPrefab;
                 }

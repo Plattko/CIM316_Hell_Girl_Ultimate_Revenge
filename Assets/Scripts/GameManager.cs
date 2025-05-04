@@ -110,6 +110,8 @@ public class GameManager : MonoBehaviour
         if (!enabled)
         {
             HasOnboardedPlayer = true;
+
+            PlayerPrefs.SetInt("playerOnboardingComplete", 1);
         }
     }
 

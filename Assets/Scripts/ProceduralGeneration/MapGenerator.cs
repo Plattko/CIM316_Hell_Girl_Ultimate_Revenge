@@ -58,7 +58,7 @@ public class MapGenerator : MonoBehaviour
         minimap.DrawMap(rooms, gridCentre);
 
         // If the player has already been onboarded, start the run timer
-        if (GameManager.Instance.HasOnboardedPlayer)
+        if (PlayerPrefs.GetInt("playerOnboardingComplete", 0) == 0)
         {
             StatsManager.Instance.ToggleRunTimer(true);
         }
