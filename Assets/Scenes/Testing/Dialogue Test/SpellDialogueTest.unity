@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TestPlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 5512676325496533754, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6612110380082510357, guid: 651aa678471a9d0419dbba68f3580a59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -741,6 +745,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapGenerator: {fileID: 0}
   <HasOnboardedPlayer>k__BackingField: 0
+  <DivineEnemyMaterial>k__BackingField: {fileID: 0}
+  <HelenaGibberishSFX>k__BackingField: {fileID: 0}
+  <TDAGibberishSFX>k__BackingField: {fileID: 0}
 --- !u!4 &803615686
 Transform:
   m_ObjectHideFlags: 0
@@ -1347,6 +1354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beginingDialogue: {fileID: 1658339725}
   finalDialogue: {fileID: 574654149}
+  TDAchara: {fileID: 0}
   hasAlreadySpoken: 0
 --- !u!1 &1900348417
 GameObject:
@@ -1763,6 +1771,120 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1887552044}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &4373630770194257907
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6079652366460505322, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7734946073752609950, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+      propertyPath: m_Name
+      value: FallenAngel_Hit_VFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fc76cb7bffb7c4d46b4633674d8f21da, type: 3}
+--- !u!1001 &5670671183843255797
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2464761485622666493, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377759451437689925, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
+      propertyPath: m_Name
+      value: FallenAngel_Projectile_VFX
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 753e222918c655c499d81cf5c4146f72, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1777,3 +1899,5 @@ SceneRoots:
   - {fileID: 1404516392}
   - {fileID: 279553407}
   - {fileID: 803615686}
+  - {fileID: 5670671183843255797}
+  - {fileID: 4373630770194257907}
