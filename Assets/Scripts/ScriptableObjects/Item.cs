@@ -8,4 +8,5 @@ public class Item : ScriptableObject
     public new string name;
     public string description;
     public Sprite icon;
+    public AudioClip equipSFX;
 }

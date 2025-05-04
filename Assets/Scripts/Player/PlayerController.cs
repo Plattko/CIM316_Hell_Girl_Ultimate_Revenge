@@ -237,6 +237,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator StartItemPickup(Item item, bool endsAutomatically)
     {
+        SFXManager.Instance.PlayAudioClip(item.equipSFX, transform, 1f);
         itemDisplaySpriteRenderer.sprite = item.icon;
         itemDisplaySpriteRenderer.enabled = true;
         UIManager.Instance.SetItemBanner(item.name, item.description);

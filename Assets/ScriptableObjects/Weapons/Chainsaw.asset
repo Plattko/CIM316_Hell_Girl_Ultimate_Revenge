@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Chainsaw
   description: Starts on the first rev every time
   icon: {fileID: -746070378, guid: c9ebbcc74f04a7d44b46f5fe3f8fdcc7, type: 3}
+  equipSFX: {fileID: 8300000, guid: 7a2c1964c253347459ecd716cb7b422d, type: 3}
   <NumberOfAttacks>k__BackingField: 3
   <AnimController>k__BackingField: {fileID: 9100000, guid: 146ab628b7aaf8d4fb2d3a77f86e857b, type: 2}
   <swingSFX>k__BackingField:

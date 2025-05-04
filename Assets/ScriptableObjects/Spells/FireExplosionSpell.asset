@@ -15,6 +15,7 @@ MonoBehaviour:
   name: Immolation
   description: KABOOM
   icon: {fileID: 21300000, guid: 5a9e82c7ce3949c479c11472fc6f784d, type: 3}
+  equipSFX: {fileID: 8300000, guid: 224e9433c26c00549badf396357bdf65, type: 3}
   manaCost: 3
   damage: 9
   castTime: 0.5
